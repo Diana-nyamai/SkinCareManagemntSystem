@@ -80,7 +80,7 @@ input[type=submit]:hover {
 <body>
     <h1>user login form</h1>
     <div class="container">
-        <form action="/action_page.php">
+        <form action="#">
         <div class="row">
           <div class="col-25">
             <label for="fname">First Name</label>
@@ -98,14 +98,24 @@ input[type=submit]:hover {
           </div>
         </div>
         <div class="row">
+            <div class="col-25">
+                  <label for="phone">Phone Number</label>
+            </div>
+          <div class="col-75">
+              <input type="text" id="phone" name="phone" placeholder="Your phone number..">
+          </div>
+
+
+        </div>
+        <div class="row">
           <div class="col-25">
-            <label for="country">Country</label>
+            <label for="user">type of user</label>
           </div>
           <div class="col-75">
-            <select id="country" name="country">
-              <option value="australia">Australia</option>
-              <option value="canada">Canada</option>
-              <option value="usa">USA</option>
+            <select id="user" name="country">
+              <option value="australia">dermatologist</option>
+              <option value="canada">admin</option>
+              <option value="usa">shop owner</option>
             </select>
           </div>
         </div>
