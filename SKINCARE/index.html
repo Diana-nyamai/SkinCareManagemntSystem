@@ -78,9 +78,11 @@ input[type=submit]:hover {
     </style>
 </head>
 <body>
+  <!-- body section -->
     <h1>Sign up form</h1>
     <div class="container">
-        <form action="#">
+      <!-- start of the form -->
+        <form action="#" method="post" name="signup" onsubmit="return validateForm()">
         <div class="row">
           <div class="col-25">
             <label for="fname">First Name</label>
@@ -110,15 +112,15 @@ input[type=submit]:hover {
                 <label for="email">Email</label>
             </div>
             <div class="col-75">
-                <input type="text" placeholder="Your email..">
+                <input type="text" placeholder="Your email.." id="email">
             </div>
         </div>
         <div class="row">
           <div class="col-25">
             <label for="female">gender</label>
           </div>
-          <div class="col-75">female <input type="radio" name="female"/> <br> <br>
-          male <input type="radio" name="female"/>
+          <div class="col-75">female <input type="radio" name="female" id="f"/> <br> <br>
+          male <input type="radio" name="female" id="m"/>
           </div>
         </div>
         <div class="row">
@@ -148,8 +150,23 @@ input[type=submit]:hover {
         </form>
       </div>
 
+      <!-- javascript section -->
 <script>
+ function validateForm(){
+   fname = document.signup.fname.value;
+   lname = document.signup.lname.value;
 
+   if(fname == ""){
+     alert('please enter first name');
+     document.getElementById('fname').focus();
+     return false;
+   }
+   if(lname == ""){
+     alert('please enter second name')
+     document.getElementById('lname').focus();
+
+   }
+ }
 </script>
 </body>
 </html>
