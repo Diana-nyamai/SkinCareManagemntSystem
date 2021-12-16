@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=0 ">
     <title>Skincare Management System</title>
-    <style>
+<style>
 * {
   box-sizing: border-box;
   margin: 0;
@@ -78,7 +78,7 @@ input[type=submit]:hover {
     </style>
 </head>
 <body>
-    <h1>user login form</h1>
+    <h1>Sign up form</h1>
     <div class="container">
         <form action="#">
         <div class="row">
@@ -104,34 +104,52 @@ input[type=submit]:hover {
           <div class="col-75">
               <input type="text" id="phone" name="phone" placeholder="Your phone number..">
           </div>
-
-
+        </div>
+        <div class="row">
+            <div class="col-25">
+                <label for="email">Email</label>
+            </div>
+            <div class="col-75">
+                <input type="text" placeholder="Your email..">
+            </div>
         </div>
         <div class="row">
           <div class="col-25">
-            <label for="user">type of user</label>
+            <label for="female">gender</label>
+          </div>
+          <div class="col-75">female <input type="radio" name="female"/> <br> <br>
+          male <input type="radio" name="female"/>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-25">
+            <label for="user">Role of user</label>
           </div>
           <div class="col-75">
             <select id="user" name="country">
-              <option value="australia">dermatologist</option>
-              <option value="canada">admin</option>
-              <option value="usa">shop owner</option>
+               <option value="customer">customer</option>
+              <option value="dermatologist">dermatologist</option>
+              <option value="admin">admin</option>
             </select>
           </div>
         </div>
         <div class="row">
           <div class="col-25">
-            <label for="subject">Subject</label>
+            <label for="subject">Password</label>
           </div>
           <div class="col-75">
-            <textarea id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+            <input type="text" placeholder="Your password.."/>
           </div>
         </div>
         <br>
         <div class="row">
-          <input type="submit" value="Send">
+          <input type="submit" value="Sign Up">
         </div>
         </form>
       </div>
+
+<script>
+
+</script>
 </body>
 </html>
