@@ -82,7 +82,7 @@ input[type=submit]:hover {
     <h1>Sign up form</h1>
     <div class="container">
       <!-- start of the form -->
-        <form action="#" method="post" name="signup" onsubmit="return validateForm()">
+        <form name="signup" onsubmit="return validateForm()">
         <div class="row">
           <div class="col-25">
             <label for="fname">First Name</label>
@@ -152,6 +152,7 @@ input[type=submit]:hover {
 
       <!-- javascript section -->
 <script>
+  // validating the main form
  function validateForm(){
    fname = document.signup.fname.value;
    lname = document.signup.lname.value;
@@ -164,9 +165,40 @@ input[type=submit]:hover {
    if(lname == ""){
      alert('please enter second name')
      document.getElementById('lname').focus();
-
+     return false;
    }
+   var returned = true;
+   
+   returned = validatePhone();
+   if(returned == true)
+   returned = validateEmail();
+   if(returned == true)
+   return returned;
  }
+
+//  validating the phone number
+function validatePhone(){
+  phone = document.getElementById('phone').value;
+  if(phone.length == 0 || isNaN(phone)){
+    alert('Enter a valid number');
+    document.getElementById('phone').focus();
+    return false;
+  }
+ 
+}
+
+// validating email
+function validateEmail(){
+  email = document.getElementById('email').value;
+  if(email.length == 0 || email.indexOf('@') == -1 || email.indexOf('.') == -1){
+    alert('enter a valid email');
+    document.getElementById('email').focus();
+    return false;
+  }
+  else{
+    return true;
+  }
+}
 </script>
 </body>
 </html>
