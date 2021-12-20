@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=0 ">
-    <title>Sign Up form</title>
+    <title>appointment form</title>
 <style>
 * {
   box-sizing: border-box;
@@ -79,7 +79,7 @@ input[type=submit]:hover {
 </head>
 <body>
   <!-- body section -->
-    <h1>Sign up form</h1>
+    <h1>Appointment form</h1>
     <div class="container">
       <!-- start of the form -->
         <form name="signup" onsubmit="return validateForm()">
@@ -92,36 +92,23 @@ input[type=submit]:hover {
           <div class="col-75"><input type="text" id="lname" name="lastname" placeholder="Your last name.."></div>
         </div>
         <div class="row">
-          <div class="col-25"><label for="phone">Phone Number</label></div>
-          <div class="col-75"><input type="text" id="phone" name="phone" placeholder="Your phone number.."></div>
+            <div class="col-25"><label for="phone">Phone Number</label></div>
+            <div class="col-75"><input type="text" id="phone" name="phone" placeholder="Your phone number.."></div>
         </div>
         <div class="row">
             <div class="col-25"><label for="email">Email</label></div>
             <div class="col-75"><input type="text" placeholder="Your email.." id="email"></div>
         </div>
         <div class="row">
-          <div class="col-25"><label for="female">gender</label></div>
-          <div class="col-75">female <input type="radio" name="female" id="f"/> <br> <br>
-          male <input type="radio" name="female" id="m"/></div>
+            <div class="col-25"><label for="date">Date</label></div>
+            <div class="col-25"><input type="text" name="date" id="date" placeholder="Enter date.."></div>
         </div>
         <div class="row">
-          <div class="col-25"><label for="user">Role of user</label></div>
-          <div class="col-75">
-            <select id="user" name="user">
-              <option value="" selected="selected"></option>
-              <option value="customer">customer</option>
-              <option value="dermatologist">dermatologist</option>
-              <option value="admin">admin</option>
-            </select>
-          </div>
+            <div class="col-25"><label for="time">Time</label></div>
+            <div class="col-25"><input type="text" name="time" id="time" placeholder="Enter time.."></div>
         </div>
         <div class="row">
-          <div class="col-25"><label for="subject">Password</label></div>
-          <div class="col-75"><input type="text" placeholder="Your password.." id="password"/></div>
-        </div>
-        <br>
-        <div class="row">
-          <input type="submit" value="Sign Up">
+          <input type="submit" value="book appointment">
         </div>
         </form>
       </div>
@@ -148,12 +135,6 @@ input[type=submit]:hover {
    returned = validatePhone();
    if(returned == true)
    returned = validateEmail();
-   if(returned == true)
-   returned == validateGender();
-   if(returned == true)
-   returned = validateRole();
-   if(returned == true);
-   returned == validatePassword();
    if(returned == true)
    return returned;
  }
@@ -184,41 +165,10 @@ function validateEmail(){
     return true;
   }
 }
-// validating gender
-function validateGender(){
-  female = document.getElementById('f').checked;
-  male = document.getElementById('m').checked;
 
-  if(female == false && male == false){
-    alert('please select your gender');
-    return false;
-  }
-  else{
-    return true
-  }
-}
-
-// validating role of user
-function validateRole(){
-      role = document.getElementById('user').options.selectedIndex;
-      if(role == 0){
-        alert('select the role of user');
-        return false;
-      }
-      else{
-        return true;
-      }
-}
-// validating the password
-function validatePassword(){
-   p = document.getElementById('password').value;
-   if(p.length == 0){
-     alert('please enter password');
-     return false;
-   }
-   else{
-     return true;
-   }
+// validating date
+function validateDate(){
+    
 }
 </script>
 </body>
