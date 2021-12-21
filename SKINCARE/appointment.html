@@ -119,6 +119,7 @@ input[type=submit]:hover {
  function validateForm(){
    fname = document.signup.fname.value;
    lname = document.signup.lname.value;
+   time = document.signup.time.value;
 
    if(fname == ""){
      alert('please enter first name');
@@ -130,12 +131,22 @@ input[type=submit]:hover {
      document.getElementById('lname').focus();
      return false;
    }
+   if(time == ""){
+     alert('please enter the time');
+     document.getElementById('time').focus();
+     return false;
+   }
    var returned = true;
    
    returned = validatePhone();
    if(returned == true)
    returned = validateEmail();
    if(returned == true)
+  //  returned = validateTime();
+  //  if(returned == true)
+   returned = validateDate();
+   if(returned == true)
+   
    return returned;
  }
 
@@ -168,8 +179,36 @@ function validateEmail(){
 
 // validating date
 function validateDate(){
-    
+       date  = document.getElementById('date').value;
+
+       if(date.indexOf('-') == -1){
+         alert('date should be in the form dd-mm-yy');
+         document.getElementById('date').focus();
+         return false;
+       }
+       comps = date.split('-');
+       if(comps[0].length< 1 || comps[1].length < 1 || comps[2].length<4){
+         alert('date should be in the form dd-mm-yyyy');
+         document.getElementById('date').focus();
+         return false;
+       }
+       if(isNaN(comps[0]) || isNaN(comps[1]) || isNaN(comps[2])){
+         alert('date must be a number and in the format dd-mm-yy');
+         document.getElementById('date').focus();
+         return false;
+       }
 }
+
+// validating time
+function validateTime(){
+       time = document.getElementById('time').value;
+
+       if(time.length == 0){
+         alert('enter time');
+         document.getElementById('time').focus();
+         return false;
+       }
+      }
 </script>
 </body>
 </html>
