@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=0 ">
-    <title>appointment form</title>
+    <title>log in form</title>
 <style>
 * {
   box-sizing: border-box;
@@ -79,7 +79,7 @@ input[type=submit]:hover {
 </head>
 <body>
   <!-- body section -->
-    <h1>Appointment form</h1>
+    <h1>log in form</h1>
     <div class="container">
       <!-- start of the form -->
         <form name="signup" onsubmit="return validateForm()">
@@ -92,23 +92,16 @@ input[type=submit]:hover {
           <div class="col-75"><input type="text" id="lname" name="lastname" placeholder="Your last name.."></div>
         </div>
         <div class="row">
-            <div class="col-25"><label for="phone">Phone Number</label></div>
-            <div class="col-75"><input type="text" id="phone" name="phone" placeholder="Your phone number.."></div>
-        </div>
-        <div class="row">
             <div class="col-25"><label for="email">Email</label></div>
             <div class="col-75"><input type="text" placeholder="Your email.." id="email"></div>
         </div>
         <div class="row">
-            <div class="col-25"><label for="date">Date</label></div>
-            <div class="col-25"><input type="text" name="date" id="date" placeholder="Enter date.."></div>
+          <div class="col-25"><label for="subject">Password</label></div>
+          <div class="col-75"><input type="text" placeholder="Your password.." id="password"/></div>
         </div>
+        <br>
         <div class="row">
-            <div class="col-25"><label for="time">Time</label></div>
-            <div class="col-25"><input type="text" name="time" id="time" placeholder="Enter time.."></div>
-        </div>
-        <div class="row">
-          <input type="submit" value="book appointment">
+          <input type="submit" value="log In">
         </div>
         </form>
       </div>
@@ -119,7 +112,6 @@ input[type=submit]:hover {
  function validateForm(){
    fname = document.signup.fname.value;
    lname = document.signup.lname.value;
-   time = document.signup.time.value;
 
    if(fname == ""){
      alert('please enter first name');
@@ -131,37 +123,15 @@ input[type=submit]:hover {
      document.getElementById('lname').focus();
      return false;
    }
-   if(time == ""){
-     alert('please enter the appointment time')
-     document.getElementById('time').focus();
-     return false;
-   }
-   
    var returned = true;
    
-   returned = validatePhone();
-   if(returned == true)
    returned = validateEmail();
    if(returned == true)
-   returned = validateDate();
+   returned == validatePassword();
    if(returned == true)
-   
    return returned;
  }
 
-//  validating the phone number
-function validatePhone(){
-  phone = document.getElementById('phone').value;
-  if(phone.length == 0 || isNaN(phone)){
-    alert('Enter a phone number');
-    document.getElementById('phone').focus();
-    return false;
-  }
-  else{
-    return true;
-  }
- 
-}
 
 // validating email
 function validateEmail(){
@@ -176,38 +146,17 @@ function validateEmail(){
   }
 }
 
-// validating date
-function validateDate(){
-       date  = document.getElementById('date').value;
-
-       if(date.indexOf('-') == -1){
-         alert('date should be in the form dd-mm-yy');
-         document.getElementById('date').focus();
-         return false;
-       }
-       comps = date.split('-');
-       if(comps[0].length< 1 || comps[1].length < 1 || comps[2].length<4){
-         alert('date should be in the form dd-mm-yyyy');
-         document.getElementById('date').focus();
-         return false;
-       }
-       if(isNaN(comps[0]) || isNaN(comps[1]) || isNaN(comps[2])){
-         alert('date must be a number and in the format dd-mm-yy');
-         document.getElementById('date').focus();
-         return false;
-       }
+// validating the password
+function validatePassword(){
+   p = document.getElementById('password').value;
+   if(p.length == 0){
+     alert('please enter password');
+     return false;
+   }
+   else{
+     return true;
+   }
 }
-
-// validating time
-function validateTime(){
-       time = document.getElementById('time').value;
-
-       if(time.length == 0){
-         alert('enter time');
-         document.getElementById('time').focus();
-         return false;
-       }
-      }
 </script>
 </body>
 </html>
