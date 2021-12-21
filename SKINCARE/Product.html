@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=0 ">
-    <title>products form</title>
+    <title>Product form</title>
 <style>
 * {
   box-sizing: border-box;
@@ -79,18 +79,18 @@ input[type=submit]:hover {
 </head>
 <body>
   <!-- body section -->
-    <h1>products form</h1>
-    <div class="container">
+<h1>product form</h1>
+<div class="container">
       <!-- start of the form -->
         <form name="signup" onsubmit="return validateForm()">
         <div class="row">
-          <div class="col-25"><label for="sname">shop Name</label></div>
+          <div class="col-25"><label for="sname">Shop Name</label></div>
           <div class="col-75"><input type="text" id="sname" name="shopname" placeholder="shop name.."></div>
         </div>
         <div class="row">
           <div class="col-25"><label for="sowner">shop owner</label></div>
           <div class="col-75"><input type="text" id="sowner" name="sowner" placeholder="shop owner.."></div>
-        </div>
+          </div>
         <div class="row">
             <div class="col-25"><label for="sphone">Shop Phone Number</label></div>
             <div class="col-75"><input type="text" id="sphone" name="sphone" placeholder="shop phone number.."></div>
@@ -108,114 +108,91 @@ input[type=submit]:hover {
             <div class="col-75"><input type="text" name="ptype" id="ptype" placeholder="Enter product type.."></div>
         </div>
         <div class="row">
-            <div class="col-25"><label for="pbrand"> brand</label></div>
+            <div class="col-25"><label for="pbrand">brand</label></div>
             <div class="col-75"><input type="text" id="pbrand" name="pbrand" placeholder="product brand.."></div>
-          </div>
+        </div>
         <div class="row">
             <div class="col-25"><label for="pdescription">description</label></div>
             <div class="col-75"><input type="text" id="pdescription" name="pdescription" placeholder="product description.."></div>
-          </div>
-          <div class="row">
+        </div>
+        <div class="row">
             <div class="col-25"><label for="pprice">price</label></div>
             <div class="col-75"><input type="text" id="pprice" name="pprice" placeholder="product price.."></div>
-          </div>
+        </div>
+       
+       
+        
+        
+        <br>
         <div class="row">
-          <input type="submit" value="book appointment">
+          <input type="submit" value="Add product">
         </div>
         </form>
-      </div>
+</div>
 
       <!-- javascript section -->
 <script>
   // validating the main form
  function validateForm(){
    sname = document.signup.sname.value;
-   lname = document.signup.lname.value;
+   sowner = document.signup.sowner.value;
+   sphone = document.signup.sphone.value;
+   semail = document.signup.semail.value;
+   pname = document.signup.pname.value;
+   ptype = document.signup.ptype.value;
+   pbrand = document.signup.pbrand.value;
+   pdescription = document.signup.pdescription.value;
+   pprice = document.signup.pprice.value;
 
 
    if(sname == ""){
      alert('please enter shop name');
-     document.getElementById('sname').focus();
+     document.getElementById('fname').focus();
      return false;
    }
-   if(lname == ""){
-     alert('please enter second name')
-     document.getElementById('lname').focus();
+   if(sowner == ""){
+     alert('please enter shop owner')
+     document.getElementById('sowner').focus();
      return false;
    }
-   var returned = true;
+   if(sphone == ""){
+     alert('please enter shop phone number')
+     document.getElementById('sphone').focus();
+     return false;
+   }
+   if(semail == ""){
+     alert('please enter shop email')
+     document.getElementById('semail').focus();
+     return false;
+   }
+   if(pname == ""){
+     alert('please enter product name')
+     document.getElementById('pname').focus();
+     return false;
+   }
+   if(ptype == ""){
+     alert('please enter product type')
+     document.getElementById('ptype').focus();
+     return false;
+   }
+   if(pbrand == ""){
+     alert('please enter brand')
+     document.getElementById('pbrand').focus();
+     return false;
+   }
+   if(pdescription == ""){
+     alert('please enter shop description')
+     document.getElementById('pdescription').focus();
+     return false;
+   }
+   if(pprice == ""){
+     alert('please enter price')
+     document.getElementById('pprice').focus();
+     return false;
+   }
    
-   returned = validatePhone();
-   if(returned == true)
-   returned = validateEmail();
-   if(returned == true)
-  //  returned = validateTime();
-  //  if(returned == true)
-   returned = validateDate();
-   if(returned == true)
-   
-   return returned;
  }
 
-//  validating the phone number
-function validatePhone(){
-  phone = document.getElementById('phone').value;
-  if(phone.length == 0 || isNaN(phone)){
-    alert('Enter a valid number');
-    document.getElementById('phone').focus();
-    return false;
-  }
-  else{
-    return true;
-  }
- 
-}
-
-// validating email
-function validateEmail(){
-  email = document.getElementById('email').value;
-  if(email.length == 0 || email.indexOf('@') == -1 || email.indexOf('.') == -1){
-    alert('enter a valid email.should contain @ and .');
-    document.getElementById('email').focus();
-    return false;
-  }
-  else{
-    return true;
-  }
-}
-
-// validating date
-function validateDate(){
-       date  = document.getElementById('date').value;
-
-       if(date.indexOf('-') == -1){
-         alert('date should be in the form dd-mm-yy');
-         document.getElementById('date').focus();
-         return false;
-       }
-       comps = date.split('-');
-       if(comps[0].length< 1 || comps[1].length < 1 || comps[2].length<4){
-         alert('date should be in the form dd-mm-yyyy');
-         document.getElementById('date').focus();
-         return false;
-       }
-       if(isNaN(comps[0]) || isNaN(comps[1]) || isNaN(comps[2])){
-         alert('date must be a number and in the format dd-mm-yy');
-         document.getElementById('date').focus();
-         return false;
-       }
-}
-
-// validating time
-function validateTime(){
-       time = document.getElementById('time').value;
-
-       if(time.length == 0){
-         alert('enter time');
-         document.getElementById('time').focus();
-         return false;
-       }
-      }
 </script>
 </body>
 </html>
