@@ -82,14 +82,14 @@ input[type=submit]:hover {
     <h1>Appointment form</h1>
     <div class="container">
       <!-- start of the form -->
-        <form name="signup" onsubmit="return validateForm()">
+        <form name="appointment" action="appointment.php" method="post" onsubmit="return validateForm()">
         <div class="row">
           <div class="col-25"><label for="fname">First Name</label></div>
-          <div class="col-75"><input type="text" id="fname" name="firstname" placeholder="Your name.."></div>
+          <div class="col-75"><input type="text" id="fname" name="fname" placeholder="Your name.."></div>
         </div>
         <div class="row">
           <div class="col-25"><label for="lname">Last Name</label></div>
-          <div class="col-75"><input type="text" id="lname" name="lastname" placeholder="Your last name.."></div>
+          <div class="col-75"><input type="text" id="lname" name="lname" placeholder="Your last name.."></div>
         </div>
         <div class="row">
             <div class="col-25"><label for="phone">Phone Number</label></div>
@@ -97,7 +97,7 @@ input[type=submit]:hover {
         </div>
         <div class="row">
             <div class="col-25"><label for="email">Email</label></div>
-            <div class="col-75"><input type="text" placeholder="Your email.." id="email"></div>
+            <div class="col-75"><input type="text" placeholder="Your email.." id="email" name="email"></div>
         </div>
         <div class="row">
             <div class="col-25"><label for="date">Date</label></div>
