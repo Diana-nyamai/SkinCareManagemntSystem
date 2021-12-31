@@ -82,11 +82,15 @@ input[type=submit]:hover {
     <h1>order form</h1>
     <div class="container">
       <!-- start of the form -->
-        <form name="order"  onsubmit="return validateForm()">
+        <form name="order" action="order.php" method="post" onsubmit="return validateForm()">
         
         <div class="row">
           <div class="col-25"><label for="orderid">order id</label></div>
           <div class="col-75"><input type="text" id="orderid" name="orderid" placeholder="order id.."></div>
+        </div>
+        <div class="row">
+          <div class="col-25"><label for="date">date</label></div>
+          <div class="col-75"><input type="text" id="date" name="date" placeholder="date.."></div>
         </div>
         <div class="row">
             <div class="col-25"><label for="tamount">total amount</label></div>
@@ -128,15 +132,15 @@ input[type=submit]:hover {
 <script>
   // validating the main form
  function validateForm(){
-  orderid = document.order.orderid.value;
+  date = document.order.date.value;
   tamount = document.order.tamount.value;
   damount = document.order.damount.value;
   tad = document.order.tad.value;
   quantity = document.order.quantity.value;
   
 
-  if(orderid == ""){
-    alert('enetr order id');
+  if(date == ""){
+    alert('enter the date');
     return false;
   }
   if(tamount == ""){
