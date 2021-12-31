@@ -82,10 +82,10 @@ input[type=submit]:hover {
 <h1>product form</h1>
 <div class="container">
       <!-- start of the form -->
-        <form name="signup" onsubmit="return validateForm()">
+        <form name="product" action="product.php" method="post" onsubmit="return validateForm()">
         <div class="row">
           <div class="col-25"><label for="sname">Shop name</label></div>
-          <div class="col-75"><input type="text" id="sname" name="shopname" placeholder="shop name.."></div>
+          <div class="col-75"><input type="text" id="sname" name="sname" placeholder="shop name.."></div>
         </div>
         <div class="row">
           <div class="col-25"><label for="sowner">Shop owner</label></div>
@@ -97,11 +97,11 @@ input[type=submit]:hover {
         </div>
         <div class="row">
             <div class="col-25"><label for="email">Email</label></div>
-            <div class="col-75"><input type="text" placeholder="shop email.." id="semail"></div>
+            <div class="col-75"><input type="text" placeholder="shop email.." name="semail" id="semail"></div>
         </div>
         <div class="row">
             <div class="col-25"><label for="pname">Product name</label></div>
-            <div class="col-75"><input type="text" name="date" id="pname" placeholder=" product name.."></div>
+            <div class="col-75"><input type="text" name="pname" id="pname" placeholder=" product name.."></div>
         </div>
         <div class="row">
             <div class="col-25"><label for="ptype">Product type</label></div>
