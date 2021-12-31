@@ -82,11 +82,11 @@ input[type=submit]:hover {
     <h1>order form</h1>
     <div class="container">
       <!-- start of the form -->
-        <form name="signup" onsubmit="return validateForm()">
+        <form name="order"  onsubmit="return validateForm()">
         
         <div class="row">
-          <div class="col-25"><label for="order">order id</label></div>
-          <div class="col-75"><input type="text" id="order" name="order" placeholder="order id.."></div>
+          <div class="col-25"><label for="orderid">order id</label></div>
+          <div class="col-75"><input type="text" id="orderid" name="orderid" placeholder="order id.."></div>
         </div>
         <div class="row">
             <div class="col-25"><label for="tamount">total amount</label></div>
@@ -101,13 +101,21 @@ input[type=submit]:hover {
             <div class="col-75"><input type="text" id="tad" name="tad" placeholder="total after discount.."></div>
           </div>
           <div class="row">
-            <div class="col-25"><label for="ptype">payment type</label></div>
-            <div class="col-75"><input type="text" id="ptype" name="ptype" placeholder="payment type.."></div>
-          </div>
-          <div class="row">
             <div class="col-25"><label for="quantity">quantity</label></div>
             <div class="col-75"><input type="text" id="quantity" name="quantity" placeholder="quantity.."></div>
           </div>
+          <div class="row">
+            <div class="col-25"><label for="payment">payment type</label></div>
+            <div class="col-75">
+              <select id="payment" name="payment">
+                <option value="" selected="selected"></option>
+                <option value="cash">cash</option>
+                <option value="mpesa">mpesa</option>
+                
+              </select>
+            </div>
+          </div>
+          
         
         <br>
         <div class="row">
@@ -120,27 +128,56 @@ input[type=submit]:hover {
 <script>
   // validating the main form
  function validateForm(){
+  orderid = document.order.orderid.value;
+  tamount = document.order.tamount.value;
+  damount = document.order.damount.value;
+  tad = document.order.tad.value;
+  quantity = document.order.quantity.value;
   
-   var returned = true;
-   
-   returned = validatePhone();
-   if(returned == true)
-   return returned;
- }
 
-//  validating the phone number
-function validatePhone(){
-  phone = document.getElementById('phone').value;
-  if(phone.length == 0 || isNaN(phone)){
-    alert('Enter a valid number');
-    document.getElementById('phone').focus();
+  if(orderid == ""){
+    alert('enetr order id');
     return false;
   }
-  else{
-    return true;
+  if(tamount == ""){
+    alert('enter the total amount');
+    return false;
   }
- 
+  if(damount == ""){
+    alert('enter the discounted amount');
+    return false;
+  }
+  if(tad == ""){
+    alert('enter the total after discount');
+    return false;
+  }
+  if(quantity == ""){
+    alert('enter the quantity of product');
+    return false;
+  }
+
+  var returned = true;
+
+  returned = validatepayment();
+  if(returned == true)
+  return returned
+
+  //  validating payment type
+function validatepayment(){
+      payment = document.getElementById('payment').options.selectedIndex;
+      if(payment == 0){
+        alert('select the payment');
+        return false;
+      }
+      else{
+        return true;
+      }
 }
+ }
+
+
+ 
+
 
 </script>
 </body>
