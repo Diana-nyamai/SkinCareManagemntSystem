@@ -82,27 +82,24 @@ input[type=submit]:hover {
     <h1>log in form</h1>
     <div class="container">
       <!-- start of the form -->
-        <form name="signup" onsubmit="return validateForm()">
+        <form name="login" action="login.php" method="post" onsubmit="return validateForm()">
         <div class="row">
           <div class="col-25"><label for="fname">First Name</label></div>
-          <div class="col-75"><input type="text" id="fname" name="firstname" placeholder="Your name.."></div>
+          <div class="col-75"><input type="text" id="fname" name="fname" placeholder="Your name.."></div>
         </div>
         <div class="row">
           <div class="col-25"><label for="lname">Last Name</label></div>
-          <div class="col-75"><input type="text" id="lname" name="lastname" placeholder="Your last name.."></div>
-        </div>
-        <div class="row">
-            <div class="col-25"><label for="email">Email</label></div>
-            <div class="col-75"><input type="text" placeholder="Your email.." id="email"></div>
+          <div class="col-75"><input type="text" id="lname" name="lname" placeholder="Your last name.."></div>
         </div>
         <div class="row">
           <div class="col-25"><label for="subject">Password</label></div>
-          <div class="col-75"><input type="text" placeholder="Your password.." id="password"/></div>
+          <div class="col-75"><input type="text" placeholder="Your password.." id="password" name="password"/></div>
         </div>
         <br>
         <div class="row">
           <input type="submit" value="log In">
         </div>
+        <p><a href="index.html">Don't have an account?Create account</a></p>
         </form>
       </div>
 
@@ -110,8 +107,8 @@ input[type=submit]:hover {
 <script>
   // validating the main form
  function validateForm(){
-   fname = document.signup.fname.value;
-   lname = document.signup.lname.value;
+   fname = document.login.fname.value;
+   lname = document.login.lname.value;
 
    if(fname == ""){
      alert('please enter first name');
@@ -124,27 +121,13 @@ input[type=submit]:hover {
      return false;
    }
    var returned = true;
-   
-   returned = validateEmail();
-   if(returned == true)
+  
    returned == validatePassword();
    if(returned == true)
    return returned;
  }
 
 
-// validating email
-function validateEmail(){
-  email = document.getElementById('email').value;
-  if(email.length == 0 || email.indexOf('@') == -1 || email.indexOf('.') == -1){
-    alert('enter a valid email.should contain @ and .');
-    document.getElementById('email').focus();
-    return false;
-  }
-  else{
-    return true;
-  }
-}
 
 // validating the password
 function validatePassword(){
