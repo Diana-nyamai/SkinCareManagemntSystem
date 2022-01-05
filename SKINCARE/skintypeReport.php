@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <body>
-    <h2 style="text-align: center;">shop report</h2>
+    <h2 style="text-align: center;">skin type report</h2>
 <!-- <a href="#" onclick="window.print();">print</a>  -->
 
 <?php
