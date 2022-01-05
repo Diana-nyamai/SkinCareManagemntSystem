@@ -15,7 +15,7 @@ if(mysqli_connect_error()){
     die ('connection failed (' . mysqli_connect_error() . ')' . mysqli_connect_error());
 }
 else{
-    $stmt = $conn->prepare('insert into tbl_shop(sname, owner, phone_no, email, pname, ptype,brand,description,price)
+    $stmt = $conn->prepare('insert into tbl_product(sname, owner, phone_no, email, pname, ptype,brand,description,price)
     values(?,?,?,?,?,?,?,?,?)');
     $stmt->bind_param('ssisssssi', $sname, $sowner, $sphone, $semail, $pname, $ptype, $pbrand,$pdescription,$pprice);
     $stmt->execute();

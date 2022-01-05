@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <body>
-    <h2 style="text-align: center;">Product report</h2>
+    <h2 style="text-align: center;">shop report</h2>
 <!-- <a href="#" onclick="window.print();">print</a>  -->
 
 <?php
 $connection = new mysqli('localhost', 'root', '', 'skincare');
-$productq = mysqli_query($connection, 'SELECT * FROM tbl_product');
+$productq = mysqli_query($connection, 'SELECT * FROM tbl_product WHERE sname="aliya shop"');
 $count = mysqli_num_rows($productq);
 echo  $count, ' records found <br/>';
 
