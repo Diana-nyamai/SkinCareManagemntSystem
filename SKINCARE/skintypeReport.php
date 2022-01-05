@@ -6,7 +6,7 @@
 
 <?php
 $connection = new mysqli('localhost', 'root', '', 'skincare');
-$productq = mysqli_query($connection, 'SELECT * FROM tbl_product WHERE ptype="for acne & "');
+$productq = mysqli_query($connection, 'SELECT * FROM tbl_product WHERE ptype="for acne & blemishes "');
 $count = mysqli_num_rows($productq);
 echo  $count, ' records found <br/>';
 
