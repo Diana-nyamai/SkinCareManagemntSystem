@@ -17,7 +17,7 @@ else{
     values(?,?,?,?,?,?,?)');
     $stmt->bind_param('ssissss', $fname, $lname,$phone,$email, $gender, $user, $password);
     $stmt->execute();
-    echo 'registration sucessful...';
+    echo header('location:login.html');
     $stmt->close();
     $conn->close();
 }
