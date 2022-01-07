@@ -4,10 +4,63 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=0">
+    <link rel="shortcut icon" href="./images/logo.png" type="image/x-icon">
     <title>Heavenly Skin | landing</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #1e1f31;
+            overflow-x: hidden;
+        }
+        .main{
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+    </style>
 </head>
 <body>
-    <h1>welcome to the HEAVENLY SKIN</h1>
-    <p>hello there</p>
+    <div class="main">
+        <!-- navigation -->
+        <header>
+            <div class="logo"><img src="" alt="logo"/></div>
+            <nav>
+                <ul>
+                    <li><a href="#">sign up</a></li>
+                    <li><a href="#">login</a></li>
+                </ul>
+            </nav>
+        </header>
+        <!-- end of navigation -->
+
+    <!-- content section -->
+    <div class="content">
+        <div class="text">
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. <span> Dolor quam id eos facere</span> aliquam inventore repellendus, quasi, nesciunt corrupti adipisci rem? Est repudiandae incidunt numquam libero molestias neque, mollitia exercitationem.</p>
+             <a href="#" class="btn">Know your skin</a>
+        </div><!-- content text on the left -->
+
+        <div class="img">
+            <div class="skin-type">
+                <img src="./images/normal.png" alt="normal skin"/>
+                <img src="./images/dry.png" alt="dry skin"/>
+                <img src="./images/combination.png" alt="combination skin"/>
+                <img src="./images/sensitive.png" alt="sensitive skin"/>
+                <img src="./images/oily.png" alt="oily skin"/>
+            </div> <!-- skin type images -->
+            <img class="center-image" src="./images/center.png" alt="center image">
+        </div>
+    </div><!-- end of content section -->
+  
+    <!-- bottom wave -->
+    <div class="wave">
+        <img src="./images/waves.svg" alt="wave">
+    </div>
+    </div>
 </body>
 </html>
