@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=0">
     <link rel="shortcut icon" href="./images/logo.png" type="image/x-icon">
     <title>Heavenly Skin | landing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
     <style>
         *{
             margin: 0;
@@ -27,11 +28,13 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            flex-wrap: wrap;
         }
         .logo a{
             color: #fff;
             text-decoration: none;
             font-size: 30px;
+            font-family: 'Monoton', cursive;
         }
         .logo a:hover{
             color:#f09053;
@@ -135,16 +138,16 @@
             right: 0;
         }
         .skin-type img:nth-child(3){
-            top: 70%;
-            left: 90%;
+            top: 75%;
+            left: 80%;
         }
         .skin-type img:nth-child(4){
             top: 25%;
             left: 0;
         }
         .skin-type img:nth-child(5){
-            top: 70%;
-            left: 5%;
+            top: 75%;
+            left: 10%;
         }
         @media all and (max-width: 1197px){
             .content{
@@ -164,6 +167,18 @@
                 display: none;
             }
         }
+        @media all and (max-width: 600px){
+            header ul li a.btn:nth-child(1){
+                margin-top: 20px;
+            }
+            header{
+                justify-content: center;
+            }
+            .content{
+                padding: 10px;
+                text-align: center;
+            }
+        }
 
         /* wave styling */
         .wave{
@@ -178,7 +193,7 @@
     <div class="main">
         <!-- navigation -->
         <header>
-            <div class="logo"><a href="#">HEAVENLY SKIN</a> </div>
+            <div class="logo"><a href="#">HEAVENLY skin</a> </div>
             <nav>
                 <ul>
                     <li><a class="btn" href="login.html">LOGIN</a></li>
@@ -192,16 +207,16 @@
     <div class="content">
         <div class="text">
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. <span> Dolor quam id eos facere</span> aliquam inventore repellendus, quasi, nesciunt corrupti adipisci rem? Est repudiandae incidunt numquam libero molestias neque, mollitia exercitationem.</p>
-             <a href="#" class="btn">KNOW YOUR SKIN</a>
+             <a href="index.html" class="btn">KNOW YOUR SKIN</a>
         </div><!-- content text on the left -->
 
         <div class="img">
             <div class="skin-type">
-                <img src="./images/normal.png" alt="normal skin" width="40"/>
-                <img src="./images/dry.png" alt="dry skin" width="40"/>
-                <img src="./images/combination.png" alt="combination skin" width="40"/>
-                <img src="./images/sensitive.png" alt="sensitive skin" width="40"/>
-                <img src="./images/oily.png" alt="oily skin" width="40"/>
+                <img src="./images/normal.png" alt="normal skin" width="60" />
+                <img src="./images/dry.png" alt="dry skin" width="60"/>
+                <img src="./images/combination.png" alt="combination skin" width="60"/>
+                <img src="./images/sensitive.png" alt="sensitive skin" width="60"/>
+                <img src="./images/oily.png" alt="oily skin" width="60"/>
             </div> <!-- skin type images -->
             <img class="center-image" src="./images/center.png" alt="center image" width="300"/>
         </div>
