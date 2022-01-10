@@ -17,8 +17,7 @@ else{
     values(?,?,?,?,?,?,?)');
     $stmt->bind_param('ssissss', $fname, $lname,$phone,$email, $gender, $user, $password);
     $stmt->execute();
-    echo header('registration successful');
-    echo header('location:authentication.html');
+    echo header('location:authentication.php');
     $stmt->close();
     $conn->close();
 }
