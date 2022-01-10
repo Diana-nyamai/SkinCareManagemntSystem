@@ -8,16 +8,17 @@
  $password = $_POST['password'];
 
 //  database connection
-$conn = new mysqli('localhost', 'root', '', 'skincare');
+$conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
 if(mysqli_connect_error()){
     die('connection failed(' .mysqli_connect_error().')' . mysqli_connect_error());
 }
 else{
-    $stmt = $conn->prepare('insert into tbl_users(user_first_name, user_last_name, user_phone_no, user_email,user_gender, user_role, user_password) 
+    $stmt = $conn->prepare('insert into tbl_users(first_name, last_name, phone_number, email, user_type, gender,password) 
     values(?,?,?,?,?,?,?)');
     $stmt->bind_param('ssissss', $fname, $lname,$phone,$email, $gender, $user, $password);
     $stmt->execute();
-    echo header('location:login.html');
+    echo header('registration successful');
+    echo header('location:authentication.html');
     $stmt->close();
     $conn->close();
 }

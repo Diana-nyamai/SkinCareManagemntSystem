@@ -82,7 +82,7 @@ input[type=submit]:hover {
     <h1>Sign up form</h1>
     <div class="container">
       <!-- start of the form -->
-        <form name="signup" action="index.php" method="post" onsubmit="return validateForm()">
+        <form name="signup" action="./index.php" method="post" onsubmit="return validateForm()">
         <div class="row">
           <div class="col-25"><label for="fname">First Name</label></div>
           <div class="col-75"><input type="text" id="fname" name="fname" placeholder="Your name.."></div>
@@ -99,11 +99,7 @@ input[type=submit]:hover {
             <div class="col-25"><label for="email">Email</label></div>
             <div class="col-75"><input type="text" placeholder="Your email.." id="email" name="email"></div>
         </div>
-        <div class="row">
-          <div class="col-25"><label for="female">gender</label></div>
-          <div class="col-75">female <input type="radio" name="gender" id="f" value="female"/> <br> <br>
-          male <input type="radio" name="gender" id="m" value="male"/></div>
-        </div>
+       
         <div class="row">
           <div class="col-25"><label for="user">Role of user</label></div>
           <div class="col-75">
@@ -115,6 +111,12 @@ input[type=submit]:hover {
             </select>
           </div>
         </div>
+         <div class="row">
+          <div class="col-25"><label for="female">gender</label></div>
+          <div class="col-75">female <input type="radio" name="gender" id="f" value="female"/> <br> <br>
+          male <input type="radio" name="gender" id="m" value="male"/></div>
+        </div>
+
         <div class="row">
           <div class="col-25"><label for="subject">Password</label></div>
           <div class="col-75"><input type="text" placeholder="Your password.." id="password" name="password"/></div>

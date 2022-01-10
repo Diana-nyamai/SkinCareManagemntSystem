@@ -115,7 +115,7 @@
        </div>
 
 <!-- login form -->
-       <form name="login" id="login" class="login" onsubmit="return validateLoginForm()">
+       <form name="login" id="login" class="login" action="login.php" method="post" onsubmit="return validateLoginForm()">
         <input type="text" class="input-field" id="Lfname" name="fname" placeholder="First Name...">
         <input type="text" class="input-field" id="Llname" name="lname" placeholder="Last Name...">
         <input type="text" class="input-field" id="Lpassword" name="password" placeholder="Password...">
@@ -124,7 +124,7 @@
        </form>
 
 <!-- sign up form -->
-       <form name="signup" id="signup" class="signup" onsubmit="return validateSignupForm()">
+       <form name="signup" id="signup" class="signup" action="index.php" method="post" onsubmit="return validateSignupForm()">
         <input type="text" class="input-field" id="fname" name="fname" placeholder="First Name...">
         <input type="text" class="input-field" id="lname" name="lname" placeholder="Last Name...">
         <input type="text" class="input-field" id="phone" name="phone" placeholder="Phone Number...">
