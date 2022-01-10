@@ -2,7 +2,7 @@
 session_start(); 
  $fname = $_POST['fname'];
  $lname = $_POST['lname'];
- $password = $_POST['password'];
+ $password = $_POST['lpassword'];
 
 //  database connection
 $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');

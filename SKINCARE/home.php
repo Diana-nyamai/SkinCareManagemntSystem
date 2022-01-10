@@ -114,7 +114,7 @@
             <li><a href="#">SENSITIVE</a></li>
             <li><a href="#">OILY</a></li>
             <li><a href="#">CART</a></li>
-            <li><a href="authentication.html">LOGOUT</a></li>
+            <li><a href="authentication.php">LOGOUT</a></li>
             
         </ul>
     </header>
