@@ -3,226 +3,229 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=0 ">
-    <title>Sign Up form</title>
-<style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-h1{
-    text-align: center;
-    padding: 20px;
-}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=0">
+    <link rel="shortcut icon" href="./images/logo.png" type="image/x-icon">
+    <title>Heavenly Skin | landing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #1e1f31;
+            overflow-x: hidden;
+        }
+        .main{
+            position: relative;
+            height: 100%;
+            overflow: hidden;
+        }
+        header{
+            padding: 50px 100px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .logo a{
+            color: #fff;
+            text-decoration: none;
+            font-size: 30px;
+            font-family: 'Monoton', cursive;
+        }
+        .logo a:hover{
+            color:#f09053;
+        }
+        header ul li{
+            list-style-type: none;
+            display: inline-block;
+            text-align: center;
+            margin: 0 15px;
+        }
+        header ul li a{
+            color: #fff;
+            text-decoration: none;
+            letter-spacing: 1;
+            transition: all ease-out 0.5s;
+        }
+        header ul li a:hover{
+            color: #f09053;
+        }
+        header ul li a.btn{
+            display: inline-block;
+            width: 180px;
+            height: 40px;
+            line-height: 40px;
+            background-color: #f09053;
+            color: #fff;
+            text-align: center;
+            font-size: 15px;
+            border-radius: 50px;
+            transition: all ease-out 0.5s;
+            
+        }
+        header ul li a.btn:hover{
+            color: #1e1f31;
+        } /* end of header css */
+        .content{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            padding: 50px 100px 0;
+        }
+        .text{
+            width: 50%;
+            padding-right: 150px;
+        }
+        .text p{
+            font-size: 28px;
+            line-height: 46px;
+            color: #fff;
+        }
+        .text p span{
+            color: #f09053;
+        }
+        .text a{
+            position: relative;
+            display: inline-block;
+            font-size: 18px;
+            color: #fff;
+            text-decoration: none;
+            padding: 18px 30px;
+            font-weight: 500;
+            margin-top:40px ;
+            background-color: #f09053;
+            border-radius: 50px;
+            transition: all ease-out 1s;
+        }
+        .text a:hover{
+            color:#1e1f31;
+        }/* end of text section */
+        .img{
+            position: relative;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(520px, #f09053, transparent 50%);
+            margin-top: -50px;
+        }
+        .center-image{
+            position:  absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+        }
+        .skin-type{
+            height: 100%;
+            animation: rotation 60s linear infinite;
+        }
+        @keyframes rotation {
+            100%{
+                transform: rotate(360deg);
+            }
+        }
+        .skin-type img{
+            position: absolute;
+        }
+        .skin-type img:nth-child(1){
+             top: 0;
+             left: 42%;
+        }
+        .skin-type img:nth-child(2){
+            top: 25%;
+            right: 0;
+        }
+        .skin-type img:nth-child(3){
+            top: 75%;
+            left: 80%;
+        }
+        .skin-type img:nth-child(4){
+            top: 25%;
+            left: 0;
+        }
+        .skin-type img:nth-child(5){
+            top: 75%;
+            left: 10%;
+        }
+        @media all and (max-width: 1197px){
+            .content{
+                justify-content: center;
+            }
+            .text{
+                width: 100%;
+                padding-right: 0;
+                padding-bottom: 100px;
+            }
+            .img{
+                margin-top: 40px;
+            }
+        }
+        @media all and (max-width: 700px){
+            .img{
+                display: none;
+            }
+        }
+        @media all and (max-width: 600px){
+            header ul li a.btn:nth-child(1){
+                margin-top: 20px;
+            }
+            header{
+                justify-content: center;
+            }
+            .content{
+                padding: 10px;
+                text-align: center;
+            }
+        }
 
-input[type=text], select, textarea {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  resize: vertical;
-}
+        /* wave styling */
+        .wave{
+            /* position: absolute; */
+            bottom: 0;
+            left: 0;
+        }
 
-label {
-  padding: 12px 12px 12px 0;
-  display: inline-block;
-}
-
-input[type=submit] {
-  background-color: #673ab7;
-  color: white;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  float: right;
-}
-
-input[type=submit]:hover {
-  background-color: #673ab7;
-}
-
-.container {
-  border-radius: 5px;
-  background-color: #e1e2e1;
-  padding: 20px;
-}
-
-.col-25 {
-  float: left;
-  width: 25%;
-  margin-top: 6px;
-}
-
-.col-75 {
-  float: left;
-  width: 75%;
-  margin-top: 6px;
-}
-
-/* to Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-
-/*adding  Responsivess to the forms when the screen is less than 600px wide */
-@media screen and (max-width: 600px) {
-  .col-25, .col-75, input[type=submit] {
-    width: 100%;
-    margin-top: 0;
-  }
-}
     </style>
 </head>
 <body>
-  <!-- body section -->
-    <h1>Sign up form</h1>
-    <div class="container">
-      <!-- start of the form -->
-        <form name="signup" action="./index.php" method="post" onsubmit="return validateForm()">
-        <div class="row">
-          <div class="col-25"><label for="fname">First Name</label></div>
-          <div class="col-75"><input type="text" id="fname" name="fname" placeholder="Your name.."></div>
-        </div>
-        <div class="row">
-          <div class="col-25"><label for="lname">Last Name</label></div>
-          <div class="col-75"><input type="text" id="lname" name="lname" placeholder="Your last name.."></div>
-        </div>
-        <div class="row">
-          <div class="col-25"><label for="phone">Phone Number</label></div>
-          <div class="col-75"><input type="text" id="phone" name="phone" placeholder="Your phone number.."></div>
-        </div>
-        <div class="row">
-            <div class="col-25"><label for="email">Email</label></div>
-            <div class="col-75"><input type="text" placeholder="Your email.." id="email" name="email"></div>
-        </div>
-       
-        <div class="row">
-          <div class="col-25"><label for="user">Role of user</label></div>
-          <div class="col-75">
-            <select id="user" name="user">
-              <option value="" selected="selected"></option>
-              <option value="customer">customer</option>
-              <option value="dermatologist">dermatologist</option>
-              <option value="admin">admin</option>
-            </select>
-          </div>
-        </div>
-         <div class="row">
-          <div class="col-25"><label for="female">gender</label></div>
-          <div class="col-75">female <input type="radio" name="gender" id="f" value="female"/> <br> <br>
-          male <input type="radio" name="gender" id="m" value="male"/></div>
-        </div>
+    <div class="main">
+        <!-- navigation -->
+        <header>
+            <div class="logo"><a href="#">HEAVENLY skin</a> </div>
+            <nav>
+                <ul>
+                    <li><a class="btn" href="authentication.php">LOGIN</a></li>
+                    <li><a class="btn" href="authentication.php">SIGN UP</a></li>
+                </ul>
+            </nav>
+        </header>
+        <!-- end of navigation -->
 
-        <div class="row">
-          <div class="col-25"><label for="subject">Password</label></div>
-          <div class="col-75"><input type="text" placeholder="Your password.." id="password" name="password"/></div>
+    <!-- content section -->
+    <div class="content">
+        <div class="text">
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. <span> Dolor quam id eos facere</span> aliquam inventore repellendus, quasi, nesciunt corrupti adipisci rem? Est repudiandae incidunt numquam libero molestias neque, mollitia exercitationem.</p>
+             <a href="authentication.html" class="btn">KNOW YOUR SKIN</a>
+        </div><!-- content text on the left -->
+
+        <div class="img">
+            <div class="skin-type">
+                <img src="./images/normal.png" alt="normal skin" width="60" />
+                <img src="./images/dry.png" alt="dry skin" width="60"/>
+                <img src="./images/combination.png" alt="combination skin" width="60"/>
+                <img src="./images/sensitive.png" alt="sensitive skin" width="60"/>
+                <img src="./images/oily.png" alt="oily skin" width="60"/>
+            </div> <!-- skin type images -->
+            <img class="center-image" src="./images/center.png" alt="center image" width="300"/>
         </div>
-        <br>
-        <div class="row">
-          <input type="submit" value="Sign Up">
-        </div>
-        <p><a href="login.html">Already have an account?Log in</a></p>
-        </form>
-      </div>
-
-      <!-- javascript section -->
-<script>
-  // validating the main form
- function validateForm(){
-   fname = document.signup.fname.value;
-   lname = document.signup.lname.value;
-
-   if(fname == ""){
-     alert('please enter first name');
-     document.getElementById('fname').focus();
-     return false;
-   }
-   if(lname == ""){
-     alert('please enter second name')
-     document.getElementById('lname').focus();
-     return false;
-   }
-   var returned = true;
-   
-   returned = validatePhone();
-   if(returned == true)
-   returned = validateEmail();
-   if(returned == true)
-   returned == validateGender();
-   if(returned == true)
-   returned = validateRole();
-   if(returned == true);
-   returned == validatePassword();
-   if(returned == true)
-   return returned;
- }
-
-//  validating the phone number
-function validatePhone(){
-  phone = document.getElementById('phone').value;
-  if(phone.length == 0 || isNaN(phone)){
-    alert('Enter a valid number');
-    document.getElementById('phone').focus();
-    return false;
-  }
-  else{
-    return true;
-  }
- 
-}
-
-// validating email
-function validateEmail(){
-  email = document.getElementById('email').value;
-  if(email.length == 0 || email.indexOf('@') == -1 || email.indexOf('.') == -1){
-    alert('enter a valid email.should contain @ and .');
-    document.getElementById('email').focus();
-    return false;
-  }
-  else{
-    return true;
-  }
-}
-// validating gender
-function validateGender(){
-  female = document.getElementById('f').checked;
-  male = document.getElementById('m').checked;
-
-  if(female == false && male == false){
-    alert('please select your gender');
-    return false;
-  }
-  else{
-    return true
-  }
-}
-
-// validating role of user
-function validateRole(){
-      role = document.getElementById('user').options.selectedIndex;
-      if(role == 0){
-        alert('select the role of user');
-        return false;
-      }
-      else{
-        return true;
-      }
-}
-// validating the password
-function validatePassword(){
-   p = document.getElementById('password').value;
-   if(p.length == 0){
-     alert('please enter password');
-     return false;
-   }
-   else{
-     return true;
-   }
-}
-</script>
+    </div><!-- end of content section -->
+  
+    <!-- bottom wave -->
+    <div class="wave">
+        <img src="./images/waves.svg" alt="wave">
+    </div>
+    </div>
 </body>
 </html>
