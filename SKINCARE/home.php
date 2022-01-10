@@ -101,6 +101,9 @@
           padding: 20px;
           border:1px solid #fff;
       }
+      .username{
+          text-transform:uppercase;
+      }
     </style>
 </head>
 <body>
@@ -123,8 +126,8 @@
         <div class="banner-content">
             <div class="text">
                 <div class="text-inner">
-                    <h1>WELCOME <?php
-                        echo $_SESSION['username']; ?></h1>
+                    <h1>WELCOME <span class="username"><?php
+                        echo $_SESSION['username']; ?></span> </h1>
             <P><a href="#">Take skin test</a></P>
                 </div>
             </div>
