@@ -1,5 +1,6 @@
 <?php
   session_start();
+  $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
 ?>
 
 <!DOCTYPE html>
@@ -224,54 +225,21 @@
 
 
    <div class="gallery">
+   <?php 
+   $res = mysqli_query($conn, "select * from tbl_product");
+   while($row = mysqli_fetch_array($res)){
+       ?>
        <div class="g-content">
-           <img src="./images/p1.jpg" alt="" >
-           <h3>acne.orge</h3>
-           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat delectus recusandae excepturi! Eius nisi expedita quas unde vitae temporibus cupiditate dolore repudiandae quisquam? Tenetur consectetur temporibus omnis atque nesciunt vitae.</p>
-           <h6>ksh. 2000</h6>
+           <img src="<?php echo $row["pimage"]; ?>" alt="" >
+           <h3><?php echo $row["pname"];?></h3>
+           <p><?php echo $row["pdescription"]; ?></p>
+           <h6>ksh.<?php echo $row["price"]; ?></h6>
            <h6>for dry skin</h6>
            <button class="add-1">Add to Cart</button>
        </div>
-       <div class="g-content">
-        <img src="./images/p1.jpg" alt="" >
-        <h3>acne.orge</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat delectus recusandae excepturi! Eius nisi expedita quas unde vitae temporibus cupiditate dolore repudiandae quisquam? Tenetur consectetur temporibus omnis atque nesciunt vitae.</p>
-        <h6>ksh. 2000</h6>
-        <h6>for dry skin</h6>
-        <button class="add-1">Add to Cart</button>
-    </div>
-    <div class="g-content">
-        <img src="./images/p1.jpg" alt="" >
-        <h3>acne.orge</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat delectus recusandae excepturi! Eius nisi expedita quas unde vitae temporibus cupiditate dolore repudiandae quisquam? Tenetur consectetur temporibus omnis atque nesciunt vitae.</p>
-        <h6>ksh. 2000</h6>
-        <h6>for dry skin</h6>
-        <button class="add-1">Add to Cart</button>
-    </div>
-    <div class="g-content">
-        <img src="./images/p1.jpg" alt="" >
-        <h3>acne.orge</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat delectus recusandae excepturi! Eius nisi expedita quas unde vitae temporibus cupiditate dolore repudiandae quisquam? Tenetur consectetur temporibus omnis atque nesciunt vitae.</p>
-        <h6>ksh. 2000</h6>
-        <h6>for dry skin</h6>
-        <button class="add-1">Add to Cart</button>
-    </div>
-    <div class="g-content">
-        <img src="./images/p1.jpg" alt="" >
-        <h3>acne.orge</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat delectus recusandae excepturi! Eius nisi expedita quas unde vitae temporibus cupiditate dolore repudiandae quisquam? Tenetur consectetur temporibus omnis atque nesciunt vitae.</p>
-        <h6>ksh. 2000</h6>
-        <h6>for dry skin</h6>
-        <button class="add-1">Add to Cart</button>
-    </div>
-    <div class="g-content">
-        <img src="./images/p1.jpg" alt="" >
-        <h3>acne.orge</h3>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat delectus recusandae excepturi! Eius nisi expedita quas unde vitae temporibus cupiditate dolore repudiandae quisquam? Tenetur consectetur temporibus omnis atque nesciunt vitae.</p>
-        <h6>ksh. 2000</h6>
-        <h6>for dry skin</h6>
-        <button class="add-1">Add to Cart</button>
-    </div>
+       <?php
+   }
+   ?>
    </div>
 
    <!-- javascript section -->
