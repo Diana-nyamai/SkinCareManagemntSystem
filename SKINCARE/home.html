@@ -104,6 +104,84 @@
       .username{
           text-transform:uppercase;
       }
+      /* know abbout skin section */
+    .title h1{
+        text-align: center;
+        margin: 100px 0;
+    }
+
+    /* product section */
+    .gallery{
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        margin: 50px 0;
+    }
+    .g-content{
+        width: 20%;
+        margin: 15px;
+        box-sizing: border-box;
+        float: left;
+        text-align: center;
+        border-radius: 20px;
+        padding-top: 10px;
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+        transition: .4s;
+        background: #f2f2f2;
+    }
+    .g-content:hover{
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+        transform: translate(2px, 8px);
+    }
+    .g-content img{
+      width: 200;
+      height: 200px;
+      text-align: center;
+      margin: 0 auto;
+      display: block;
+      border-radius: 20px;
+  }
+  .g-content h3{
+      text-align: center;
+      font-size: 30px;
+      margin: 0;
+      padding-top: 10px;
+  }
+  .g-content p{
+      text-align: center;
+      padding-top: 0 8px;
+  }
+  .g-content h6{
+      font-size: 26px;
+      text-align: center;
+      margin: 0;
+  }
+  button{
+      text-align: center;
+      font-size: 24px;
+      color: #000;
+      width: 100%;
+      padding: 15px;
+      border: 0;
+      outline: none;
+      cursor: pointer;
+      margin-top: 5px;
+      border-bottom-right-radius: 20px;
+      border-bottom-left-radius: 20px;
+      background: #f09053;
+  }
+  @media all and (max-width: 1350px){
+      .g-content{
+          width: 45%;
+      }
+  }
+  @media all and (max-width: 750px){
+      .g-content{
+          width: 100%;
+      }
+  }
     </style>
 </head>
 <body>
@@ -134,11 +212,69 @@
             
         </div>
     </div></section>
-    
-    <div style="text-align: center;">
-        <h2 style="padding: 50px; text-align: center;"><h2>LEARN MORE ABOUT YOUR SKIN</h2></h2>
-    </div>
 
+    
+    <!--know more about your skin section  -->
+   <div class="know-skin-container">
+      <div class="title"><h1>KNOW MORE ABOUT YOUR SKIN</h1></div>
+      <div class="skin-box">
+           
+      </div>
+   </div>
+
+
+   <div class="gallery">
+       <div class="g-content">
+           <img src="./images/p1.jpg" alt="" >
+           <h3>acne.orge</h3>
+           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat delectus recusandae excepturi! Eius nisi expedita quas unde vitae temporibus cupiditate dolore repudiandae quisquam? Tenetur consectetur temporibus omnis atque nesciunt vitae.</p>
+           <h6>ksh. 2000</h6>
+           <h6>for dry skin</h6>
+           <button class="add-1">Add to Cart</button>
+       </div>
+       <div class="g-content">
+        <img src="./images/p1.jpg" alt="" >
+        <h3>acne.orge</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat delectus recusandae excepturi! Eius nisi expedita quas unde vitae temporibus cupiditate dolore repudiandae quisquam? Tenetur consectetur temporibus omnis atque nesciunt vitae.</p>
+        <h6>ksh. 2000</h6>
+        <h6>for dry skin</h6>
+        <button class="add-1">Add to Cart</button>
+    </div>
+    <div class="g-content">
+        <img src="./images/p1.jpg" alt="" >
+        <h3>acne.orge</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat delectus recusandae excepturi! Eius nisi expedita quas unde vitae temporibus cupiditate dolore repudiandae quisquam? Tenetur consectetur temporibus omnis atque nesciunt vitae.</p>
+        <h6>ksh. 2000</h6>
+        <h6>for dry skin</h6>
+        <button class="add-1">Add to Cart</button>
+    </div>
+    <div class="g-content">
+        <img src="./images/p1.jpg" alt="" >
+        <h3>acne.orge</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat delectus recusandae excepturi! Eius nisi expedita quas unde vitae temporibus cupiditate dolore repudiandae quisquam? Tenetur consectetur temporibus omnis atque nesciunt vitae.</p>
+        <h6>ksh. 2000</h6>
+        <h6>for dry skin</h6>
+        <button class="add-1">Add to Cart</button>
+    </div>
+    <div class="g-content">
+        <img src="./images/p1.jpg" alt="" >
+        <h3>acne.orge</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat delectus recusandae excepturi! Eius nisi expedita quas unde vitae temporibus cupiditate dolore repudiandae quisquam? Tenetur consectetur temporibus omnis atque nesciunt vitae.</p>
+        <h6>ksh. 2000</h6>
+        <h6>for dry skin</h6>
+        <button class="add-1">Add to Cart</button>
+    </div>
+    <div class="g-content">
+        <img src="./images/p1.jpg" alt="" >
+        <h3>acne.orge</h3>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat delectus recusandae excepturi! Eius nisi expedita quas unde vitae temporibus cupiditate dolore repudiandae quisquam? Tenetur consectetur temporibus omnis atque nesciunt vitae.</p>
+        <h6>ksh. 2000</h6>
+        <h6>for dry skin</h6>
+        <button class="add-1">Add to Cart</button>
+    </div>
+   </div>
+
+   <!-- javascript section -->
     <script>
         window.addEventListener("scroll", function(){
             var header = document.querySelector("header");
