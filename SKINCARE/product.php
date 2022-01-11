@@ -1,6 +1,4 @@
-<?php
- $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -85,7 +83,7 @@ input[type=submit]:hover {
 <h1>product form</h1>
 <div class="container">
       <!-- start of the form -->
-        <form name="product" action="" method="post" enctype="multipar/form-data" onsubmit="return validateForm()">
+        <form name="product" action="" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
         <div class="row">
           <div class="col-25"><label for="sname">Shop name</label></div>
           <div class="col-75"><input type="text" id="sname" name="sname" placeholder="shop name.."></div>
@@ -105,18 +103,6 @@ input[type=submit]:hover {
         <div class="row">
             <div class="col-25"><label for="pname">Product name</label></div>
             <div class="col-75"><input type="text" name="pname" id="pname" placeholder=" product name.."></div>
-        </div>
-        <div class="row">
-            <div class="col-25"><label for="ptype">skin type</label></div>
-            <div class="col-75">
-            <select name="" id="">
-              <option value="" selected="selected">choose the skin type...</option>
-              <option value="oily">Oily skin</option>
-              <option value="dry">dry skin</option>
-              <option value="combination">combination</option>
-              <option value="normal">normal</option>
-              <option value="sensitive">sensitive</option>
-            </select></div>
         </div>
         <div class="row">
             <div class="col-25"><label for="pbrand">Brand</label></div>
@@ -142,12 +128,23 @@ input[type=submit]:hover {
         </form>
 
       <?php
-      if(isset($_POST['submit'])){
-        $fnm = $_FILES['pimage']["name"];
-        $dst = './product_image/'.$fnm;
-        move_uploaded_file($_FILES['pimage']['tmp_name'],$dst);
-      }
-      ?>
+       $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
+      $v1 = rand(1111, 9999);
+      $v2 = rand(1111, 9999);
+
+      $v3 = $v1.$v2;
+      $v3 = md5($v3);
+
+      if(isset($_POST["submit"])){
+        $fnm = $_FILES["pimage"]["name"];
+        $dst = "./product_image/".$v3.$fnm;
+        $dst1 = "product_image/".$v3.$fnm;
+        move_uploaded_file($_FILES["pimage"]["tmp_name"],$dst);
+     
+
+      mysqli_query($conn, "insert into tbl_product (sname,sowner,phone_no,email,pname,brand,pdescription,price,pimage) values('$_POST[sname]','$_POST[sowner]','$_POST[sphone]', '$_POST[semail]', '$_POST[pname]','$_POST[pbrand]','$_POST[pdescription]','$_POST[pprice]','$dst1')");
+       }
+       ?>
 </div>
 
       <!-- javascript section -->
