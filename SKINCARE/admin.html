@@ -74,10 +74,15 @@
        width: calc(100% - 300px);
        background: #fff;
        display: grid;
-       justify-content: flex-end;
+       grid-template-columns: 10fr 0.3fr;
+       grid-gap: 5px;
+       /* justify-content: space-between; */
        padding: 0 20px;
        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
        z-index: 1;
+   }
+   .admin{
+       font-size: 20px;
    }
    .user{
        position: relative;
@@ -224,19 +229,19 @@
                 <li><a href=""><i class="fa fa-clinic medical"></i>
                 <div class="title">HEAVENLY SKIN</div>
                 </a></li>
-                <li><a href=""><i class="fa fa-dashboard"></i>
+                <li><a href="./admin.html"><i class="fa fa-dashboard"></i>
                     <div class="title">dashboard</div>
                 </a></li>
-                <li><a href=""><i class="fa fa-stethoscope"></i>
+                <li><a href="./appointments.html"><i class="fa fa-stethoscope"></i>
                         <div class="title">appointments</div>
                 </a></li>
-                <li><a href=""><i class="fa fa-user"></i>
+                <li><a href="./users.html"><i class="fa fa-user"></i>
                     <div class="title">users</div>
              </a></li>
-             <li><a href=""><i class="fa fa-money"></i>
+             <li><a href="./orders.html"><i class="fa fa-money"></i>
                 <div class="title">orders</div>
              </a></li>
-             <li><a href=""><i class="fa fa-tint"></i>
+             <li><a href="./stmanagement.html"><i class="fa fa-tint"></i>
                 <div class="title">skin management</div>
         </a></li>
             </ul>
@@ -245,6 +250,8 @@
         <!-- main content -->
         <div class="main">
             <div class="top-bar">
+                <div class="admin"><p>Welcome Admin</p></div>
+             
                 <div class="user">
                     <img src="./images/avatar.png" alt="">
                 </div>
@@ -285,11 +292,13 @@
                     <thead>
                         <td>First Name</td>
                         <td>Last Name</td>
+                        <td>date</td>
                         <td>Actions</td>
                     </thead>
                     <tr>
                         <td>Diana</td>
                         <td>Nyamai</td>
+                        <td>11/20/2022</td>
                         <td>
                             <i class="fa fa-eye"></i>
                             <i class="fa fa-edit"></i>
@@ -299,6 +308,7 @@
                     <tr>
                         <td>Diana</td>
                         <td>Nyamai</td>
+                        <td>11/20/2022</td>
                         <td>
                             <i class="fa fa-eye"></i>
                             <i class="fa fa-edit"></i>
@@ -308,6 +318,7 @@
                     <tr>
                         <td>Diana</td>
                         <td>Nyamai</td>
+                        <td>11/20/2022</td>
                         <td>
                             <i class="fa fa-eye"></i>
                             <i class="fa fa-edit"></i>
@@ -317,6 +328,7 @@
                     <tr>
                         <td>Diana</td>
                         <td>Nyamai</td>
+                        <td>11/20/2022</td>
                         <td>
                             <i class="fa fa-eye"></i>
                             <i class="fa fa-edit"></i>
@@ -326,6 +338,7 @@
                     <tr>
                         <td>Diana</td>
                         <td>Nyamai</td>
+                        <td>11/20/2022</td>
                         <td>
                             <i class="fa fa-eye"></i>
                             <i class="fa fa-edit"></i>
@@ -341,7 +354,7 @@
             </div>
                 <table class="visiting">
                     <thead>
-                        <td>photo</td>
+                        <td>avatar</td>
                         <td>name</td>
                         <td>visit time</td>
                         <td>detail</td>
