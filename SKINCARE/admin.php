@@ -1,3 +1,10 @@
+<?php
+  session_start();
+  $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
+  if(!isset($_SESSION["username"])){
+      header("location: authentication.php");
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -229,7 +236,7 @@
                 <li><a href=""><i class="fa fa-clinic medical"></i>
                 <div class="title">HEAVENLY SKIN</div>
                 </a></li>
-                <li><a href="./admin.html"><i class="fa fa-dashboard"></i>
+                <li><a href="./admin.php"><i class="fa fa-dashboard"></i>
                     <div class="title">dashboard</div>
                 </a></li>
                 <li><a href="./appointments.html"><i class="fa fa-stethoscope"></i>

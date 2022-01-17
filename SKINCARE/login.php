@@ -17,9 +17,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         header('location:home.php');
     }
     elseif($row['user_type'] == 'dermatologist'){
+        $_SESSION['username'] = $fname;
         header('location:derm_page.html');
     }
     elseif($row['user_type'] == 'admin'){
+        $_SESSION['username'] = $fname;
         header('location:admin.html');
     }
     else{

@@ -1,3 +1,10 @@
+<?php
+  session_start();
+  $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
+  if(!isset($_SESSION["username"])){
+      header("location: authentication.php");
+  }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
