@@ -1,6 +1,9 @@
 <?php
   session_start();
   $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
+  if(!isset($_SESSION["username"])){
+      header("location: authentication.php");
+  }
 ?>
 
 <!DOCTYPE html>
@@ -197,7 +200,7 @@
             <li><a href="#">OILY</a></li>
             <li><a href="#">APPOINTMENT</a></li>
             <li><a href="#">CART</a></li>
-            <li><a href="authentication.php">LOGOUT</a></li>
+            <li><a href="logout.php">LOGOUT</a></li>
             
         </ul>
     </header>
