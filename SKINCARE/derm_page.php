@@ -236,10 +236,10 @@
                 <li><a href=""><i class="fa fa-clinic medical"></i>
                 <div class="title">HEAVENLY SKIN</div>
                 </a></li>
-                <li><a href="./derm_page.html"><i class="fa fa-dashboard"></i>
+                <li><a href="./derm_page.php"><i class="fa fa-dashboard"></i>
                     <div class="title">dashboard</div>
                 </a></li>
-                <li><a href="./derm_page.html"><i class="fa fa-stethoscope"></i>
+                <li><a href="./derm_page.php"><i class="fa fa-stethoscope"></i>
                         <div class="title">appointments</div>
                 </a></li>
         <li><a href="./logout.php"><i class="fa fa-sign-out"></i>
@@ -271,14 +271,14 @@
                         <div class="number">67</div>
                         <div class="card-name">patients seen</div>
                        </div> 
-                       <div class="icon-box"><i class="fa fa-user"></i></div>
+                       <div class="icon-box"><i class="fa fa-eye"></i></div>
                 </div>
                 <div class="card">
                     <div class="card-content">
                         <div class="number">67</div>
                         <div class="card-name">pending patients</div>                     
                     </div>
-                     <div class="icon-box"><i class="fa fa-stethoscope"></i></div>
+                     <div class="icon-box"><i class="fa fa-hourglass-half"></i></div>
                 </div>
             </div><!-- end of cards -->
 

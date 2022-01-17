@@ -18,11 +18,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
     elseif($row['user_type'] == 'dermatologist'){
         $_SESSION['username'] = $fname;
-        header('location:derm_page.html');
+        header('location:derm_page.php');
     }
     elseif($row['user_type'] == 'admin'){
         $_SESSION['username'] = $fname;
-        header('location:admin.html');
+        header('location:admin.php');
     }
     else{
         echo "wrong credentials";
