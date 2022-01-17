@@ -116,7 +116,7 @@
        </div>
         
 <!-- login form -->
-       <form name="login" id="login" class="login" action="login1.php" method="post" onsubmit="return validateLoginForm()">
+       <form name="login" id="login" class="login" action="login.php" method="post" onsubmit="return validateLoginForm()">
         <input type="text" class="input-field" id="Lfname" name="fname" placeholder="First Name...">
         <input type="text" class="input-field" id="Llname" name="lname" placeholder="Last Name...">
         <input type="text" class="input-field" id="Lpassword" name="lpassword" placeholder="Password...">
