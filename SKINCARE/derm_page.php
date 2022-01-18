@@ -251,7 +251,7 @@
         <!-- main content -->
         <div class="main">
             <div class="top-bar">
-                <div class="admin"><p>Welcome Dermatologist</p></div>
+                <div class="admin"><p>Welcome Doctor</p></div>
              
                 <div class="user">
                     <img src="./images/avatar.png" alt="">

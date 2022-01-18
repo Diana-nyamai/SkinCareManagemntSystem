@@ -211,7 +211,7 @@
                 <div class="text-inner">
                     <h1>WELCOME <span class="username"><?php
                         echo $_SESSION['username']; ?></span> </h1>
-            <P><a href="#">Take skin test</a></P>
+            <P><a href="./skinTest.html">Take skin test</a></P>
                 </div>
             </div>
             
