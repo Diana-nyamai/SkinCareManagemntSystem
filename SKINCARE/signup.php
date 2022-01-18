@@ -18,6 +18,7 @@ else{
     $stmt->bind_param('ssissss', $fname, $lname,$phone,$email, $gender, $user, $password);
     $stmt->execute();
     echo header('location:authentication.php');
+    
     $stmt->close();
     $conn->close();
 }

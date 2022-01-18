@@ -162,7 +162,7 @@
       text-align: center;
       margin: 0;
   }
-  button{
+  .addtocart{
       text-align: center;
       font-size: 24px;
       color: #000;
@@ -239,7 +239,7 @@
            <p><?php echo $row["pdescription"]; ?></p>
            <h6>ksh.<?php echo $row["price"]; ?></h6>
            <h6>for dry skin</h6>
-           <button class="add-1">Add to Cart</button>
+           <input type="submit" name="addtocart" class="addtocart" value="Add to cart"/>
        </div>
        <?php
    }
