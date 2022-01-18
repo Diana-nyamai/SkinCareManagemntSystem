@@ -230,9 +230,10 @@
 
    <div class="gallery">
    <?php 
-   $res = mysqli_query($conn, "select * from tbl_product");
+   $res = mysqli_query($conn, "select * from tbl_product order by id");
    while($row = mysqli_fetch_array($res)){
        ?>
+       <form action="./cart.php?action=add&id=<?php echo $row["id"];?>" method="post">
        <div class="g-content">
            <img src="<?php echo $row["pimage"]; ?>" alt="" >
            <h3><?php echo $row["pname"];?></h3>
@@ -240,7 +241,7 @@
            <h6>ksh.<?php echo $row["price"]; ?></h6>
            <h6>for dry skin</h6>
            <input type="submit" name="addtocart" class="addtocart" value="Add to cart"/>
-       </div>
+       </div></form>
        <?php
    }
    ?>
