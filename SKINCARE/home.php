@@ -1,3 +1,4 @@
+<!-- this page will display the homepage where all the products will be available skin test is available -->
 <?php
   session_start();
   $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');

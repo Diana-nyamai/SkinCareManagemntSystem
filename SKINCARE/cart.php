@@ -1,0 +1,1 @@
+<!-- shows products that have been added to the cart -->

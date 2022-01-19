@@ -1,3 +1,4 @@
+<!-- this manages the products added to cart -->
 <?php
 session_start();
 $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');

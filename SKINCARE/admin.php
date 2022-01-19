@@ -1,3 +1,4 @@
+<!-- this is the main admin page that contains and the link to the dashboard -->
 <?php
   session_start();
   $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');

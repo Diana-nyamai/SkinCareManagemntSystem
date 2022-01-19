@@ -1,3 +1,4 @@
+<!-- admin will use this page to post the product to the homepage -->
 
 <!DOCTYPE html>
 <html lang="en">
