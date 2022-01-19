@@ -121,7 +121,8 @@
         width: 100%;
         justify-content: center;
         align-items: center;
-        margin: 50px 0;
+        gap: 1em;
+        /* margin: 50px 0; */
     }
     .g-content{
         width: 20%;
@@ -199,7 +200,7 @@
             <li><a href="#">SENSITIVE</a></li>
             <li><a href="#">OILY</a></li>
             <li><a href="#">APPOINTMENT</a></li>
-            <li><a href="#">CART</a></li>
+            <li><a href="./cart.php">CART (0)</a></li>
             <li><a href="logout.php">LOGOUT</a></li>
             
         </ul>
@@ -233,15 +234,19 @@
    $res = mysqli_query($conn, "select * from tbl_product order by id");
    while($row = mysqli_fetch_array($res)){
        ?>
-       <form action="./cart.php?action=add&id=<?php echo $row["id"];?>" method="post">
-       <div class="g-content">
+      
+       <div class="g-content"> 
+           <form action="./cart_manager.php?action=add&id=<?php echo $row["id"];?>" method="post">
            <img src="<?php echo $row["pimage"]; ?>" alt="" >
            <h3><?php echo $row["pname"];?></h3>
            <p><?php echo $row["pdescription"]; ?></p>
            <h6>ksh.<?php echo $row["price"]; ?></h6>
            <h6>for dry skin</h6>
            <input type="submit" name="addtocart" class="addtocart" value="Add to cart"/>
-       </div></form>
+           <input type="hidden" name="item-name" value="<?php echo $row["pname"];?>"/>
+           <input type="hidden" name="price" value="<?php echo $row["price"]; ?>"/>
+       </form>
+    </div>
        <?php
    }
    ?>
