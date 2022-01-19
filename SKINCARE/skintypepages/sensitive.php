@@ -1,4 +1,4 @@
-<!-- shows products that have been added to the cart -->
+<!-- dry skin page -->
 <?php
  session_start();
 ?>
@@ -8,9 +8,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=0">
-    <link rel="shortcut icon" href="./images/logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="../images/logo.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
-    <title>view cart</title>
+    <title>sensitive skin</title>
     <style>
         *{
             margin: 0;
@@ -140,77 +140,28 @@
 </head>
 <body>
 <header>
-        <h1><a href="home.php" class="logo">HEAVENLY skin</a></h1>
+        <h1><a href="../home.php" class="logo">HEAVENLY skin</a></h1>
         <ul>
-            <li><a href="home.php">HOME</a></li>
-            <li><a href="./skintypepages/dry.php">DRY </a></li>
-            <li><a href="./skintypepages/normal.php">NORMAL</a></li>
-            <li><a href="./skintypepages/combination.php">COMBINATION</a></li>
-            <li><a href="./skintypepages/sensitive.php">SENSITIVE</a></li>
-            <li><a href="./skintypepages/oily.php">OILY</a></li>
-            <li><a href="./skintypepages/appointment.html">APPOINTMENT</a></li>
+            <li><a href="../home.php">HOME</a></li>
+            <li><a href="dry.php">DRY </a></li>
+            <li><a href="normal.php">NORMAL</a></li>
+            <li><a href="combination.php">COMBINATION</a></li>
+            <li><a href="sensitive.php">SENSITIVE</a></li>
+            <li><a href="oily.php">OILY</a></li>
+            <li><a href="appointment.php">APPOINTMENT</a></li>
             <li>
              <?php 
                if(isset($_SESSION['cart'])){
                    $count = count($_SESSION['cart']);
                }
              ?>
-            <a href="./cart.php">CART (<?php echo $count ; ?>)</a></li>
+            <a href="../cart.php">CART (<?php echo $count ; ?>)</a></li>
             <li><a href="logout.php">LOGOUT</a></li>
             
         </ul>
     </header>
-<div class="main-body">
-    <h2>Product Cart</h2>
-    
-    <table id="customers">
-  <tr>
-    <th>Id</th>
-    <th>Product Name</th>
-    <th>Product Price</th>
-    <th>quantity</th>
-    <th></th>
-    <th>Total</th>
-  </tr>
-  <?php
-         $total=0;
-         if(isset($_SESSION['cart'])){
-             foreach($_SESSION['cart'] as $key => $value){
-                 $prid = $key + 1;
-                 $total = $total + $value['price'];
-                 echo"
-                 <tr>
-                   <td>$prid</td>
-                   <td>$value[item_name]</td>
-                   <td>$value[price]</td>
-                   <td><input class='number' type='number' value='$value[quantity]' min='1' max='10'/></td>
-                   <td><form action='cart_manager.php' method='post'>
-                   <button class='remove' name='remove'>Remove</button>
-                   <input type='hidden' name='item_name' value='$value[item_name]'/>
-                   </form></td>
-                 </tr>
-                 ";
-             }
-         }
-      ?>
-   
-  <tr id="total">
-    <td id="total"></td>
-    <td id="total"></td>
-    <td id="total"></td>
-    <td id="total"></td>
-    <td id="total"></td>
-    <td id="total">ksh. <?php echo $total  ?></td>
-  </tr> 
-</table>
-<form>
-    <div class="main">
-        <div><input type="radio" name="cod" value="cod"> <span>cash on delivery</span> </div>
-        <div class="checkout">
-        <input type="submit" value="Proceed to checkout">
-        </div>
-</div>
-</form>
-</div>
+    <div class="main-body">
+        <h2>sensitive skin page</h2>
+    </div>
 </body>
 </html>

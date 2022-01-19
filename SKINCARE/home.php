@@ -1,4 +1,4 @@
-<!-- this page will display the homepage where all the products will be available skin test is available -->
+<!-- this page will display the homepage where all the products will be available skin test is available   -->
 <?php
   session_start();
   $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
@@ -70,7 +70,8 @@
       header.sticky ul li a{
           color: #000;
 
-      }
+      } 
+      /* end of navbar */
       .banner{
            position: relative;
            width: 100%;
@@ -192,16 +193,25 @@
 </head>
 <body>
     <header>
-        <h1><a href="#" class="logo">HEAVENLY skin</a></h1>
+        <h1><a href="home.php" class="logo">HEAVENLY skin</a></h1>
         <ul>
-            <li><a href="#">HOME</a></li>
-            <li><a href="#">DRY </a></li>
-            <li><a href="#">NORMAL</a></li>
-            <li><a href="#">COMBINATION</a></li>
-            <li><a href="#">SENSITIVE</a></li>
-            <li><a href="#">OILY</a></li>
-            <li><a href="#">APPOINTMENT</a></li>
-            <li><a href="./cart.php">CART (0)</a></li>
+            <li><a href="home.php">HOME</a></li>
+            <li><a href="./skintypepages/dry.php">DRY </a></li>
+            <li><a href="./skintypepages/normal.php">NORMAL</a></li>
+            <li><a href="./skintypepages/combination.php">COMBINATION</a></li>
+            <li><a href="./skintypepages/sensitive.php">SENSITIVE</a></li>
+            <li><a href="./skintypepages/oily.php">OILY</a></li>
+            <li><a href="./skintypepages/appointment.php">APPOINTMENT</a></li>
+            <li>
+             <?php 
+               if(isset($_SESSION['cart'])){
+                   $count = count($_SESSION['cart']);
+               }
+               else{
+                   $count = 0;
+               }
+             ?>
+            <a href="./cart.php">CART (<?php echo $count; ?>)</a></li>
             <li><a href="logout.php">LOGOUT</a></li>
             
         </ul>
@@ -229,13 +239,13 @@
       </div>
    </div>
 
-
    <div class="gallery">
+      
    <?php 
    $res = mysqli_query($conn, "select * from tbl_product order by id");
    while($row = mysqli_fetch_array($res)){
        ?>
-      
+  
        <div class="g-content"> 
            <form action="./cart_manager.php?action=add&id=<?php echo $row["id"];?>" method="post">
            <img src="<?php echo $row["pimage"]; ?>" alt="" >
@@ -244,7 +254,7 @@
            <h6>ksh.<?php echo $row["price"]; ?></h6>
            <h6>for dry skin</h6>
            <input type="submit" name="addtocart" class="addtocart" value="Add to cart"/>
-           <input type="hidden" name="item-name" value="<?php echo $row["pname"];?>"/>
+           <input type="hidden" name="item_name" value="<?php echo $row["pname"];?>"/>
            <input type="hidden" name="price" value="<?php echo $row["price"]; ?>"/>
        </form>
     </div>
