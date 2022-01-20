@@ -7,6 +7,10 @@
   }
   $data = mysqli_query($conn, 'SELECT * FROM tbl_users');
   $number = mysqli_num_rows($data);
+  $book = mysqli_query($conn, 'SELECT * FROM tbl_appointment');
+  $booknum = mysqli_num_rows($book);
+  $derm = mysqli_query($conn, 'SELECT * FROM tbl_users WHERE user_type="dermatologist"');
+  $dermnum = mysqli_num_rows($derm);
 
 ?>
 <!DOCTYPE html>
@@ -137,10 +141,12 @@
    .icon-box{
        font-size: 45px;
    }
+
+   /* the table section */
    .tables{
       width: 100%;
       display: grid;
-      grid-template-columns: 2fr 1fr;
+      grid-template-columns: 1fr;
       grid-gap: 20px;
       align-items: self-start;
       padding: 0 20px 20px 20px ;
@@ -277,7 +283,7 @@
             <div class="cards">
                 <div class="card">
                     <div class="card-content">
-                        <div class="number">67</div>
+                        <div class="number"><?php echo $booknum; ?></div>
                         <div class="card-name">appointments</div>                       
                     </div>
                     <div class="icon-box"><i class="fa fa-calendar"></i></div>
@@ -291,7 +297,7 @@
                 </div>
                 <div class="card">
                     <div class="card-content">
-                        <div class="number">67</div>
+                        <div class="number"><?php echo $dermnum; ?></div>
                         <div class="card-name">dermatologists</div>                     
                     </div>
                      <div class="icon-box"><i class="fa fa-stethoscope"></i></div>
@@ -309,116 +315,35 @@
                     <thead>
                         <td>First Name</td>
                         <td>Last Name</td>
+                        <td>Phone Number</td>
+                        <td>Email</td>
                         <td>date</td>
+                        <td>time</td>
                         <td>Actions</td>
                     </thead>
-                    <tr>
-                        <td>Diana</td>
-                        <td>Nyamai</td>
-                        <td>11/20/2022</td>
+                <?php 
+                while($row = mysqli_fetch_array($book)){
+                    echo "
+                     <tr>
+                        <td>{$row['first_name']}</td>
+                        <td>{$row['last_name']}</td>
+                        <td>{$row['phone_no']}</td>
+                        <td>{$row['email']}</td>
+                        <td>{$row['appointment_date']}</td>
+                        <td>{$row['appointment_time']}</td>
                         <td>
-                            <i class="fa fa-eye"></i>
-                            <i class="fa fa-edit"></i>
-                            <i class="fa fa-trash"></i>
+                            <i class='fa fa-edit'></i>
+                            <i class='fa fa-trash'></i>
                         </td>
                     </tr>
-                    <tr>
-                        <td>Diana</td>
-                        <td>Nyamai</td>
-                        <td>11/20/2022</td>
-                        <td>
-                            <i class="fa fa-eye"></i>
-                            <i class="fa fa-edit"></i>
-                            <i class="fa fa-trash"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Diana</td>
-                        <td>Nyamai</td>
-                        <td>11/20/2022</td>
-                        <td>
-                            <i class="fa fa-eye"></i>
-                            <i class="fa fa-edit"></i>
-                            <i class="fa fa-trash"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Diana</td>
-                        <td>Nyamai</td>
-                        <td>11/20/2022</td>
-                        <td>
-                            <i class="fa fa-eye"></i>
-                            <i class="fa fa-edit"></i>
-                            <i class="fa fa-trash"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Diana</td>
-                        <td>Nyamai</td>
-                        <td>11/20/2022</td>
-                        <td>
-                            <i class="fa fa-eye"></i>
-                            <i class="fa fa-edit"></i>
-                            <i class="fa fa-trash"></i>
-                        </td>
-                    </tr>
+                    "
+                    ;
+                }
+                ?>
+                   
                 </table>
               </div>
-              <div class="doctor-visiting">
-                  <div class="heading">
-                      <h2>Doctor visiting</h2>
-                <a href="#" class="btn">View all</a>
-            </div>
-                <table class="visiting">
-                    <thead>
-                        <td>avatar</td>
-                        <td>name</td>
-                        <td>visit time</td>
-                        <td>detail</td>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <div class="img-box-small">
-                                    <img src="./images/avatar.png" alt="" width="50">
-                                </div>
-                            </td>
-                            <td>Diana</td>
-                            <td>14:00</td>
-                            <td><i class="fa fa-eye"></i></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="img-box-small">
-                                    <img src="./images/avatar.png" alt="" width="50">
-                                </div>
-                            </td>
-                            <td>Diana</td>
-                            <td>14:00</td>
-                            <td><i class="fa fa-eye"></i></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="img-box-small">
-                                    <img src="./images/avatar.png" alt="" width="50">
-                                </div>
-                            </td>
-                            <td>Diana</td>
-                            <td>14:00</td>
-                            <td><i class="fa fa-eye"></i></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="img-box-small">
-                                    <img src="./images/avatar.png" alt="" width="50">
-                                </div>
-                            </td>
-                            <td>Diana</td>
-                            <td>14:00</td>
-                            <td><i class="fa fa-eye"></i></td>
-                        </tr>
-                    </tbody>
-                </table>
+              
               </div>
           </div>
         </div>

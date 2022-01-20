@@ -1,4 +1,14 @@
 <!-- this is the appointent page that contains the report on the appointments made..on admin page -->
+<?php
+   session_start();
+  $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
+  $data = mysqli_query($conn, 'SELECT * FROM tbl_appointment');
+  $number = mysqli_num_rows($data);
+  $users = mysqli_query($conn, 'SELECT * FROM tbl_users');
+  $usernum = mysqli_num_rows($users);
+  $derm = mysqli_query($conn, 'SELECT * FROM tbl_users WHERE user_type="dermatologist"');
+  $dermnum = mysqli_num_rows($derm);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -125,7 +135,7 @@
    .tables{
       width: 100%;
       display: grid;
-      grid-template-columns: 2fr 1fr;
+      grid-template-columns: 1fr;
       grid-gap: 20px;
       align-items: self-start;
       padding: 0 20px 20px 20px ;
@@ -228,16 +238,16 @@
                 <li><a href="./admin.php"><i class="fa fa-dashboard"></i>
                     <div class="title">dashboard</div>
                 </a></li>
-                <li><a href="./appointments.html"><i class="fa fa-stethoscope"></i>
+                <li><a href="./appointments.php"><i class="fa fa-stethoscope"></i>
                         <div class="title">appointments</div>
                 </a></li>
-                <li><a href="./users.html"><i class="fa fa-user"></i>
+                <li><a href="./users.php"><i class="fa fa-user"></i>
                     <div class="title">users</div>
              </a></li>
-             <li><a href="./orders.html"><i class="fa fa-money"></i>
+             <li><a href="./orders.php"><i class="fa fa-money"></i>
                 <div class="title">orders</div>
              </a></li>
-             <li><a href="./stmanagement.html"><i class="fa fa-tint"></i>
+             <li><a href="./stmanagement.php"><i class="fa fa-tint"></i>
                 <div class="title">skin management</div>
         </a></li>
         <li><a href="./logout.php"><i class="fa fa-sign-out"></i>
@@ -257,21 +267,21 @@
             <div class="cards">
                 <div class="card">
                     <div class="card-content">
-                        <div class="number">67</div>
+                        <div class="number"><?php echo $number; ?></div>
                         <div class="card-name">appointments</div>                       
                     </div>
                     <div class="icon-box"><i class="fa fa-calendar"></i></div>
                 </div>
                 <div class="card">
                     <div class="card-content">
-                        <div class="number">67</div>
+                        <div class="number"><?php echo $usernum; ?></div>
                         <div class="card-name">users</div>
                        </div> 
                        <div class="icon-box"><i class="fa fa-user"></i></div>
                 </div>
                 <div class="card">
                     <div class="card-content">
-                        <div class="number">67</div>
+                        <div class="number"><?php echo $dermnum; ?></div>
                         <div class="card-name">dermatologists</div>                     
                     </div>
                      <div class="icon-box"><i class="fa fa-stethoscope"></i></div>
@@ -289,117 +299,35 @@
                     <thead>
                         <td>First Name</td>
                         <td>Last Name</td>
+                        <td>Phone Number</td>
+                        <td>Email</td>
                         <td>date</td>
+                        <td>time</td>
                         <td>Actions</td>
                     </thead>
-                    <tr>
-                        <td>Diana</td>
-                        <td>Nyamai</td>
-                        <td>11/20/2022</td>
+                <?php 
+                while($row = mysqli_fetch_array($data)){
+                    echo "
+                     <tr>
+                        <td>{$row['first_name']}</td>
+                        <td>{$row['last_name']}</td>
+                        <td>{$row['phone_no']}</td>
+                        <td>{$row['email']}</td>
+                        <td>{$row['appointment_date']}</td>
+                        <td>{$row['appointment_time']}</td>
                         <td>
-                            <i class="fa fa-eye"></i>
-                            <i class="fa fa-edit"></i>
-                            <i class="fa fa-trash"></i>
+                            <i class='fa fa-edit'></i>
+                            <i class='fa fa-trash'></i>
                         </td>
                     </tr>
-                    <tr>
-                        <td>Diana</td>
-                        <td>Nyamai</td>
-                        <td>11/20/2022</td>
-                        <td>
-                            <i class="fa fa-eye"></i>
-                            <i class="fa fa-edit"></i>
-                            <i class="fa fa-trash"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Diana</td>
-                        <td>Nyamai</td>
-                        <td>11/20/2022</td>
-                        <td>
-                            <i class="fa fa-eye"></i>
-                            <i class="fa fa-edit"></i>
-                            <i class="fa fa-trash"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Diana</td>
-                        <td>Nyamai</td>
-                        <td>11/20/2022</td>
-                        <td>
-                            <i class="fa fa-eye"></i>
-                            <i class="fa fa-edit"></i>
-                            <i class="fa fa-trash"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Diana</td>
-                        <td>Nyamai</td>
-                        <td>11/20/2022</td>
-                        <td>
-                            <i class="fa fa-eye"></i>
-                            <i class="fa fa-edit"></i>
-                            <i class="fa fa-trash"></i>
-                        </td>
-                    </tr>
+                    "
+                    ;
+                }
+                ?>
+                   
                 </table>
               </div>
-              <div class="doctor-visiting">
-                  <div class="heading">
-                      <h2>Doctor visiting</h2>
-                <a href="#" class="btn">View all</a>
-            </div>
-                <table class="visiting">
-                    <thead>
-                        <td>avatar</td>
-                        <td>name</td>
-                        <td>visit time</td>
-                        <td>detail</td>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <div class="img-box-small">
-                                    <img src="./images/avatar.png" alt="" width="50">
-                                </div>
-                            </td>
-                            <td>Diana</td>
-                            <td>14:00</td>
-                            <td><i class="fa fa-eye"></i></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="img-box-small">
-                                    <img src="./images/avatar.png" alt="" width="50">
-                                </div>
-                            </td>
-                            <td>Diana</td>
-                            <td>14:00</td>
-                            <td><i class="fa fa-eye"></i></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="img-box-small">
-                                    <img src="./images/avatar.png" alt="" width="50">
-                                </div>
-                            </td>
-                            <td>Diana</td>
-                            <td>14:00</td>
-                            <td><i class="fa fa-eye"></i></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="img-box-small">
-                                    <img src="./images/avatar.png" alt="" width="50">
-                                </div>
-                            </td>
-                            <td>Diana</td>
-                            <td>14:00</td>
-                            <td><i class="fa fa-eye"></i></td>
-                        </tr>
-                    </tbody>
-                </table>
-              </div>
+              
           </div>
         </div>
     </div>
