@@ -233,16 +233,16 @@
                 <li><a href="./admin.php"><i class="fa fa-dashboard"></i>
                     <div class="title">dashboard</div>
                 </a></li>
-                <li><a href="./appointments.html"><i class="fa fa-stethoscope"></i>
+                <li><a href="./appointments.php"><i class="fa fa-stethoscope"></i>
                         <div class="title">appointments</div>
                 </a></li>
                 <li><a href="./users.php"><i class="fa fa-user"></i>
                     <div class="title">users</div>
              </a></li>
-             <li><a href="./orders.html"><i class="fa fa-money"></i>
+             <li><a href="./orders.php"><i class="fa fa-money"></i>
                 <div class="title">orders</div>
              </a></li>
-             <li><a href="./stmanagement.html"><i class="fa fa-tint"></i>
+             <li><a href="./stmanagement.php"><i class="fa fa-tint"></i>
                 <div class="title">skin management</div>
         </a></li>
         <li><a href="./logout.php"><i class="fa fa-sign-out"></i>
