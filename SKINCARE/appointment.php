@@ -18,7 +18,7 @@ else{
     $stmt->bind_param('ssisss', $fname, $lname,$phone, $email, $date,$time );
     $stmt->execute();
     echo '<script>alert("appointment booked")
-    window.location.href = "appointment.html";
+    window.location.href = "bookappointment.php";
     </script>';
     $stmt->close();
     $conn->close();

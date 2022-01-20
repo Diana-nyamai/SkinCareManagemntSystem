@@ -1,7 +1,6 @@
 <!-- dry skin page -->
 <?php
  session_start();
- $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,6 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=0">
     <link rel="shortcut icon" href="../images/logo.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="./images/logo.png" type="image/x-icon">
     <title>combination skin</title>
     <style>
         *{
@@ -80,63 +80,24 @@
             color:#fff;
             border-bottom: 1px solid #fff;
         }
-        #customers {
-            border-collapse: collapse;
-            width: 100%;
+        .form-container{
+            margin: 30px;
         }
+        .form-container input{
+       margin-top: 10px;
+       width: 100%;
+       padding: 10px 10px;
+       outline: none;
 
-        #customers td, #customers th {
-            border-bottom: 1px solid #000;
-            padding: 8px;
-            text-align: center;
-        }
-        #t{
-            border: 1px solid green;
-        }
-
-        #customers th {
-            padding-top: 12px;
-            padding-bottom: 12px;
-            text-align: center;
-
-        }
-        .number{
-            padding:10px;
-            border: none;
-            background: #f09053;
-            text-align: center;
-            outline:none;
-        }
-        .remove{
-            padding:15px;
-            border: none;
-           
-            background: #f09053;
-            text-align: center;
-        }
-        .main{
-            border:1px solid black;
-            width: 50% ;
-            margin: 50px auto;
-            display:flex;
-            flex-direction: column;
-            justify-content:center;
-            align-items: center;
-            height:300px;
-        }
-        .checkout{
-            width:70%;
-            margin: 30px auto;
-        }
-        .checkout input{
-            padding: 20px;
-            width:100%;
-            border:none;
-            outline: none;
-            background-image: linear-gradient(45deg,#1e1f31, #f09053);
-            color: #fff;
-            font-size:20px;
-        }
+   }
+   .btn{
+       padding: 5px 10px;
+       background-image: linear-gradient(45deg,#1e1f31, #f09053);
+       color: #fff;
+       border-radius: 10px;
+       text-decoration: none;
+   }
+       
     </style>
 </head>
 <body>
@@ -149,7 +110,7 @@
             <li><a href="./skintypepages/combination.php">COMBINATION</a></li>
             <li><a href="./skintypepages/sensitive.php">SENSITIVE</a></li>
             <li><a href="./skintypepages/oily.php">OILY</a></li>
-            <li><a href="bookappointment.php">APPOINTMENT</a></li>
+            <li><a href="./bookappointment.php">APPOINTMENT</a></li>
             <li>
              <?php 
                if(isset($_SESSION['cart'])){
@@ -163,6 +124,90 @@
     </header>
     <div class="main-body">
         <h2>book appointment page</h2>
-    </div>
+
+        <div class="form-container">
+                <form name="appointment" action="./appointment.php" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+                <input type="text" id="fname" name="fname" placeholder="Your name..">
+                <input type="text" id="lname" name="lname" placeholder="Your last name..">
+                <input type="text" id="phone" name="phone" placeholder="Your phone number..">
+                <input type="text" placeholder="Your email.." id="email" name="email">
+                <input type="text" name="date" id="date" placeholder="Enter date..">
+                <input type="text" name="time" id="time" placeholder="Enter time..">
+                <input class="btn" type="submit" value="book appointment">
+               </form>
+
+               <!--  -->
+       
+                 </div>   
+              </div>
+
+
+     <!-- javascript section -->
+<script>
+  // validating the main form
+ function validateForm(){
+   fname = document.appointment.fname.value;
+   lname = document.appointment.lname.value;
+   phone = document.appointment.phone.value;
+   email = document.appointment.email.value;
+   date  = document.appointment.date.value;
+   time  = document.appointment.time.value;
+
+   if(fname == ""){
+     alert('please enter first name');
+     document.getElementById('fname').focus();
+     return false;
+   }
+   if(lname == ""){
+     alert('please enter second name')
+     document.getElementById('lname').focus();
+     return false;
+   }
+   if(phone.length == 0 || isNaN(phone)){
+    alert('Enter a phone number');
+    document.getElementById('phone').focus();
+    return false;
+  }
+  if(email.length == 0 || email.indexOf('@') == -1 || email.indexOf('.') == -1){
+    alert('enter a valid email.should contain @ and .');
+    document.getElementById('email').focus();
+    return false;
+  }
+  if(date.indexOf('-') == -1){
+         alert('date should be in the form dd-mm-yy');
+         document.getElementById('date').focus();
+         return false;
+       }
+       comps = date.split('-');
+       if(comps[0].length< 1 || comps[1].length < 1 || comps[2].length<4){
+         alert('date should be in the form dd-mm-yyyy');
+         document.getElementById('date').focus();
+         return false;
+       }
+       if(isNaN(comps[0]) || isNaN(comps[1]) || isNaN(comps[2])){
+         alert('date must be a number and in the format dd-mm-yy');
+         document.getElementById('date').focus();
+         return false;
+       }
+   if(time == ""){
+     alert('please enter the appointment time')
+     document.getElementById('time').focus();
+     return false;
+   }
+   
+   
+   var returned = true;
+   
+  //  returned = validatePhone();
+  //  if(returned == true)
+   returned = validateEmail();
+   if(returned == true)
+   returned = validateDate();
+   if(returned == true)
+   
+   return returned;
+ }
+
+</script>
 </body>
 </html>

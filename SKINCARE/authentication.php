@@ -185,6 +185,8 @@ function validateLoginForm(){
    return returned;
  }
 
+
+
 // validating the password
 function validateLPassword(){
    p = document.getElementById('Lpassword').value;
@@ -197,10 +199,17 @@ function validateLPassword(){
    }
 }
 
+
+
+
+
         // Form validation of sign up
 function validateSignupForm(){
    fname = document.signup.fname.value;
    lname = document.signup.lname.value;
+   phone = document.signup.phone.value;
+   email = document.signup.email.value;
+   
 
    if(fname == ""){
      alert('please enter first name');
@@ -212,12 +221,19 @@ function validateSignupForm(){
      document.getElementById('lname').focus();
      return false;
    }
-   var returned = true;
-   
-   returned = validatePhone();
-   if(returned == true)
-   returned = validateEmail();
-   if(returned == true)
+   if(phone.length == 0 || isNaN(phone)){
+    alert('Enter a valid number');
+    document.getElementById('phone').focus();
+    return false;
+  }
+  if(email.length == 0 || email.indexOf('@') == -1 || email.indexOf('.') == -1){
+    alert('enter a valid email.should contain @ and .');
+    document.getElementById('email').focus();
+    return false;
+  }
+
+   var returned = false;
+
    returned == validateGender();
    if(returned == true)
    returned = validateRole();
@@ -227,56 +243,31 @@ function validateSignupForm(){
    return returned;
  }
 
-//  validating the phone number
-function validatePhone(){
-  phone = document.getElementById('phone').value;
-  if(phone.length == 0 || isNaN(phone)){
-    alert('Enter a valid number');
-    document.getElementById('phone').focus();
-    return false;
-  }
-  else{
-    return true;
-  }
- 
-}
 
-// validating email
-function validateEmail(){
-  email = document.getElementById('email').value;
-  if(email.length == 0 || email.indexOf('@') == -1 || email.indexOf('.') == -1){
-    alert('enter a valid email.should contain @ and .');
-    document.getElementById('email').focus();
-    return false;
-  }
-  else{
-    return true;
-  }
-}
+
 // validating gender
 function validateGender(){
-  female = document.getElementById('f').checked;
-  male = document.getElementById('m').checked;
+  gender = document.getElementsByName('gender')
 
-  if(female == false && male == false){
-    alert('please select your gender');
+  if (!(gender[0].checked || gender[1].checked)) {
+    alert("Please Select Your Gender");
     return false;
-  }
-  else{
-    return true
-  }
+}
+else{
+  return true;
+}
 }
 
 // validating role of user
 function validateRole(){
-      role = document.getElementById('user').options.selectedIndex;
+      role = document.forms["signup"]["user"].options.selectedIndex;
       if(role == 0){
         alert('select the role of user');
         return false;
       }
-      else{
-        return true;
-      }
+      // else{
+      //   return true;
+      // }
 }
 // validating the password
 function validatePassword(){
