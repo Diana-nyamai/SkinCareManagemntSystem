@@ -169,7 +169,7 @@
        outline: none;
 
    }
-   }
+   
 
    @media all and (max-width: 1090px){
       .sidebar{
@@ -228,7 +228,7 @@
              <li><a href="./orders.php"><i class="fa fa-money"></i>
                 <div class="title">orders</div>
              </a></li>
-             <li><a href="./productadmin.php"><i class="fa fa-money"></i>
+             <li><a href="./productadmin.php"><i class="fa fa-shopping-basket"></i>
                 <div class="title">Products</div>
              </a></li>
              <li><a href="./stmanagement.php"><i class="fa fa-tint"></i>
@@ -255,7 +255,7 @@
                         <div class="number"><?php echo $number; ?></div>
                         <div class="card-name">Products</div>
                        </div> 
-                       <div class="icon-box"><i class="fa fa-user"></i></div>
+                       <div class="icon-box"><i class="fa fa-shopping-basket"></i></div>
                 </div>
             </div><!-- end of cards -->
 

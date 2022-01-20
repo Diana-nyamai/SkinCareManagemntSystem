@@ -1,3 +1,10 @@
+<!-- this page will display the number of users and a report on users -->
+<?php
+   session_start();
+  $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
+  $data = mysqli_query($conn, 'SELECT * FROM tbl_product');
+  $number = mysqli_num_rows($data)
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -97,7 +104,7 @@
        width: 100%;
        padding: 35px 20px;
        display: grid;
-       grid-template-columns: repeat(3, 1fr);
+       grid-template-columns: 1fr;
        grid-gap: 20px;
    }
    .cards .card{
@@ -121,10 +128,12 @@
    .icon-box{
        font-size: 45px;
    }
+
+   /* table styling */
    .tables{
       width: 100%;
       display: grid;
-      grid-template-columns: 2fr 1fr;
+      grid-template-columns:1fr;
       grid-gap: 20px;
       align-items: self-start;
       padding: 0 20px 20px 20px ;
@@ -134,8 +143,7 @@
       
        border-radius: 50%;
    }
-   .last-appointments, 
-   .doctor-visiting{
+   .last-appointments{
        min-height: 350px;
        background: #fff;
        padding: 20px;
@@ -154,30 +162,15 @@
        border-radius: 10px;
        text-decoration: none;
    }
-   table{
+   .form-container input{
        margin-top: 10px;
        width: 100%;
-       border-collapse: collapse;
+       padding: 10px 10px;
+       outline: none;
+
    }
-   thead{
-       font-weight: 600;
-   }
-   table tr{
-       border-bottom: 1px solid rgba(0,0,0,0.1);
-   }
-   tbody tr:hover{
-       background: #f09053;
-   }
-   td{
-       padding: 9px 5px;
-   }
-   td i{
-       padding: 7px;
-       border-radius: 50px;
-   }
-   .last-appointments table tbody td:last-child{
-       white-space: nowrap;
-   }
+   
+
    @media all and (max-width: 1090px){
       .sidebar{
           width: 60px;
@@ -204,8 +197,7 @@
        }
    }
    @media all and (max-width: 420px){
-       .last-appointments,
-       .doctor-visiting{
+       .last-appointments{
            font-size: 70%;
            padding: 10px;
            min-height: 200px;
@@ -236,6 +228,9 @@
              <li><a href="./orders.php"><i class="fa fa-money"></i>
                 <div class="title">orders</div>
              </a></li>
+             <li><a href="./productadmin.php"><i class="fa fa-shopping-basket"></i>
+                <div class="title">Products</div>
+             </a></li>
              <li><a href="./stmanagement.php"><i class="fa fa-tint"></i>
                 <div class="title">skin management</div>
         </a></li>
@@ -254,153 +249,125 @@
             </div>
 
             <div class="cards">
+                
                 <div class="card">
                     <div class="card-content">
-                        <div class="number">67</div>
-                        <div class="card-name">appointments</div>                       
-                    </div>
-                    <div class="icon-box"><i class="fa fa-calendar"></i></div>
-                </div>
-                <div class="card">
-                    <div class="card-content">
-                        <div class="number">67</div>
-                        <div class="card-name">users</div>
+                        <div class="card-name">Skin type management</div>
                        </div> 
-                       <div class="icon-box"><i class="fa fa-user"></i></div>
-                </div>
-                <div class="card">
-                    <div class="card-content">
-                        <div class="number">67</div>
-                        <div class="card-name">dermatologists</div>                     
-                    </div>
-                     <div class="icon-box"><i class="fa fa-stethoscope"></i></div>
+                       <div class="icon-box"><i class="fa fa-tint"></i></div>
                 </div>
             </div><!-- end of cards -->
 
             <!-- tables -->
+
           <div class="tables">
               <div class="last-appointments">
                   <div class="heading">
-                      <h2>skin type management</h2>
-                      <a href="" class="btn">View all</a>
+                      <h2>Add products</h2>
                 </div>
-                <table class="appointments">
-                    <thead>
-                        <td>First Name</td>
-                        <td>Last Name</td>
-                        <td>date</td>
-                        <td>Actions</td>
-                    </thead>
-                    <tr>
-                        <td>Diana</td>
-                        <td>Nyamai</td>
-                        <td>11/20/2022</td>
-                        <td>
-                            <i class="fa fa-eye"></i>
-                            <i class="fa fa-edit"></i>
-                            <i class="fa fa-trash"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Diana</td>
-                        <td>Nyamai</td>
-                        <td>11/20/2022</td>
-                        <td>
-                            <i class="fa fa-eye"></i>
-                            <i class="fa fa-edit"></i>
-                            <i class="fa fa-trash"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Diana</td>
-                        <td>Nyamai</td>
-                        <td>11/20/2022</td>
-                        <td>
-                            <i class="fa fa-eye"></i>
-                            <i class="fa fa-edit"></i>
-                            <i class="fa fa-trash"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Diana</td>
-                        <td>Nyamai</td>
-                        <td>11/20/2022</td>
-                        <td>
-                            <i class="fa fa-eye"></i>
-                            <i class="fa fa-edit"></i>
-                            <i class="fa fa-trash"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Diana</td>
-                        <td>Nyamai</td>
-                        <td>11/20/2022</td>
-                        <td>
-                            <i class="fa fa-eye"></i>
-                            <i class="fa fa-edit"></i>
-                            <i class="fa fa-trash"></i>
-                        </td>
-                    </tr>
+                <div class="form-container">
+                <form name="product" action="" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+                <input type="text" id="sname" name="sname" placeholder="shop name..">
+                <input type="text" id="sowner" name="sowner" placeholder="shop owner..">
+                <input type="text" id="sphone" name="sphone" placeholder="shop phone number..">
+                <input type="text" placeholder="shop email.." name="semail" id="semail">
+                <input type="text" name="pname" id="pname" placeholder=" product name..">
+                <input type="text" id="pbrand" name="pbrand" placeholder="product brand..">
+                <input type="text" id="pdescription" name="pdescription" placeholder="product description..">
+                <input type="text" id="pprice" name="pprice" placeholder="product price..">
+                <input type="file" id="pimage" name="pimage" placeholder="product price..">
+                <input class="btn" type="submit" name="submit" value="upload">
+               </form>
+
+               <?php
+       $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
+      $v1 = rand(1111, 9999);
+      $v2 = rand(1111, 9999);
+
+      $v3 = $v1.$v2;
+      $v3 = md5($v3);
+
+      if(isset($_POST["submit"])){
+        $fnm = $_FILES["pimage"]["name"];
+        $dst = "./product_image/".$v3.$fnm;
+        $dst1 = "product_image/".$v3.$fnm;
+        move_uploaded_file($_FILES["pimage"]["tmp_name"],$dst);
+     
+
+      mysqli_query($conn, "insert into tbl_product (sname,sowner,phone_no,email,pname,brand,pdescription,price,pimage) values('$_POST[sname]','$_POST[sowner]','$_POST[sphone]', '$_POST[semail]', '$_POST[pname]','$_POST[pbrand]','$_POST[pdescription]','$_POST[pprice]','$dst1')");
+       }
+       ?>
+                 </div>   
                 </table>
               </div>
-              <div class="doctor-visiting">
-                  <div class="heading">
-                      <h2>Doctor visiting</h2>
-                <a href="#" class="btn">View all</a>
-            </div>
-                <table class="visiting">
-                    <thead>
-                        <td>avatar</td>
-                        <td>name</td>
-                        <td>visit time</td>
-                        <td>detail</td>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <div class="img-box-small">
-                                    <img src="./images/avatar.png" alt="" width="50">
-                                </div>
-                            </td>
-                            <td>Diana</td>
-                            <td>14:00</td>
-                            <td><i class="fa fa-eye"></i></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="img-box-small">
-                                    <img src="./images/avatar.png" alt="" width="50">
-                                </div>
-                            </td>
-                            <td>Diana</td>
-                            <td>14:00</td>
-                            <td><i class="fa fa-eye"></i></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="img-box-small">
-                                    <img src="./images/avatar.png" alt="" width="50">
-                                </div>
-                            </td>
-                            <td>Diana</td>
-                            <td>14:00</td>
-                            <td><i class="fa fa-eye"></i></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="img-box-small">
-                                    <img src="./images/avatar.png" alt="" width="50">
-                                </div>
-                            </td>
-                            <td>Diana</td>
-                            <td>14:00</td>
-                            <td><i class="fa fa-eye"></i></td>
-                        </tr>
-                    </tbody>
-                </table>
-              </div>
+             
           </div>
         </div>
     </div>
+
+          <!-- javascript section -->
+<script>
+  // validating the main form
+ function validateForm(){
+   sname = document.product.sname.value;
+   sowner = document.product.sowner.value;
+   sphone = document.product.sphone.value;
+   semail = document.product.semail.value;
+   pname = document.product.pname.value;
+   ptype = document.product.ptype.value;
+   pbrand = document.product.pbrand.value;
+   pdescription = document.product.pdescription.value;
+   pprice = document.product.pprice.value;
+
+
+   if(sname == ""){
+     alert('please enter shop name');
+     document.getElementById('fname').focus();
+     return false;
+   }
+   if(sowner == ""){
+     alert('please enter shop owner')
+     document.getElementById('sowner').focus();
+     return false;
+   }
+   if(sphone == ""){
+     alert('please enter shop phone number')
+     document.getElementById('sphone').focus();
+     return false;
+   }
+   if(semail == ""){
+     alert('please enter shop email')
+     document.getElementById('semail').focus();
+     return false;
+   }
+   if(pname == ""){
+     alert('please enter product name')
+     document.getElementById('pname').focus();
+     return false;
+   }
+   if(ptype == ""){
+     alert('please enter product type')
+     document.getElementById('ptype').focus();
+     return false;
+   }
+   if(pbrand == ""){
+     alert('please enter brand')
+     document.getElementById('pbrand').focus();
+     return false;
+   }
+   if(pdescription == ""){
+     alert('please enter shop description')
+     document.getElementById('pdescription').focus();
+     return false;
+   }
+   if(pprice == ""){
+     alert('please enter price')
+     document.getElementById('pprice').focus();
+     return false;
+   }
+   
+ }
+
+</script>
 </body>
 </html>
