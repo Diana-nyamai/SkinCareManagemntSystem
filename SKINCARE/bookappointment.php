@@ -11,7 +11,7 @@
     <link rel="shortcut icon" href="../images/logo.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="./images/logo.png" type="image/x-icon">
-    <title>combination skin</title>
+    <title>book appointment</title>
     <style>
         *{
             margin: 0;

@@ -263,19 +263,14 @@
           <div class="tables">
               <div class="last-appointments">
                   <div class="heading">
-                      <h2>Add products</h2>
+                      <h2>skin type management</h2>
                 </div>
                 <div class="form-container">
                 <form name="product" action="" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
-                <input type="text" id="sname" name="sname" placeholder="shop name..">
-                <input type="text" id="sowner" name="sowner" placeholder="shop owner..">
-                <input type="text" id="sphone" name="sphone" placeholder="shop phone number..">
-                <input type="text" placeholder="shop email.." name="semail" id="semail">
-                <input type="text" name="pname" id="pname" placeholder=" product name..">
-                <input type="text" id="pbrand" name="pbrand" placeholder="product brand..">
-                <input type="text" id="pdescription" name="pdescription" placeholder="product description..">
-                <input type="text" id="pprice" name="pprice" placeholder="product price..">
                 <input type="file" id="pimage" name="pimage" placeholder="product price..">
+                <input type="text" id="descr" name="descr" placeholder="description..">
+                <input type="text" id="prtype" name="prtype" placeholder="product type..">
+                <input type="text" id="skinm" name="skinm" placeholder="skin management..">
                 <input class="btn" type="submit" name="submit" value="upload">
                </form>
 
@@ -294,7 +289,7 @@
         move_uploaded_file($_FILES["pimage"]["tmp_name"],$dst);
      
 
-      mysqli_query($conn, "insert into tbl_product (sname,sowner,phone_no,email,pname,brand,pdescription,price,pimage) values('$_POST[sname]','$_POST[sowner]','$_POST[sphone]', '$_POST[semail]', '$_POST[pname]','$_POST[pbrand]','$_POST[pdescription]','$_POST[pprice]','$dst1')");
+      mysqli_query($conn, "insert into skin_type_management (pimage, descr) values('$_POST[sname]','$_POST[sowner]','$_POST[sphone]', '$_POST[semail]', '$_POST[pname]','$_POST[pbrand]','$_POST[pdescription]','$_POST[pprice]','$dst1')");
        }
        ?>
                  </div>   

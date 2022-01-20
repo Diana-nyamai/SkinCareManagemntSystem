@@ -5,7 +5,7 @@
 <!-- <a href="#" onclick="window.print();">print</a>  -->
 
 <?php
-$connection = new mysqli('localhost', 'root', '', 'skincare');
+$connection = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
 $productq = mysqli_query($connection, 'SELECT * FROM tbl_product WHERE sname="aliya shop"');
 $count = mysqli_num_rows($productq);
 echo  $count, ' records found <br/>';
