@@ -116,6 +116,9 @@
                if(isset($_SESSION['cart'])){
                    $count = count($_SESSION['cart']);
                }
+               else{
+                $count = 0;
+            }
              ?>
             <a href="./cart.php">CART (<?php echo $count ; ?>)</a></li>
             <li><a href="logout.php">LOGOUT</a></li>

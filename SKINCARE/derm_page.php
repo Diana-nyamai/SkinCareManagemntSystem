@@ -1,6 +1,9 @@
 <!-- this is the appointent page that contains the report on the appointments made..on admin page -->
 <?php
    session_start();
+   if(!isset($_SESSION["username"])){
+    header("location: authentication.php");
+}
   $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
   $data = mysqli_query($conn, 'SELECT * FROM tbl_appointment');
   $number = mysqli_num_rows($data);
@@ -235,7 +238,7 @@
                 <li><a href=""><i class="fa fa-clinic medical"></i>
                 <div class="title">HEAVENLY SKIN</div>
                 </a></li>
-                <li><a href="./appointments.php"><i class="fa fa-stethoscope"></i>
+                <li><a href="./derm_page.php"><i class="fa fa-stethoscope"></i>
                         <div class="title">appointments</div>
                 </a></li>
         <li><a href="./logout.php"><i class="fa fa-sign-out"></i>

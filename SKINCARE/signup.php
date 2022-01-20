@@ -17,7 +17,12 @@ else{
     values(?,?,?,?,?,?,?)');
     $stmt->bind_param('ssissss', $fname, $lname,$phone,$email, $gender, $user, $password);
     $stmt->execute();
-    echo header('location:authentication.php');
+    // echo header('location:authentication.php');
+    echo "
+        <script>alert('you have are now registered. Please login');
+        window.location.href = 'authentication.php'</script>
+        
+    ";
     
     $stmt->close();
     $conn->close();

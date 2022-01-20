@@ -148,15 +148,18 @@
             <li><a href="combination.php">COMBINATION</a></li>
             <li><a href="sensitive.php">SENSITIVE</a></li>
             <li><a href="oily.php">OILY</a></li>
-            <li><a href="appointment.php">APPOINTMENT</a></li>
+            <li><a href="../bookappointment.php">APPOINTMENT</a></li>
             <li>
              <?php 
                if(isset($_SESSION['cart'])){
                    $count = count($_SESSION['cart']);
                }
+               else{
+                $count = 0;
+            }
              ?>
             <a href="../cart.php">CART (<?php echo $count ; ?>)</a></li>
-            <li><a href="logout.php">LOGOUT</a></li>
+            <li><a href="../logout.php">LOGOUT</a></li>
             
         </ul>
     </header>
