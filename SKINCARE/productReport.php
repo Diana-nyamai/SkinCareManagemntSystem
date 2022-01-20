@@ -48,22 +48,3 @@ echo "</table>"
 ?>
 </body>
 </html>
-
-<!-- <?php 
-$res = mysqli_query($conn, "select * from tbl_product");
-while($row = mysqli_fetch_array($res)){
-    ?>
-   <div class="gallery">
-       <div class="g-content">
-           <img src="<?php echo $row["pimage"]; ?>" alt="" >
-           <h3><?php echo $row["pname"];?></h3>
-           <p><?php echo $row["pdescription"]; ?></p>
-           <h6>ksh.<?php echo $row["price"]; ?></h6>
-           <h6>for dry skin</h6>
-           <button class="add-1">Add to Cart</button>
-       </div> 
-   </div>
-    <?php
-
-}
-?> -->

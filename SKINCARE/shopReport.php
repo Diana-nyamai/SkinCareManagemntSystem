@@ -30,7 +30,7 @@ echo "</tr>";
 // the table data
 while($row = mysqli_fetch_array($productq)){
     echo "<tr>";
-    echo "<td>{$row['shop_id']}</td>";
+    echo "<td>{$row['id']}</td>";
     echo "<td>{$row['sname']}</td>";
     echo "<td>{$row['owner']}</td>";
     echo "<td>{$row['phone_no']}</td>";

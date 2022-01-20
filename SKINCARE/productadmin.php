@@ -1,3 +1,10 @@
+<!-- this page will display the number of users and a report on users -->
+<?php
+   session_start();
+  $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
+  $data = mysqli_query($conn, 'SELECT * FROM tbl_product');
+  $number = mysqli_num_rows($data)
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -97,7 +104,7 @@
        width: 100%;
        padding: 35px 20px;
        display: grid;
-       grid-template-columns: repeat(3, 1fr);
+       grid-template-columns: 1fr;
        grid-gap: 20px;
    }
    .cards .card{
@@ -121,10 +128,12 @@
    .icon-box{
        font-size: 45px;
    }
+
+   /* table styling */
    .tables{
       width: 100%;
       display: grid;
-      grid-template-columns: 2fr 1fr;
+      grid-template-columns:1fr;
       grid-gap: 20px;
       align-items: self-start;
       padding: 0 20px 20px 20px ;
@@ -134,8 +143,7 @@
       
        border-radius: 50%;
    }
-   .last-appointments, 
-   .doctor-visiting{
+   .last-appointments{
        min-height: 350px;
        background: #fff;
        padding: 20px;
@@ -204,8 +212,7 @@
        }
    }
    @media all and (max-width: 420px){
-       .last-appointments,
-       .doctor-visiting{
+       .last-appointments{
            font-size: 70%;
            padding: 10px;
            min-height: 200px;
@@ -227,16 +234,19 @@
                 <li><a href="./admin.php"><i class="fa fa-dashboard"></i>
                     <div class="title">dashboard</div>
                 </a></li>
-                <li><a href="./appointments.html"><i class="fa fa-stethoscope"></i>
+                <li><a href="./appointments.php"><i class="fa fa-stethoscope"></i>
                         <div class="title">appointments</div>
                 </a></li>
-                <li><a href="./users.html"><i class="fa fa-user"></i>
+                <li><a href="./users.php"><i class="fa fa-user"></i>
                     <div class="title">users</div>
              </a></li>
-             <li><a href="./orders.html"><i class="fa fa-money"></i>
+             <li><a href="./orders.php"><i class="fa fa-money"></i>
                 <div class="title">orders</div>
              </a></li>
-             <li><a href="./stmanagement.html"><i class="fa fa-tint"></i>
+             <li><a href="./productadmin.php"><i class="fa fa-money"></i>
+                <div class="title">Products</div>
+             </a></li>
+             <li><a href="./stmanagement.php"><i class="fa fa-tint"></i>
                 <div class="title">skin management</div>
         </a></li>
         <li><a href="./logout.php"><i class="fa fa-sign-out"></i>
@@ -254,151 +264,58 @@
             </div>
 
             <div class="cards">
+                
                 <div class="card">
                     <div class="card-content">
-                        <div class="number">67</div>
-                        <div class="card-name">appointments</div>                       
-                    </div>
-                    <div class="icon-box"><i class="fa fa-calendar"></i></div>
-                </div>
-                <div class="card">
-                    <div class="card-content">
-                        <div class="number">67</div>
+                        <div class="number"><?php echo $number; ?></div>
                         <div class="card-name">users</div>
                        </div> 
                        <div class="icon-box"><i class="fa fa-user"></i></div>
                 </div>
-                <div class="card">
-                    <div class="card-content">
-                        <div class="number">67</div>
-                        <div class="card-name">dermatologists</div>                     
-                    </div>
-                     <div class="icon-box"><i class="fa fa-stethoscope"></i></div>
-                </div>
             </div><!-- end of cards -->
 
             <!-- tables -->
+
           <div class="tables">
               <div class="last-appointments">
                   <div class="heading">
-                      <h2>skin type management</h2>
+                      <h2>Add products</h2>
                       <a href="" class="btn">View all</a>
                 </div>
                 <table class="appointments">
                     <thead>
                         <td>First Name</td>
                         <td>Last Name</td>
-                        <td>date</td>
+                        <td>Phone Number</td>
+                        <td>Email</td>                       
+                        <td>Gender</td>
+                        <td>sign up date</td>
                         <td>Actions</td>
                     </thead>
-                    <tr>
-                        <td>Diana</td>
-                        <td>Nyamai</td>
-                        <td>11/20/2022</td>
+                    <?php 
+           while($row = mysqli_fetch_array($data)){
+               echo "
+                <tr>
+                        <td>{$row['first_name']}</td>
+                        <td>{$row['last_name']}</td>
+                        <td>{$row['phone_number']}</td>
+                        <td>{$row['email']}</td>
+                        <td>{$row['gender']}</td>
+                        <td>{$row['signup_date']}</td>
                         <td>
-                            <i class="fa fa-eye"></i>
-                            <i class="fa fa-edit"></i>
-                            <i class="fa fa-trash"></i>
+                            <i class='fa fa-edit'></i>
+                            <i class='fa fa-trash'></i>
                         </td>
                     </tr>
-                    <tr>
-                        <td>Diana</td>
-                        <td>Nyamai</td>
-                        <td>11/20/2022</td>
-                        <td>
-                            <i class="fa fa-eye"></i>
-                            <i class="fa fa-edit"></i>
-                            <i class="fa fa-trash"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Diana</td>
-                        <td>Nyamai</td>
-                        <td>11/20/2022</td>
-                        <td>
-                            <i class="fa fa-eye"></i>
-                            <i class="fa fa-edit"></i>
-                            <i class="fa fa-trash"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Diana</td>
-                        <td>Nyamai</td>
-                        <td>11/20/2022</td>
-                        <td>
-                            <i class="fa fa-eye"></i>
-                            <i class="fa fa-edit"></i>
-                            <i class="fa fa-trash"></i>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>Diana</td>
-                        <td>Nyamai</td>
-                        <td>11/20/2022</td>
-                        <td>
-                            <i class="fa fa-eye"></i>
-                            <i class="fa fa-edit"></i>
-                            <i class="fa fa-trash"></i>
-                        </td>
-                    </tr>
+                    ";
+           }
+           ?>
+                   
+                    
+                    
                 </table>
               </div>
-              <div class="doctor-visiting">
-                  <div class="heading">
-                      <h2>Doctor visiting</h2>
-                <a href="#" class="btn">View all</a>
-            </div>
-                <table class="visiting">
-                    <thead>
-                        <td>avatar</td>
-                        <td>name</td>
-                        <td>visit time</td>
-                        <td>detail</td>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>
-                                <div class="img-box-small">
-                                    <img src="./images/avatar.png" alt="" width="50">
-                                </div>
-                            </td>
-                            <td>Diana</td>
-                            <td>14:00</td>
-                            <td><i class="fa fa-eye"></i></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="img-box-small">
-                                    <img src="./images/avatar.png" alt="" width="50">
-                                </div>
-                            </td>
-                            <td>Diana</td>
-                            <td>14:00</td>
-                            <td><i class="fa fa-eye"></i></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="img-box-small">
-                                    <img src="./images/avatar.png" alt="" width="50">
-                                </div>
-                            </td>
-                            <td>Diana</td>
-                            <td>14:00</td>
-                            <td><i class="fa fa-eye"></i></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="img-box-small">
-                                    <img src="./images/avatar.png" alt="" width="50">
-                                </div>
-                            </td>
-                            <td>Diana</td>
-                            <td>14:00</td>
-                            <td><i class="fa fa-eye"></i></td>
-                        </tr>
-                    </tbody>
-                </table>
-              </div>
+             
           </div>
         </div>
     </div>

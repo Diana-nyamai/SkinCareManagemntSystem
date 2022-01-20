@@ -1,14 +1,3 @@
-<!-- this is the main admin page that contains and the link to the dashboard -->
-<?php
-  session_start();
-  $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
-  if(!isset($_SESSION["username"])){
-      header("location: authentication.php");
-  }
-  $data = mysqli_query($conn, 'SELECT * FROM tbl_users');
-  $number = mysqli_num_rows($data);
-
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -85,15 +74,10 @@
        width: calc(100% - 300px);
        background: #fff;
        display: grid;
-       grid-template-columns: 10fr 0.3fr;
-       grid-gap: 5px;
-       /* justify-content: space-between; */
+       justify-content: flex-end;
        padding: 0 20px;
        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
        z-index: 1;
-   }
-   .admin{
-       font-size: 20px;
    }
    .user{
        position: relative;
@@ -243,19 +227,16 @@
                 <li><a href="./admin.php"><i class="fa fa-dashboard"></i>
                     <div class="title">dashboard</div>
                 </a></li>
-                <li><a href="./appointments.html"><i class="fa fa-stethoscope"></i>
+                <li><a href="./appointments.php"><i class="fa fa-stethoscope"></i>
                         <div class="title">appointments</div>
                 </a></li>
                 <li><a href="./users.php"><i class="fa fa-user"></i>
                     <div class="title">users</div>
              </a></li>
-             <li><a href="./orders.html"><i class="fa fa-money"></i>
+             <li><a href="./orders.php"><i class="fa fa-money"></i>
                 <div class="title">orders</div>
              </a></li>
-             <li><a href="./productadmin.php"><i class="fa fa-money"></i>
-                <div class="title">Products</div>
-             </a></li>
-             <li><a href="./stmanagement.html"><i class="fa fa-tint"></i>
+             <li><a href="./stmanagement.php"><i class="fa fa-tint"></i>
                 <div class="title">skin management</div>
         </a></li>
         <li><a href="./logout.php"><i class="fa fa-sign-out"></i>
@@ -267,8 +248,6 @@
         <!-- main content -->
         <div class="main">
             <div class="top-bar">
-                <div class="admin"><p>Welcome Admin</p></div>
-             
                 <div class="user">
                     <img src="./images/avatar.png" alt="">
                 </div>
@@ -284,7 +263,7 @@
                 </div>
                 <div class="card">
                     <div class="card-content">
-                        <div class="number"><?php echo $number; ?></div>
+                        <div class="number">67</div>
                         <div class="card-name">users</div>
                        </div> 
                        <div class="icon-box"><i class="fa fa-user"></i></div>
@@ -302,7 +281,7 @@
           <div class="tables">
               <div class="last-appointments">
                   <div class="heading">
-                      <h2>Last appointment</h2>
+                      <h2>orders</h2>
                       <a href="" class="btn">View all</a>
                 </div>
                 <table class="appointments">
