@@ -148,7 +148,7 @@
             <li><a href="combination.php">COMBINATION</a></li>
             <li><a href="sensitive.php">SENSITIVE</a></li>
             <li><a href="oily.php">OILY</a></li>
-            <li><a href="appointment.php">APPOINTMENT</a></li>
+            <li><a href="bookappointment.php">APPOINTMENT</a></li>
             <li>
              <?php 
                if(isset($_SESSION['cart'])){

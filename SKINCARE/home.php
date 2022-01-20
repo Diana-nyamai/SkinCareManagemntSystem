@@ -201,7 +201,7 @@
             <li><a href="./skintypepages/combination.php">COMBINATION</a></li>
             <li><a href="./skintypepages/sensitive.php">SENSITIVE</a></li>
             <li><a href="./skintypepages/oily.php">OILY</a></li>
-            <li><a href="./skintypepages/appointment.php">APPOINTMENT</a></li>
+            <li><a href="./bookappointment.php">APPOINTMENT</a></li>
             <li>
              <?php 
                if(isset($_SESSION['cart'])){
