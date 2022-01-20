@@ -1,4 +1,4 @@
-
+<!-- page that contains the login and signup page -->
 <!DOCTYPE html>
 <html lang="en">
 <head>

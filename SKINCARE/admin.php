@@ -5,6 +5,9 @@
   if(!isset($_SESSION["username"])){
       header("location: authentication.php");
   }
+  $data = mysqli_query($conn, 'SELECT * FROM tbl_users');
+  $number = mysqli_num_rows($data);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -243,7 +246,7 @@
                 <li><a href="./appointments.html"><i class="fa fa-stethoscope"></i>
                         <div class="title">appointments</div>
                 </a></li>
-                <li><a href="./users.html"><i class="fa fa-user"></i>
+                <li><a href="./users.php"><i class="fa fa-user"></i>
                     <div class="title">users</div>
              </a></li>
              <li><a href="./orders.html"><i class="fa fa-money"></i>
@@ -278,7 +281,7 @@
                 </div>
                 <div class="card">
                     <div class="card-content">
-                        <div class="number">67</div>
+                        <div class="number"><?php echo $number; ?></div>
                         <div class="card-name">users</div>
                        </div> 
                        <div class="icon-box"><i class="fa fa-user"></i></div>
