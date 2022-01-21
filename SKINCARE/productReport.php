@@ -3,6 +3,13 @@
 
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <style>
+            table{
+                border-collapse: collapse;
+            }
+        </style>
+    </head>
 <body>
     <h2 style="text-align: center;">Product report</h2>
 <!-- <a href="#" onclick="window.print();">print</a>  -->
@@ -24,7 +31,6 @@ echo "<th>owner</th>";
 echo "<th>phone number</th>";
 echo "<th>email</th>";
 echo "<th>pname</th>";
-echo "<th>brand</th>";
 echo "<th>description</th>";
 echo "<th>price</th>";
 echo "</tr>";
@@ -38,7 +44,6 @@ while($row = mysqli_fetch_array($productq)){
     echo "<td>{$row['phone_no']}</td>";
     echo "<td>{$row['email']}</td>";
     echo "<td>{$row['pname']}</td>";
-    echo "<td>{$row['brand']}</td>";
     echo "<td>{$row['pdescription']}</td>";
     echo "<td>{$row['price']}</td>";
     echo "</tr>";

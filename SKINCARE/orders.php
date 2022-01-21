@@ -296,12 +296,12 @@
            while($row = mysqli_fetch_array($data)){
                echo "
                 <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>{$row['Order_date']}</td>
+                        <td>{$row['tamount']}</td>
+                        <td>{$row['payment']}</td>
+                        <td>{$row['user_id']}</td>
+                        <td>{$row['shop_id']}</td>
+                        <td{$row['product_id']}></td>
                         <td>
                             <i class='fa fa-edit'></i>
                             <i class='fa fa-trash'></i>

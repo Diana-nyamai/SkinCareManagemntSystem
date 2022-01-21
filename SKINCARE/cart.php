@@ -206,7 +206,7 @@
     <td id="total">ksh. <?php echo $total  ?></td>
   </tr> 
 </table>
-<form>
+<form action="order.html">
     <div class="main">
         <div><input type="radio" name="cod" value="cod"> <span>cash on delivery</span> </div>
         <div class="checkout">

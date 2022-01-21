@@ -1,22 +1,24 @@
 <?php
 $date =$_POST['date'];
 $tamount = $_POST['tamount'];
-$damount = $_POST['damount'];
-$tad = $_POST['tad'];
-$quantity = $_POST['quantity'];
 $payment = $_POST['payment'];
 
 // connecting to the database
-$conn = new mysqli('localhost', 'root', '', 'skincare');
+$conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
 if(mysqli_connect_error()){
     die('connection failed: (' .mysqli_connect_error(). ')' .mysqli_connect_error());
 }
 else{
-    $stmt = $conn->prepare('insert into tbl_orders(date, tamount, damount, tad, quantity, payment)
-    values(?,?,?,?,?,?)');
-    $stmt->bind_param('siiiis', $date, $tamount, $damount, $tad, $quantity, $payment);
+    $stmt = $conn->prepare('insert into tbl_orders(Order_date, tamount, payment)
+    values(?,?,?)');
+    $stmt->bind_param('sis', $date, $tamount, $payment);
     $stmt->execute();
-    echo 'order is completed';
+    echo "
+    <script>
+    alert('order is completed');
+    window.location.href = 'order.html';
+    </script>
+    ";
     $stmt->close();
     $conn->close();
 

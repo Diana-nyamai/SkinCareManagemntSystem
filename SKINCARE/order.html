@@ -5,15 +5,23 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=0 ">
     <title>order form</title>
+    <link rel="shortcut icon" href="./images/logo.png" type="image/x-icon">
 <style>
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
+body{
+  color: #fff;
+  background-image: linear-gradient(45deg,#1e1f31, #f09053);
+  height: 100vh;
+  overflow-x: hidden;
+}
 h1{
     text-align: center;
     padding: 20px;
+    color: #000;
 }
 
 input[type=text], select, textarea {
@@ -30,22 +38,24 @@ label {
 }
 
 input[type=submit] {
-  background-color: #673ab7;
+  background-image: linear-gradient(45deg,#1e1f31, #f09053);
   color: white;
   padding: 12px 20px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
   float: right;
+  width: 100%;
+  font-size: 20px;
 }
 
 input[type=submit]:hover {
-  background-color: #673ab7;
+  cursor: pointer;
 }
 
 .container {
   border-radius: 5px;
-  background-color: #e1e2e1;
+  background-image: linear-gradient(45deg,#1e1f31, #f09053);-color: #e1e2e1;
   padding: 20px;
 }
 
@@ -79,15 +89,10 @@ input[type=submit]:hover {
 </head>
 <body>
   <!-- body section -->
-    <h1>order form</h1>
+    <h1>Make order</h1>
     <div class="container">
       <!-- start of the form -->
         <form name="order" action="order.php" method="post" onsubmit="return validateForm()">
-        
-        <div class="row">
-          <div class="col-25"><label for="orderid">order id</label></div>
-          <div class="col-75"><input type="text" id="orderid" name="orderid" placeholder="order id.."></div>
-        </div>
         <div class="row">
           <div class="col-25"><label for="date">date</label></div>
           <div class="col-75"><input type="text" id="date" name="date" placeholder="date.."></div>
@@ -97,33 +102,17 @@ input[type=submit]:hover {
             <div class="col-75"><input type="text" id="tamount" name="tamount" placeholder="total amount.."></div>
           </div>
           <div class="row">
-            <div class="col-25"><label for="damount">discounted amount</label></div>
-            <div class="col-75"><input type="text" id="damount" name="damount" placeholder="discounted amount.."></div>
-          </div>
-          <div class="row">
-            <div class="col-25"><label for="tad">total after discount</label></div>
-            <div class="col-75"><input type="text" id="tad" name="tad" placeholder="total after discount.."></div>
-          </div>
-          <div class="row">
-            <div class="col-25"><label for="quantity">quantity</label></div>
-            <div class="col-75"><input type="text" id="quantity" name="quantity" placeholder="quantity.."></div>
-          </div>
-          <div class="row">
             <div class="col-25"><label for="payment">payment type</label></div>
             <div class="col-75">
               <select id="payment" name="payment">
                 <option value="" selected="selected"></option>
-                <option value="cash">cash</option>
-                <option value="mpesa">mpesa</option>
-                
+                <option value="cash">cash on delivery</option>
               </select>
             </div>
           </div>
-          
-        
         <br>
         <div class="row">
-          <input type="submit" value="Sign Up">
+          <input type="submit" value="make order">
         </div>
         </form>
       </div>
@@ -134,9 +123,7 @@ input[type=submit]:hover {
  function validateForm(){
   date = document.order.date.value;
   tamount = document.order.tamount.value;
-  damount = document.order.damount.value;
-  tad = document.order.tad.value;
-  quantity = document.order.quantity.value;
+
   
 
   if(date == ""){
@@ -147,19 +134,6 @@ input[type=submit]:hover {
     alert('enter the total amount');
     return false;
   }
-  if(damount == ""){
-    alert('enter the discounted amount');
-    return false;
-  }
-  if(tad == ""){
-    alert('enter the total after discount');
-    return false;
-  }
-  if(quantity == ""){
-    alert('enter the quantity of product');
-    return false;
-  }
-
   var returned = true;
 
   returned = validatepayment();
