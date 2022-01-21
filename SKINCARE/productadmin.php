@@ -273,7 +273,7 @@
                 <input type="text" id="sphone" name="sphone" placeholder="shop phone number..">
                 <input type="text" placeholder="shop email.." name="semail" id="semail">
                 <input type="text" name="pname" id="pname" placeholder=" product name..">
-                <input type="text" id="pbrand" name="pbrand" placeholder="product brand..">
+                <input type="text" id="skintype" name="skintype" placeholder="for skin type..">
                 <input type="text" id="pdescription" name="pdescription" placeholder="product description..">
                 <input type="text" id="pprice" name="pprice" placeholder="product price..">
                 <input type="file" id="pimage" name="pimage" placeholder="product price..">
@@ -295,7 +295,7 @@
         move_uploaded_file($_FILES["pimage"]["tmp_name"],$dst);
      
 
-      mysqli_query($conn, "insert into tbl_product (sname,sowner,phone_no,email,pname,brand,pdescription,price,pimage) values('$_POST[sname]','$_POST[sowner]','$_POST[sphone]', '$_POST[semail]', '$_POST[pname]','$_POST[pbrand]','$_POST[pdescription]','$_POST[pprice]','$dst1')");
+      mysqli_query($conn, "INSERT INTO tbl_product (sname,sowner,phone_no,email,pname,skin_type,pdescription,price,pimage) VALUES ('$_POST[sname]','$_POST[sowner]','$_POST[sphone]', '$_POST[semail]', '$_POST[pname]', '$_POST[skintype]', '$_POST[pdescription]', '$_POST[pprice]','$dst1')");
        }
        ?>
                  </div>   

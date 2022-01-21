@@ -289,7 +289,7 @@
         move_uploaded_file($_FILES["pimage"]["tmp_name"],$dst);
      
 
-      mysqli_query($conn, "insert into skin_type_management (pimage, descr) values('$_POST[sname]','$_POST[sowner]','$_POST[sphone]', '$_POST[semail]', '$_POST[pname]','$_POST[pbrand]','$_POST[pdescription]','$_POST[pprice]','$dst1')");
+      mysqli_query($conn, "insert into skin_type_management (image, descriptions,product_type,skin_management) values('$dst1','$_POST[descr]','$_POST[prtype]', '$_POST[skinm]')");
        }
        ?>
                  </div>   
