@@ -152,16 +152,16 @@
   }
   .g-content h3{
       text-align: center;
-      font-size: 30px;
+      font-size: 20px;
       margin: 0;
       padding-top: 10px;
   }
   .g-content p{
       text-align: center;
-      padding-top: 0 8px;
+      padding: 0 8px;
   }
   .g-content h6{
-      font-size: 26px;
+      font-size: 16px;
       text-align: center;
       margin: 0;
   }
@@ -196,12 +196,12 @@
         <h1><a href="home.php" class="logo">HEAVENLY skin</a></h1>
         <ul>
             <li><a href="home.php">HOME</a></li>
-            <li><a href="./skintypepages/dry.php">DRY </a></li>
-            <li><a href="./skintypepages/normal.php">NORMAL</a></li>
-            <li><a href="./skintypepages/combination.php">COMBINATION</a></li>
-            <li><a href="./skintypepages/sensitive.php">SENSITIVE</a></li>
-            <li><a href="./skintypepages/oily.php">OILY</a></li>
-            <li><a href="./bookappointment.php">APPOINTMENT</a></li>
+            <li><a href="dry.php">DRY </a></li>
+            <li><a href="normal.php">NORMAL</a></li>
+            <li><a href="sensitive.php">SENSITIVE</a></li>
+            <li><a href="oily.php">OILY</a></li>
+            <li><a href="combination.php">COMBINATION</a></li>
+            <li><a href="bookappointment.php">APPOINTMENT</a></li>
             <li>
              <?php 
                if(isset($_SESSION['cart'])){
