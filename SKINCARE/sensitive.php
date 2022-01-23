@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=0">
     <link rel="shortcut icon" href="./images/logo.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
-    <title>dry skin</title>
+    <title>sensitive skin</title>
     <style>
         *{
             margin: 0;
@@ -206,7 +206,7 @@
 </header>
 
     <div class="main-body">
-        <h2>dry skin page</h2>
+        <h2>sensitive skin page</h2>
      
         <!--SKIN TYPE MANAGEMENT  -->
         <?php 

@@ -143,11 +143,11 @@
         <h1><a href="home.php" class="logo">HEAVENLY skin</a></h1>
         <ul>
             <li><a href="home.php">HOME</a></li>
-            <li><a href="./skintypepages/dry.php">DRY </a></li>
-            <li><a href="./skintypepages/normal.php">NORMAL</a></li>
-            <li><a href="./skintypepages/combination.php">COMBINATION</a></li>
-            <li><a href="./skintypepages/sensitive.php">SENSITIVE</a></li>
-            <li><a href="./skintypepages/oily.php">OILY</a></li>
+            <li><a href="dry.php">DRY </a></li>
+            <li><a href="normal.php">NORMAL</a></li>
+            <li><a href="combination.php">COMBINATION</a></li>
+            <li><a href="sensitive.php">SENSITIVE</a></li>
+            <li><a href="oily.php">OILY</a></li>
             <li><a href="./bookappointment.php">APPOINTMENT</a></li>
             <li>
              <?php 

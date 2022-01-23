@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=0">
     <link rel="shortcut icon" href="./images/logo.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
-    <title>dry skin</title>
+    <title>combination skin</title>
     <style>
         *{
             margin: 0;
@@ -188,7 +188,8 @@
             <li><a href="dry.php">DRY </a></li>
             <li><a href="normal.php">NORMAL</a></li>
             <li><a href="sensitive.php">SENSITIVE</a></li>
-            <li><a href="oily.php">OILY&COMBINATION</a></li>
+            <li><a href="oily.php">OILY</a></li>
+            <li><a href="combination.php">COMBINATION</a></li>
             <li><a href="./bookappointment.php">APPOINTMENT</a></li>
             <li>
              <?php 
@@ -206,7 +207,7 @@
 </header>
 
     <div class="main-body">
-        <h2>dry skin page</h2>
+        <h2>combination skin page</h2>
      
         <!--SKIN TYPE MANAGEMENT  -->
         <?php 
