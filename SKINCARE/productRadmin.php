@@ -1,4 +1,4 @@
-<!-- this page will display the number of users and a report on users in admin -->
+<!-- this page will display the number of users and a report on users -->
 <?php
    session_start();
   $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
@@ -162,15 +162,30 @@
        border-radius: 10px;
        text-decoration: none;
    }
-   .form-container input{
+   table{
        margin-top: 10px;
        width: 100%;
-       padding: 10px 10px;
-       outline: none;
-
+       border-collapse: collapse;
    }
-   
-
+   thead{
+       font-weight: 600;
+   }
+   table tr{
+       border-bottom: 1px solid rgba(0,0,0,0.1);
+   }
+   tbody tr:hover{
+       background: #f09053;
+   }
+   td{
+       padding: 9px 5px;
+   }
+   td i{
+       padding: 7px;
+       border-radius: 50px;
+   }
+   .last-appointments table tbody td:last-child{
+       white-space: nowrap;
+   }
    @media all and (max-width: 1090px){
       .sidebar{
           width: 60px;
@@ -231,7 +246,6 @@
              <li><a href="./productadmin.php"><i class="fa fa-shopping-basket"></i>
                 <div class="title">Products</div>
              </a></li>
-             <!-- this page will display the number of users and a report on users -->
              <li><a href="./productRadmin.php"><i class="fa fa-shopping-basket"></i>
                 <div class="title">Product Report</div>
              </a></li>
@@ -257,7 +271,7 @@
                 <div class="card">
                     <div class="card-content">
                         <div class="number"><?php echo $number; ?></div>
-                        <div class="card-name">Products</div>
+                        <div class="card-name">products</div>
                        </div> 
                        <div class="icon-box"><i class="fa fa-shopping-basket"></i></div>
                 </div>
@@ -268,111 +282,46 @@
           <div class="tables">
               <div class="last-appointments">
                   <div class="heading">
-                      <h2>Add products</h2>
+                      <h2>product report</h2>
                 </div>
-                <div class="form-container">
-                <form name="product" action="" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
-                <input type="text" id="sname" name="sname" placeholder="shop name..">
-                <input type="text" id="sowner" name="sowner" placeholder="shop owner..">
-                <input type="text" id="sphone" name="sphone" placeholder="shop phone number..">
-                <input type="text" placeholder="shop email.." name="semail" id="semail">
-                <input type="text" name="pname" id="pname" placeholder=" product name..">
-                <input type="text" id="skintype" name="skintype" placeholder="for skin type..">
-                <input type="text" id="pdescription" name="pdescription" placeholder="product description..">
-                <input type="text" id="pprice" name="pprice" placeholder="product price..">
-                <input type="file" id="pimage" name="pimage" placeholder="product price..">
-                <input class="btn" type="submit" name="submit" value="upload">
-               </form>
+                <table class="appointments">
+                    <thead>
+                        <td>shop Name</td>
+                        <td>shop owner</td>
+                        <td>Phone Number</td>
+                        <td>Email</td>
+                        <td>product Name</td>                       
+                        <td>Skin type</td>
+                        <td>Product Description</td>
+                        <td>price</td>
+                        <td>image</td>
 
-               <?php
-       $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
-      $v1 = rand(1111, 9999);
-      $v2 = rand(1111, 9999);
-
-      $v3 = $v1.$v2;
-      $v3 = md5($v3);
-
-      if(isset($_POST["submit"])){
-        $fnm = $_FILES["pimage"]["name"];
-        $dst = "./product_image/".$v3.$fnm;
-        $dst1 = "product_image/".$v3.$fnm;
-        move_uploaded_file($_FILES["pimage"]["tmp_name"],$dst);
-     
-
-      mysqli_query($conn, "INSERT INTO tbl_product (sname,sowner,phone_no,email,pname,skin_type,pdescription,price,pimage) VALUES ('$_POST[sname]','$_POST[sowner]','$_POST[sphone]', '$_POST[semail]', '$_POST[pname]', '$_POST[skintype]', '$_POST[pdescription]', '$_POST[pprice]','$dst1')");
-       }
-       ?>
-                 </div>   
+                    </thead>
+                    <?php 
+           while($row = mysqli_fetch_array($data)){
+               echo "
+                <tr>
+                        <td>{$row['sname']}</td>
+                        <td>{$row['sowner']}</td>
+                        <td>{$row['phone_no']}</td>
+                        <td>{$row['email']}</td>
+                        <td>{$row['pname']}</td>
+                        <td>{$row['skin_type']}</td>
+                        <td>{$row['pdescription']}</td>
+                        <td>{$row['price']}</td>
+                        <td>{$row['pimage']}</td>
+                    </tr>
+                    ";
+           }
+           ?>
+                   
+                    
+                    
                 </table>
               </div>
              
           </div>
         </div>
     </div>
-
-          <!-- javascript section -->
-<script>
-  // validating the main form
- function validateForm(){
-   sname = document.product.sname.value;
-   sowner = document.product.sowner.value;
-   sphone = document.product.sphone.value;
-   semail = document.product.semail.value;
-   pname = document.product.pname.value;
-   ptype = document.product.ptype.value;
-   pbrand = document.product.pbrand.value;
-   pdescription = document.product.pdescription.value;
-   pprice = document.product.pprice.value;
-
-
-   if(sname == ""){
-     alert('please enter shop name');
-     document.getElementById('fname').focus();
-     return false;
-   }
-   if(sowner == ""){
-     alert('please enter shop owner')
-     document.getElementById('sowner').focus();
-     return false;
-   }
-   if(sphone == ""){
-     alert('please enter shop phone number')
-     document.getElementById('sphone').focus();
-     return false;
-   }
-   if(semail == ""){
-     alert('please enter shop email')
-     document.getElementById('semail').focus();
-     return false;
-   }
-   if(pname == ""){
-     alert('please enter product name')
-     document.getElementById('pname').focus();
-     return false;
-   }
-   if(ptype == ""){
-     alert('please enter product type')
-     document.getElementById('ptype').focus();
-     return false;
-   }
-   if(pbrand == ""){
-     alert('please enter brand')
-     document.getElementById('pbrand').focus();
-     return false;
-   }
-   if(pdescription == ""){
-     alert('please enter shop description')
-     document.getElementById('pdescription').focus();
-     return false;
-   }
-   if(pprice == ""){
-     alert('please enter price')
-     document.getElementById('pprice').focus();
-     return false;
-   }
-   
- }
-
-</script>
 </body>
 </html>

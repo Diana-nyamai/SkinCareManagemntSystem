@@ -243,8 +243,11 @@
              <li><a href="./orders.php"><i class="fa fa-money"></i>
                 <div class="title">orders</div>
              </a></li>
-             <li><a href="./productadmin.php"><i class="fa fa-money"></i>
+             <li><a href="./productadmin.php"><i class="fa fa-shopping-basket"></i>
                 <div class="title">Products</div>
+             </a></li>
+             <li><a href="./productRadmin.php"><i class="fa fa-shopping-basket"></i>
+                <div class="title">Product Report</div>
              </a></li>
              <li><a href="./stmanagement.php"><i class="fa fa-tint"></i>
                 <div class="title">skin management</div>
