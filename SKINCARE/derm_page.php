@@ -1,4 +1,4 @@
-<!-- this is the appointent page that contains the report on the appointments made..on admin page -->
+<!-- this is the appointent page that contains the report on the appointments made..on dermatologist page -->
 <?php
    session_start();
    if(!isset($_SESSION["username"])){

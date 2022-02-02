@@ -1,4 +1,4 @@
-<!-- this is the php to support appointment page on homepage -->
+<!-- this is the php to support bookappointment page on homepage -->
 <?php
   $fname = $_POST['fname'];
   $lname = $_POST['lname'];
