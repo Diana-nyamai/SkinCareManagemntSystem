@@ -19,12 +19,14 @@ session_start();
           $count = count($_SESSION['cart']);
           $_SESSION['cart'][$count] = array('item_name' =>$_POST['item_name'], 'price'=>$_POST['price'], 'quantity' => 1);
                 echo "<script>
+                alert('you have added a product');
                 window.location.href ='home.php';
                 </script>";
         }}
         else{
             $_SESSION['cart'][0]=array('item_name' =>$_POST['item_name'], 'price'=>$_POST['price'], 'quantity' => 1);
             echo "<script>
+             alert('you have added a product');
               window.location.href ='home.php';
               </script>";
         }
