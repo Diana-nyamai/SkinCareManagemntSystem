@@ -129,7 +129,7 @@
         <h2>book appointment page</h2>
 
         <div class="form-container">
-                <form name="appointment" action="./appointment.php" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+                <form name="appointment" action="./Bappointment.php" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
                 <input type="text" id="fname" name="fname" placeholder="Your name..">
                 <input type="text" id="lname" name="lname" placeholder="Your last name..">
                 <input type="text" id="phone" name="phone" placeholder="Your phone number..">

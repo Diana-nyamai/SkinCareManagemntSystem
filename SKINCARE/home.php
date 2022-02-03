@@ -16,7 +16,7 @@
     <link rel="shortcut icon" href="./images/logo.png" type="image/x-icon">
     <title>Home | page</title>
     <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
-    <style>
+<style>
       *{
           margin: 0;
           padding: 0;

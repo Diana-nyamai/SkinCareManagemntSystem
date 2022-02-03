@@ -1,4 +1,4 @@
-<!-- this page will display the number of users and a report on users in admin-->
+<!-- this page will display the number of users and a report on orders in admin-->
 <?php
    session_start();
   $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');

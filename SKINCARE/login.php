@@ -1,3 +1,4 @@
+<!-- handles the login page -->
 <?php
 session_start(); 
 //  database connection
