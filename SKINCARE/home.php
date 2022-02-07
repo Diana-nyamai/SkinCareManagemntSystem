@@ -238,7 +238,8 @@
            
       </div>
    </div>
-
+ 
+   <!-- products section -->
    <div class="gallery">
       
    <?php 

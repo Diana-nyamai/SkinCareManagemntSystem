@@ -187,6 +187,106 @@
             left: 0;
         }
 
+        /* products section */
+        .gallery{
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        justify-content: center;
+        align-items: center;
+        gap: 1em;
+        /* margin: 50px 0; */
+            }
+            .g-content{
+                width: 20%;
+                margin: 15px;
+                box-sizing: border-box;
+                float: left;
+                text-align: center;
+                border-radius: 20px;
+                padding-top: 10px;
+                box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+                transition: .4s;
+                background: #f2f2f2;
+            }
+            .g-content:hover{
+                box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+                transform: translate(2px, 8px);
+            }
+            .g-content img{
+            width: 200;
+            height: 200px;
+            text-align: center;
+            margin: 0 auto;
+            display: block;
+            border-radius: 20px;
+        }
+        .g-content h3{
+            text-align: center;
+            font-size: 20px;
+            margin: 0;
+            padding-top: 10px;
+        }
+        .g-content p{
+            text-align: center;
+            padding: 0 8px;
+        }
+        .g-content h6{
+            font-size: 16px;
+            text-align: center;
+            margin: 0;
+        }
+        .addtocart{
+            text-align: center;
+            font-size: 24px;
+            color: #000;
+            width: 100%;
+            padding: 15px;
+            border: 0;
+            outline: none;
+            cursor: pointer;
+            margin-top: 5px;
+            border-bottom-right-radius: 20px;
+            border-bottom-left-radius: 20px;
+            background: #f09053;
+        }
+        @media all and (max-width: 1350px){
+            .g-content{
+                width: 45%;
+            }
+        }
+        @media all and (max-width: 750px){
+            .g-content{
+                width: 100%;
+            }
+        }
+
+        /* get started */
+        .v-products{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 30px 0;
+        }
+        .v-products p{
+            color:#fff;
+            text-align: center;
+            font-size: 20px;
+        }
+        .v-products a{
+            position: relative;
+            display: inline-block;
+            font-size: 18px;
+            color: #fff;
+            text-decoration: none;
+            padding: 18px 30px;
+            font-weight: 500;
+            margin-top:40px ;
+            background-color: #f09053;
+            border-radius: 50px;
+            transition: all ease-out 1s;
+        }
     </style>
 </head>
 <body>
@@ -227,5 +327,39 @@
         <img src="./images/waves.svg" alt="wave">
     </div>
     </div>
+
+    <!-- our products section -->
+    <div class="header">
+        <h1 style="text-align:center; padding: 100px 0; color: #fff;">OUR PRODUCTS</h1>
+    </div>
+    <div class="gallery">
+      
+      <?php 
+      $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
+      $res = mysqli_query($conn, "select * from tbl_product  limit 10");
+      while($row = mysqli_fetch_array($res)){
+          ?>
+     
+          <div class="g-content"> 
+              <form action="./cart_manager.php?action=add&id=<?php echo $row["id"];?>" method="post">
+              <img src="<?php echo $row["pimage"]; ?>" alt="" >
+              <h3><?php echo $row["pname"];?></h3>
+              <p><?php echo $row["pdescription"]; ?></p>
+              <h6>ksh.<?php echo $row["price"]; ?></h6>
+              <h6><?php echo $row["skin_type"] ?> skin</h6>
+              <input type="submit" name="addtocart" class="addtocart" value="Add to cart"/>
+              <input type="hidden" name="item_name" value="<?php echo $row["pname"];?>"/>
+              <input type="hidden" name="price" value="<?php echo $row["price"]; ?>"/>
+          </form>
+       </div>
+          <?php
+      }
+      ?>
+      </div>
+
+      <div class="v-products">
+          <p>Would you like to see more products?</p>
+          <a href="authentication.php" class="btn">Get Started</a>
+      </div>
 </body>
 </html>
