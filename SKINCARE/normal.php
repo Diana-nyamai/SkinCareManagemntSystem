@@ -220,7 +220,7 @@
 
             <div class="sm-container"> 
            <div class="sm-image"><img src="<?php echo $row["image"]; ?>" alt=""></div>
-           <div class="sm-skintype"><p>You have a <?php echo $row['product_type']; ?></p></div>
+           <div class="sm-skintype"><p>You have a <?php echo $row['product_type']; ?> skin</p></div>
            <div class="sm-description"><p><?php echo $row['descriptions']; ?></p></div>
            <div class="sm-management"><p><?php echo $row['skin_management']; ?></p></div>
        </div>
