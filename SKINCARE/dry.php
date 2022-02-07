@@ -78,27 +78,30 @@
             color:#fff;
             border-bottom: 1px solid #fff;
         }
-        /* skina type management */
+        /* skin type management */
         .sm-container{
-                display:grid;
-                grid-template-columns: repeat(3, 1fr);
-                color: #fff;
-                font-size: 20px;
-                margin: 50px 10px;
+            display:grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            color: #fff;
+            font-size: 20px;
+            margin: 50px 10px;
         }
         .sm-image img{
             width:100%;
             display: block;
         }
         .sm-description p{
-            float: right;
-            padding-left:20px;
+            float: left;
+            padding:0 20px;
         }
         .sm-skintype p{
             text-align: center;
-            padding: 20px;
         }
-            /* products sections */
+        .sm-management p{
+            padding: 0 20px;
+        }
+
+    /* products sections */
             .gallery{
             display: flex;
             flex-wrap: wrap;
@@ -217,9 +220,9 @@
 
             <div class="sm-container"> 
            <div class="sm-image"><img src="<?php echo $row["image"]; ?>" alt=""></div>
-           <div class="sm-description"><p><?php echo $row['descriptions']; ?></p></div>
            <div class="sm-skintype"><p>You have a <?php echo $row['product_type']; ?></p></div>
-           <div class="sm-management"><?php echo $row['skin_management']; ?></div>
+           <div class="sm-description"><p><?php echo $row['descriptions']; ?></p></div>
+           <div class="sm-management"><p><?php echo $row['skin_management']; ?></p></div>
        </div>
         <?php
          }

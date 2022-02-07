@@ -278,7 +278,9 @@
                </form>
 
                <?php
-       $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
+      $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
+
+
       $v1 = rand(1111, 9999);
       $v2 = rand(1111, 9999);
 
@@ -290,9 +292,11 @@
         $dst = "./product_image/".$v3.$fnm;
         $dst1 = "product_image/".$v3.$fnm;
         move_uploaded_file($_FILES["pimage"]["tmp_name"],$dst);
+        $descr = mysqli_real_escape_string($conn, $_POST['descr']);
+        $skinm = mysqli_real_escape_string($conn, $_POST['skinm']);
      
 
-      mysqli_query($conn, "insert into skin_type_management (image, descriptions,product_type,skin_management) values('$dst1','$_POST[descr]','$_POST[prtype]', '$_POST[skinm]')");
+      mysqli_query($conn, "INSERT INTO skin_type_management (image, descriptions,product_type,skin_management) VALUES('$dst1','$descr','$_POST[prtype]', '$skinm')");
        }
        ?>
                  </div>   
