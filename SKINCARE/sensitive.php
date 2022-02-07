@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=0">
     <link rel="shortcut icon" href="./images/logo.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
-    <title>sensitive skin</title>
+    <title>senstive skin</title>
     <style>
         *{
             margin: 0;
@@ -78,27 +78,30 @@
             color:#fff;
             border-bottom: 1px solid #fff;
         }
-        /* skina type management */
+        /* skin type management */
         .sm-container{
-                display:grid;
-                grid-template-columns: repeat(3, 1fr);
-                color: #fff;
-                font-size: 20px;
-                margin: 50px 10px;
+            display:grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            color: #fff;
+            font-size: 20px;
+            margin: 50px 10px;
         }
         .sm-image img{
             width:100%;
             display: block;
         }
         .sm-description p{
-            float: right;
-            padding-left:20px;
+            float: left;
+            padding:0 20px;
         }
         .sm-skintype p{
             text-align: center;
-            padding: 20px;
         }
-            /* products sections */
+        .sm-management p{
+            padding: 0 20px;
+        }
+
+    /* products sections */
             .gallery{
             display: flex;
             flex-wrap: wrap;
@@ -188,7 +191,8 @@
             <li><a href="dry.php">DRY </a></li>
             <li><a href="normal.php">NORMAL</a></li>
             <li><a href="sensitive.php">SENSITIVE</a></li>
-            <li><a href="oily.php">OILY&COMBINATION</a></li>
+            <li><a href="oily.php">OILY</a></li>
+            <li><a href="combination.php">COMBINATION</a></li>
             <li><a href="./bookappointment.php">APPOINTMENT</a></li>
             <li>
              <?php 
@@ -210,15 +214,15 @@
      
         <!--SKIN TYPE MANAGEMENT  -->
         <?php 
-         $sm = mysqli_query($conn, "select * from skin_type_management where product_type='senitive'");
+         $sm = mysqli_query($conn, "select * from skin_type_management where product_type='sensitive'");
          while($row = mysqli_fetch_array($sm)){
              ?>
 
             <div class="sm-container"> 
            <div class="sm-image"><img src="<?php echo $row["image"]; ?>" alt=""></div>
+           <div class="sm-skintype"><p>You have a <?php echo $row['product_type']; ?> skin</p></div>
            <div class="sm-description"><p><?php echo $row['descriptions']; ?></p></div>
-           <div class="sm-skintype"><p>You have a <?php echo $row['product_type']; ?></p></div>
-           <div class="sm-management"><?php echo $row['skin_management']; ?></div>
+           <div class="sm-management"><p><?php echo $row['skin_management']; ?></p></div>
        </div>
         <?php
          }
