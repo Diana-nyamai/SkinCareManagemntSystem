@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=0">
     <link rel="shortcut icon" href="./images/logo.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
-    <title>view cart</title>
+    <title>order page</title>
     <style>
         *{
             margin: 0;
@@ -164,16 +164,16 @@
         </ul>
     </header>
 <div class="main-body">
-    <h2>Product Cart</h2>
+    <h2>Make Order</h2>
     
     <table id="customers">
   <tr>
-    <th>Id</th>
-    <th>Product Name</th>
-    <th>Product Price</th>
-    <th>quantity</th>
-    <th></th>
-    <th>Total</th>
+    <th>First name</th>
+    <th>email</th>
+    <th>product name</th>
+    <th>total amount</th>
+    <th>payment</th>
+    <th>make order</th>
   </tr>
   <?php
          $total=0;
@@ -183,35 +183,31 @@
                  $total = $total + $value['price'];
                  echo"
                  <tr>
-                   <td>$prid</td>
-                   <td>$value[item_name]</td>
-                   <td>$value[price]</td>
-                   <td><input class='number' type='number' value='$value[quantity]' min='1' max='10'/></td>
-                   <td><form action='cart_manager.php' method='post'>
-                   <button class='remove' name='remove'>Remove</button>
-                   <input type='hidden' name='item_name' value='$value[item_name]'/>
-                   </form></td>
-                 </tr>
-                 ";
+                 <form action='order.php' method='post'>
+                   <td><input type='text' name='fname'/></td>
+                   <td><input type='text' name='email'/></td>
+                
+                   <td><select id='payment' name='item'>
+                   <option value='$value[item_name]' selected='selected'>$value[item_name]</option>
+                 </select></td>
+
+                   <input type='hidden' name='price' value='$value[price]'/>
+                   <td> <select id='payment' name='total'>
+                   <option value='$total' selected='selected'>$total</option>
+                 </select></td>
+
+                   <td><select id='payment' name='payment'>
+                   <option value='cash' selected='selected'>cash on delivery</option>
+                 </select></td>
+                 <td><input type='submit' value='order'></td>
+                 </form>
+                 </tr>";
              }
          }
       ?>
    
-  <tr id="total">
-    <td id="total"></td>
-    <td id="total"></td>
-    <td id="total"></td>
-    <td id="total"></td>
-    <td id="total"></td>
-    <td id="total">ksh. <?php echo $total  ?></td>
-  </tr> 
+ 
 </table>
-<form action="makeOrder.php">
-    <div class="main">
-        <div class="checkout">
-        <input type="submit" value="Proceed to checkout">
-        </div>
-</div>
 </form>
 </div>
 </body>

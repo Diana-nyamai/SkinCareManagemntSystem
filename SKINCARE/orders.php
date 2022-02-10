@@ -162,6 +162,24 @@
        border-radius: 10px;
        text-decoration: none;
    }
+   .options select{
+       padding: 5px;
+       width: 300px
+   }
+   .options select option{
+       outline: none;
+   }
+   .options input{
+       padding: 5px 10px;
+       width: 100px;
+       background-image: linear-gradient(45deg,#1e1f31, #f09053);
+       color: #fff;
+       border-radius: 10px;
+       text-decoration: none;
+       border:none;
+       cursor: pointer;
+       /* outline: none; */
+   }
    table{
        margin-top: 10px;
        width: 100%;
@@ -288,34 +306,103 @@
                       <h2>orders</h2>
                       <a href="" class="btn">View all</a>
                 </div>
+                <form action="#" method="post">
+                <div class="options">
+                    <select name="filterChoice">
+                        <option value="0" selected="selected">All time</option>
+                        <option value="1">Last 7 days</option>
+                        <option value="2">Last month</option>
+                        <option value="3">This year</option>
+                        <option value="4">Last year</option>
+
+                    </select>
+                 <input type="submit" value="filter" name="choice" class="bton">
+                </div></form>
                 <table class="appointments">
                     <thead>
-                        <td>id</td>
                         <td>order date</td>
+                        <td>Name</td>
+                        <td>email</td>
+                        <td>product name</td>                       
+                        <td>total amount</td>
                         <td>payment</td>
-                        <td>user id</td>                       
-                        <td>shop id</td>
-                        <td>product id</td>
                         <td>Actions</td>
                     </thead>
-                    <?php 
+
+                    <?php
+                   if(!isset($_POST['choice'])){
+                       $query = "SELECT * FROM tbl_orders";
+                       getData($query);
+                   }
+                   elseif(isset($_POST['choice'])){
+                    switch($_POST['filterChoice']){
+                        case "0":
+                            $sql = "SELECT * FROM tbl_orders ORDER BY YEAR(Order_date) asc, MONTH(Order_date) ASC, DAY(Order_date) ASC";
+                            getdata($sql);
+                            break;
+                            // IN THE LAST 7 DAYS
+                        case "1":
+                            $sql = "SELECT * FROM tbl_orders WHERE Order_date > DATE_SUB(NOW(), INTERVAL 7 DAY) ORDER BY DAY(Order_date) ASC";
+                            getData($sql);
+                            break;
+                            // IN THE LAST MONTH
+                        case "2":
+                            $sql = "SELECT * FROM tbl_orders where MONTH(Order_date) = MONTH(DATE_ADD(Now(), INTERVAL -1 MONTH)) ORDER BY DAY(Order_date) ASC";
+                            getData($sql);
+                            break;
+                            // IN THIS YEAR
+                        case "3":
+                            $sql = "SELECT * FROM tbl_orders WHERE YEAR(Order_date) = YEAR(CURDATE()) ORDER BY YEAR(Order_date) ASC, MONTH(Order_date) ASC, DAY(Order_date) asc";
+                            getData($sql);
+                            break;
+                        case "4":
+                            $sql = "SELECT * FROM tbl_orders WHERE YEAR(Order_date) = YEAR(CURDATE()) -1 ORDER BY DAY(Order_date) ASC";
+                            getData($sql);
+                            break;
+                    }
+                   }
+                ?>
+
+<?php 
+    function getData($sql){
+           $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
+           $data = mysqli_query($conn, $sql) ;
+        if(mysqli_num_rows($data) > 0){
            while($row = mysqli_fetch_array($data)){
-               echo "
+               $orderdate = $row['Order_date'];
+               $orderdate = strtotime($orderdate);
+               $Ordate = date("d/m/y", $orderdate);
+               $first_name = $row['first_name'];
+               $email = $row['email'];
+               $product_name = $row['product_name'];
+               $tamount = $row['tamount'];
+               $payment = $row['payment']
+              
+               ?>
+    
                 <tr>
-                        <td>{$row['Order_date']}</td>
-                        <td>{$row['tamount']}</td>
-                        <td>{$row['payment']}</td>
-                        <td>{$row['user_id']}</td>
-                        <td>{$row['shop_id']}</td>
-                        <td{$row['product_id']}></td>
+                        <td><?php echo $Ordate;?></td>
+                        <td><?php echo $first_name;?></td>
+                        <td><?php echo $email;?></td>
+                        <td><?php echo $product_name;?></td>
+                        <td><?php echo $tamount;?></td>
+                        <td><?php echo $payment;?></td>
                         <td>
                             <i class='fa fa-edit'></i>
                             <i class='fa fa-trash'></i>
                         </td>
                     </tr>
-                    ";
+          <?php     
            }
-           ?>
+           }
+           else { ?>
+
+              <tr><td>No data found!</td></tr>
+              <?php
+           }
+          
+       }  ?>
+    <!-- closes the function -->
                    
                     
                     
