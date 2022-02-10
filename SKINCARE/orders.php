@@ -240,6 +240,9 @@
                 <li><a href="./users.php"><i class="fa fa-user"></i>
                     <div class="title">users</div>
              </a></li>
+             <li><a href="./customers.php"><i class="fa fa-user"></i>
+                    <div class="title">customers</div>
+             </a></li>
              <li><a href="./orders.php"><i class="fa fa-money"></i>
                 <div class="title">orders</div>
              </a></li>
