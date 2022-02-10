@@ -165,6 +165,24 @@
        border-radius: 10px;
        text-decoration: none;
    }
+   .options select{
+       padding: 5px;
+       width: 300px
+   }
+   .options select option{
+       outline: none;
+   }
+   .options input{
+       padding: 5px 10px;
+       width: 100px;
+       background-image: linear-gradient(45deg,#1e1f31, #f09053);
+       color: #fff;
+       border-radius: 10px;
+       text-decoration: none;
+       border:none;
+       cursor: pointer;
+       /* outline: none; */
+   }
    table{
        margin-top: 10px;
        width: 100%;
@@ -298,9 +316,23 @@
           <div class="tables">
               <div class="last-appointments">
                   <div class="heading">
-                      <h2>Last appointment</h2>
+                      <h2>Appointment</h2>
                       <a href="" class="btn">View all</a>
                 </div>
+
+                <form action="#" method="post">
+                <div class="options">
+                    <select name="filterChoice">
+                        <option value="0" selected="selected">All time</option>
+                        <option value="1">Last 7 days</option>
+                        <option value="2">Last month</option>
+                        <option value="3">This year</option>
+                        <option value="4">Last year</option>
+
+                    </select>
+                 <input type="submit" value="filter" name="choice" class="bton">
+                </div></form>
+
                 <table class="appointments">
                     <thead>
                         <td>First Name</td>
@@ -311,25 +343,78 @@
                         <td>time</td>
                         <td>Actions</td>
                     </thead>
-                <?php 
-                while($row = mysqli_fetch_array($data)){
-                    echo "
-                     <tr>
-                        <td>{$row['first_name']}</td>
-                        <td>{$row['last_name']}</td>
-                        <td>{$row['phone_no']}</td>
-                        <td>{$row['email']}</td>
-                        <td>{$row['appointment_date']}</td>
-                        <td>{$row['appointment_time']}</td>
+                    <?php
+                   if(!isset($_POST['choice'])){
+                       $query = "SELECT * FROM tbl_appointment";
+                       getData($query);
+                   }
+                   elseif(isset($_POST['choice'])){
+                    switch($_POST['filterChoice']){
+                        case "0":
+                            $sql = "SELECT * FROM tbl_appointment ORDER BY YEAR(appointment_date) asc, MONTH(appointment_date) ASC, DAY(appointment_date) ASC";
+                            getdata($sql);
+                            break;
+                            // IN THE LAST 7 DAYS
+                        case "1":
+                            $sql = "SELECT * FROM tbl_appointment WHERE appointment_date > DATE_SUB(NOW(), INTERVAL 7 DAY) ORDER BY DAY(appointment_date) ASC";
+                            getData($sql);
+                            break;
+                            // IN THE LAST MONTH
+                        case "2":
+                            $sql = "SELECT * FROM tbl_appointment where MONTH(appointment_date) = MONTH(DATE_ADD(Now(), INTERVAL -1 MONTH)) ORDER BY DAY(appointment_date) ASC";
+                            getData($sql);
+                            break;
+                            // IN THIS YEAR
+                        case "3":
+                            $sql = "SELECT * FROM tbl_appointment WHERE YEAR(appointment_date) = YEAR(CURDATE()) ORDER BY YEAR(appointment_date) ASC, MONTH(appointment_date) ASC, DAY(appointment_date) asc";
+                            getData($sql);
+                            break;
+                        case "4":
+                            $sql = "SELECT * FROM tbl_appointment WHERE YEAR(appointment_date) = YEAR(CURDATE()) -1 ORDER BY DAY(appointment_date) ASC";
+                            getData($sql);
+                            break;
+                    }
+                   }
+                ?>
+                    <?php 
+    function getData($sql){
+           $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
+           $data = mysqli_query($conn, $sql) ;
+        if(mysqli_num_rows($data) > 0){
+           while($row = mysqli_fetch_array($data)){
+               $firstName = $row['first_name'];
+               $lastName = $row['last_name'];
+               $phoneNumber = $row['phone_no'];
+               $email = $row['email'];
+               $appointdate = $row['appointment_date'];
+               $appointdate = strtotime($appointdate);
+               $appdate = date("d/m/y", $appointdate);
+               $appointime = $row['appointment_time'];
+               ?>
+    
+                <tr>
+                        <td><?php echo $firstName;?></td>
+                        <td><?php echo $lastName;?></td>
+                        <td><?php echo $phoneNumber;?></td>
+                        <td><?php echo $email;?></td>
+                        <td><?php echo $appdate;?></td>
+                        <td><?php echo $appointime;?></td>
                         <td>
                             <i class='fa fa-edit'></i>
                             <i class='fa fa-trash'></i>
                         </td>
                     </tr>
-                    "
-                    ;
-                }
-                ?>
+          <?php     
+           }
+           }
+           else { ?>
+
+              <tr><td>No data found!</td></tr>
+              <?php
+           }
+          
+       }  ?>
+    <!-- closes the function -->
                    
                 </table>
               </div>

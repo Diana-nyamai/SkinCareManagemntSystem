@@ -1,6 +1,9 @@
 <!-- this page will display the number of users and a report on users -->
 <?php
    session_start();
+   $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
+   $users = mysqli_query($conn, 'SELECT * FROM tbl_users');
+   $usernum = mysqli_num_rows($users);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -286,6 +289,7 @@
                 <div class="card">
                     <div class="card-content">
                         <div class="number"></div>
+                        <div class="number"><?php echo $usernum; ?></div>
                         <div class="card-name">users</div>
                        </div> 
                        <div class="icon-box"><i class="fa fa-user"></i></div>

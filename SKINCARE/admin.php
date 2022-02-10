@@ -311,7 +311,7 @@
           <div class="tables">
               <div class="last-appointments">
                   <div class="heading">
-                      <h2>Last appointment</h2>
+                      <h2>Appointment</h2>
                       <a href="" class="btn">View all</a>
                 </div>
                 <table class="appointments">

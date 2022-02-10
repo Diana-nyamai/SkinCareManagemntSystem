@@ -177,12 +177,12 @@
     return false;
   }
   if(date.indexOf('-') == -1){
-         alert('date should be in the form dd-mm-yy');
+         alert('date should be in the form yyyy-mm-dd');
          document.getElementById('date').focus();
          return false;
        }
        comps = date.split('-');
-       if(comps[0].length< 1 || comps[1].length < 1 || comps[2].length<4){
+       if(comps[0].length< 4 || comps[1].length < 1 || comps[2].length<1){
          alert('date should be in the form dd-mm-yyyy');
          document.getElementById('date').focus();
          return false;
