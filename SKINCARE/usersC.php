@@ -1,6 +1,9 @@
 <!-- this page will display the number of users and a report on users -->
 <?php
    session_start();
+  $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
+  $data = mysqli_query($conn, 'SELECT * FROM tbl_users');
+  $number = mysqli_num_rows($data);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -155,27 +158,9 @@
    .btn{
        padding: 5px 10px;
        background-image: linear-gradient(45deg,#1e1f31, #f09053);
-       color: #fff;
+       color: #000;
        border-radius: 10px;
        text-decoration: none;
-   }
-   .options select{
-       padding: 5px;
-       width: 300px
-   }
-   .options select option{
-       outline: none;
-   }
-   .options input{
-       padding: 5px 10px;
-       width: 100px;
-       background-image: linear-gradient(45deg,#1e1f31, #f09053);
-       color: #fff;
-       border-radius: 10px;
-       text-decoration: none;
-       border:none;
-       cursor: pointer;
-       /* outline: none; */
    }
    table{
        margin-top: 10px;
@@ -285,7 +270,7 @@
                 
                 <div class="card">
                     <div class="card-content">
-                        <div class="number"></div>
+                        <div class="number"><?php echo $number; ?></div>
                         <div class="card-name">users</div>
                        </div> 
                        <div class="icon-box"><i class="fa fa-user"></i></div>
@@ -300,18 +285,6 @@
                       <h2>users</h2>
                       <a href="" class="btn">View all</a>
                 </div>
-                <form action="#" method="post">
-                <div class="options">
-                    <select name="filterChoice">
-                        <option value="0" selected="selected">All time</option>
-                        <option value="1">Last 7 days</option>
-                        <option value="2">Last month</option>
-                        <option value="3">This year</option>
-                        <option value="4">Last year</option>
-
-                    </select>
-                 <input type="submit" value="filter" name="choice" class="bton">
-                </div></form>
                 <table class="appointments">
                     <thead>
                         <td>First Name</td>
@@ -322,79 +295,25 @@
                         <td>sign up date</td>
                         <td>Actions</td>
                     </thead>
-                    <?php
-                   if(!isset($_POST['choice'])){
-                       $query = "SELECT * FROM tbl_users";
-                       getData($query);
-                   }
-                   elseif(isset($_POST['choice'])){
-                    switch($_POST['filterChoice']){
-                        case "0":
-                            $sql = "SELECT * FROM tbl_users ORDER BY YEAR(signup_date) asc, MONTH(signup_date) ASC, DAY(signup_date) ASC";
-                            getdata($sql);
-                            break;
-                            // IN THE LAST 7 DAYS
-                        case "1":
-                            $sql = "SELECT * FROM tbl_users WHERE signup_date > DATE_SUB(NOW(), INTERVAL 7 DAY) ORDER BY DAY(signup_date) ASC";
-                            getData($sql);
-                            break;
-                            // IN THE LAST MONTH
-                        case "2":
-                            $sql = "SELECT * FROM tbl_users where MONTH(signup_date) = MONTH(DATE_ADD(Now(), INTERVAL -1 MONTH)) ORDER BY DAY(signup_date) ASC";
-                            getData($sql);
-                            break;
-                            // IN THIS YEAR
-                        case "3":
-                            $sql = "SELECT * FROM tbl_users WHERE YEAR(signup_date) = YEAR(CURDATE()) ORDER BY YEAR(signup_date) ASC, MONTH(signup_date) ASC, DAY(signup_date) asc";
-                            getData($sql);
-                            break;
-                        case "4":
-                            $sql = "SELECT * FROM tbl_users WHERE YEAR(signup_date) = YEAR(CURDATE()) -1 ORDER BY DAY(signup_date) ASC";
-                            getData($sql);
-                            break;
-                    }
-                   }
-                ?>
                     <?php 
-    function getData($sql){
-           $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
-           $data = mysqli_query($conn, $sql) ;
-        if(mysqli_num_rows($data) > 0){
            while($row = mysqli_fetch_array($data)){
-               $firstName = $row['first_name'];
-               $lastName = $row['last_name'];
-               $phoneNumber = $row['phone_number'];
-               $email = $row['email'];
-               $gender = $row['gender'];
-               $regday = $row['signup_date'];
-               $regday = strtotime($regday);
-               $signUp = date("d/m/y", $regday);
-               ?>
-    
+               echo "
                 <tr>
-                        <td><?php echo $firstName;?></td>
-                        <td><?php echo $lastName;?></td>
-                        <td><?php echo $phoneNumber;?></td>
-                        <td><?php echo $email;?></td>
-                        <td><?php echo $gender;?></td>
-                        <td><?php echo $signUp;?></td>
+                        <td>{$row['first_name']}</td>
+                        <td>{$row['last_name']}</td>
+                        <td>{$row['phone_number']}</td>
+                        <td>{$row['email']}</td>
+                        <td>{$row['gender']}</td>
+                        <td>{$row['signup_date']}</td>
                         <td>
                             <i class='fa fa-edit'></i>
                             <i class='fa fa-trash'></i>
                         </td>
                     </tr>
-          <?php     
+                    ";
            }
-           }
-           else { ?>
-
-              <tr><td>No data found!</td></tr>
-              <?php
-           }
-          
-       }  ?>
-    <!-- closes the function -->
-        
+           ?>
+                   
                     
                     
                 </table>
