@@ -1,9 +1,11 @@
 <!-- this page will display the number of users and a report on users in admin -->
 <?php
    session_start();
+  $id = $_GET['id'];
   $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
-  $data = mysqli_query($conn, 'SELECT * FROM tbl_product');
-  $number = mysqli_num_rows($data)
+  $data = mysqli_query($conn, "SELECT * FROM tbl_product WHERE id='$id'");
+  $number = mysqli_num_rows($data);
+  $updatedata = mysqli_fetch_assoc($data);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +13,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=0">
-    <title>Admin panel</title>
+    <title>update product | panel</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="./images/logo.png" type="image/x-icon">
@@ -277,40 +279,41 @@
 
           <div class="tables">
               <div class="last-appointments">
+                  <div><p><a href="./productRadmin.php"> < Back</a></p></div>
                   <div class="heading">
-                      <h2>Add products</h2>
+                      <h2>update products</h2>
                 </div>
                 <div class="form-container">
-                <form name="product" action="" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
-                <input type="text" id="sname" name="sname" placeholder="shop name..">
-                <input type="text" id="sowner" name="sowner" placeholder="shop owner..">
-                <input type="text" id="sphone" name="sphone" placeholder="shop phone number..">
-                <input type="text" placeholder="shop email.." name="semail" id="semail">
-                <input type="text" name="pname" id="pname" placeholder=" product name..">
-                <input type="text" id="skintype" name="skintype" placeholder="for skin type..">
-                <textarea type="textbox" id="pdescription" name="pdescription" placeholder="product description.."></textarea>
-                <input type="text" id="pprice" name="pprice" placeholder="product price..">
-                <input type="file" id="pimage" name="pimage" placeholder="product price..">
-                <input class="btn" type="submit" name="submit" value="upload">
+                <form name="product" action="#" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+                <input value="<?php echo $updatedata['sname']; ?>" type="text" id="sname" name="sname" placeholder="shop name..">
+                <input value="<?php echo $updatedata['pname']; ?>" type="text" name="pname" id="pname" placeholder=" product name..">
+                <input value="<?php echo $updatedata['skin_type']; ?>" type="text" id="skintype" name="skintype" placeholder="for skin type..">
+                <textarea type="textbox" id="pdescription" name="pdescription" placeholder="product description.."><?php echo $updatedata['pdescription'] ?>
+                </textarea>
+                <input value="<?php echo $updatedata['price']; ?>" type="text" id="pprice" name="pprice" placeholder="product price..">
+                <input class="btn" type="submit" name="update" value="update products">
                </form>
 
                <?php
        $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
-      $v1 = rand(1111, 9999);
-      $v2 = rand(1111, 9999);
 
-      $v3 = $v1.$v2;
-      $v3 = md5($v3);
+      if(isset($_POST["update"])){
+        $sname = $_POST['sname'];
+        $pname = $_POST['pname'];
+        $skintype = $_POST['skintype'];
+        $pdescription = $_POST['pdescription'];
+        $pprice = $_POST['pprice'];
+        
+        $update = mysqli_query($conn, "UPDATE tbl_product set sname='$sname', pname='$pname', skin_type='$skintype', pdescription='$pdescription', price='$pprice' where id='$id'");
 
-      if(isset($_POST["submit"])){
-        $fnm = $_FILES["pimage"]["name"];
-        $dst = "./product_image/".$v3.$fnm;
-        $dst1 = "product_image/".$v3.$fnm;
-        move_uploaded_file($_FILES["pimage"]["tmp_name"],$dst);
-     
+        if($update){
+            echo "record updated";
+        }
+        else{
+            echo "failed to update";
+        }
 
-      mysqli_query($conn, "INSERT INTO tbl_product (sname,sowner,phone_no,email,pname,skin_type,pdescription,price,pimage) VALUES ('$_POST[sname]','$_POST[sowner]','$_POST[sphone]', '$_POST[semail]', '$_POST[pname]', '$_POST[skintype]', '$_POST[pdescription]', '$_POST[pprice]','$dst1')");
-       }
+      }
        ?>
                  </div>   
                 </table>

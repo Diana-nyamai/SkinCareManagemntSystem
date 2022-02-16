@@ -3,7 +3,7 @@
    session_start();
   $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
   $data = mysqli_query($conn, 'SELECT * FROM tbl_product');
-  $number = mysqli_num_rows($data)
+  $number = mysqli_num_rows($data);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -290,9 +290,10 @@
                 <table class="appointments">
                     <thead>
                         <td>Id</td>
-                        <td>Email</td>
-                        <td>product Name</td>                       
+                        <td>shop name</td>
+                        <td>product Name</td>                                
                         <td>Skin type</td>
+                        <td>product description</td>  
                         <td>price</td>
                         <td>Actions</td>
                        
@@ -303,13 +304,15 @@
                echo "
                 <tr>
                         <td>{$row['id']}</td>
-                        <td>{$row['email']}</td>
+                        <td>{$row['sname']}</td>
                         <td>{$row['pname']}</td>
                         <td>{$row['skin_type']}</td>
+                        <td>{$row['pdescription']}</td>
                         <td>{$row['price']}</td>
                         <td>
-                        <a href=''><i class='fa fa-edit'></i></a>
-                        <a href=''><i class='fa fa-trash'></i></a>
+                        <a href='./updateproduct.php?id=$row[id]'>
+                        <i class='fa fa-edit'></i></a>
+                        <a href='./deleteproduct.php'><i class='fa fa-trash'></i></a>
                         
                     </td>
                     </tr>

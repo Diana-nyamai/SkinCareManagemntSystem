@@ -3,7 +3,7 @@
    session_start();
   $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
   $data = mysqli_query($conn, 'SELECT * FROM tbl_product');
-  $number = mysqli_num_rows($data)
+  $number = mysqli_num_rows($data);
 ?>
 <!DOCTYPE html>
 <html lang="en">
