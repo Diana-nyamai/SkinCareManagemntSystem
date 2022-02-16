@@ -355,6 +355,7 @@
                             $sql = "SELECT * FROM tbl_users WHERE YEAR(signup_date) = YEAR(CURDATE()) ORDER BY YEAR(signup_date) ASC, MONTH(signup_date) ASC, DAY(signup_date) asc";
                             getData($sql);
                             break;
+                            // IN LAST YEAR
                         case "4":
                             $sql = "SELECT * FROM tbl_users WHERE YEAR(signup_date) = YEAR(CURDATE()) -1 ORDER BY DAY(signup_date) ASC";
                             getData($sql);

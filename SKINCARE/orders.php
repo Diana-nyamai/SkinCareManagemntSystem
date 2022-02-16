@@ -355,6 +355,7 @@
                             $sql = "SELECT * FROM tbl_orders WHERE YEAR(Order_date) = YEAR(CURDATE()) ORDER BY YEAR(Order_date) ASC, MONTH(Order_date) ASC, DAY(Order_date) asc";
                             getData($sql);
                             break;
+                            // IN THE LAST YEAR
                         case "4":
                             $sql = "SELECT * FROM tbl_orders WHERE YEAR(Order_date) = YEAR(CURDATE()) -1 ORDER BY DAY(Order_date) ASC";
                             getData($sql);

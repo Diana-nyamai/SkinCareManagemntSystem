@@ -331,6 +331,7 @@
                         <option value="2">Last month</option>
                         <option value="3">This year</option>
                         <option value="4">Last year</option>
+                        <option value="5">next month</option>
 
                     </select>
                  <input type="submit" value="filter" name="choice" class="bton">
@@ -373,8 +374,14 @@
                             $sql = "SELECT * FROM tbl_appointment WHERE YEAR(appointment_date) = YEAR(CURDATE()) ORDER BY YEAR(appointment_date) ASC, MONTH(appointment_date) ASC, DAY(appointment_date) asc";
                             getData($sql);
                             break;
+                            // IN THE LAST MONTH
                         case "4":
                             $sql = "SELECT * FROM tbl_appointment WHERE YEAR(appointment_date) = YEAR(CURDATE()) -1 ORDER BY DAY(appointment_date) ASC";
+                            getData($sql);
+                            break;
+                            // NEXT MONTH
+                        case "5":
+                            $sql = "SELECT * FROM tbl_appointment where MONTH(appointment_date) = MONTH(DATE_ADD(Now(), INTERVAL +1 MONTH)) ORDER BY DAY(appointment_date) ASC";
                             getData($sql);
                             break;
                     }
