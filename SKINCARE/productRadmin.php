@@ -289,30 +289,29 @@
                 </div>
                 <table class="appointments">
                     <thead>
-                        <td>shop Name</td>
-                        <td>shop owner</td>
-                        <td>Phone Number</td>
+                        <td>Id</td>
                         <td>Email</td>
                         <td>product Name</td>                       
                         <td>Skin type</td>
-                        <td>Product Description</td>
                         <td>price</td>
-                        <td>image</td>
+                        <td>Actions</td>
+                       
 
                     </thead>
                     <?php 
            while($row = mysqli_fetch_array($data)){
                echo "
                 <tr>
-                        <td>{$row['sname']}</td>
-                        <td>{$row['sowner']}</td>
-                        <td>{$row['phone_no']}</td>
+                        <td>{$row['id']}</td>
                         <td>{$row['email']}</td>
                         <td>{$row['pname']}</td>
                         <td>{$row['skin_type']}</td>
-                        <td>{$row['pdescription']}</td>
                         <td>{$row['price']}</td>
-                        <td>{$row['pimage']}</td>
+                        <td>
+                        <a href=''><i class='fa fa-edit'></i></a>
+                        <a href=''><i class='fa fa-trash'></i></a>
+                        
+                    </td>
                     </tr>
                     ";
            }

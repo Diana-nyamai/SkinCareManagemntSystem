@@ -99,19 +99,13 @@
             text-align: center;
 
         }
-        .number{
+        .input{
             padding:10px;
             border: none;
-            background: #f09053;
+            background: white;
             text-align: center;
             outline:none;
-        }
-        .remove{
-            padding:15px;
-            border: none;
-           
-            background: #f09053;
-            text-align: center;
+            color: #000;
         }
         .main{
             border:1px solid black;
@@ -184,22 +178,22 @@
                  echo"
                  <tr>
                  <form action='order.php' method='post'>
-                   <td><input type='text' name='fname'/></td>
-                   <td><input type='text' name='email'/></td>
+                   <td><input class='input' type='text' name='fname' placeholder='first name'/></td>
+                   <td><input class='input' type='text' name='email' placeholder='email'/></td>
                 
-                   <td><select id='payment' name='item'>
+                   <td><select id='payment' name='item' class='input'>
                    <option value='$value[item_name]' selected='selected'>$value[item_name]</option>
                  </select></td>
 
                    <input type='hidden' name='price' value='$value[price]'/>
-                   <td> <select id='payment' name='total'>
+                   <td> <select id='payment' name='total' class='input'>
                    <option value='$total' selected='selected'>$total</option>
                  </select></td>
 
-                   <td><select id='payment' name='payment'>
+                   <td><select id='payment' name='payment' class='input'>
                    <option value='cash' selected='selected'>cash on delivery</option>
                  </select></td>
-                 <td><input type='submit' value='order'></td>
+                 <td><input type='submit' value='order' class='input'></td>
                  </form>
                  </tr>";
              }

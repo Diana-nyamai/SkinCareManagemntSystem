@@ -18,7 +18,7 @@ else{
     echo "
     <script>
     alert('order is completed');
-    window.location.href = 'home.php';
+    window.location.href = 'makeOrder.php';
     </script>
     ";
     $stmt->close();
