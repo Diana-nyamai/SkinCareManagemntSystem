@@ -369,6 +369,7 @@
            $data = mysqli_query($conn, $sql) ;
         if(mysqli_num_rows($data) > 0){
            while($row = mysqli_fetch_array($data)){
+               $id = $row['order_id'];
                $orderdate = $row['Order_date'];
                $orderdate = strtotime($orderdate);
                $Ordate = date("d/m/y", $orderdate);
@@ -376,7 +377,7 @@
                $email = $row['email'];
                $product_name = $row['product_name'];
                $tamount = $row['tamount'];
-               $payment = $row['payment']
+               $payment = $row['payment'];
               
                ?>
     
@@ -388,8 +389,9 @@
                         <td><?php echo $tamount;?></td>
                         <td><?php echo $payment;?></td>
                         <td>
-                            <i class='fa fa-edit'></i>
-                            <i class='fa fa-trash'></i>
+                        <?php echo "
+                         <a title='delete' href='./deleteorder.php?id=$id'><input type='submit' class='btn' value='delete' /></a> 
+                        ";?>
                         </td>
                     </tr>
           <?php     
