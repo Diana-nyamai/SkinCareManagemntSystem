@@ -1,9 +1,11 @@
-<!-- this page will display the number of users and a report on users -->
+<!-- this page will display the update form of appointment in admin -->
 <?php
    session_start();
+  $id = $_GET['id'];
   $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
-  $data = mysqli_query($conn, 'SELECT * FROM tbl_product');
+  $data = mysqli_query($conn, "SELECT * FROM tbl_appointment WHERE appointment_id='$id'");
   $number = mysqli_num_rows($data);
+  $updatedata = mysqli_fetch_assoc($data);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +13,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=0">
-    <title>Admin panel</title>
+    <title>update product | panel</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="./images/logo.png" type="image/x-icon">
@@ -158,34 +160,26 @@
    .btn{
        padding: 5px 10px;
        background-image: linear-gradient(45deg,#1e1f31, #f09053);
-       color: #fff;
+       color: #000;
        border-radius: 10px;
        text-decoration: none;
    }
-   table{
+   .form-container input{
        margin-top: 10px;
        width: 100%;
-       border-collapse: collapse;
+       padding: 10px 10px;
+       outline: none;
+
    }
-   thead{
-       font-weight: 600;
+   .form-container textarea{
+       margin-top: 10px;
+       width: 100%;
+       height: 300px;
+       padding: 10px 10px;
+       outline: none;
    }
-   table tr{
-       border-bottom: 1px solid rgba(0,0,0,0.1);
-   }
-   tbody tr:hover{
-       background: #f09053;
-   }
-   td{
-       padding: 9px 5px;
-   }
-   td i{
-       padding: 7px;
-       border-radius: 50px;
-   }
-   .last-appointments table tbody td:last-child{
-       white-space: nowrap;
-   }
+   
+
    @media all and (max-width: 1090px){
       .sidebar{
           width: 60px;
@@ -249,6 +243,7 @@
              <li><a href="./productadmin.php"><i class="fa fa-shopping-basket"></i>
                 <div class="title">Products</div>
              </a></li>
+             <!-- this page will display the number of users and a report on users -->
              <li><a href="./productRadmin.php"><i class="fa fa-shopping-basket"></i>
                 <div class="title">Product Report</div>
              </a></li>
@@ -274,7 +269,7 @@
                 <div class="card">
                     <div class="card-content">
                         <div class="number"><?php echo $number; ?></div>
-                        <div class="card-name">products</div>
+                        <div class="card-name">Products</div>
                        </div> 
                        <div class="icon-box"><i class="fa fa-shopping-basket"></i></div>
                 </div>
@@ -284,48 +279,112 @@
 
           <div class="tables">
               <div class="last-appointments">
+                  <div><p><a href="./appointments.php"> < Back</a></p></div>
                   <div class="heading">
-                      <h2>product report</h2>
+                      <h2>update status</h2>
                 </div>
-                <table class="appointments">
-                    <thead>
-                        <td>Id</td>
-                        <td>shop name</td>
-                        <td>product Name</td>                                
-                        <td>Skin type</td>
-                        <td>product description</td>  
-                        <td>price</td>
-                        <td>Actions</td>
-                       
+                <div class="form-container">
+                <form name="product" action="#" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+                <input value="<?php echo $updatedata['statuses']; ?>" type="text" id="sname" name="status" placeholder="status..">
+                <input class="btn" type="submit" name="update" value="update products">
+               </form>
 
-                    </thead>
-                    <?php 
-           while($row = mysqli_fetch_array($data)){
-               echo "
-                <tr>
-                        <td>{$row['id']}</td>
-                        <td>{$row['sname']}</td>
-                        <td>{$row['pname']}</td>
-                        <td>{$row['skin_type']}</td>
-                        <td>{$row['pdescription']}</td>
-                        <td>{$row['price']}</td>
-                        <td>
-                        <a title='edit/update' href='./updateproduct.php?id=$row[id]'>
-                        <i class='fa fa-edit'></i></a>
-                        <a title='delete' href='./deleteproduct.php?id=$row[id]'><input type='submit' class='btn' value='delete' /></a>     
-                    </td>
-                    </tr>
-                    ";
-           }
-           ?>
-                   
-                    
-                    
+               <?php
+       $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
+
+      if(isset($_POST["update"])){
+        $status = $_POST['status'];
+        
+        $update = mysqli_query($conn, "UPDATE tbl_appointment set statuses='$status' where appointment_id='$id'");
+
+        if($update){
+            echo "
+            <script>
+            confirm('update the status?');
+            window.location.href = 'appointments.php';
+            </script>";
+            
+        }
+        else{
+            echo "
+            <script>
+            alert('failed to update');
+            </script>";
+        }
+
+      }
+       ?>
+                 </div>   
                 </table>
               </div>
              
           </div>
         </div>
     </div>
+
+          <!-- javascript section -->
+<script>
+  // validating the main form
+ function validateForm(){
+   sname = document.product.sname.value;
+   sowner = document.product.sowner.value;
+   sphone = document.product.sphone.value;
+   semail = document.product.semail.value;
+   pname = document.product.pname.value;
+   ptype = document.product.ptype.value;
+   pbrand = document.product.pbrand.value;
+   pdescription = document.product.pdescription.value;
+   pprice = document.product.pprice.value;
+
+
+   if(sname == ""){
+     alert('please enter shop name');
+     document.getElementById('fname').focus();
+     return false;
+   }
+   if(sowner == ""){
+     alert('please enter shop owner')
+     document.getElementById('sowner').focus();
+     return false;
+   }
+   if(sphone == ""){
+     alert('please enter shop phone number')
+     document.getElementById('sphone').focus();
+     return false;
+   }
+   if(semail == ""){
+     alert('please enter shop email')
+     document.getElementById('semail').focus();
+     return false;
+   }
+   if(pname == ""){
+     alert('please enter product name')
+     document.getElementById('pname').focus();
+     return false;
+   }
+   if(ptype == ""){
+     alert('please enter product type')
+     document.getElementById('ptype').focus();
+     return false;
+   }
+   if(pbrand == ""){
+     alert('please enter brand')
+     document.getElementById('pbrand').focus();
+     return false;
+   }
+   if(pdescription == ""){
+     alert('please enter shop description')
+     document.getElementById('pdescription').focus();
+     return false;
+   }
+   if(pprice == ""){
+     alert('please enter price')
+     document.getElementById('pprice').focus();
+     return false;
+   }
+   
+ }
+
+</script>
 </body>
 </html>

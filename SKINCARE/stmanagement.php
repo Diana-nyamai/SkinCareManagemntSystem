@@ -169,6 +169,13 @@
        outline: none;
 
    }
+   .form-container textarea{
+       margin-top: 10px;
+       width: 100%;
+       height: 300px;
+       padding: 10px 10px;
+       outline: none;
+   }
    
 
    @media all and (max-width: 1090px){
@@ -274,9 +281,9 @@
                 <div class="form-container">
                 <form name="product" action="" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
                 <input type="file" id="pimage" name="pimage" placeholder="product price..">
-                <input type="text" id="descr" name="descr" placeholder="description..">
+                <textarea type="textbox" id="descr" name="descr" placeholder="skin description.."></textarea>
                 <input type="text" id="prtype" name="prtype" placeholder="product type..">
-                <input type="text" id="skinm" name="skinm" placeholder="skin management..">
+                <textarea type="textbox" id="skinm" name="skinm" placeholder="skin management.."></textarea>
                 <input class="btn" type="submit" name="submit" value="upload">
                </form>
 

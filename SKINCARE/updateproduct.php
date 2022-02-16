@@ -307,10 +307,17 @@
         $update = mysqli_query($conn, "UPDATE tbl_product set sname='$sname', pname='$pname', skin_type='$skintype', pdescription='$pdescription', price='$pprice' where id='$id'");
 
         if($update){
-            echo "record updated";
+            echo "
+            <script>
+            confirm('update record? ');
+            window.location.href = 'productRadmin.php';
+            </script>";
         }
         else{
-            echo "failed to update";
+            echo "
+            <script>
+            alert('failed to update');
+            </script>";
         }
 
       }

@@ -319,7 +319,7 @@
           <div class="tables">
               <div class="last-appointments">
                   <div class="heading">
-                      <h2>Appointment</h2>
+                      <h2>Appointment report</h2>
                       <a href="" class="btn">View all</a>
                 </div>
 
@@ -344,6 +344,7 @@
                         <td>Email</td>
                         <td>date</td>
                         <td>time</td>
+                        <td>status</td>
                         <td>Actions</td>
                     </thead>
                     <?php
@@ -385,6 +386,7 @@
            $data = mysqli_query($conn, $sql) ;
         if(mysqli_num_rows($data) > 0){
            while($row = mysqli_fetch_array($data)){
+               $id = $row['appointment_id'];
                $firstName = $row['first_name'];
                $lastName = $row['last_name'];
                $phoneNumber = $row['phone_no'];
@@ -393,6 +395,7 @@
                $appointdate = strtotime($appointdate);
                $appdate = date("d/m/y", $appointdate);
                $appointime = $row['appointment_time'];
+               $cstatus = $row['statuses'];
                ?>
     
                 <tr>
@@ -402,9 +405,12 @@
                         <td><?php echo $email;?></td>
                         <td><?php echo $appdate;?></td>
                         <td><?php echo $appointime;?></td>
+                        <td><?php echo $cstatus;?></td>
                         <td>
-                            <i class='fa fa-edit'></i>
-                            <i class='fa fa-trash'></i>
+                            <?php echo "
+                        <a title='edit/update' href='./updateappoint.php?id=$id'>
+                        <i class='fa fa-edit'> Edit</i></a>
+                        ";?>
                         </td>
                     </tr>
           <?php     
