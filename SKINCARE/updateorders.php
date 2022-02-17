@@ -1,9 +1,11 @@
-<!-- this page will display the number of users and a report on orders in admin-->
+<!-- this page will display the update form of appointment in admin -->
 <?php
    session_start();
+  $id = $_GET['id'];
   $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
-  $data = mysqli_query($conn, 'SELECT * FROM tbl_orders');
-  $number = mysqli_num_rows($data)
+  $data = mysqli_query($conn, "SELECT * FROM tbl_orders WHERE order_id='$id'");
+  $number = mysqli_num_rows($data);
+  $updatedata = mysqli_fetch_assoc($data);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +13,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=0">
-    <title>Admin panel</title>
+    <title>update product | panel</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="./images/logo.png" type="image/x-icon">
@@ -162,48 +164,22 @@
        border-radius: 10px;
        text-decoration: none;
    }
-   .options select{
-       padding: 5px;
-       width: 300px
-   }
-   .options select option{
-       outline: none;
-   }
-   .options input{
-       padding: 5px 10px;
-       width: 100px;
-       background-image: linear-gradient(45deg,#1e1f31, #f09053);
-       color: #fff;
-       border-radius: 10px;
-       text-decoration: none;
-       border:none;
-       cursor: pointer;
-       /* outline: none; */
-   }
-   table{
+   .form-container input{
        margin-top: 10px;
        width: 100%;
-       border-collapse: collapse;
+       padding: 10px 10px;
+       outline: none;
+
    }
-   thead{
-       font-weight: 600;
+   .form-container textarea{
+       margin-top: 10px;
+       width: 100%;
+       height: 300px;
+       padding: 10px 10px;
+       outline: none;
    }
-   table tr{
-       border-bottom: 1px solid rgba(0,0,0,0.1);
-   }
-   tbody tr:hover{
-       background: #f09053;
-   }
-   td{
-       padding: 9px 5px;
-   }
-   td i{
-       padding: 7px;
-       border-radius: 50px;
-   }
-   .last-appointments table tbody td:last-child{
-       white-space: nowrap;
-   }
+   
+
    @media all and (max-width: 1090px){
       .sidebar{
           width: 60px;
@@ -267,6 +243,7 @@
              <li><a href="./productadmin.php"><i class="fa fa-shopping-basket"></i>
                 <div class="title">Products</div>
              </a></li>
+             <!-- this page will display the number of users and a report on users -->
              <li><a href="./productRadmin.php"><i class="fa fa-shopping-basket"></i>
                 <div class="title">Product Report</div>
              </a></li>
@@ -292,9 +269,9 @@
                 <div class="card">
                     <div class="card-content">
                         <div class="number"><?php echo $number; ?></div>
-                        <div class="card-name">orders</div>
+                        <div class="card-name">Products</div>
                        </div> 
-                       <div class="icon-box"><i class="fa fa-user"></i></div>
+                       <div class="icon-box"><i class="fa fa-shopping-basket"></i></div>
                 </div>
             </div><!-- end of cards -->
 
@@ -302,132 +279,112 @@
 
           <div class="tables">
               <div class="last-appointments">
+                  <div><p><a href="./appointments.php"> < Back</a></p></div>
                   <div class="heading">
-                      <h2>orders</h2>
-                      <a href="" class="btn">View all</a>
+                      <h2>update order</h2>
                 </div>
-                <form action="#" method="post">
-                <div class="options">
-                    <select name="filterChoice">
-                        <option value="0" selected="selected">All time</option>
-                        <option value="1">Last 7 days</option>
-                        <option value="2">Last month</option>
-                        <option value="3">This year</option>
-                        <option value="4">Last year</option>
-                        <option value="5">not delivered</option>
+                <div class="form-container">
+                <form name="product" action="#" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+                <input value="<?php echo $updatedata['statuses']; ?>" type="text" id="sname" name="status" placeholder="status..">
+                <input class="btn" type="submit" name="update" value="update products">
+               </form>
 
-                    </select>
-                 <input type="submit" value="filter" name="choice" class="bton">
-                </div></form>
-                <table class="appointments">
-                    <thead>
-                        <td>order date</td>
-                        <td>email</td>
-                        <td>product name</td>                       
-                        <td>total amount</td>
-                        <td>payment</td>
-                        <td>shop name</td>
-                        <td>product id</td>
-                        <td>status</td>
-                        <td>Actions</td>
-                    </thead>
+               <?php
+       $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
 
-                    <?php
-                   if(!isset($_POST['choice'])){
-                       $query = "SELECT * FROM tbl_orders";
-                       getData($query);
-                   }
-                   elseif(isset($_POST['choice'])){
-                    switch($_POST['filterChoice']){
-                        case "0":
-                            $sql = "SELECT * FROM tbl_orders ORDER BY YEAR(Order_date) asc, MONTH(Order_date) ASC, DAY(Order_date) ASC";
-                            getdata($sql);
-                            break;
-                            // IN THE LAST 7 DAYS
-                        case "1":
-                            $sql = "SELECT * FROM tbl_orders WHERE Order_date > DATE_SUB(NOW(), INTERVAL 7 DAY) ORDER BY DAY(Order_date) ASC";
-                            getData($sql);
-                            break;
-                            // IN THE LAST MONTH
-                        case "2":
-                            $sql = "SELECT * FROM tbl_orders where MONTH(Order_date) = MONTH(DATE_ADD(Now(), INTERVAL -1 MONTH)) ORDER BY DAY(Order_date) ASC";
-                            getData($sql);
-                            break;
-                            // IN THIS YEAR
-                        case "3":
-                            $sql = "SELECT * FROM tbl_orders WHERE YEAR(Order_date) = YEAR(CURDATE()) ORDER BY YEAR(Order_date) ASC, MONTH(Order_date) ASC, DAY(Order_date) asc";
-                            getData($sql);
-                            break;
-                            // IN THE LAST YEAR
-                        case "4":
-                            $sql = "SELECT * FROM tbl_orders WHERE YEAR(Order_date) = YEAR(CURDATE()) -1 ORDER BY DAY(Order_date) ASC";
-                            getData($sql);
-                            break;
-                            // products not delivered
-                        case "5":
-                            $sql = "SELECT * FROM tbl_orders WHERE statuses ='not delivered'";
-                            getData($sql);
-                            break;
-                    }
-                   }
-                ?>
+      if(isset($_POST["update"])){
+        $status = $_POST['status'];
+        
+        $update = mysqli_query($conn, "UPDATE tbl_orders set statuses='$status' where order_id='$id'");
 
-<?php 
-    function getData($sql){
-           $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
-           $data = mysqli_query($conn, $sql) ;
-        if(mysqli_num_rows($data) > 0){
-           while($row = mysqli_fetch_array($data)){
-               $id = $row['order_id'];
-               $orderdate = $row['Order_date'];
-               $orderdate = strtotime($orderdate);
-               $Ordate = date("d/m/y", $orderdate);
-               $email = $row['email'];
-               $product_name = $row['product_name'];
-               $tamount = $row['tamount'];
-               $payment = $row['payment'];
-               $sname = $row['shop_name'];
-               $pid = $row['product_id'];
-               $statuses = $row['statuses'];
-              
-               ?>
-    
-                <tr>
-                        <td><?php echo $Ordate;?></td>
-                        <td><?php echo $email;?></td>
-                        <td><?php echo $product_name;?></td>
-                        <td><?php echo $tamount;?></td>
-                        <td><?php echo $payment;?></td>
-                        <td><?php echo $sname;?></td>
-                        <td><?php echo $pid;?></td>
-                        <td><?php echo $statuses;?></td>
-                        <td>
-                        <?php echo "
-                        <a title='edit/update' href='./updateorders.php?id=$id'>
-                        <i class='fa fa-edit'></i></a>
-                         <a title='delete' href='./deleteorder.php?id=$id'><input type='submit' class='btn' value='delete' /></a> 
-                        ";?>
-                        </td>
-                    </tr>
-          <?php     
-           }
-           }
-           else { ?>
+        if($update){
+            echo "
+            <script>
+            confirm('update the status?');
+            window.location.href = 'orders.php';
+            </script>";
+            
+        }
+        else{
+            echo "
+            <script>
+            alert('failed to update');
+            </script>";
+        }
 
-              <tr><td>No data found!</td></tr>
-              <?php
-           }
-          
-       }  ?>
-    <!-- closes the function -->
-                   
-                    
-                    
+      }
+       ?>
+                 </div>   
                 </table>
               </div>
              
           </div>
         </div>
     </div>
+
+          <!-- javascript section -->
+<script>
+  // validating the main form
+ function validateForm(){
+   sname = document.product.sname.value;
+   sowner = document.product.sowner.value;
+   sphone = document.product.sphone.value;
+   semail = document.product.semail.value;
+   pname = document.product.pname.value;
+   ptype = document.product.ptype.value;
+   pbrand = document.product.pbrand.value;
+   pdescription = document.product.pdescription.value;
+   pprice = document.product.pprice.value;
+
+
+   if(sname == ""){
+     alert('please enter shop name');
+     document.getElementById('fname').focus();
+     return false;
+   }
+   if(sowner == ""){
+     alert('please enter shop owner')
+     document.getElementById('sowner').focus();
+     return false;
+   }
+   if(sphone == ""){
+     alert('please enter shop phone number')
+     document.getElementById('sphone').focus();
+     return false;
+   }
+   if(semail == ""){
+     alert('please enter shop email')
+     document.getElementById('semail').focus();
+     return false;
+   }
+   if(pname == ""){
+     alert('please enter product name')
+     document.getElementById('pname').focus();
+     return false;
+   }
+   if(ptype == ""){
+     alert('please enter product type')
+     document.getElementById('ptype').focus();
+     return false;
+   }
+   if(pbrand == ""){
+     alert('please enter brand')
+     document.getElementById('pbrand').focus();
+     return false;
+   }
+   if(pdescription == ""){
+     alert('please enter shop description')
+     document.getElementById('pdescription').focus();
+     return false;
+   }
+   if(pprice == ""){
+     alert('please enter price')
+     document.getElementById('pprice').focus();
+     return false;
+   }
+   
+ }
+
+</script>
 </body>
 </html>

@@ -178,6 +178,8 @@
                  echo"
                  <tr>
                  <form action='order.php' method='post'>
+                 <input type='hidden' name='product_id' value='$value[product_id]'/>
+                 <input type='hidden' name='shop_name' value='$value[shop_name]'/>
                    <td><input class='input' type='text' name='fname' placeholder='first name'/></td>
                    <td><input class='input' type='text' name='email' placeholder='email'/></td>
                 
