@@ -255,6 +255,8 @@
            <h6>ksh.<?php echo $row["price"]; ?></h6>
            <h6><?php echo $row["skin_type"] ?> skin</h6>
            <input type="submit" name="addtocart" class="addtocart" value="Add to cart"/>
+           <input type="hidden" name="product_id" value="<?php echo $row["id"];?>"/>
+           <input type="hidden" name="product_image" value="<?php echo $row["pimage"];?>"/>
            <input type="hidden" name="item_name" value="<?php echo $row["pname"];?>"/>
            <input type="hidden" name="price" value="<?php echo $row["price"]; ?>"/>
        </form>

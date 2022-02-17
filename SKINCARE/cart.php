@@ -169,6 +169,7 @@
     <table id="customers">
   <tr>
     <th>Id</th>
+    <th>product image</th>
     <th>Product Name</th>
     <th>Product Price</th>
     <th>quantity</th>
@@ -179,11 +180,11 @@
          $total=0;
          if(isset($_SESSION['cart'])){
              foreach($_SESSION['cart'] as $key => $value){
-                 $prid = $key + 1;
                  $total = $total + $value['price'];
                  echo"
                  <tr>
-                   <td>$prid</td>
+                   <td>$value[product_id]</td>
+                   <td><img src='$value[product_image]' width='100'/></td>
                    <td>$value[item_name]</td>
                    <td>$value[price]</td>
                    <td><input class='number' type='number' value='$value[quantity]' min='1' max='10'/></td>
@@ -198,6 +199,7 @@
       ?>
    
   <tr id="total">
+    <td id="total"></td>
     <td id="total"></td>
     <td id="total"></td>
     <td id="total"></td>

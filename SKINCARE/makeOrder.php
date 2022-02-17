@@ -186,13 +186,10 @@
                  </select></td>
 
                    <input type='hidden' name='price' value='$value[price]'/>
-                   <td> <select id='payment' name='total' class='input'>
-                   <option value='$total' selected='selected'>$total</option>
-                 </select></td>
+                   <td> <input type='text' value='$value[price]' name='total' class='input'/>
+                   </td>
 
-                   <td><select id='payment' name='payment' class='input'>
-                   <option value='cash' selected='selected'>cash on delivery</option>
-                 </select></td>
+                   <td> <input type='text' value='cash' name='payment' class='input'/></td>
                  <td><input type='submit' value='order' class='input'></td>
                  </form>
                  </tr>";
