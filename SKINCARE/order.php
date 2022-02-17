@@ -19,7 +19,7 @@ else{
     $stmt->execute();
     echo "
     <script>
-    alert('order is completed');
+    alert('order is successful!');
     window.location.href = 'makeOrder.php';
     </script>
     ";

@@ -332,6 +332,7 @@
                         <option value="3">This year</option>
                         <option value="4">Last year</option>
                         <option value="5">next month</option>
+                        <option value="6">not seen</option>
 
                     </select>
                  <input type="submit" value="filter" name="choice" class="bton">
@@ -382,6 +383,10 @@
                             // NEXT MONTH
                         case "5":
                             $sql = "SELECT * FROM tbl_appointment where MONTH(appointment_date) = MONTH(DATE_ADD(Now(), INTERVAL +1 MONTH)) ORDER BY DAY(appointment_date) ASC";
+                            getData($sql);
+                            break;
+                        case "6":
+                            $sql = "SELECT * FROM tbl_appointment WHERE statuses='not seen'";
                             getData($sql);
                             break;
                     }
