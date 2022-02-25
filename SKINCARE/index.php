@@ -103,6 +103,7 @@
         }
         .text a:hover{
             color:#1e1f31;
+            
         }/* end of text section */
         .img{
             position: relative;
