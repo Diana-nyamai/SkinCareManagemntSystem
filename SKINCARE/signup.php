@@ -6,6 +6,7 @@
  $gender = $_POST['gender'];
  $user = $_POST['user'];
  $password = $_POST['password'];
+ $password_hash = password_hash($password, PASSWORD_DEFAULT);
 
 //  database connection
 $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
@@ -15,7 +16,7 @@ if(mysqli_connect_error()){
 else{
     $stmt = $conn->prepare('insert into tbl_users(first_name, last_name, phone_number, email,gender, user_type, password) 
     values(?,?,?,?,?,?,?)');
-    $stmt->bind_param('ssissss', $fname, $lname,$phone,$email, $gender, $user, $password);
+    $stmt->bind_param('ssissss', $fname, $lname,$phone,$email, $gender, $user, $password_hash);
     $stmt->execute();
     // echo header('location:authentication.php');
     echo "

@@ -9,19 +9,20 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $lname = $_POST['lname'];
     $password = $_POST['lpassword'];
 
-    $s = "select * from tbl_users where first_name ='".$fname."'&& password = '".$password."'";
+    $s = "select * from tbl_users where first_name ='".$fname."'";
     $result = mysqli_query($conn, $s);
     $row = mysqli_fetch_array($result);
-
-    if($row['user_type'] == 'customer'){
+    $hashed_pass = $row['password'];
+    
+    if($row['user_type'] == 'customer' && password_verify($password, $hashed_pass)){
         $_SESSION['username'] = $fname;
         header('location:home.php');
     }
-    elseif($row['user_type'] == 'dermatologist'){
+    elseif($row['user_type'] == 'dermatologist' && password_verify($password, $hashed_pass)){
         $_SESSION['username'] = $fname;
         header('location:derm_page.php');
     }
-    elseif($row['user_type'] == 'admin'){
+    elseif($row['user_type'] == 'admin' && password_verify($password, $hashed_pass)){
         $_SESSION['username'] = $fname;
         header('location:admin.php');
     }
