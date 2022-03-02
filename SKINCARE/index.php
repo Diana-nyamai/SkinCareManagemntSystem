@@ -337,7 +337,7 @@
       
       <?php 
       $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
-      $res = mysqli_query($conn, "select * from tbl_product  limit 10");
+      $res = mysqli_query($conn, "select * from tbl_product limit 10");
       while($row = mysqli_fetch_array($res)){
           ?>
      
