@@ -2,11 +2,11 @@
 <?php
 session_start(); 
 //  database connection
-$conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
+$conn = new mysqli('localhost', 'nyamai', 'nyamai', 'skincare');
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
     $fname = $_POST['fname'];
-    $lname = $_POST['lname'];
+    // $lname = $_POST['lname'];
     $password = $_POST['lpassword'];
 
     $s = "select * from tbl_users where first_name ='".$fname."'";
