@@ -16,7 +16,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $result = mysqli_query($conn, $s);
     $row = mysqli_fetch_array($result);
     $hashed_pass = $row['password'];
-    
+
   if(mysqli_num_rows($result) == 1)  {
     if($row['user_type'] == 'customer' && password_verify($password, $hashed_pass)){
         $_SESSION['username'] = $fname;
@@ -33,6 +33,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     else{
         echo "wrong credentials";
     }
+}
+else{
+    echo "wrong credentials";
 }
  }
 
