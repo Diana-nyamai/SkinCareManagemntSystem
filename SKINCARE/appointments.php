@@ -389,7 +389,7 @@
                             $sql = "SELECT * FROM tbl_appointment WHERE statuses='not seen'";
                             getData($sql);
                             break;
-                    }
+                    }  
                    }
                 ?>
                     <?php 

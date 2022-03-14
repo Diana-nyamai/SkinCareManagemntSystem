@@ -307,7 +307,7 @@
     <!-- content section -->
     <div class="content">
         <div class="text">
-            <p>Welcome to <span> Healthy skin.</span> Healthy skin will cater for all worries related to your skin. Do you know what type of skin you have?</p>
+            <p>Welcome to <span> Healthy skin.</span> Healthy skin will provide food for all stresses connected with your skin. Do you have any idea about what kind of skin you have?</p>
              <a href="authentication.php" class="btn">KNOW YOUR SKIN</a>
         </div><!-- content text on the left -->
 
