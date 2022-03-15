@@ -7,6 +7,8 @@
  $user = $_POST['user'];
  $password = $_POST['password'];
  $password_hash = password_hash($password, PASSWORD_DEFAULT);
+ $fname = htmlspecialchars($fname);
+ $lname = htmlspecialchars($lname);
 
 //  database connection
 $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
@@ -21,8 +23,7 @@ else{
     // echo header('location:authentication.php');
     echo "
         <script>alert('you have are now registered. Please login');
-        window.location.href = 'authentication.php'</script>
-        
+        window.location.href = 'authentication.php'</script>   
     ";
     
     $stmt->close();

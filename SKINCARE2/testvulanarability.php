@@ -20,8 +20,10 @@
     </style>
 </head>
 <body>
-    <form action="testcontrol.php" method="post">
-      <input type="text" name="name"/>
+    <!-- testcontrol.php   // testsignup.php -->
+    <form action="testco.php" method="post">
+    <input type="text" name="name"/>
+      <input type="text" name="username"/>
       <input type="text" name="age" />
 
       <input type="submit" value="send">
