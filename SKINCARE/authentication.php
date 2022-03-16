@@ -18,6 +18,7 @@
             overflow-x: hidden;
             height: 100%;
         }
+        /* the main form box */
         .form-box{
             width: 380px;
             height: 700px;
@@ -34,6 +35,7 @@
             box-shadow: 0 0 20px 9px #f0b753;
             border-radius: 30px;
         }
+        /* styles the buttons to be toggles */
         .toggle-btn{
             padding: 10px 30px;
             cursor: pointer;
@@ -42,6 +44,7 @@
             outline: none;
             position: relative;
         }
+        /* the button that will be transitioning from one side to the other */
         #btn{
             width: 110px;
             height: 100%;
@@ -109,6 +112,7 @@
     </style>
 </head>
 <body>
+  <!-- the main form box -->
     <div class="form-box">
        <div class="button-box">
            <div id="btn"></div>
@@ -162,7 +166,7 @@
             b.style.left = "0px";
         }
 
-        // form validation of log in
+    // form validation of log in
 function validateLoginForm(){
    fname = document.login.Lfname.value;
    lname = document.login.Llname.value;
