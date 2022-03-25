@@ -239,7 +239,7 @@
                 <div class="title">orders</div>
              </a></li>
              <li><a href="./productadmin.php"><i class="fa fa-shopping-basket"></i>
-                <div class="title">Products</div>
+                <div class="title">Add Products</div>
              </a></li>
              <!-- this page will display the number of users and a report on users -->
              <li><a href="./productRadmin.php"><i class="fa fa-shopping-basket"></i>
