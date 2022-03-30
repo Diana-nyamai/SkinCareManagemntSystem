@@ -237,7 +237,7 @@
           ?>
      
           <div class="g-content"> 
-              <form action="./cart_manager.php?action=add&id=<?php echo $row["id"];?>" method="post">
+              <form action="./oily_cart_manager.php?action=add&id=<?php echo $row["id"];?>" method="post">
               <img src="<?php echo $row["pimage"]; ?>" alt="dry" >
               <h3><?php echo $row["pname"]; ?></h3>
               <p><?php echo $row["pdescription"]; ?></p>

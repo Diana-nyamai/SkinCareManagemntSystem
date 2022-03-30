@@ -350,11 +350,6 @@
      document.getElementById('sphone').focus();
      return false;
    }
-   if(semail == ""){
-     alert('please enter shop email')
-     document.getElementById('semail').focus();
-     return false;
-   }
    if(pname == ""){
      alert('please enter product name')
      document.getElementById('pname').focus();
@@ -381,6 +376,11 @@
      return false;
    }
    
+   if(semail.length == 0 || semail.indexOf('@') == -1 || semail.indexOf('.') == -1){
+    alert('enter a valid email.should contain @ and .');
+    document.getElementById('semail').focus();
+    return false;
+  }
  }
 
 </script>
