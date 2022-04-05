@@ -355,6 +355,8 @@
                        getData($query);
                    }
                    elseif(isset($_POST['choice'])){
+
+                    // $select_query = 
                     switch($_POST['filterChoice']){
                         case "0":
                             $sql = "SELECT * FROM tbl_appointment ORDER BY YEAR(appointment_date) asc, MONTH(appointment_date) ASC, DAY(appointment_date) ASC";

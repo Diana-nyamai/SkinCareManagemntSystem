@@ -100,6 +100,7 @@
 
         }
         .number{
+            width: 40px;
             padding:10px;
             border: none;
             background: #f09053;
@@ -187,7 +188,7 @@
                    <td><img src='$value[product_image]' width='100'/></td>
                    <td>$value[item_name]</td>
                    <td>$value[price]</td>
-                   <td><input class='number' type='number' value='$value[quantity]' min='1' max='10'/></td>
+                   <td><input class='number' type='text' value='$value[quantity]' pattern=[0-9]{1}[0-9]{9}/></td>
                    <td><form action='cart_manager.php' method='post'>
                    <button class='remove' name='remove'>Remove</button>
                    <input type='hidden' name='item_name' value='$value[item_name]'/>
