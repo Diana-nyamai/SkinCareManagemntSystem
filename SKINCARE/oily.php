@@ -193,6 +193,7 @@
             <li><a href="sensitive.php">SENSITIVE</a></li>
             <li><a href="oily.php">OILY</a></li>
             <li><a href="combination.php">COMBINATION</a></li>
+            <li><a href="traditional.php">TRADITIONAL</a></li>
             <li><a href="./bookappointment.php">APPOINTMENT</a></li>
             <li>
              <?php 

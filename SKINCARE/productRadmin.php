@@ -286,6 +286,7 @@
               <div class="last-appointments">
                   <div class="heading">
                       <h2>product report</h2>
+                      <button onclick="window.print();" class="btn">Print</button>
                 </div>
                 <table class="appointments">
                     <thead>

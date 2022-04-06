@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=0">
     <link rel="shortcut icon" href="./images/logo.png" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
-    <title>dry skin</title>
+    <title>traditional skin</title>
     <style>
         *{
             margin: 0;
@@ -211,11 +211,11 @@
 </header>
 
     <div class="main-body">
-        <h2>dry skin page</h2>
+        <h2>traditional skin management</h2>
      
         <!--SKIN TYPE MANAGEMENT  -->
         <?php 
-         $sm = mysqli_query($conn, "select * from skin_type_management where product_type='dry'");
+         $sm = mysqli_query($conn, "select * from skin_type_management where product_type='combination'");
          while($row = mysqli_fetch_array($sm)){
              ?>
 
@@ -233,18 +233,18 @@
         <!-- PRODUCTS SECTION -->
         <div class="gallery">
       <?php 
-      $res = mysqli_query($conn, "select * from tbl_product where skin_type='dry'");
+      $res = mysqli_query($conn, "select * from tbl_product where skin_type='oily&combination'");
       while($row = mysqli_fetch_array($res)){
           ?>
      
           <div class="g-content"> 
-              <form action="./dry_cart_manager.php?action=add&id=<?php echo $row["id"];?>" method="post">
+              <form action="./combination_cart_manager.php?action=add&id=<?php echo $row["id"];?>" method="post">
               <img src="<?php echo $row["pimage"]; ?>" alt="dry" >
               <h3><?php echo $row["pname"]; ?></h3>
               <p><?php echo $row["pdescription"]; ?></p>
               <h6>ksh.<?php echo $row["price"]; ?></h6>
               <h6><?php echo $row["skin_type"]; ?> skin</h6>
-              <input type="submit" name="addtocart" class="addtocart" value="Add to cart"/>
+              <!-- <input type="submit" name="addtocart" class="addtocart" value="Add to cart"/> -->
               <input type="hidden" name="product_id" value="<?php echo $row["id"];?>"/>
            <input type="hidden" name="shop_name" value="<?php echo $row["sname"];?>"/>
            <input type="hidden" name="product_image" value="<?php echo $row["pimage"];?>"/>

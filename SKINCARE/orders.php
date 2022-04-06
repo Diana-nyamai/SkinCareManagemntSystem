@@ -304,7 +304,7 @@
               <div class="last-appointments">
                   <div class="heading">
                       <h2>orders</h2>
-                      <a href="" class="btn">View all</a>
+                      <button onclick="window.print();" class="btn">Print</button>
                 </div>
                 <form action="#" method="post">
                 <div class="options">

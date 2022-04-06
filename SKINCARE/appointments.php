@@ -161,7 +161,7 @@
    .btn{
        padding: 5px 10px;
        background-image: linear-gradient(45deg,#1e1f31, #f09053);
-       color: #000;
+       color: #fff;
        border-radius: 10px;
        text-decoration: none;
    }
@@ -320,7 +320,7 @@
               <div class="last-appointments">
                   <div class="heading">
                       <h2>Appointment report</h2>
-                      <a href="" class="btn">View all</a>
+                      <button onclick="window.print();" class="btn">Print</button>
                 </div>
 
                 <form action="#" method="post">
