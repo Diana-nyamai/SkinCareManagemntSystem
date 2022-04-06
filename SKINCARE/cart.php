@@ -185,7 +185,7 @@
                  echo"
                  <tr>
                    <td>$value[product_id]</td>
-                   <td><img src='$value[product_image]' width='100'/></td>
+                   <td><img src='$value[product_image]' width='50'/></td>
                    <td>$value[item_name]</td>
                    <td>$value[price]</td>
                    <td><input class='number' type='text' value='$value[quantity]' pattern=[0-9]{1}[0-9]{9}/></td>

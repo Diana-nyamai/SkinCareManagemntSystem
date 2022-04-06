@@ -13,6 +13,9 @@
             padding: 0;
             box-sizing: border-box;
         }
+        html{
+            scroll-behavior: smooth;
+        }
         body{
             font-family: Arial, Helvetica, sans-serif;
             background-color: #1e1f31;
@@ -308,7 +311,7 @@
     <div class="content">
         <div class="text">
             <p>Welcome to <span> Healthy skin.</span> Healthy skin will provide food for all stresses connected with your skin. Do you have any idea about what kind of skin you have?</p>
-             <a href="authentication.php" class="btn">KNOW YOUR SKIN</a>
+             <a href="#products" class="btn">click to view our products</a>
         </div><!-- content text on the left -->
 
         <div class="img">
@@ -330,7 +333,7 @@
     </div>
 
     <!-- our products section -->
-    <div class="header">
+    <div class="header" id="products">
         <h1 style="text-align:center; padding: 100px 0; color: #fff;">OUR PRODUCTS</h1>
     </div>
     <div class="gallery">
@@ -347,10 +350,10 @@
               <h3><?php echo $row["pname"];?></h3>
               <p><?php echo $row["pdescription"]; ?></p>
               <h6>ksh.<?php echo $row["price"]; ?></h6>
-              <h6><?php echo $row["skin_type"] ?> skin</h6>
-              <input type="submit" name="addtocart" class="addtocart" value="Add to cart"/>
+              <h6>for <?php echo $row["skin_type"] ?> skin</h6>
+              <!-- <input type="submit" name="addtocart" class="addtocart" value="Add to cart"/> -->
               <input type="hidden" name="item_name" value="<?php echo $row["pname"];?>"/>
-              <input type="hidden" name="price" value="<?php echo $row["price"]; ?>"/>
+              <!-- <input type="hidden" name="price" value="<?php echo $row["price"]; ?>"/> -->
           </form>
        </div>
           <?php
@@ -360,7 +363,7 @@
 
       <div class="v-products">
           <p>Would you like to see more products?</p>
-          <a href="authentication.php" class="btn">Get Started</a>
+          <a href="authentication.php" class="btn">Sign up</a>
       </div>
 </body>
 </html>

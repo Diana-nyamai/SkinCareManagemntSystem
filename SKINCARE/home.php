@@ -234,7 +234,7 @@
     
     <!--know more about your skin section  -->
    <div class="know-skin-container">
-      <div class="title"><h1>KNOW MORE ABOUT YOUR SKIN</h1></div>
+      <div class="title"><h1>OUR PRODUCTS</h1></div>
       <div class="skin-box">
            
       </div>
