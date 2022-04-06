@@ -229,7 +229,9 @@
          }
         ?> 
         
-
+        <div style="text-align: center; color: #fff; padding: 30px 0;">
+        <h1>NORMAL SKIN PRODUCTS</h1>
+    </div>
         <!-- PRODUCTS SECTION -->
         <div class="gallery">
       <?php 
