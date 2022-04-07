@@ -164,7 +164,7 @@
    }
    .options select{
        padding: 5px;
-       width: 300px
+       width: 120px
    }
    .options select option{
        outline: none;
@@ -307,18 +307,46 @@
                       <h2>customers</h2>
                       <button onclick="window.print();" class="btn">Print</button>
                 </div>
+
                 <form action="#" method="post">
                 <div class="options">
-                    <select name="filterChoice">
-                        <option value="0" selected="selected">All time</option>
-                        <option value="1">Last 7 days</option>
-                        <option value="2">Last month</option>
-                        <option value="3">This year</option>
-                        <option value="4">Last year</option>
+             <select name="filterChoice">
+                <option selected="selected">select month</option>
+                    <option value ='01'> JANUARY </option>
+                    <option value ='02'> FEBRUARY </option>
+                    <option value ='03'> MARCH </option>
+                    <option value ='04'> APRIL </option>
+                    <option value ='05'> MAY </option>
+                    <option value ='06'> JUNE </option>
+                    <option value ='07'> JULY </option>
+                    <option value ='08'> AUGUST </option>
+                    <option value ='09'> SEPTEMBER </option>
+                    <option value ='10'> OCTOBER </option>
+                    <option value ='11'> NOVEMBER </option>
+                    <option value ='12'> DECEMBER </option>
+                </select>
+                <select name="year" id="year">
+                    <option select="selected">select year</option>
+                    <?php 
+                    for($i = 2018 ; $i <= date('Y'); $i++){
+                        echo "<option>$i</option>";
+                    //given that variable i which has the year 2000
+                    //if i variable is less and equal to the current Year
+                    //echo the number with option output
+                    //++ is an increment operator and the loop will end at the current year
+                        }
+                    ?>
+            </select>
+            <select name="gender" id="gender">
+                <option select="selected">gender</option>
+                <option value="male">male</option>
+                <option value="female">female</option>
+            </select>
 
-                    </select>
                  <input type="submit" value="filter" name="choice" class="bton">
+                 <input type="submit" value="reset" name="reset" class="bton"> 
                 </div></form>
+
                 <table class="appointments">
                     <thead>
                         <td>First Name</td>
@@ -335,32 +363,16 @@
                        getData($query);
                    }
                    elseif(isset($_POST['choice'])){
-                    switch($_POST['filterChoice']){
-                        case "0":
-                            $sql = "SELECT * FROM tbl_users ORDER BY YEAR(signup_date) asc, MONTH(signup_date) ASC, DAY(signup_date) ASC";
-                            getdata($sql);
-                            break;
-                            // IN THE LAST 7 DAYS
-                        case "1":
-                            $sql = "SELECT * FROM tbl_users WHERE signup_date > DATE_SUB(NOW(), INTERVAL 7 DAY) ORDER BY DAY(signup_date) ASC";
-                            getData($sql);
-                            break;
-                            // IN THE LAST MONTH
-                        case "2":
-                            $sql = "SELECT * FROM tbl_users where MONTH(signup_date) = MONTH(DATE_ADD(Now(), INTERVAL -1 MONTH)) ORDER BY DAY(signup_date) ASC";
-                            getData($sql);
-                            break;
-                            // IN THIS YEAR
-                        case "3":
-                            $sql = "SELECT * FROM tbl_users WHERE YEAR(signup_date) = YEAR(CURDATE()) ORDER BY YEAR(signup_date) ASC, MONTH(signup_date) ASC, DAY(signup_date) asc";
-                            getData($sql);
-                            break;
-                            // IN LAST YEAR
-                        case "4":
-                            $sql = "SELECT * FROM tbl_users WHERE YEAR(signup_date) = YEAR(CURDATE()) -1 ORDER BY DAY(signup_date) ASC";
-                            getData($sql);
-                            break;
-                    }
+                    $month = $_POST['filterChoice'];
+                       $year = $_POST['year'];
+                       $gender = $_POST['gender'];
+
+                       $sql = "SELECT * FROM tbl_users WHERE YEAR(signup_date)='$year' AND MONTH(signup_date)='$month' AND gender='$gender' AND user_type='customer'";
+                       getData($sql);
+                   }
+                   elseif(isset($_POST['reset'])){
+                       $query = "SELECT * FROM tbl_users";
+                       getData($query);
                    }
                 ?>
                     <?php 

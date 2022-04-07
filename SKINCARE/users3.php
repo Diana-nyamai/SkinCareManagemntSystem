@@ -1,13 +1,9 @@
-<!-- this is the appointent page that contains the report on the appointments made..on admin page -->
+<!-- this page will display the number of users and a report on users -->
 <?php
    session_start();
-  $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
-  $data = mysqli_query($conn, 'SELECT * FROM tbl_appointment');
-  $number = mysqli_num_rows($data);
-  $users = mysqli_query($conn, 'SELECT * FROM tbl_users');
-  $usernum = mysqli_num_rows($users);
-  $derm = mysqli_query($conn, 'SELECT * FROM tbl_users WHERE user_type="dermatologist"');
-  $dermnum = mysqli_num_rows($derm);
+   $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
+   $users = mysqli_query($conn, 'SELECT * FROM tbl_users');
+   $usernum = mysqli_num_rows($users);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +11,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=0">
-    <title>Admin panel</title>
+    <title>users| panel</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="./images/logo.png" type="image/x-icon">
@@ -108,7 +104,7 @@
        width: 100%;
        padding: 35px 20px;
        display: grid;
-       grid-template-columns: repeat(3, 1fr);
+       grid-template-columns: 1fr;
        grid-gap: 20px;
    }
    .cards .card{
@@ -132,10 +128,12 @@
    .icon-box{
        font-size: 45px;
    }
+
+   /* table styling */
    .tables{
       width: 100%;
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns:1fr;
       grid-gap: 20px;
       align-items: self-start;
       padding: 0 20px 20px 20px ;
@@ -145,8 +143,7 @@
       
        border-radius: 50%;
    }
-   .last-appointments, 
-   .doctor-visiting{
+   .last-appointments{
        min-height: 350px;
        background: #fff;
        padding: 20px;
@@ -164,6 +161,26 @@
        color: #fff;
        border-radius: 10px;
        text-decoration: none;
+   }
+   .search{
+       margin: 10px 0;
+   }
+   .search input{
+       padding: 5px 0;
+       width: 300px;
+       outline: none;
+       text-align: center;
+       color: #000;
+   }
+   .search .sbtn{
+       padding: 5px 10px;
+       width: 100px;
+       background-image: linear-gradient(45deg, #1e1f31, #f09053);
+       color: #fff;
+       border-radius: 10px;
+       text-decoration: none;
+       border:none;
+       cursor: pointer;
    }
    .options select{
        padding: 5px;
@@ -233,8 +250,7 @@
        }
    }
    @media all and (max-width: 420px){
-       .last-appointments,
-       .doctor-visiting{
+       .last-appointments{
            font-size: 70%;
            padding: 10px;
            min-height: 200px;
@@ -292,37 +308,26 @@
             </div>
 
             <div class="cards">
+                
                 <div class="card">
                     <div class="card-content">
-                        <div class="number"><?php echo $number; ?></div>
-                        <div class="card-name">appointments</div>                       
-                    </div>
-                    <div class="icon-box"><i class="fa fa-calendar"></i></div>
-                </div>
-                <div class="card">
-                    <div class="card-content">
+                        <div class="number"></div>
                         <div class="number"><?php echo $usernum; ?></div>
                         <div class="card-name">users</div>
                        </div> 
                        <div class="icon-box"><i class="fa fa-user"></i></div>
                 </div>
-                <div class="card">
-                    <div class="card-content">
-                        <div class="number"><?php echo $dermnum; ?></div>
-                        <div class="card-name">dermatologists</div>                     
-                    </div>
-                     <div class="icon-box"><i class="fa fa-stethoscope"></i></div>
-                </div>
             </div><!-- end of cards -->
 
             <!-- tables -->
+
           <div class="tables">
               <div class="last-appointments">
                   <div class="heading">
-                      <h2>Appointment report</h2>
+                      <h2>users</h2>
                       <button onclick="window.print();" class="btn">Print</button>
                 </div>
-
+                 
                 <form action="#" method="post">
                 <div class="options">
                 <select name="filterChoice">
@@ -352,10 +357,10 @@
                         }
                     ?>
             </select>
-            <select name="status" id="status">
-                <option select="selected">status</option>
-                <option value="seen">seen</option>
-                <option value="not seen">not seen</option>
+            <select name="gender" id="gender">
+                <option select="selected">gender</option>
+                <option value="male">male</option>
+                <option value="female">female</option>
             </select>
 
                  <input type="submit" value="filter" name="choice" class="bton">
@@ -363,34 +368,40 @@
                 </div>
             </form>
 
+                <!-- start of the table -->
                 <table class="appointments">
                     <thead>
                         <td>First Name</td>
                         <td>Last Name</td>
                         <td>Phone Number</td>
-                        <td>Email</td>
-                        <td>date</td>
-                        <td>time</td>
-                        <td>status</td>
+                        <td>Email</td> 
+                        <td>User type</td>                      
+                        <td>Gender</td>
+                        <td>sign up date</td>
                         <td>Actions</td>
                     </thead>
                     <?php
                    if(!isset($_POST['choice'])){
-                       $query = "SELECT * FROM tbl_appointment";
+                       $query = "SELECT * FROM tbl_users";
                        getData($query);
                    }
                    elseif(isset($_POST['choice'])){
-                    $month = $_POST['filterChoice'];
-                    $year = $_POST['year'];
-                    $status = $_POST['status'];
+                       $month = $_POST['filterChoice'];
+                       $year = $_POST['year'];
+                       $gender = $_POST['gender'];
 
-                    $sql = "SELECT * FROM tbl_appointment WHERE YEAR(appointment_date)='$year' AND MONTH(appointment_date)='$month' AND statuses='$status'";
-                    getData($sql);
+                       $sql = "SELECT * FROM tbl_users WHERE YEAR(signup_date)='$year' AND MONTH(signup_date)='$month' AND gender='$gender'";
+                       getData($sql);
                    }
                    elseif(isset($_POST['reset'])){
-                    $query = "SELECT * FROM tbl_appointment";
+                       $query = "SELECT * FROM tbl_users";
+                       getData($query);
+                   }
+                   elseif(isset($_POST['search'])){
+                    $search = $_POST['searchbox'];
+                    $query = "SELECT * FROM tbl_users WHERE user_type LIKE '%$search%'";
                     getData($query);
-                }
+               }
                 ?>
                     <?php 
     function getData($sql){
@@ -398,16 +409,15 @@
            $data = mysqli_query($conn, $sql) ;
         if(mysqli_num_rows($data) > 0){
            while($row = mysqli_fetch_array($data)){
-               $id = $row['appointment_id'];
                $firstName = $row['first_name'];
                $lastName = $row['last_name'];
-               $phoneNumber = $row['phone_no'];
+               $phoneNumber = $row['phone_number'];
                $email = $row['email'];
-               $appointdate = $row['appointment_date'];
-               $appointdate = strtotime($appointdate);
-               $appdate = date("d/m/y", $appointdate);
-               $appointime = $row['appointment_time'];
-               $cstatus = $row['statuses'];
+               $usertype = $row['user_type'];
+               $gender = $row['gender'];
+               $regday = $row['signup_date'];
+               $regday = strtotime($regday);
+               $signUp = date("d/m/y", $regday);
                ?>
     
                 <tr>
@@ -415,14 +425,12 @@
                         <td><?php echo $lastName;?></td>
                         <td><?php echo $phoneNumber;?></td>
                         <td><?php echo $email;?></td>
-                        <td><?php echo $appdate;?></td>
-                        <td><?php echo $appointime;?></td>
-                        <td><?php echo $cstatus;?></td>
+                        <td><?php echo $usertype;?></td>
+                        <td><?php echo $gender;?></td>
+                        <td><?php echo $signUp;?></td>
                         <td>
-                            <?php echo "
-                        <a title='edit/update' href='./updateappoint.php?id=$id'>
-                        <i class='fa fa-edit'> Edit</i></a>
-                        ";?>
+                            <i class='fa fa-edit'></i>
+                            <i class='fa fa-trash'></i>
                         </td>
                     </tr>
           <?php     
@@ -436,10 +444,12 @@
           
        }  ?>
     <!-- closes the function -->
-                   
+        
+                    
+                    
                 </table>
               </div>
-              
+             
           </div>
         </div>
     </div>
