@@ -253,8 +253,9 @@
            <img src="<?php echo $row["pimage"]; ?>" alt="" >
            <h3><?php echo $row["pname"];?></h3>
            <p><?php echo $row["pdescription"]; ?></p>
-           <h6>ksh.<?php echo $row["price"]; ?></h6>
+           <h6>ksh.<?php echo number_format($row["price"],2); ?></h6>
            <h6><?php echo $row["skin_type"] ?> skin</h6>
+           <input style="text-align: center" type="text" value="1" name="qty"/>
            <input type="submit" name="addtocart" class="addtocart" value="Add to cart"/>
            <input type="hidden" name="product_id" value="<?php echo $row["id"];?>"/>
            <input type="hidden" name="shop_name" value="<?php echo $row["sname"];?>"/>

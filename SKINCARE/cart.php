@@ -110,7 +110,7 @@
         .remove{
             padding:15px;
             border: none;
-           
+            cursor: pointer;
             background: #f09053;
             text-align: center;
         }
@@ -174,6 +174,8 @@
     <th>Product Name</th>
     <th>Product Price</th>
     <th>quantity</th>
+    <th>sub total</th>
+
     <th></th>
     <th>Total</th>
   </tr>
@@ -181,20 +183,22 @@
          $total=0;
          if(isset($_SESSION['cart'])){
              foreach($_SESSION['cart'] as $key => $value){
-                 $total = $total + $value['price'];
-                 echo"
+                 $total = $total + $value['price'] * $value["quantity"] ;
+                ?>
+                
                  <tr>
-                   <td>$value[product_id]</td>
-                   <td><img src='$value[product_image]' width='50'/></td>
-                   <td>$value[item_name]</td>
-                   <td>$value[price]</td>
-                   <td><input class='number' type='text' value='$value[quantity]' pattern=[0-9]{1}[0-9]{9}/></td>
+                   <td><?php echo $value["product_id"]; ?></td>
+                   <td><?php echo "<img src='$value[product_image]' width='50'/>"; ?></td>
+                   <td><?php echo $value["item_name"];?></td>
+                   <td><?php echo $value["price"];?></td>
+                   <td><?php echo $value["quantity"];?></td>
+                   <td><?php echo number_format($value["quantity"] * $value["price"], 2); ?></td>
                    <td><form action='cart_manager.php' method='post'>
                    <button class='remove' name='remove'>Remove</button>
-                   <input type='hidden' name='item_name' value='$value[item_name]'/>
+                   <input type='hidden' name='item_name' value='<?php echo $value["item_name"]?>'/>
                    </form></td>
                  </tr>
-                 ";
+         <?php
              }
          }
       ?>
@@ -206,7 +210,8 @@
     <td id="total"></td>
     <td id="total"></td>
     <td id="total"></td>
-    <td id="total">ksh. <?php echo $total  ?></td>
+    <td id="total"></td>
+    <td id="total">ksh. <?php echo $total;  ?></td>
   </tr> 
 </table>
 <form action="makeOrder.php">

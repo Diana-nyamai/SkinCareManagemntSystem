@@ -17,14 +17,14 @@ session_start();
         //   this condition makes sure a product is added to cart
           else{
           $count = count($_SESSION['cart']);
-          $_SESSION['cart'][$count] = array('product_id' => $_POST['product_id'] ,'shop_name' => $_POST['shop_name'] , 'product_image' => $_POST['product_image'] ,'item_name' => $_POST['item_name'], 'price'=>$_POST['price'], 'quantity' => 1);
+          $_SESSION['cart'][$count] = array('product_id' => $_POST['product_id'] ,'shop_name' => $_POST['shop_name'] , 'product_image' => $_POST['product_image'] ,'item_name' => $_POST['item_name'], 'price'=>$_POST['price'], 'quantity' => $_POST['qty']);
                 echo "<script>
                 alert('you have added a product');
                 window.location.href ='home.php';
                 </script>";
         }}
         else{
-            $_SESSION['cart'][0]=array('product_id' => $_POST['product_id'] ,'shop_name' => $_POST['shop_name'] ,'product_image' => $_POST['product_image'] , 'item_name' => $_POST['item_name'], 'price'=>$_POST['price'], 'quantity' => 1);
+            $_SESSION['cart'][0]=array('product_id' => $_POST['product_id'] ,'shop_name' => $_POST['shop_name'] ,'product_image' => $_POST['product_image'] , 'item_name' => $_POST['item_name'], 'price'=>$_POST['price'], 'quantity' => $_POST['qty']);
             echo "<script>
              alert('you have added a product');
               window.location.href ='home.php';

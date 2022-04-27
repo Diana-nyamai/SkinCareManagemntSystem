@@ -1,6 +1,7 @@
 <!-- shows products that have been added to the cart -->
 <?php
  session_start();
+ $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -102,10 +103,10 @@
         .input{
             padding:10px;
             border: none;
-            background: white;
+            background: transparent;
             text-align: center;
             outline:none;
-            color: #000;
+            color: #fff;
         }
         .main{
             border:1px solid black;
@@ -171,30 +172,32 @@
   </tr>
   <?php
          $total=0;
+         $query = "select * from tbl_users";
+         $result = mysqli_query($conn, $query);
          if(isset($_SESSION['cart'])){
              foreach($_SESSION['cart'] as $key => $value){
                  $prid = $key + 1;
                  $total = $total + $value['price'];
-                 echo"
+                ?>
                  <tr>
                  <form action='order.php' method='post'>
-                 <input type='hidden' name='product_id' value='$value[product_id]'/>
-                 <input type='hidden' name='shop_name' value='$value[shop_name]'/>
-                   <td><input class='input' type='text' name='fname' placeholder='first name'/></td>
-                   <td><input class='input' type='text' name='email' placeholder='email'/></td>
-                
-                   <td><select id='payment' name='item' class='input'>
-                   <option value='$value[item_name]' selected='selected'>$value[item_name]</option>
-                 </select></td>
+                 <input type='hidden' name='product_id' value='<?php echo $value["product_id"]; ?>'/>
+                 <input type='hidden' name='shop_name' value='<?php echo $value["shop_name"];?>'/>
+                   <td><input class='input' type='text' name='fname' value ="" placeholder='first name'/></td>
+                   <td><input class='input' type='text' name='email' value="" placeholder='email'/></td>
+                   
+                   
+                   <td> <input type='text' value='<?php echo $value["item_name"]; ?>' name='item' class='input'/> </td>
 
-                   <input type='hidden' name='price' value='$value[price]'/>
-                   <td> <input type='text' value='$value[price]' name='total' class='input'/>
+                   <td> <input type='text' value='<?php echo $value["price"] * $value["quantity"] ?>' name='total' class='input'/>
                    </td>
 
                    <td> <input type='text' value='cash' name='payment' class='input'/></td>
                  <td><input type='submit' value='order' class='input'></td>
                  </form>
-                 </tr>";
+                 </tr>
+
+                 <?php
              }
          }
       ?>
