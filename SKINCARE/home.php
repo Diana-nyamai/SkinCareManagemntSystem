@@ -52,9 +52,6 @@
         font-family: 'Monoton', cursive;
         opacity: .8;
       }
-      .nav-toggle{
-          display: none;
-      }
       header ul {
           position: relative;
           display: flex;
@@ -98,14 +95,7 @@
             width: 150px;
             padding: 10px;
         }
-        @media all and (max-width: 600px){
-            .nav-toggle{
-                display block;
-            }
-            header ul{
-                flex-wrap: wrap;
-            }
-        }
+        
       /* end of navbar */
       .banner{
            /* position: relative; */
