@@ -16,6 +16,7 @@
     <link rel="shortcut icon" href="./images/logo.png" type="image/x-icon">
     <title>Home | page</title>
     <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
       *{
           margin: 0;
@@ -30,12 +31,13 @@
           position: fixed;
           top: 0;
           left: 0;
+          height: 80px;
           width: 100%;
           display: flex;
           justify-content: space-between;
           align-items: center;
           transition: 0.6s;
-          padding: 40px 60px;
+          padding: 5px 30px;
           z-index: 1000;
       }
       header.sticky{
@@ -45,35 +47,68 @@
       header h1 a{
         color: #fff;
         text-decoration: none;
-        font-size: 30px;
+        font-size: 25px;
         letter-spacing: 2px;
         font-family: 'Monoton', cursive;
         opacity: .8;
       }
+      .nav-toggle{
+          display: none;
+      }
       header ul {
           position: relative;
           display: flex;
-          justify-content: center;
-          align-items: center;
       }
       header ul li{
           position: relative;
           list-style-type: none;
+          padding: 10px;
       }
       header ul li a{
           text-decoration: none;
-          margin: 0 10px;
           color: #fff;
           opacity: .7;
       }
+      header ul li a:hover{
+            color: #f09053;
+        }
       header.sticky .logo,
       header.sticky ul li a{
           color: #000;
 
       } 
+      header.sticky ul li:hover .dropdown-menu{
+          background: #f09053;
+      }
+      .dropdown-menu{
+            display: none;
+        }
+        header ul li:hover .dropdown-menu {
+            display: block;
+            position: absolute;
+            left: 0;
+            top: 100%;
+            background: rgba(0,0,0,0.5)
+        }
+        header ul li:hover .dropdown-menu ul{
+            display: block;
+            padding: 10px;
+        }
+        header ul li:hover .dropdown-menu ul li{
+            width: 150px;
+            padding: 10px;
+        }
+        @media all and (max-width: 600px){
+            .nav-toggle{
+                display block;
+            }
+            header ul{
+                flex-wrap: wrap;
+            }
+        }
       /* end of navbar */
       .banner{
-           position: relative;
+           /* position: relative; */
            width: 100%;
            height: 100vh;
            background-image:url('./images/skincare.jpg');
@@ -192,31 +227,39 @@
     </style>
 </head>
 <body>
-    <header>
-        <h1><a href="home.php" class="logo">HEAVENLY skin</a></h1>
+<header>
+        <h1><a href="./home.php" class="logo">HEAVENLY skin</a></h1>
         <ul>
-            <li><a href="home.php">HOME</a></li>
-            <li><a href="dry.php">DRY </a></li>
-            <li><a href="normal.php">NORMAL</a></li>
-            <li><a href="sensitive.php">SENSITIVE</a></li>
-            <li><a href="oily.php">OILY</a></li>
-            <li><a href="combination.php">COMBINATION</a></li>
-            <li><a href="traditional.php">TRADITIONAL</a></li>
-            <li><a href="bookappointment.php">APPOINTMENT</a></li>
+            <li class="nav-toggle"><i class="fa fa-bars"></i></li>
+            <li><a href="./home.php">HOME</a></li>
+            <li><a href="#">SKIN TYPES <i class="fa fa-caret-down"></i></a>
+               <div class="dropdown-menu">
+                   <ul>
+                        <li><a href="dry.php">DRY </a></li>
+                        <li><a href="normal.php">NORMAL</a></li>
+                        <li><a href="sensitive.php">SENSITIVE</a></li>
+                        <li><a href="oily.php">OILY</a></li>
+                        <li><a href="combination.php">COMBINATION</a></li>
+                        <li><a href="traditional.php">TRADITIONAL</a></li> 
+                   </ul>
+               </div>
+            </li>
+            
+            <li><a href="./bookappointment.php">APPOINTMENT</a></li>
             <li>
              <?php 
                if(isset($_SESSION['cart'])){
                    $count = count($_SESSION['cart']);
                }
                else{
-                   $count = 0;
-               }
+                $count = 0;
+            }
              ?>
             <a href="./cart.php">CART (<?php echo $count; ?>)</a></li>
-            <li><a href="logout.php">LOGOUT</a></li>
+            <li><a href="./logout.php">LOGOUT <i class="fa fa-sign-out"></i></a></li>
             
         </ul>
-    </header>
+</header>
 <!-- THE BACKGROUND IMAGE -->
     <section class="banner"><div class="overlay">
         <div class="banner-content">
