@@ -220,7 +220,6 @@
 <header>
         <h1><a href="./home.php" class="logo">HEAVENLY skin</a></h1>
         <ul>
-            <li class="nav-toggle"><i class="fa fa-bars"></i></li>
             <li><a href="./home.php">HOME</a></li>
             <li><a href="#">SKIN TYPES <i class="fa fa-caret-down"></i></a>
                <div class="dropdown-menu">
