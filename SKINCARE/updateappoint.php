@@ -304,7 +304,7 @@
             window.location.href = 'appointments.php';
             </script>";
             
-        }
+        }/
         else{
             echo "
             <script>
