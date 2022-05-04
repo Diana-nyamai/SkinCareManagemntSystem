@@ -41,7 +41,8 @@
         .question5,
         .question6,
         .question7,
-        .question8{
+        .question8,
+        .question9{
             margin-bottom: 20px;
         }
         .btn{
@@ -55,7 +56,7 @@
         }
     </style>
 </head>
-<body onLoad="populate()" >
+<body onload="populate()">
     <h2>WHAT IS YOUR SKIN TYPE?</h2>
     <h3>Heavenly skin type tester.</h3>
 <form name="skinForm">
@@ -134,7 +135,6 @@
     </div>
     <input class="btn" type="button" value="FIND SKIN TYPE" onclick="total()">
     <input class="btn" type="reset" value="RESET">
-    <input type="button" onclick="trial()" value="click">
 
     <div id="result">
 
@@ -142,9 +142,6 @@
 </div>
 </form>
 <script>
-    function trial(){
-        alert('test');
-    }
     //this sets up an array for all of the answers that are given 
  var Quest = new Array(10);
 
@@ -166,19 +163,21 @@
 
  myContents = new Array();
  myContents[0] = "<h3>Your skin type is: normal  </h3>";
- myContents[1] = "<h3>Your skin type is: combination  </h3>";
- myContents[2] = "<h3>Your skin type is: dry  </h3>";
+ myContents[1] = "<h3>Your skin type is: dry  </h3>";
+ myContents[2] = "<h3>Your skin type is: combination  </h3>";
  myContents[3] = "<h3>Your skin type is: OILY </h3>";
- myContents[4] = "<h3>Your skin type is: Sensitive</h3>";
+ myContents[4] = "<h3>Your skin type is: Oily</h3>";
+ myContents[5] = "<h3>Your skin type is: Sensitive</h3>";
 
 function analyser(myScore){
-    if (myScore >30) {myContentsPtr = 4;}
-    else{ if(myScore > 24){myContentsPtr = 3;}
-    else{ if(myScore > 18){myContentsPtr = 2;}
-    else{ if(myScore > 12){myContentsPtr = 1;}
+    if (myScore > 30) {myContentsPtr = 5;}
+    else{ if(myScore > 24) {myContentsPtr = 4;}
+    else{ if(myScore > 18) {myContentsPtr = 3;}
+    else{ if(myScore > 12) {myContentsPtr = 2;}
+    else{ if(myScore > 6)  {myContentsPtr = 1;}
     else {myContentsPtr = 0;}
-}}}
-    myDisplay(myContents[myContentsPtr]);
+}}}}
+    myDisplay(myContents[myContentsPtr])
 }
 
 function myDisplay(myContents){
