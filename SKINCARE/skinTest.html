@@ -14,7 +14,7 @@
         }
         body{
              overflow-x: hidden;
-             height: 100vh;
+             height: auto;
              background-image: linear-gradient(180deg,#1e1f31, #f09053);
              color: #fff;
         }
@@ -24,9 +24,87 @@
             font-size: 30px;
             border-bottom: 1px solid #fff;
         }
+        h3{
+            text-align: center;
+            padding: 10px 0;
+            font-size: 20px;
+        }
+        .questions{
+            margin:20px;
+            width: 100%;
+            padding: 20px;
+        }
+        .question1,
+        .question2,
+        .question3,
+        .question4,
+        .question5,
+        .question6,
+        .question7{
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
-    <h2>SKIN TYPE TEST</h2>
+    <h2>WHAT IS YOUR SKIN TYPE?</h2>
+    <h3>Heavenly skin type tester.</h3>
+    <div class="questions">
+    <div class="question1">
+        <h4>1. Texture of your skin</h4> <br/>
+        <input type="radio" name="q1"/>  Does not Shine <br/>
+        <input type="radio" name="q1"/> Is dry and sometimes slight flaking may appear <br/>
+        <input type="radio" name="q1"/> Shines on the nose <br/>
+        <input type="radio" name="q1"/> Shines all-over <br/>
+    </div>
+    <div class="question2">
+        <h4>2. Appearance of pores on your skin</h4> <br/>
+        <input type="radio" name="q2"/>  Normal <br/>
+        <input type="radio" name="q2"/> Very fine <br/>
+        <input type="radio" name="q2"/>Visible<br/>
+        <input type="radio" name="q2"/>Very opened <br/>
+    </div>
+    <div class="question3">
+        <h4>3. How does your skin look like?</h4> <br/>
+        <input type="radio" name="q3"/> Cool, fresh, and supple <br/>
+        <input type="radio" name="q3"/>Thin and lacking moisture  <br/>
+        <input type="radio" name="q3"/> Shines on the "T" zone<br/>
+        <input type="radio" name="q3"/> Shines and has a tendency for acne <br/>
+    </div>
+    <div class="question4">
+        <h4>4. How does your skin feel when touched?</h4> <br/>
+        <input type="radio" name="q4"/> Supple<br/>
+        <input type="radio" name="q4"/> Dry or very dry<br/>
+        <input type="radio" name="q4"/> Oily on the forehead and nose <br/>
+        <input type="radio" name="q4"/>Oily all over <br/>
+    </div>
+    <div class="question5">
+        <h4>5. How often do you feel tightness around the eyes and mouth area</h4> <br/>
+        <input type="radio" name="q5"/> Very often <br/>
+        <input type="radio" name="q5"/> Regularly <br/>
+        <input type="radio" name="q5"/>Sometimes <br/>
+        <input type="radio" name="q5"/> Never <br/>
+    </div>
+    <div class="question6">
+        <h4>6. How often do you have pimples?</h4> <br/>
+        <input type="radio" name="q6"/> Very seldom<br/>
+        <input type="radio" name="q6"/> Never  <br/>
+        <input type="radio" name="q6"/> Sometimes<br/>
+        <input type="radio" name="q6"/> Very often<br/>
+    </div>
+    <div class="question7">
+        <h4>7. Do you have facial lines and wrinkles?</h4> <br/>
+        <input type="radio" name="q7"/> Very few <br/>
+        <input type="radio" name="q7"/> Very deep<br/>
+        <input type="radio" name="q7"/> Expression lines only <br/>
+        <input type="radio" name="q7"/> None <br/>
+    </div>
+    <div class="question8">
+        <h4>8. What happens when your skin is exposed to sun?</h4> <br/>
+        <input type="radio" name="q8"/> Reddens <br/>
+        <input type="radio" name="q8"/> Burns<br/>
+        <input type="radio" name="q8"/> Tans <br/>
+        <input type="radio" name="q8"/> Tans very well<br/>
+    </div>
+</div>
 </body>
 </html>
