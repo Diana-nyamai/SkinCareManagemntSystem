@@ -63,7 +63,7 @@
     <div class="questions">
     <div class="question1">
         <h4>1. Texture of your skin</h4> <br/>
-        <input type="radio" name="q1" onclick="saver(1, 0)"/>  Does not Shine <br/>
+        <input type="radio" name="q1" onclick="saver(1, 0)"/> Does not Shine <br/>
         <input type="radio" name="q1" onclick="saver(1, 1)"/> Is dry and sometimes slight flaking may appear <br/>
         <input type="radio" name="q1" onclick="saver(1, 2)"/> Shines on the nose <br/>
         <input type="radio" name="q1" onclick="saver(1, 3)"/> Shines all-over <br/>
@@ -71,17 +71,17 @@
     </div>
     <div class="question2">
         <h4>2. Appearance of pores on your skin</h4> <br/>
-        <input type="radio" name="q2" onclick="saver(2, 0)"/>  Normal <br/>
+        <input type="radio" name="q2" onclick="saver(2, 0)"/> Normal <br/>
         <input type="radio" name="q2" onclick="saver(2, 1)"/> Very fine <br/>
-        <input type="radio" name="q2" onclick="saver(2, 2)"/>Visible<br/>
-        <input type="radio" name="q2" onclick="saver(2, 3)"/>Very opened <br/>
+        <input type="radio" name="q2" onclick="saver(2, 2)"/> Visible<br/>
+        <input type="radio" name="q2" onclick="saver(2, 3)"/> Very opened <br/>
         <input type="radio" name="q2" onclick="saver(2, 4)"/> Very visible<br/>
     </div>
     <div class="question3">
         <h4>3. How does your skin look like?</h4> <br/>
         <input type="radio" name="q3" onclick="saver(3, 0)"/> Cool, fresh, and supple <br/>
-        <input type="radio" name="q3" onclick="saver(3, 1)"/>Thin and lacking moisture  <br/>
-        <input type="radio" name="q3" onclick="saver(3, 2)"/> Shines on the "T" zone<br/>
+        <input type="radio" name="q3" onclick="saver(3, 1)"/> Thin and lacking moisture  <br/>
+        <input type="radio" name="q3" onclick="saver(3, 2)"/> Shines on the "T" zone(forehead, nose,chin)<br/>
         <input type="radio" name="q3" onclick="saver(3, 3)"/> Shines and has a tendency for acne <br/>
         <input type="radio" name="q3" onclick="saver(3, 4)"/> Redness spots<br/>
     </div>
@@ -90,14 +90,14 @@
         <input type="radio" name="q4" onclick="saver(4, 0)"/> Supple<br/>
         <input type="radio" name="q4" onclick="saver(4, 1)"/> Dry or very dry<br/>
         <input type="radio" name="q4" onclick="saver(4, 2)"/> Oily on the forehead and nose <br/>
-        <input type="radio" name="q4" onclick="saver(4, 3)"/>Oily all over <br/>
+        <input type="radio" name="q4" onclick="saver(4, 3)"/> Oily all over <br/>
         <input type="radio" name="q4" onclick="saver(4, 4)"/> May feel itchy<br/>
     </div>
     <div class="question5">
         <h4>5. How often do you feel tightness around the eyes and mouth area</h4> <br/>
         <input type="radio" name="q5" onclick="saver(5, 0)"/> Very often <br/>
         <input type="radio" name="q5" onclick="saver(5, 1)"/> Regularly <br/>
-        <input type="radio" name="q5" onclick="saver(5, 2)"/>Sometimes <br/>
+        <input type="radio" name="q5" onclick="saver(5, 2)"/> Sometimes <br/>
         <input type="radio" name="q5" onclick="saver(5, 3)"/> Never <br/>
         <input type="radio" name="q5" onclick="saver(5, 4)"/> often<br/>
     </div>
@@ -162,12 +162,12 @@
  }
 
  myContents = new Array();
- myContents[0] = "<h3> Your skin type is: normal </h3>";
- myContents[1] = "<h3> Your skin type is: dry </h3>";
- myContents[2] = "<h3> Your skin type is: combination </h3>";
- myContents[3] = "<h3> Your skin type is: OILY </h3>";
- myContents[4] = "<h3> Your skin type is: Oily </h3>";
- myContents[5] = "<h3> Your skin type is: Sensitive </h3>";
+ myContents[0] = "<h3> Your skin type is: normal .Find more information about NORMAL skin in this link <a href='./normal.php'> click here!</a></h3>";
+ myContents[1] = "<h3> Your skin type is: dry .Find more information about DRY skin in this link <a href='./dry.php'> click here!</a></h3>";
+ myContents[2] = "<h3> Your skin type is: combination .Find more information about COMBINATION skin in this link <a href='./combination.php'> click here!</a></h3>";
+ myContents[3] = "<h3> Your skin type is: OILY .Find more information about OILY skin in this link <a href='./oily.php'> click here!</a></h3>";
+ myContents[4] = "<h3> Your skin type is: Oily .Find more information about OILY skin in this link <a href='./oily.php'> click here!</a></h3>";
+ myContents[5] = "<h3> Your skin type is: Sensitive .Find more information about SENSITIVE skin in this link <a href='./sensitive.php'> click here!</a></h3>";
 
 function analyser(myScore){
     if (myScore > 30) {myContentsPtr = 5;}
