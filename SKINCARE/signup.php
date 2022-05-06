@@ -1,11 +1,13 @@
 <?php
+session_start();
+
  $fname = $_POST['fname'];
  $lname = $_POST['lname'];
  $phone = $_POST['phone'];
  $email = $_POST['email'];
- $gender = $_POST['gender'];
- $user = $_POST['user'];
- $password = $_POST['password'];
+ $gender = !isset($_POST['gender']);
+ $user = !isset($_POST['user']);
+ $password = !isset($_POST['password']);
  $password_hash = password_hash($password, PASSWORD_DEFAULT);
  $fname = htmlspecialchars($fname);
  $lname = htmlspecialchars($lname);

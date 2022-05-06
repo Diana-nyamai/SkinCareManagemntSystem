@@ -129,7 +129,7 @@
        </form>
 
 <!-- sign up form -->
-       <form name="signup" id="signup" class="signup" action="signup.php" method="post" onsubmit="return validateSignupForm()">
+       <form name="signup" id="signup" class="signup" action="signup.php" method="post" onsubmit="return validateSignupForm(event)">
         <input type="text" class="input-field" id="fname" name="fname" placeholder="First Name...">
         <input type="text" class="input-field" id="lname" name="lname" placeholder="Last Name...">
         <input type="text" class="input-field" id="phone" name="phone" placeholder="Phone Number...">
@@ -193,12 +193,20 @@ function validateLoginForm(){
 // validating the password
 function validateLPassword(){
    p = document.getElementById('Lpassword').value;
-   if(p.length == 0){
+   if(p == ""){
      alert('user must have password!');
      return false;
    }
+   if(p.length < 8){
+     alert('The password length must be atleast 8 characters');
+     return false;
+   }
+   if(p.length > 15){
+     alert('The password length must not exceed 15 characters');
+     return false;
+   }
    else{
-     return true;
+     alert('password is correct');
    }
 }
 
@@ -207,7 +215,7 @@ function validateLPassword(){
 
 
         // Form validation of sign up
-function validateSignupForm(){
+function validateSignupForm(event){
    fname = document.signup.fname.value;
    lname = document.signup.lname.value;
    phone = document.signup.phone.value;
@@ -234,31 +242,29 @@ function validateSignupForm(){
     document.getElementById('email').focus();
     return false;
   }
-
-   var returned = false;
-
-   returned == validateGender();
-   if(returned == true)
-   returned = validateRole();
-   if(returned == true);
-   returned == validatePassword();
-   if(returned == true)
-   return returned;
+     event.preventDefault();
+     var gender = validateGender();
+     var role = validateRole();
+     var password = validatePassword();
+    if(!gender || !role || !password){
+      return;
+    }
+    event.target.submit();
+  
  }
 
-
-
-// validating gender
+ // validating gender
 function validateGender(){
-  gender = document.getElementsByName('gender')
-
-  if (!(gender[0].checked || gender[1].checked)) {
-    alert("Please Select Your Gender");
-    return false;
-}
-else{
+  if (document.getElementById('m').checked) {
   return true;
-}
+    }
+    else if(document.getElementById('f').checked){
+     return true;
+    }
+    else{
+    alert('please select the gender');
+    return false;
+   }
 }
 
 // validating role of user
@@ -268,21 +274,35 @@ function validateRole(){
         alert('select the role of user');
         return false;
       }
+      return true;
       // else{
       //   return true;
       // }
 }
+
 // validating the password
 function validatePassword(){
-   p = document.getElementById('password').value;
-   if(p.length == 0){
-     alert('please enter password');
+   var p = document.getElementById('password').value;
+   if(p == ""){
+     alert('user must have password!');
      return false;
    }
-   else{
-     return true;
+   if(p.length < 8){
+     alert('The password length must be atleast 8 characters');
+     return false;
    }
+   if(p.length > 15){
+     alert('The password length must not exceed 15 characters');
+     return false;
+   }
+     return true;
 }
+
+
+
+
+
+
 
     </script>
 </body>
