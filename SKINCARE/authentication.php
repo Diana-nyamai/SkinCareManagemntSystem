@@ -121,7 +121,7 @@
        </div>
         
 <!-- login form -->
-       <form name="login" id="login" class="login" action="login.php" method="post" onsubmit="return validateLoginForm()">
+       <form name="login" id="login" class="login" action="login.php" method="post" onsubmit="return validateLoginForm(event)">
         <input type="text" class="input-field" id="Lfname" name="fname" placeholder="First Name...">
         <input type="password" class="input-field" id="Lpassword" name="lpassword" placeholder="Password...">
         <input type="checkbox" class="check-box"><span>Remember me</span>
@@ -167,32 +167,28 @@
         }
 
     // form validation of log in
-function validateLoginForm(){
+function validateLoginForm(event){
+  event.preventDefault();
    fname = document.login.Lfname.value;
-   lname = document.login.Llname.value;
 
    if(fname == ""){
      alert('please enter first name');
      document.getElementById('Lfname').focus();
      return false;
    }
-   if(lname == ""){
-     alert('please enter second name')
-     document.getElementById('Llname').focus();
-     return false;
+   var lpassword = validateLPassword();
+   if(!lpassword){
+     return;
    }
-   var returned = true;
+   event.target.submit();
   
-   returned == validateLPassword();
-   if(returned == true)
-   return returned;
  }
 
 
 
 // validating the password
 function validateLPassword(){
-   p = document.getElementById('Lpassword').value;
+  var p = document.getElementById('password').value;
    if(p == ""){
      alert('user must have password!');
      return false;
@@ -205,9 +201,7 @@ function validateLPassword(){
      alert('The password length must not exceed 15 characters');
      return false;
    }
-   else{
-     alert('password is correct');
-   }
+     return true;
 }
 
 
