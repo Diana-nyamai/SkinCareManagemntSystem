@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="shortcut icon" href="./images/logo.png" type="image/x-icon">
     <title>book appointment</title>
-    <style>
+  <style>
         *{
             margin: 0;
             padding: 0;
@@ -107,8 +107,8 @@
        padding: 10px 10px;
        outline: none;
 
-   }
-   .btn{
+       }
+      .btn{
        padding: 5px 10px;
        background-image: linear-gradient(45deg,#1e1f31, #f09053);
        color: #fff;
@@ -116,10 +116,10 @@
        text-decoration: none;
    }
        
-    </style>
-</head>
-<body>
-<header>
+ </style>
+    </head>
+     <body>
+       <header>
         <h1><a href="../home.php" class="logo">HEAVENLY skin</a></h1>
         <ul>
             <li><a href="./home.php">HOME</a></li>
