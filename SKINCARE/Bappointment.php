@@ -1,9 +1,6 @@
 <!-- this is the php to support bookappointment page on homepage -->
 <?php
-  $fname = $_POST['fname'];
-  $lname = $_POST['lname'];
-  $phone = $_POST['phone'];
-  $email = $_POST['email'];
+  $id = $_POST['id'];
   $date = $_POST['date'];
   $time = $_POST['time'];
  
@@ -13,9 +10,9 @@ if(mysqli_connect_error()){
     die('connection failed(' .mysqli_connect_error(). ')' . mysqli_Connect_error());
 }
 else{
-    $stmt = $conn->prepare('insert into tbl_appointment(first_name, last_name, phone_no, email, appointment_date,  appointment_time)
-    values(?,?,?,?,?,?)');
-    $stmt->bind_param('ssisss', $fname, $lname,$phone, $email, $date,$time );
+    $stmt = $conn->prepare('insert into tbl_appointment(user_id, appointment_date,  appointment_time)
+    values(?,?,?)');
+    $stmt->bind_param('iss', $id, $date,$time );
     $stmt->execute();
     echo '<script>alert("appointment booked")
     window.location.href = "bookappointment.php";

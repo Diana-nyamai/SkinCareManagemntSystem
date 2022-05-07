@@ -16,10 +16,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $result = mysqli_query($conn, $s);
     $row = mysqli_fetch_array($result);
     $hashed_pass = $row['password'];
+    $id = $row['user_id'];
 
   if(mysqli_num_rows($result) == 1)  {
     if($row['user_type'] == 'customer' && password_verify($password, $hashed_pass)){
         $_SESSION['username'] = $fname;
+        $_SESSION['userid'] = $id;
         header('location:home.php');
     }
     elseif($row['user_type'] == 'dermatologist' && password_verify($password, $hashed_pass)){

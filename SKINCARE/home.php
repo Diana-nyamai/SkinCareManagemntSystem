@@ -255,7 +255,7 @@
             <div class="text">
                 <div class="text-inner">
                     <h1>WELCOME <span class="username"><?php
-                        echo $_SESSION['username']; ?></span> </h1>
+                        echo $_SESSION['username']; ?></span></h1>
             <P><a href="./skinTest.html">Take skin test</a></P>
                 </div>
             </div>
