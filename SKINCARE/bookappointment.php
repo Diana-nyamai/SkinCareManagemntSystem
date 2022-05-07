@@ -177,18 +177,18 @@
     return false;
   }
   if(date.indexOf('-') == -1){
-         alert('date should be in the form yyyy-mm-dd');
+         alert('date should be in the form yyyy-mm-dd.  example 2022-05-12');
          document.getElementById('date').focus();
          return false;
        }
        comps = date.split('-');
        if(comps[0].length< 4 || comps[1].length < 1 || comps[2].length<1){
-         alert('date should be in the form dd-mm-yyyy');
+         alert('date should be in the form yyyy-mm-dd.  example 2022-05-12');
          document.getElementById('date').focus();
          return false;
        }
        if(isNaN(comps[0]) || isNaN(comps[1]) || isNaN(comps[2])){
-         alert('date must be a number and in the format dd-mm-yy');
+         alert('date must be a number and in the format yyyy-mm-dd.  example 2022-05-12');
          document.getElementById('date').focus();
          return false;
        }

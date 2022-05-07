@@ -193,14 +193,14 @@ function validateLPassword(){
      alert('user must have password!');
      return false;
    }
-   if(p.length < 8){
-     alert('The password length must be atleast 8 characters');
-     return false;
-   }
-   if(p.length > 15){
-     alert('The password length must not exceed 15 characters');
-     return false;
-   }
+  //  if(p.length < 8){
+  //    alert('The password length must be atleast 8 characters');
+  //    return false;
+  //  }
+  //  if(p.length > 15){
+  //    alert('The password length must not exceed 15 characters');
+  //    return false;
+  //  }
      return true;
 }
 
