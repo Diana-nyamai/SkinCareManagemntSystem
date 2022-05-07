@@ -376,7 +376,7 @@
                     </thead>
                     <?php
                    if(!isset($_POST['choice'])){
-                       $query = "SELECT * FROM tbl_appointment";
+                       $query = "SELECT tbl_appointment.appointment_id, tbl_users.first_name, tbl_users.last_name,tbl_users.phone_number,tbl_users.email,tbl_appointment.appointment_date,tbl_appointment.appointment_time,tbl_appointment.statuses FROM tbl_appointment INNER JOIN tbl_users ON tbl_appointment.user_id = tbl_users.user_id";
                        getData($query);
                    }
                    elseif(isset($_POST['choice'])){
@@ -384,11 +384,11 @@
                     $year = $_POST['year'];
                     $status = $_POST['status'];
 
-                    $sql = "SELECT * FROM tbl_appointment WHERE YEAR(appointment_date)='$year' AND MONTH(appointment_date)='$month' AND statuses='$status'";
+                    $sql = "SELECT tbl_appointment.appointment_id, tbl_users.first_name, tbl_users.last_name,tbl_users.phone_number,tbl_users.email,tbl_appointment.appointment_date,tbl_appointment.appointment_time,tbl_appointment.statuses FROM tbl_appointment INNER JOIN tbl_users ON tbl_appointment.user_id = tbl_users.user_id WHERE YEAR(appointment_date)='$year' AND MONTH(appointment_date)='$month' AND statuses='$status'";
                     getData($sql);
                    }
                    elseif(isset($_POST['reset'])){
-                    $query = "SELECT * FROM tbl_appointment";
+                    $query = "SELECT tbl_appointment.appointment_id, tbl_users.first_name, tbl_users.last_name,tbl_users.phone_number,tbl_users.email,tbl_appointment.appointment_date,tbl_appointment.appointment_time,tbl_appointment.statuses FROM tbl_appointment INNER JOIN tbl_users ON tbl_appointment.user_id = tbl_users.user_id";
                     getData($query);
                 }
                 ?>
@@ -401,7 +401,7 @@
                $id = $row['appointment_id'];
                $firstName = $row['first_name'];
                $lastName = $row['last_name'];
-               $phoneNumber = $row['phone_no'];
+               $phoneNumber = $row['phone_number'];
                $email = $row['email'];
                $appointdate = $row['appointment_date'];
                $appointdate = strtotime($appointdate);
