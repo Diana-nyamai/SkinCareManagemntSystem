@@ -225,31 +225,12 @@
                 <li><a href=""><i class="fa fa-clinic medical"></i>
                 <div class="title">HEAVENLY SKIN</div>
                 </a></li>
-                <li><a href="./admin.php"><i class="fa fa-dashboard"></i>
-                    <div class="title">dashboard</div>
-                </a></li>
-                <li><a href="./appointments.php"><i class="fa fa-stethoscope"></i>
+                <li><a href="./derm_page.php"><i class="fa fa-stethoscope"></i>
                         <div class="title">appointments</div>
                 </a></li>
-                <li><a href="./users.php"><i class="fa fa-user"></i>
-                    <div class="title">users</div>
-             </a></li>
-             <li><a href="./customers.php"><i class="fa fa-user"></i>
-                    <div class="title">customers</div>
-             </a></li>
-             <li><a href="./orders.php"><i class="fa fa-money"></i>
-                <div class="title">orders</div>
-             </a></li>
-             <li><a href="./productadmin.php"><i class="fa fa-shopping-basket"></i>
-                <div class="title">Products</div>
-             </a></li>
-             <!-- this page will display the number of users and a report on users -->
-             <li><a href="./productRadmin.php"><i class="fa fa-shopping-basket"></i>
-                <div class="title">Product Report</div>
-             </a></li>
-             <li><a href="./stmanagement.php"><i class="fa fa-tint"></i>
-                <div class="title">skin management</div>
-        </a></li>
+                <li><a href="./dermmake_appoint.php"><i class="fa fa-dashboard"></i>
+                    <div class="title">Make appointments</div>
+                </a></li>
         <li><a href="./logout.php"><i class="fa fa-sign-out"></i>
             <div class="title">logout</div>
     </a></li>
@@ -301,7 +282,7 @@
             echo "
             <script>
             confirm('update the status?');
-            window.location.href = 'appointments.php';
+            window.location.href = 'derm_page.php';
             </script>";
             
         }

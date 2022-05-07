@@ -403,7 +403,7 @@
                         <td><?php echo $cstatus;?></td>
                         <td>
                             <?php echo "
-                        <a title='edit/update' href='./updateappoint.php?id=$id'>
+                        <a title='edit/update' href='./updatedermappoint.php?id=$id'>
                         <i class='fa fa-edit'> Edit</i></a>
                         ";?>
                         </td>
