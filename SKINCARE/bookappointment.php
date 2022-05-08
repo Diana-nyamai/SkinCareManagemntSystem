@@ -195,14 +195,17 @@
           while($row = mysqli_fetch_array($sm)){
                 ?>
                  <tr>
-                 <form action='order.php' method='post'>
+                 <form action='./Bappointment.php' method='post'>
                  <input type="hidden" id="id" name="id" value="<?php echo $id ?>"/>
                    
                 <td>Dr. <?php echo $row["first_name"];?></td>
                 <td><?php echo $row["davailable"]; ?></td>
                 <td><?php echo $row["tavailable"]; ?></td>
-                
-                <td><input type='submit' value='Book appointment' class='submitbtn'></td>
+                <td><input type='submit' value='Book appointment' name="bookappointment" class='submitbtn'></td>
+                <input type="hidden" id="id" name="id" value="<?php echo $id ?>">
+                <input type="hidden" name="name" value="<?php echo $row["first_name"];?>"/>
+                <input type="hidden" name="date" value="<?php echo $row["davailable"];?>"/>
+                <input type="hidden" name="time" value="<?php echo $row["tavailable"];?>"/>
                  </form>
                  </tr>
 

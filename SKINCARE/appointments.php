@@ -369,6 +369,7 @@
                         <td>Last Name</td>
                         <td>Phone Number</td>
                         <td>Email</td>
+                        <td>doctor name</td>
                         <td>date</td>
                         <td>time</td>
                         <td>status</td>
@@ -376,7 +377,7 @@
                     </thead>
                     <?php
                    if(!isset($_POST['choice'])){
-                       $query = "SELECT tbl_appointment.appointment_id, tbl_users.first_name, tbl_users.last_name,tbl_users.phone_number,tbl_users.email,tbl_appointment.appointment_date,tbl_appointment.appointment_time,tbl_appointment.statuses FROM tbl_appointment INNER JOIN tbl_users ON tbl_appointment.user_id = tbl_users.user_id";
+                       $query = "SELECT tbl_appointment.appointment_id, tbl_users.first_name, tbl_users.last_name,tbl_users.phone_number,tbl_users.email,tbl_appointment.doctorname,tbl_appointment.appointment_date,tbl_appointment.appointment_time,tbl_appointment.statuses FROM tbl_appointment INNER JOIN tbl_users ON tbl_appointment.user_id = tbl_users.user_id";
                        getData($query);
                    }
                    elseif(isset($_POST['choice'])){
@@ -384,11 +385,11 @@
                     $year = $_POST['year'];
                     $status = $_POST['status'];
 
-                    $sql = "SELECT tbl_appointment.appointment_id, tbl_users.first_name, tbl_users.last_name,tbl_users.phone_number,tbl_users.email,tbl_appointment.appointment_date,tbl_appointment.appointment_time,tbl_appointment.statuses FROM tbl_appointment INNER JOIN tbl_users ON tbl_appointment.user_id = tbl_users.user_id WHERE YEAR(appointment_date)='$year' AND MONTH(appointment_date)='$month' AND statuses='$status'";
+                    $sql = "SELECT tbl_appointment.appointment_id, tbl_users.first_name, tbl_users.last_name,tbl_users.phone_number,tbl_users.email,tbl_appointment.doctorname,tbl_appointment.appointment_date,tbl_appointment.appointment_time,tbl_appointment.statuses FROM tbl_appointment INNER JOIN tbl_users ON tbl_appointment.user_id = tbl_users.user_id WHERE YEAR(appointment_date)='$year' AND MONTH(appointment_date)='$month' AND statuses='$status'";
                     getData($sql);
                    }
                    elseif(isset($_POST['reset'])){
-                    $query = "SELECT tbl_appointment.appointment_id, tbl_users.first_name, tbl_users.last_name,tbl_users.phone_number,tbl_users.email,tbl_appointment.appointment_date,tbl_appointment.appointment_time,tbl_appointment.statuses FROM tbl_appointment INNER JOIN tbl_users ON tbl_appointment.user_id = tbl_users.user_id";
+                    $query = "SELECT tbl_appointment.appointment_id, tbl_users.first_name, tbl_users.last_name,tbl_users.phone_number,tbl_users.email,tbl_appointment.doctorname,tbl_appointment.appointment_date,tbl_appointment.appointment_time,tbl_appointment.statuses FROM tbl_appointment INNER JOIN tbl_users ON tbl_appointment.user_id = tbl_users.user_id";
                     getData($query);
                 }
                 ?>
@@ -403,6 +404,7 @@
                $lastName = $row['last_name'];
                $phoneNumber = $row['phone_number'];
                $email = $row['email'];
+               $dname = $row['doctorname'];
                $appointdate = $row['appointment_date'];
                $appointdate = strtotime($appointdate);
                $appdate = date("d/m/y", $appointdate);
@@ -415,6 +417,7 @@
                         <td><?php echo $lastName;?></td>
                         <td><?php echo $phoneNumber;?></td>
                         <td><?php echo $email;?></td>
+                        <td><?php echo $dname;?></td>
                         <td><?php echo $appdate;?></td>
                         <td><?php echo $appointime;?></td>
                         <td><?php echo $cstatus;?></td>
