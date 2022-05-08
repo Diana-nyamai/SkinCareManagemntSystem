@@ -151,47 +151,19 @@
         </ul>
     </header>
     <div class="main-body">
-    <h2>Book appointment</h2>
-    
-    <table id="customers">
-  <tr>
-    <th>Dr.Name</th>
-    <th>Date Availabe</th>
-    <th>Time available</th>
-    <th>Book appointment</th>
-  </tr>
-  <?php $id = $_SESSION['userid']?>
-  <?php
-         $total=0;
-         $query = "select * from tbl_users";
-         $result = mysqli_query($conn, $query);
-         if(isset($_SESSION['cart'])){
-             foreach($_SESSION['cart'] as $key => $value){
-                 $prid = $key + 1;
-                 $total = $total + $value['price'];
-                ?>
-                 <tr>
-                 <form action='order.php' method='post'>
-                 <input type="hidden" id="id" name="id" value="<?php echo $id ?>"/>
-                 <input type='hidden' name='product_id' value='<?php echo $value["product_id"]; ?>'/>
-                 <input type='hidden' name='shop_name' value='<?php echo $value["shop_name"];?>'/>
-                   
-                <td><input type='text' value='<?php echo $value["item_name"]; ?>' name='item' class='input'/> </td>
-                <td><input type='text' value='<?php echo $value["quantity"];?>' name='qty' class='input'/></td>
-                <td><input type='text' value='<?php echo $value["price"] * $value["quantity"] ?>' name='total' class='input'/></td>
-                <td> <input type='text' value='cash' name='payment' class='input'/></td>
-                <td><input type='submit' value='order' class='submitbtn'></td>
-                 </form>
-                 </tr>
+        <h2>book appointment page</h2>
+        <?php $id = $_SESSION['userid']?>
+        <div class="form-container">
+                <form name="appointment" action="./Bappointment.php" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+                <input type="hidden" id="id" name="id" value="<?php echo $id ?>">
+                <input type="text" name="date" id="date" placeholder="Enter date..">
+                <input type="text" name="time" id="time" placeholder="Enter time..">
+                <input class="btn" type="submit" value="book appointment">
+               </form>
 
-                 <?php
-             }
-         }
-      ?>
-   
- 
-</table>
-</form>  
+               <!--  -->
+       
+                 </div>   
               </div>
 
 
