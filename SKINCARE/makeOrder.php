@@ -221,7 +221,7 @@
                 <td><input type='text' value='<?php echo $value["item_name"]; ?>' name='item' class='input'/> </td>
                 <td><input type='text' value='<?php echo $value["quantity"];?>' name='qty' class='input'/></td>
                 <td><input type='text' value='<?php echo $value["price"] * $value["quantity"] ?>' name='total' class='input'/></td>
-                <td> <input type='text' value='cash' name='payment' class='input'/></td>
+                <td> <input type='text' value='cash on delivery' name='payment' class='input'/></td>
                 <td><input type='submit' value='order' class='submitbtn'></td>
                  </form>
                  </tr>
