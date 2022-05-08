@@ -1,7 +1,7 @@
 <?php
-$fname = $_POST['fname'];
-$email = $_POST['email'];
+$user_id = $_POST['id'];
 $item = $_POST['item'];
+$quantity = $_POST['qty'];
 $tamount = $_POST['total'];
 $payment = $_POST['payment'];
 $shop_name = $_POST['shop_name'];
@@ -13,9 +13,9 @@ if(mysqli_connect_error()){
     die('connection failed: (' .mysqli_connect_error(). ')' .mysqli_connect_error());
 }
 else{
-    $stmt = $conn->prepare('insert into tbl_orders(first_name, email, product_name, tamount, payment,shop_name,product_id )
+    $stmt = $conn->prepare('insert into tbl_orders(user_id, product_name,quantity, tamount, payment,shop_name,product_id )
     values(?,?,?,?,?,?,?)');
-    $stmt->bind_param('sssissi', $fname, $email, $item, $tamount, $payment, $shop_name, $product_id);
+    $stmt->bind_param('isiissi', $user_id, $item, $quantity, $tamount, $payment, $shop_name, $product_id);
     $stmt->execute();
     echo "
     <script>

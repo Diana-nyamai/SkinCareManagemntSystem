@@ -108,6 +108,14 @@
             outline:none;
             color: #fff;
         }
+        .submitbtn{
+            background: #1e1f31;
+            color: white;
+            padding: 10px 20px;
+            outline: none;
+            border: none;
+            cursor: pointer;
+        }
         .main{
             border:1px solid black;
             width: 50% ;
@@ -163,13 +171,13 @@
     
     <table id="customers">
   <tr>
-    <th>First name</th>
-    <th>email</th>
     <th>product name</th>
+    <th>quantity</th>
     <th>total amount</th>
     <th>payment</th>
     <th>make order</th>
   </tr>
+  <?php $id = $_SESSION['userid']?>
   <?php
          $total=0;
          $query = "select * from tbl_users";
@@ -181,19 +189,15 @@
                 ?>
                  <tr>
                  <form action='order.php' method='post'>
+                 <input type="hidden" id="id" name="id" value="<?php echo $id ?>"/>
                  <input type='hidden' name='product_id' value='<?php echo $value["product_id"]; ?>'/>
                  <input type='hidden' name='shop_name' value='<?php echo $value["shop_name"];?>'/>
-                   <td><input class='input' type='text' name='fname' value ="" placeholder='first name'/></td>
-                   <td><input class='input' type='text' name='email' value="" placeholder='email'/></td>
                    
-                   
-                   <td> <input type='text' value='<?php echo $value["item_name"]; ?>' name='item' class='input'/> </td>
-
-                   <td> <input type='text' value='<?php echo $value["price"] * $value["quantity"] ?>' name='total' class='input'/>
-                   </td>
-
-                   <td> <input type='text' value='cash' name='payment' class='input'/></td>
-                 <td><input type='submit' value='order' class='input'></td>
+                <td><input type='text' value='<?php echo $value["item_name"]; ?>' name='item' class='input'/> </td>
+                <td><input type='text' value='<?php echo $value["quantity"];?>' name='qty' class='input'/></td>
+                <td><input type='text' value='<?php echo $value["price"] * $value["quantity"] ?>' name='total' class='input'/></td>
+                <td> <input type='text' value='cash' name='payment' class='input'/></td>
+                <td><input type='submit' value='order' class='submitbtn'></td>
                  </form>
                  </tr>
 
