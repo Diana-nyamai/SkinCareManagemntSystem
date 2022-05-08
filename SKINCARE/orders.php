@@ -357,7 +357,8 @@
                     <thead>
                         <td>order date</td>
                         <td>email</td>
-                        <td>product name</td>                       
+                        <td>product name</td> 
+                        <td>quantity</td>   
                         <td>total amount</td>
                         <td>payment</td>
                         <td>shop name</td>
@@ -368,7 +369,7 @@
 
                     <?php
                    if(!isset($_POST['choice'])){
-                       $query = "SELECT * FROM tbl_orders";
+                       $query = "SELECT tbl_orders.order_id, tbl_orders.Order_date, tbl_users.email,tbl_orders.product_name,tbl_orders.quantity,tbl_orders.tamount,tbl_orders.payment,tbl_orders.shop_name,tbl_orders.product_id,tbl_orders.statuses FROM tbl_orders INNER JOIN tbl_users ON tbl_orders.user_id = tbl_users.user_id";
                        getData($query);
                    }
                    elseif(isset($_POST['choice'])){
@@ -377,11 +378,11 @@
                        $status = $_POST['status'];
                        $shop = $_POST['shop'];
 
-                       $sql = "SELECT * FROM tbl_orders WHERE YEAR(Order_date)='$year' AND MONTH(Order_date)='$month' AND statuses='$status' AND shop_name = '$shop'";
+                       $sql = "SELECT tbl_orders.order_id, tbl_orders.Order_date, tbl_users.email,tbl_orders.product_name,tbl_orders.quantity,tbl_orders.tamount,tbl_orders.payment,tbl_orders.shop_name,tbl_orders.product_id,tbl_orders.statuses FROM tbl_orders INNER JOIN tbl_users ON tbl_orders.user_id = tbl_users.user_id WHERE YEAR(Order_date)='$year' AND MONTH(Order_date)='$month' AND statuses='$status' AND shop_name = '$shop'";
                        getData($sql);
                    }
                    elseif(isset($_POST['reset'])){
-                       $query = "SELECT * FROM tbl_orders";
+                       $query = "SELECT tbl_orders.order_id, tbl_orders.Order_date, tbl_users.email,tbl_orders.product_name,tbl_orders.quantity,tbl_orders.tamount,tbl_orders.payment,tbl_orders.shop_name,tbl_orders.product_id,tbl_orders.statuses FROM tbl_orders INNER JOIN tbl_users ON tbl_orders.user_id = tbl_users.user_id";
                        getData($query);
                    
                    }
@@ -399,6 +400,7 @@
                $Ordate = date("d/m/y", $orderdate);
                $email = $row['email'];
                $product_name = $row['product_name'];
+               $quantity = $row['quantity'];
                $tamount = $row['tamount'];
                $payment = $row['payment'];
                $sname = $row['shop_name'];
@@ -411,6 +413,7 @@
                         <td><?php echo $Ordate;?></td>
                         <td><?php echo $email;?></td>
                         <td><?php echo $product_name;?></td>
+                        <td><?php echo $quantity;?></td>
                         <td><?php echo $tamount;?></td>
                         <td><?php echo $payment;?></td>
                         <td><?php echo $sname;?></td>
