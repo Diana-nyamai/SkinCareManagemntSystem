@@ -260,10 +260,11 @@
               <div class="last-appointments">
                   <div class="heading">
                       <h2>Make appointment availability</h2>
+                      <?php $id = $_SESSION['userid']?>
                 </div>
                 <div class="form-container">
                 <form name="product" action="dermappoint.php" method="post" onsubmit="return validateForm()">
-                <input type="text" id="dname" name="dname" placeholder="doctor name..">
+                <input type="hidden" id="id" name="id" value="<?php echo $id; ?>"/>
                 <input type="text" id="davailable" name="davailable" placeholder="date available..">
                 <input type="text" id="tavailable" name="tavailable" placeholder="time available..">
                 <input class="btn" type="submit" name="submit" value="post availabilty">

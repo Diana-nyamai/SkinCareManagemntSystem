@@ -1,6 +1,7 @@
 <!-- book appointment page page -->
 <?php
  session_start();
+ $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -115,6 +116,34 @@
        border-radius: 10px;
        text-decoration: none;
    }
+   #customers {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #customers td, #customers th {
+            border-bottom: 1px solid #000;
+            padding: 8px;
+            text-align: center;
+        }
+        #t{
+            border: 1px solid green;
+        }
+
+        #customers th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: center;
+
+        }
+        .submitbtn{
+            background: #1e1f31;
+            color: white;
+            padding: 10px 20px;
+            outline: none;
+            border: none;
+            cursor: pointer;
+        }
        
  </style>
     </head>
@@ -155,38 +184,30 @@
     
     <table id="customers">
   <tr>
-    <th>Dr.Name</th>
+    <th>Doctor Name</th>
     <th>Date Availabe</th>
-    <th>Time available</th>
+    <th>Time Available</th>
     <th>Book appointment</th>
   </tr>
   <?php $id = $_SESSION['userid']?>
-  <?php
-         $total=0;
-         $query = "select * from tbl_users";
-         $result = mysqli_query($conn, $query);
-         if(isset($_SESSION['cart'])){
-             foreach($_SESSION['cart'] as $key => $value){
-                 $prid = $key + 1;
-                 $total = $total + $value['price'];
+             <?php
+          $sm = mysqli_query($conn, "SELECT tbl_users.first_name, tbl_doctoravailable.davailable, tbl_doctoravailable.tavailable FROM tbl_doctoravailable INNER JOIN tbl_users ON tbl_doctoravailable.user_id = tbl_users.user_id");
+          while($row = mysqli_fetch_array($sm)){
                 ?>
                  <tr>
                  <form action='order.php' method='post'>
                  <input type="hidden" id="id" name="id" value="<?php echo $id ?>"/>
-                 <input type='hidden' name='product_id' value='<?php echo $value["product_id"]; ?>'/>
-                 <input type='hidden' name='shop_name' value='<?php echo $value["shop_name"];?>'/>
                    
-                <td><input type='text' value='<?php echo $value["item_name"]; ?>' name='item' class='input'/> </td>
-                <td><input type='text' value='<?php echo $value["quantity"];?>' name='qty' class='input'/></td>
-                <td><input type='text' value='<?php echo $value["price"] * $value["quantity"] ?>' name='total' class='input'/></td>
-                <td> <input type='text' value='cash' name='payment' class='input'/></td>
-                <td><input type='submit' value='order' class='submitbtn'></td>
+                <td>Dr. <?php echo $row["first_name"];?></td>
+                <td><?php echo $row["davailable"]; ?></td>
+                <td><?php echo $row["tavailable"]; ?></td>
+                
+                <td><input type='submit' value='Book appointment' class='submitbtn'></td>
                  </form>
                  </tr>
 
                  <?php
              }
-         }
       ?>
    
  
@@ -194,73 +215,5 @@
 </form>  
               </div>
 
-
-     <!-- javascript section -->
-<script>
-  // validating the main form
- function validateForm(){
-   fname = document.appointment.fname.value;
-   lname = document.appointment.lname.value;
-   phone = document.appointment.phone.value;
-   email = document.appointment.email.value;
-   date  = document.appointment.date.value;
-   time  = document.appointment.time.value;
-
-   if(fname == ""){
-     alert('please enter first name');
-     document.getElementById('fname').focus();
-     return false;
-   }
-   if(lname == ""){
-     alert('please enter second name')
-     document.getElementById('lname').focus();
-     return false;
-   }
-   if(phone.length == 0 || isNaN(phone)){
-    alert('Enter a phone number');
-    document.getElementById('phone').focus();
-    return false;
-  }
-  if(email.length == 0 || email.indexOf('@') == -1 || email.indexOf('.') == -1){
-    alert('enter a valid email.should contain @ and .');
-    document.getElementById('email').focus();
-    return false;
-  }
-  if(date.indexOf('-') == -1){
-         alert('date should be in the form yyyy-mm-dd.  example 2022-05-12');
-         document.getElementById('date').focus();
-         return false;
-       }
-       comps = date.split('-');
-       if(comps[0].length< 4 || comps[1].length < 1 || comps[2].length<1){
-         alert('date should be in the form yyyy-mm-dd.  example 2022-05-12');
-         document.getElementById('date').focus();
-         return false;
-       }
-       if(isNaN(comps[0]) || isNaN(comps[1]) || isNaN(comps[2])){
-         alert('date must be a number and in the format yyyy-mm-dd.  example 2022-05-12');
-         document.getElementById('date').focus();
-         return false;
-       }
-   if(time == ""){
-     alert('please enter the appointment time')
-     document.getElementById('time').focus();
-     return false;
-   }
-   
-   
-   var returned = true;
-   
-  //  returned = validatePhone();
-  //  if(returned == true)
-   returned = validateEmail();
-   if(returned == true)
-   returned = validateDate();
-   if(returned == true)
-   
-   return returned;
- }
-
-</script>
 </body>
 </html>

@@ -26,10 +26,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
     elseif($row['user_type'] == 'dermatologist' && password_verify($password, $hashed_pass)){
         $_SESSION['username'] = $fname;
+        $_SESSION['userid'] = $id;
         header('location:derm_page.php');
     }
     elseif($row['user_type'] == 'admin' && password_verify($password, $hashed_pass)){
         $_SESSION['username'] = $fname;
+        $_SESSION['userid'] = $id;
         header('location:admin.php');
     }
     else{
