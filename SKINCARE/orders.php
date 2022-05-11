@@ -435,8 +435,7 @@
               <tr><td>No data found!</td></tr>
               <?php
            }
-          
-       }  ?>
+          }  ?>
     <!-- closes the function -->
                    
                     
