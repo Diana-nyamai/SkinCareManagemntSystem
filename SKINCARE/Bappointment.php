@@ -15,7 +15,7 @@ else{
     values(?,?,?,?)');
     $stmt->bind_param('isss', $id,$name,$date,$time );
     $stmt->execute();
-    echo '<script>alert("appointment booked")
+    echo '<script>confirm("are you sure you want to book the appointment?")
     window.location.href = "bookappointment.php";
     </script>';
     $stmt->close();

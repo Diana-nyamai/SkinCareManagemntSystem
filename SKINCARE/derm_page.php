@@ -358,8 +358,11 @@
                         <td>status</td>
                         <td>Actions</td>
                     </thead>
+                   
                     <?php
+                     
                    if(!isset($_POST['choice'])){
+                       $id = $_SESSION['userid'];
                        $query = "SELECT tbl_appointment.appointment_id, tbl_users.first_name, tbl_users.last_name,tbl_users.phone_number,tbl_users.email,tbl_appointment.doctorname,tbl_appointment.appointment_date,tbl_appointment.appointment_time,tbl_appointment.statuses FROM tbl_appointment INNER JOIN tbl_users ON tbl_appointment.user_id = tbl_users.user_id";
                        getData($query);
                    }

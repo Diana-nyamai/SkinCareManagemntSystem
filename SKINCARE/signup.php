@@ -9,6 +9,7 @@ session_start();
  $user = $_POST['user'];
  $password = $_POST['password'];
  $password_hash = password_hash($password, PASSWORD_DEFAULT);
+//  prevents xss attack
  $fname = htmlspecialchars($fname);
  $lname = htmlspecialchars($lname);
 
