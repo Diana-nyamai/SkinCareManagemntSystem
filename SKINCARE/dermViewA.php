@@ -309,78 +309,21 @@
                       <button onclick="window.print();" class="btn">Print</button>
                 </div>
 
-                <form action="#" method="post">
-                <div class="options">
-                <select name="filterChoice">
-                    <option selected="selected">select month</option>
-                    <option value ='01'> JANUARY </option>
-                    <option value ='02'> FEBRUARY </option>
-                    <option value ='03'> MARCH </option>
-                    <option value ='04'> APRIL </option>
-                    <option value ='05'> MAY </option>
-                    <option value ='06'> JUNE </option>
-                    <option value ='07'> JULY </option>
-                    <option value ='08'> AUGUST </option>
-                    <option value ='09'> SEPTEMBER </option>
-                    <option value ='10'> OCTOBER </option>
-                    <option value ='11'> NOVEMBER </option>
-                    <option value ='12'> DECEMBER </option>
-                </select>
-                <select name="year" id="year">
-                    <option select="selected">select year</option>
-                    <?php 
-                    for($i = 2018 ; $i <= date('Y'); $i++){
-                        echo "<option>$i</option>";
-                    //given that variable i which has the year 2000
-                    //if i variable is less and equal to the current Year
-                    //echo the number with option output
-                    //++ is an increment operator and the loop will end at the current year
-                        }
-                    ?>
-            </select>
-            <select name="status" id="status">
-                <option select="selected">status</option>
-                <option value="seen">seen</option>
-                <option value="not seen">not seen</option>
-            </select>
-
-                 <input type="submit" value="filter" name="choice" class="bton">
-                 <input type="submit" value="reset" name="reset" class="bton"> 
-                </div>
-            </form>
-
+                
                 <table class="appointments">
                     <thead>
                         <td>First Name</td>
-                        <td>Last Name</td>
-                        <td>Phone Number</td>
-                        <td>Email</td>
-                        <td>doctor name</td>
-                        <td>date</td>
-                        <td>time</td>
-                        <td>status</td>
+                        <td>Date Available</td>
+                        <td>Time Available</td>
                         <td>Actions</td>
                     </thead>
                    
                     <?php
-                     
-                   if(!isset($_POST['choice'])){
-                       $id = $_SESSION['userid'];
-                       $query = "SELECT tbl_appointment.appointment_id, tbl_users.first_name, tbl_users.last_name,tbl_users.phone_number,tbl_users.email,tbl_appointment.doctorname,tbl_appointment.appointment_date,tbl_appointment.appointment_time,tbl_appointment.statuses FROM tbl_appointment INNER JOIN tbl_users ON tbl_appointment.user_id = tbl_users.user_id";
-                       getData($query);
-                   }
-                   elseif(isset($_POST['choice'])){
-                    $month = $_POST['filterChoice'];
-                    $year = $_POST['year'];
-                    $status = $_POST['status'];
+                 
 
-                    $sql = "SELECT tbl_appointment.appointment_id, tbl_users.first_name, tbl_users.last_name,tbl_users.phone_number,tbl_users.email,tbl_appointment.doctorname,tbl_appointment.appointment_date,tbl_appointment.appointment_time,tbl_appointment.statuses FROM tbl_appointment INNER JOIN tbl_users ON tbl_appointment.user_id = tbl_users.user_id WHERE YEAR(appointment_date)='$year' AND MONTH(appointment_date)='$month' AND statuses='$status'";
+                    $sql = "SELECT tbl_users.first_name, tbl_doctoravailable.davailable, tbl_doctoravailable.tavailable FROM tbl_doctoravailable INNER JOIN tbl_users ON tbl_doctoravailable.user_id = tbl_users.user_id";
                     getData($sql);
-                   }
-                   elseif(isset($_POST['reset'])){
-                    $query = "SELECT tbl_appointment.appointment_id, tbl_users.first_name, tbl_users.last_name,tbl_users.phone_number,tbl_users.email,tbl_appointment.doctorname,tbl_appointment.appointment_date,tbl_appointment.appointment_time,tbl_appointment.statuses FROM tbl_appointment INNER JOIN tbl_users ON tbl_appointment.user_id = tbl_users.user_id";
-                    getData($query);
-                }
+                   
                 ?>
                     <?php 
     function getData($sql){
@@ -390,29 +333,19 @@
            while($row = mysqli_fetch_array($data)){
                $id = $row['appointment_id'];
                $firstName = $row['first_name'];
-               $lastName = $row['last_name'];
-               $phoneNumber = $row['phone_number'];
-               $email = $row['email'];
-               $dname = $row['doctorname'];
-               $appointdate = $row['appointment_date'];
-               $appointdate = strtotime($appointdate);
-               $appdate = date("d/m/y", $appointdate);
-               $appointime = $row['appointment_time'];
+               $dvailable = $row['davailable'];
+               $tvailable = $row['tavailable'];
                $cstatus = $row['statuses'];
                ?>
     
                 <tr>
                         <td><?php echo $firstName;?></td>
-                        <td><?php echo $lastName;?></td>
-                        <td><?php echo $phoneNumber;?></td>
-                        <td><?php echo $email;?></td>
-                        <td><?php echo $dname;?></td>
-                        <td><?php echo $appdate;?></td>
-                        <td><?php echo $appointime;?></td>
+                        <td><?php echo $dvailable;?></td>
+                        <td><?php echo $tavailable;?></td>
                         <td><?php echo $cstatus;?></td>
                         <td>
                             <?php echo "
-                        <a title='edit/update' href='./updatedermappoint.php?id=$id'>
+                        <a title='edit/update' href='#'>
                         <i class='fa fa-edit'> Edit</i></a>
                         ";?>
                         </td>

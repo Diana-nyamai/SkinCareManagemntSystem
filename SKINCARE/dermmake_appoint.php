@@ -230,6 +230,9 @@
                 <li><a href="./dermmake_appoint.php"><i class="fa fa-dashboard"></i>
                     <div class="title">Make appointments</div>
                 </a></li>
+                <li><a href="./dermViewA.php"><i class="fa fa-dashboard"></i>
+                    <div class="title">View availability</div>
+                </a></li>
         <li><a href="./logout.php"><i class="fa fa-sign-out"></i>
             <div class="title">logout</div>
     </a></li>
