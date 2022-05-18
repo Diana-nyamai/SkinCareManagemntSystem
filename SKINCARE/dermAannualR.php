@@ -1,4 +1,4 @@
-<!-- this is the appointent page that contains the report on the appointments made..on admin page -->
+<!-- this is the appointent page that contains the report on the appointments made..on dermatologist page -->
 <?php
    session_start();
   $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
@@ -15,7 +15,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=0">
-    <title>Admin panel</title>
+    <title>dermatologist panel</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="./images/logo.png" type="image/x-icon">
@@ -253,30 +253,16 @@
                 <li><a href=""><i class="fa fa-clinic medical"></i>
                 <div class="title">HEAVENLY SKIN</div>
                 </a></li>
-                <li><a href="./admin.php"><i class="fa fa-dashboard"></i>
-                    <div class="title">dashboard</div>
-                </a></li>
-                <li><a href="./appointments.php"><i class="fa fa-stethoscope"></i>
+                
+                <li><a href="./derm_page.php"><i class="fa fa-stethoscope"></i>
                         <div class="title">appointments</div>
                 </a></li>
-                <li><a href="./users.php"><i class="fa fa-user"></i>
-                    <div class="title">users</div>
-             </a></li>
-             <li><a href="./customers.php"><i class="fa fa-user"></i>
-                    <div class="title">customers</div>
-             </a></li>
-             <li><a href="./orders.php"><i class="fa fa-money"></i>
-                <div class="title">orders</div>
-             </a></li>
-             <li><a href="./productadmin.php"><i class="fa fa-shopping-basket"></i>
-                <div class="title">Add Products</div>
-             </a></li>
-             <li><a href="./productRadmin.php"><i class="fa fa-shopping-basket"></i>
-                <div class="title">Product Report</div>
-             </a></li>
-             <li><a href="./stmanagement.php"><i class="fa fa-tint"></i>
-                <div class="title">skin management</div>
-        </a></li>
+                <li><a href="./dermmake_appoint.php"><i class="fa fa-dashboard"></i>
+                    <div class="title">Make appointments</div>
+                </a></li>
+                <li><a href="./dermViewA.php"><i class="fa fa-dashboard"></i>
+                    <div class="title">View availability</div>
+                </a></li>
         <li><a href="./logout.php"><i class="fa fa-sign-out"></i>
             <div class="title">logout</div>
     </a></li>
@@ -319,17 +305,18 @@
           <div class="tables">
               <div class="last-appointments">
                   <div class="heading">
-                      <h2>Appointment report</h2>
-                      <a class="btn" href="appointmentsAnn.php">Annual report</a>
+                      <h2>Annual Appointment report</h2>
+                      <button><a href=""></a></button>
                       <button onclick="window.print();" class="btn">Print</button>
                 </div>
 
                 <form action="#" method="post">
                 <div class="options">
-                <select name="day" id="day">
-                    <option select="selected">select day</option>
+                
+                <select name="year" id="year">
+                    <option select="selected">select year</option>
                     <?php 
-                    for($i = 1 ; $i <= 31; $i++){
+                    for($i = 2018 ; $i <= date('Y'); $i++){
                         echo "<option>$i</option>";
                     //given that variable i which has the year 2000 
                     //if i variable is less and equal to the current Year
@@ -338,39 +325,6 @@
                         }
                     ?> 
             </select>
-                <select name="filterChoice">
-                    <option selected="selected">select month</option>
-                    <option value ='01'> JANUARY </option>
-                    <option value ='02'> FEBRUARY </option>
-                    <option value ='03'> MARCH </option>
-                    <option value ='04'> APRIL </option>
-                    <option value ='05'> MAY </option>
-                    <option value ='06'> JUNE </option>
-                    <option value ='07'> JULY </option>
-                    <option value ='08'> AUGUST </option>
-                    <option value ='09'> SEPTEMBER </option>
-                    <option value ='10'> OCTOBER </option>
-                    <option value ='11'> NOVEMBER </option>
-                    <option value ='12'> DECEMBER </option>
-                </select>
-                <select name="year" id="year">
-                    <option select="selected">select year</option>
-                    <?php 
-                    for($i = 2018 ; $i <= date('Y'); $i++){
-                        echo "<option>$i</option>";
-                    //given that variable i which has the year 2000
-                    //if i variable is less and equal to the current Year
-                    //echo the number with option output
-                    //++ is an increment operator and the loop will end at the current year
-                        }
-                    ?>
-            </select>
-            <select name="status" id="status">
-                <option select="selected">status</option>
-                <option value="seen">seen</option>
-                <option value="not seen">not seen</option>
-            </select>
-
                  <input type="submit" value="filter" name="choice" class="bton">
                  <input type="submit" value="reset" name="reset" class="bton"> 
                 </div>
@@ -388,18 +342,17 @@
                         <td>status</td>
                         <td>Actions</td>
                     </thead>
+                   
                     <?php
+                     
                    if(!isset($_POST['choice'])){
+                       $id = $_SESSION['userid'];
                        $query = "SELECT tbl_appointment.appointment_id, tbl_users.first_name, tbl_users.last_name,tbl_users.phone_number,tbl_users.email,tbl_appointment.doctorname,tbl_appointment.appointment_date,tbl_appointment.appointment_time,tbl_appointment.statuses FROM tbl_appointment INNER JOIN tbl_users ON tbl_appointment.user_id = tbl_users.user_id";
                        getData($query);
                    }
                    elseif(isset($_POST['choice'])){
-                    $day = $_POST['day'];
-                    $month = $_POST['filterChoice'];
                     $year = $_POST['year'];
-                    $status = $_POST['status'];
-
-                    $sql = "SELECT tbl_appointment.appointment_id, tbl_users.first_name, tbl_users.last_name,tbl_users.phone_number,tbl_users.email,tbl_appointment.doctorname,tbl_appointment.appointment_date,tbl_appointment.appointment_time,tbl_appointment.statuses FROM tbl_appointment INNER JOIN tbl_users ON tbl_appointment.user_id = tbl_users.user_id WHERE DAY(appointment_date)='$day' AND YEAR(appointment_date)='$year' AND MONTH(appointment_date)='$month' AND statuses='$status'";
+                    $sql = "SELECT tbl_appointment.appointment_id, tbl_users.first_name, tbl_users.last_name,tbl_users.phone_number,tbl_users.email,tbl_appointment.doctorname,tbl_appointment.appointment_date,tbl_appointment.appointment_time,tbl_appointment.statuses FROM tbl_appointment INNER JOIN tbl_users ON tbl_appointment.user_id = tbl_users.user_id WHERE YEAR(appointment_date)='$year'";
                     getData($sql);
                    }
                    elseif(isset($_POST['reset'])){
@@ -437,7 +390,7 @@
                         <td><?php echo $cstatus;?></td>
                         <td>
                             <?php echo "
-                        <a title='edit/update' href='./updateappoint.php?id=$id'>
+                        <a title='edit/update' href='./updatedermappoint.php?id=$id'>
                         <i class='fa fa-edit'> Edit</i></a>
                         ";?>
                         </td>

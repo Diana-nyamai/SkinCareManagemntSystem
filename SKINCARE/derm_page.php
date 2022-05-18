@@ -160,6 +160,7 @@
    }
    .btn{
        padding: 5px 10px;
+       margin-bottom: 10px;
        background-image: linear-gradient(45deg,#1e1f31, #f09053);
        color: #fff;
        border-radius: 10px;
@@ -306,11 +307,24 @@
               <div class="last-appointments">
                   <div class="heading">
                       <h2>Appointment report</h2>
+                      <a class="btn" href="dermAannualR.php">Annual report</a>
                       <button onclick="window.print();" class="btn">Print</button>
                 </div>
 
                 <form action="#" method="post">
                 <div class="options">
+                <select name="day" id="day">
+                    <option select="selected">select day</option>
+                    <?php 
+                    for($i = 1 ; $i <= 31; $i++){
+                        echo "<option>$i</option>";
+                    //given that variable i which has the year 2000 
+                    //if i variable is less and equal to the current Year
+                    //echo the number with option output
+                    //++ is an increment operator and the loop will end at the current year
+                        }
+                    ?> 
+            </select>
                 <select name="filterChoice">
                     <option selected="selected">select month</option>
                     <option value ='01'> JANUARY </option>
@@ -331,12 +345,12 @@
                     <?php 
                     for($i = 2018 ; $i <= date('Y'); $i++){
                         echo "<option>$i</option>";
-                    //given that variable i which has the year 2000
+                    //given that variable i which has the year 2000 
                     //if i variable is less and equal to the current Year
                     //echo the number with option output
                     //++ is an increment operator and the loop will end at the current year
                         }
-                    ?>
+                    ?> 
             </select>
             <select name="status" id="status">
                 <option select="selected">status</option>
@@ -370,11 +384,12 @@
                        getData($query);
                    }
                    elseif(isset($_POST['choice'])){
+                    $day = $_POST['day'];
                     $month = $_POST['filterChoice'];
                     $year = $_POST['year'];
                     $status = $_POST['status'];
 
-                    $sql = "SELECT tbl_appointment.appointment_id, tbl_users.first_name, tbl_users.last_name,tbl_users.phone_number,tbl_users.email,tbl_appointment.doctorname,tbl_appointment.appointment_date,tbl_appointment.appointment_time,tbl_appointment.statuses FROM tbl_appointment INNER JOIN tbl_users ON tbl_appointment.user_id = tbl_users.user_id WHERE YEAR(appointment_date)='$year' AND MONTH(appointment_date)='$month' AND statuses='$status'";
+                    $sql = "SELECT tbl_appointment.appointment_id, tbl_users.first_name, tbl_users.last_name,tbl_users.phone_number,tbl_users.email,tbl_appointment.doctorname,tbl_appointment.appointment_date,tbl_appointment.appointment_time,tbl_appointment.statuses FROM tbl_appointment INNER JOIN tbl_users ON tbl_appointment.user_id = tbl_users.user_id WHERE DAY(appointment_date)='$day' AND YEAR(appointment_date)='$year' AND MONTH(appointment_date)='$month' AND statuses='$status'";
                     getData($sql);
                    }
                    elseif(isset($_POST['reset'])){

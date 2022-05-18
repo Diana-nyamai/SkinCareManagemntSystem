@@ -1,13 +1,9 @@
-<!-- this is the appointent page that contains the report on the appointments made..on admin page -->
+<!-- this page will display the number of users and a report on orders in admin-->
 <?php
    session_start();
   $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
-  $data = mysqli_query($conn, 'SELECT * FROM tbl_appointment');
-  $number = mysqli_num_rows($data);
-  $users = mysqli_query($conn, 'SELECT * FROM tbl_users');
-  $usernum = mysqli_num_rows($users);
-  $derm = mysqli_query($conn, 'SELECT * FROM tbl_users WHERE user_type="dermatologist"');
-  $dermnum = mysqli_num_rows($derm);
+  $data = mysqli_query($conn, 'SELECT * FROM tbl_orders');
+  $number = mysqli_num_rows($data)
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -108,7 +104,7 @@
        width: 100%;
        padding: 35px 20px;
        display: grid;
-       grid-template-columns: repeat(3, 1fr);
+       grid-template-columns: 1fr;
        grid-gap: 20px;
    }
    .cards .card{
@@ -132,10 +128,12 @@
    .icon-box{
        font-size: 45px;
    }
+
+   /* table styling */
    .tables{
       width: 100%;
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns:1fr;
       grid-gap: 20px;
       align-items: self-start;
       padding: 0 20px 20px 20px ;
@@ -145,8 +143,7 @@
       
        border-radius: 50%;
    }
-   .last-appointments, 
-   .doctor-visiting{
+   .last-appointments{
        min-height: 350px;
        background: #fff;
        padding: 20px;
@@ -160,6 +157,7 @@
    }
    .btn{
        padding: 5px 10px;
+       margin-bottom: 10px;
        background-image: linear-gradient(45deg,#1e1f31, #f09053);
        color: #fff;
        border-radius: 10px;
@@ -233,8 +231,7 @@
        }
    }
    @media all and (max-width: 420px){
-       .last-appointments,
-       .doctor-visiting{
+       .last-appointments{
            font-size: 70%;
            padding: 10px;
            min-height: 200px;
@@ -292,67 +289,27 @@
             </div>
 
             <div class="cards">
+                
                 <div class="card">
                     <div class="card-content">
                         <div class="number"><?php echo $number; ?></div>
-                        <div class="card-name">appointments</div>                       
-                    </div>
-                    <div class="icon-box"><i class="fa fa-calendar"></i></div>
-                </div>
-                <div class="card">
-                    <div class="card-content">
-                        <div class="number"><?php echo $usernum; ?></div>
-                        <div class="card-name">users</div>
+                        <div class="card-name">orders</div>
                        </div> 
                        <div class="icon-box"><i class="fa fa-user"></i></div>
-                </div>
-                <div class="card">
-                    <div class="card-content">
-                        <div class="number"><?php echo $dermnum; ?></div>
-                        <div class="card-name">dermatologists</div>                     
-                    </div>
-                     <div class="icon-box"><i class="fa fa-stethoscope"></i></div>
                 </div>
             </div><!-- end of cards -->
 
             <!-- tables -->
+
           <div class="tables">
               <div class="last-appointments">
                   <div class="heading">
-                      <h2>Appointment report</h2>
-                      <a class="btn" href="appointmentsAnn.php">Annual report</a>
+                      <h2>Annual orders</h2>
                       <button onclick="window.print();" class="btn">Print</button>
                 </div>
-
                 <form action="#" method="post">
                 <div class="options">
-                <select name="day" id="day">
-                    <option select="selected">select day</option>
-                    <?php 
-                    for($i = 1 ; $i <= 31; $i++){
-                        echo "<option>$i</option>";
-                    //given that variable i which has the year 2000 
-                    //if i variable is less and equal to the current Year
-                    //echo the number with option output
-                    //++ is an increment operator and the loop will end at the current year
-                        }
-                    ?> 
-            </select>
-                <select name="filterChoice">
-                    <option selected="selected">select month</option>
-                    <option value ='01'> JANUARY </option>
-                    <option value ='02'> FEBRUARY </option>
-                    <option value ='03'> MARCH </option>
-                    <option value ='04'> APRIL </option>
-                    <option value ='05'> MAY </option>
-                    <option value ='06'> JUNE </option>
-                    <option value ='07'> JULY </option>
-                    <option value ='08'> AUGUST </option>
-                    <option value ='09'> SEPTEMBER </option>
-                    <option value ='10'> OCTOBER </option>
-                    <option value ='11'> NOVEMBER </option>
-                    <option value ='12'> DECEMBER </option>
-                </select>
+              
                 <select name="year" id="year">
                     <option select="selected">select year</option>
                     <?php 
@@ -365,80 +322,80 @@
                         }
                     ?>
             </select>
-            <select name="status" id="status">
-                <option select="selected">status</option>
-                <option value="seen">seen</option>
-                <option value="not seen">not seen</option>
-            </select>
 
                  <input type="submit" value="filter" name="choice" class="bton">
                  <input type="submit" value="reset" name="reset" class="bton"> 
                 </div>
             </form>
-
                 <table class="appointments">
                     <thead>
-                        <td>First Name</td>
-                        <td>Last Name</td>
-                        <td>Phone Number</td>
-                        <td>Email</td>
-                        <td>doctor name</td>
-                        <td>date</td>
-                        <td>time</td>
+                        <td>order date</td>
+                        <td>email</td>
+                        <td>product name</td> 
+                        <td>quantity</td>   
+                        <td>total amount</td>
+                        <td>payment</td>
+                        <td>shop name</td>
+                        <td>product id</td>
                         <td>status</td>
                         <td>Actions</td>
                     </thead>
+
                     <?php
                    if(!isset($_POST['choice'])){
-                       $query = "SELECT tbl_appointment.appointment_id, tbl_users.first_name, tbl_users.last_name,tbl_users.phone_number,tbl_users.email,tbl_appointment.doctorname,tbl_appointment.appointment_date,tbl_appointment.appointment_time,tbl_appointment.statuses FROM tbl_appointment INNER JOIN tbl_users ON tbl_appointment.user_id = tbl_users.user_id";
+                       $query = "SELECT tbl_orders.order_id, tbl_orders.Order_date, tbl_users.email,tbl_orders.product_name,tbl_orders.quantity,tbl_orders.tamount,tbl_orders.payment,tbl_orders.shop_name,tbl_orders.product_id,tbl_orders.statuses FROM tbl_orders INNER JOIN tbl_users ON tbl_orders.user_id = tbl_users.user_id";
                        getData($query);
                    }
                    elseif(isset($_POST['choice'])){
-                    $day = $_POST['day'];
-                    $month = $_POST['filterChoice'];
-                    $year = $_POST['year'];
-                    $status = $_POST['status'];
+            
+                       $year = $_POST['year'];
 
-                    $sql = "SELECT tbl_appointment.appointment_id, tbl_users.first_name, tbl_users.last_name,tbl_users.phone_number,tbl_users.email,tbl_appointment.doctorname,tbl_appointment.appointment_date,tbl_appointment.appointment_time,tbl_appointment.statuses FROM tbl_appointment INNER JOIN tbl_users ON tbl_appointment.user_id = tbl_users.user_id WHERE DAY(appointment_date)='$day' AND YEAR(appointment_date)='$year' AND MONTH(appointment_date)='$month' AND statuses='$status'";
-                    getData($sql);
+                       $sql = "SELECT tbl_orders.order_id, tbl_orders.Order_date, tbl_users.email,tbl_orders.product_name,tbl_orders.quantity,tbl_orders.tamount,tbl_orders.payment,tbl_orders.shop_name,tbl_orders.product_id,tbl_orders.statuses FROM tbl_orders INNER JOIN tbl_users ON tbl_orders.user_id = tbl_users.user_id WHERE YEAR(Order_date)='$year'";
+                       getData($sql);
                    }
                    elseif(isset($_POST['reset'])){
-                    $query = "SELECT tbl_appointment.appointment_id, tbl_users.first_name, tbl_users.last_name,tbl_users.phone_number,tbl_users.email,tbl_appointment.doctorname,tbl_appointment.appointment_date,tbl_appointment.appointment_time,tbl_appointment.statuses FROM tbl_appointment INNER JOIN tbl_users ON tbl_appointment.user_id = tbl_users.user_id";
-                    getData($query);
-                }
+                       $query = "SELECT tbl_orders.order_id, tbl_orders.Order_date, tbl_users.email,tbl_orders.product_name,tbl_orders.quantity,tbl_orders.tamount,tbl_orders.payment,tbl_orders.shop_name,tbl_orders.product_id,tbl_orders.statuses FROM tbl_orders INNER JOIN tbl_users ON tbl_orders.user_id = tbl_users.user_id";
+                       getData($query);
+                   
+                   }
                 ?>
-                    <?php 
+
+<?php 
     function getData($sql){
            $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
            $data = mysqli_query($conn, $sql) ;
         if(mysqli_num_rows($data) > 0){
            while($row = mysqli_fetch_array($data)){
-               $id = $row['appointment_id'];
-               $firstName = $row['first_name'];
-               $lastName = $row['last_name'];
-               $phoneNumber = $row['phone_number'];
+               $id = $row['order_id'];
+               $orderdate = $row['Order_date'];
+               $orderdate = strtotime($orderdate);
+               $Ordate = date("d/m/y", $orderdate);
                $email = $row['email'];
-               $dname = $row['doctorname'];
-               $appointdate = $row['appointment_date'];
-               $appointdate = strtotime($appointdate);
-               $appdate = date("d/m/y", $appointdate);
-               $appointime = $row['appointment_time'];
-               $cstatus = $row['statuses'];
+               $product_name = $row['product_name'];
+               $quantity = $row['quantity'];
+               $tamount = $row['tamount'];
+               $payment = $row['payment'];
+               $sname = $row['shop_name'];
+               $pid = $row['product_id'];
+               $statuses = $row['statuses'];
+              
                ?>
     
                 <tr>
-                        <td><?php echo $firstName;?></td>
-                        <td><?php echo $lastName;?></td>
-                        <td><?php echo $phoneNumber;?></td>
+                        <td><?php echo $Ordate;?></td>
                         <td><?php echo $email;?></td>
-                        <td><?php echo $dname;?></td>
-                        <td><?php echo $appdate;?></td>
-                        <td><?php echo $appointime;?></td>
-                        <td><?php echo $cstatus;?></td>
+                        <td><?php echo $product_name;?></td>
+                        <td><?php echo $quantity;?></td>
+                        <td><?php echo $tamount;?></td>
+                        <td><?php echo $payment;?></td>
+                        <td><?php echo $sname;?></td>
+                        <td><?php echo $pid;?></td>
+                        <td><?php echo $statuses;?></td>
                         <td>
-                            <?php echo "
-                        <a title='edit/update' href='./updateappoint.php?id=$id'>
-                        <i class='fa fa-edit'> Edit</i></a>
+                        <?php echo "
+                        <a title='edit/update' href='./updateorders.php?id=$id'>
+                        <i class='fa fa-edit'></i></a>
+                         <a title='delete' href='./deleteorder.php?id=$id'><input type='submit' class='btn' value='delete' /></a> 
                         ";?>
                         </td>
                     </tr>
@@ -450,13 +407,14 @@
               <tr><td>No data found!</td></tr>
               <?php
            }
-          
-       }  ?>
+          }  ?>
     <!-- closes the function -->
                    
+                    
+                    
                 </table>
               </div>
-              
+             
           </div>
         </div>
     </div>

@@ -157,8 +157,9 @@
    }
    .btn{
        padding: 5px 10px;
+       margin-bottom: 10px;
        background-image: linear-gradient(45deg,#1e1f31, #f09053);
-       color: #000;
+       color: #fff;
        border-radius: 10px;
        text-decoration: none;
    }
@@ -304,10 +305,23 @@
               <div class="last-appointments">
                   <div class="heading">
                       <h2>orders</h2>
+                      <a class="btn" href="orderAnnual.php">Annual report</a>
                       <button onclick="window.print();" class="btn">Print</button>
                 </div>
                 <form action="#" method="post">
                 <div class="options">
+                <select name="day" id="day">
+                    <option select="selected">select day</option>
+                    <?php 
+                    for($i = 1 ; $i <= 31; $i++){
+                        echo "<option>$i</option>";
+                    //given that variable i which has the year 2000 
+                    //if i variable is less and equal to the current Year
+                    //echo the number with option output
+                    //++ is an increment operator and the loop will end at the current year
+                        }
+                    ?> 
+            </select>
                 <select name="filterChoice">
                     <option selected="selected">select month</option>
                     <option value ='01'> JANUARY </option>
@@ -374,11 +388,12 @@
                    }
                    elseif(isset($_POST['choice'])){
                     $month = $_POST['filterChoice'];
+                       $day = $_POST['day'];
                        $year = $_POST['year'];
                        $status = $_POST['status'];
                        $shop = $_POST['shop'];
 
-                       $sql = "SELECT tbl_orders.order_id, tbl_orders.Order_date, tbl_users.email,tbl_orders.product_name,tbl_orders.quantity,tbl_orders.tamount,tbl_orders.payment,tbl_orders.shop_name,tbl_orders.product_id,tbl_orders.statuses FROM tbl_orders INNER JOIN tbl_users ON tbl_orders.user_id = tbl_users.user_id WHERE YEAR(Order_date)='$year' AND MONTH(Order_date)='$month' AND statuses='$status' AND shop_name = '$shop'";
+                       $sql = "SELECT tbl_orders.order_id, tbl_orders.Order_date, tbl_users.email,tbl_orders.product_name,tbl_orders.quantity,tbl_orders.tamount,tbl_orders.payment,tbl_orders.shop_name,tbl_orders.product_id,tbl_orders.statuses FROM tbl_orders INNER JOIN tbl_users ON tbl_orders.user_id = tbl_users.user_id WHERE DAY(Order_date)='$day' AND YEAR(Order_date)='$year' AND MONTH(Order_date)='$month' AND statuses='$status' AND shop_name = '$shop'";
                        getData($sql);
                    }
                    elseif(isset($_POST['reset'])){
