@@ -306,70 +306,14 @@
                   <div class="heading">
                       <h2>orders</h2>
                       <a class="btn" href="orderAnnual.php">Annual report</a>
-                      <a class="btn" href="orders_search.php">search producst</a>
-                      <!-- <form method="post" action="#">
-                         <input type="text" placeholder="search..." name="search_input"/>
-                         <input type="submit" value="Search" name="search"/>
-                      </form> -->
+                     
                       <button onclick="window.print();" class="btn">Print</button>
                 </div>
 
                 <form action="#" method="post">
                 <div class="options">
-                <select name="day" id="day">
-                    <option select="selected">select day</option>
-                    <?php 
-                    for($i = 1 ; $i <= 31; $i++){
-                        echo "<option>$i</option>";
-                    //given that variable i which has the year 2000 
-                    //if i variable is less and equal to the current Year
-                    //echo the number with option output
-                    //++ is an increment operator and the loop will end at the current year
-                        }
-                    ?> 
-            </select>
-                <select name="filterChoice">
-                    <option selected="selected">select month</option>
-                    <option value ='01'> JANUARY </option>
-                    <option value ='02'> FEBRUARY </option>
-                    <option value ='03'> MARCH </option>
-                    <option value ='04'> APRIL </option>
-                    <option value ='05'> MAY </option>
-                    <option value ='06'> JUNE </option>
-                    <option value ='07'> JULY </option>
-                    <option value ='08'> AUGUST </option>
-                    <option value ='09'> SEPTEMBER </option>
-                    <option value ='10'> OCTOBER </option>
-                    <option value ='11'> NOVEMBER </option>
-                    <option value ='12'> DECEMBER </option>
-                </select>
-                <select name="year" id="year">
-                    <option select="selected">select year</option>
-                    <?php 
-                    for($i = 2018 ; $i <= date('Y'); $i++){
-                        echo "<option>$i</option>";
-                    //given that variable i which has the year 2000
-                    //if i variable is less and equal to the current Year
-                    //echo the number with option output
-                    //++ is an increment operator and the loop will end at the current year
-                        }
-                    ?>
-            </select>
-            <select name="status" id="status">
-                <option select="selected">status</option>
-                <option value="delivered">delivered</option>
-                <option value="not delivered">not deleivered</option>
-            </select>
-
-            <select name="shop" id="shop">
-                <option select="selected">shop name</option>
-                <option value="aliya">aliya</option>
-                <option value="eve">eve</option>
-                <option value="derm">derm</option>
-                <option value="urembo">urembo</option>
-            </select>
-
-                 <input type="submit" value="filter" name="choice" class="bton">
+                <input type="text" placeholder="search..." name="search_input"/>
+                 <input type="submit" value="search" name="choice" class="bton">
                  <input type="submit" value="reset" name="reset" class="bton"> 
                 </div>
             </form>
@@ -387,21 +331,21 @@
                         <td>Actions</td>
                     </thead>
                     
-
+                    
+                <?php 
+                   if(isset($_POST['search'])){
+                      
+                   }
+                ?>
                     <?php
                    if(!isset($_POST['choice'])){
                        $query = "SELECT tbl_orders.order_id, tbl_orders.Order_date, tbl_users.email,tbl_orders.product_name,tbl_orders.quantity,tbl_orders.tamount,tbl_orders.payment,tbl_orders.shop_name,tbl_orders.product_id,tbl_orders.statuses FROM tbl_orders INNER JOIN tbl_users ON tbl_orders.user_id = tbl_users.user_id";
                        getData($query);
                    }
                    elseif(isset($_POST['choice'])){
-                    $month = $_POST['filterChoice'];
-                       $day = $_POST['day'];
-                       $year = $_POST['year'];
-                       $status = $_POST['status'];
-                       $shop = $_POST['shop'];
-
-                       $sql = "SELECT tbl_orders.order_id, tbl_orders.Order_date, tbl_users.email,tbl_orders.product_name,tbl_orders.quantity,tbl_orders.tamount,tbl_orders.payment,tbl_orders.shop_name,tbl_orders.product_id,tbl_orders.statuses FROM tbl_orders INNER JOIN tbl_users ON tbl_orders.user_id = tbl_users.user_id WHERE DAY(Order_date)='$day' AND YEAR(Order_date)='$year' AND MONTH(Order_date)='$month' AND statuses='$status' AND shop_name = '$shop'";
-                       getData($sql);
+                    $product_name = $_POST['search_input'];
+                    $query = "SELECT tbl_orders.order_id, tbl_orders.Order_date, tbl_users.email,tbl_orders.product_name,tbl_orders.quantity,tbl_orders.tamount,tbl_orders.payment,tbl_orders.shop_name,tbl_orders.product_id,tbl_orders.statuses FROM tbl_orders INNER JOIN tbl_users ON tbl_orders.user_id = tbl_users.user_id where product_name = '$product_name'";
+                    getData($query);
                    }
                    elseif(isset($_POST['reset'])){
                        $query = "SELECT tbl_orders.order_id, tbl_orders.Order_date, tbl_users.email,tbl_orders.product_name,tbl_orders.quantity,tbl_orders.tamount,tbl_orders.payment,tbl_orders.shop_name,tbl_orders.product_id,tbl_orders.statuses FROM tbl_orders INNER JOIN tbl_users ON tbl_orders.user_id = tbl_users.user_id";
