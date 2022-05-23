@@ -1,11 +1,28 @@
+<!-- <!DOCTYPE html> is a declaration that informs a browser the type of document to expect which is html5 -->
 <!DOCTYPE html>
+<!-- attribute lang shows the language that will be used in the web application
+html is used to structure a webpage and its content -->
 <html lang="en">
+<!-- head is the container for metadata -->
 <head>
+    <!-- meta tag defines metadata(information about other data) about an html doc.used by browsers
+  charset specifies the character encoding of the doc  -->
     <meta charset="UTF-8">
+    <!--  http-equiv used by servers to gather info about that page.
+     content specifies the value associated with http-equiv -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- name specifies the name for the metadata 
+    - this tag gives the browser instructions on how to control the page dimensions
+    - width=device-width follows the screen width depending on the device
+    - initial-scale sets the intial zoom level. user-scalable makes sure you can zoom in and out in mobile view
+    -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=0">
+    <!-- link specifies relationship between current doc and external resource -->
     <link rel="shortcut icon" href="./images/logo.png" type="image/x-icon">
+    <!-- title specifies the titltle of the document -->
     <title>Heavenly Skin | landing</title>
+    <!-- href specifies the location of the linked document. 
+    - rel specifies the rship between the current doc and the linked one -->
     <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
     <style>
         *{
