@@ -24,10 +24,15 @@ html is used to structure a webpage and its content -->
     <!-- href specifies the location of the linked document. 
     - rel specifies the rship between the current doc and the linked one -->
     <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+    <!-- style used to define the style information(css) for a document -->
     <style>
+        /* an * is a universal selector and all the elements in the document will be affected by th styling inside it */
         *{
+            /* margin is the space around an elements border */
             margin: 0;
+            /* padding is the space around an elements content*/
             padding: 0;
+            /* sets how the total width and height of an element is calculated*/
             box-sizing: border-box;
         }
         html{
@@ -36,15 +41,18 @@ html is used to structure a webpage and its content -->
         body{
             font-family: Arial, Helvetica, sans-serif;
             background-color: #1e1f31;
+            /* sets what shows when content overflows the elements left and right angles*/
             overflow-x: hidden;
         }
         .main{
+            /* element is positioned relative to its normal position */
             position: relative;
             height: 100%;
             overflow: hidden;
         }
         header{
             padding: 50px 100px;
+            /* property of flex container to use flexbox. activavting flexbox */
             display: flex;
             align-items: center;
             justify-content: space-between;
