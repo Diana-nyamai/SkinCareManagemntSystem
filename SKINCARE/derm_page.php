@@ -360,7 +360,7 @@
            <select name="doctor" id="doctor">
                 <option select="selected">select doctor</option>
                 <option value="prudence">prudence</option>
-                <option value="not seen">not seen</option>
+                <option value="joseph">joseph</option>
             </select>
                  <input type="submit" value="filter" name="choice" class="bton">
                  <input type="submit" value="reset" name="reset" class="bton"> 

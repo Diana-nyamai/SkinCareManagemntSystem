@@ -181,6 +181,11 @@
        cursor: pointer;
        /* outline: none; */
    }
+   .options .search--input{
+          width: 400px;
+          height: 40px;
+          background: #1e1f31;
+   }
    table{
        margin-top: 10px;
        width: 100%;
@@ -312,7 +317,7 @@
 
                 <form action="#" method="post">
                 <div class="options">
-                <input type="text" placeholder="search..." name="search_input"/>
+                <input type="text" placeholder="search..." name="search_input" class="search--input"/>
                  <input type="submit" value="search" name="choice" class="bton">
                  <input type="submit" value="reset" name="reset" class="bton"> 
                 </div>

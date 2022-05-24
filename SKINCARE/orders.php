@@ -306,7 +306,7 @@
                   <div class="heading">
                       <h2>orders</h2>
                       <a class="btn" href="orderAnnual.php">Annual report</a>
-                      <a class="btn" href="orders_search.php">search producst</a>
+                      <a class="btn" href="orders_search.php">search products</a>
                       <!-- <form method="post" action="#">
                          <input type="text" placeholder="search..." name="search_input"/>
                          <input type="submit" value="Search" name="search"/>
@@ -358,7 +358,7 @@
             <select name="status" id="status">
                 <option select="selected">status</option>
                 <option value="delivered">delivered</option>
-                <option value="not delivered">not deleivered</option>
+                <option value="not delivered">not delivered</option>
             </select>
 
             <select name="shop" id="shop">
