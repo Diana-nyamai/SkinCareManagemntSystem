@@ -317,11 +317,9 @@
                         <td>Time Available</td>
                         <td>Actions</td>
                     </thead>
-                   
+                    <?php $id = $_SESSION['userid']?>
                     <?php
-                 
-
-                    $sql = "SELECT tbl_users.first_name, tbl_doctoravailable.davailable, tbl_doctoravailable.tavailable FROM tbl_doctoravailable INNER JOIN tbl_users ON tbl_doctoravailable.user_id = tbl_users.user_id";
+                    $sql = "SELECT tbl_users.first_name, tbl_doctoravailable.id,tbl_doctoravailable.davailable, tbl_doctoravailable.tavailable FROM tbl_doctoravailable INNER JOIN tbl_users ON tbl_doctoravailable.userid = tbl_users.user_id where userid='$id'";
                     getData($sql);
                    
                 ?>
@@ -331,22 +329,21 @@
            $data = mysqli_query($conn, $sql) ;
         if(mysqli_num_rows($data) > 0){
            while($row = mysqli_fetch_array($data)){
-               $id = $row['appointment_id'];
+               $id = $row['id'];
                $firstName = $row['first_name'];
                $dvailable = $row['davailable'];
-               $tvailable = $row['tavailable'];
-               $cstatus = $row['statuses'];
+               $tavailable = $row['tavailable'];
                ?>
     
                 <tr>
                         <td><?php echo $firstName;?></td>
                         <td><?php echo $dvailable;?></td>
                         <td><?php echo $tavailable;?></td>
-                        <td><?php echo $cstatus;?></td>
                         <td>
                             <?php echo "
                         <a title='edit/update' href='#'>
-                        <i class='fa fa-edit'> Edit</i></a>
+                        <i class='fa fa-e'> Edit</i></a>
+                        <a title='delete' href='./deleteappoint.php?id=$id'><input type='submit' class='btn' value='delete' /></a> 
                         ";?>
                         </td>
                     </tr>

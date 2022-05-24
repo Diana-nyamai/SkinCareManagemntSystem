@@ -22,7 +22,6 @@
         }
         body{
              overflow-x: hidden;
-             height: 100vh;
              background-image: linear-gradient(180deg,#1e1f31, #f09053);
              color: #fff;
              /* font-size: 20px; */
@@ -191,7 +190,7 @@
   </tr>
   <?php $id = $_SESSION['userid']?>
              <?php
-          $sm = mysqli_query($conn, "SELECT tbl_users.first_name, tbl_doctoravailable.davailable, tbl_doctoravailable.tavailable FROM tbl_doctoravailable INNER JOIN tbl_users ON tbl_doctoravailable.user_id = tbl_users.user_id");
+          $sm = mysqli_query($conn, "SELECT tbl_users.first_name, tbl_doctoravailable.davailable, tbl_doctoravailable.tavailable FROM tbl_doctoravailable INNER JOIN tbl_users ON tbl_doctoravailable.userid = tbl_users.user_id");
           while($row = mysqli_fetch_array($sm)){
                 ?>
                  <tr>
