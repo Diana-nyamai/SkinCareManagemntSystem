@@ -10,7 +10,7 @@ if(mysqli_connect_error()){
     die('connection failed(' .mysqli_connect_error(). ')' . mysqli_Connect_error());
 }
 else{
-    $stmt = $conn->prepare('insert into tbl_doctoravailable(user_id, davailable,tavailable)
+    $stmt = $conn->prepare('insert into tbl_doctoravailable(userid, davailable,tavailable)
     values(?,?,?)');
     $stmt->bind_param('sss', $did,$davailable,$tavailable );
     $stmt->execute();

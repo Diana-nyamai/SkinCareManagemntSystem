@@ -85,6 +85,8 @@
        width: calc(100% - 300px);
        background: #fff;
        display: grid;
+       grid-template-columns: 10fr 0.3fr;
+       grid-gap: 5px;
        justify-content: flex-end;
        padding: 0 20px;
        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -273,6 +275,7 @@
         <!-- main content -->
         <div class="main">
             <div class="top-bar">
+                <p>Welcome Dr. <?php  echo $_SESSION['username'];?></p>
                 <div class="user">
                     <img src="./images/avatar.png" alt="">
                 </div>
