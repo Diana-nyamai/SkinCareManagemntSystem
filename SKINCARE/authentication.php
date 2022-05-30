@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=0">
     <title>Authentication</title>
     <link rel="shortcut icon" href="./images/logo.png" type="image/x-icon">
-    <style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
         *{
             margin: 0;
             padding: 0;
@@ -76,6 +77,23 @@
             outline: none;
             background: transparent;
         }
+        .preview{
+            width: 100%;
+            padding: 10px 0;
+            margin: 5px 0;
+            border: 1px solid #999;
+            background: transparent;
+        }
+        .fa-refresh{
+          position: absolute;
+          right: 0;
+          top: 55%;
+          transform: translate(-55%, -55%);
+          color: white;
+          background-color:#888;
+          padding: 3px;
+          cursor: pointer;
+        }
         .check-box{
             margin: 20px 16px 30px 0;
         }
@@ -124,8 +142,11 @@
        <form name="login" id="login" class="login" action="login.php" method="post" onsubmit="return validateLoginForm(event)">
         <input type="text" class="input-field" id="Lfname" name="fname" placeholder="First Name...">
         <input type="password" class="input-field" id="Lpassword" name="lpassword" placeholder="Password...">
+        <p class="preview"></p>
+        <input type="text" class="input-field" id="captcha" name="captcha" placeholder="Enter captcha text...">
+        <button type="button" class="captcha-refresh"><i class="fa fa-refresh"></i></button>
         <input type="checkbox" class="check-box"><span>Remember me</span>
-        <button type="submit" class="submit-btn">Log In</button>
+        <input type="submit" class="submit-btn" id="login-btn" value="Log In">
        </form>
 
 <!-- sign up form -->
@@ -181,7 +202,10 @@ function validateLoginForm(event){
      return;
    }
    event.target.submit();
+   
+
   
+
  }
 
 
@@ -193,14 +217,6 @@ function validateLPassword(){
      alert('user must have password!');
      return false;
    }
-  //  if(p.length < 8){
-  //    alert('The password length must be atleast 8 characters');
-  //    return false;
-  //  }
-  //  if(p.length > 15){
-  //    alert('The password length must not exceed 15 characters');
-  //    return false;
-  //  }
      return true;
 }
 
@@ -292,7 +308,48 @@ function validatePassword(){
      return true;
 }
 
+(function(){
+  const fonts = ["cursive","sans-serif","serif","monospace"];
+  let captchaValue = "";
+  function generateCaptcha(){
+    let value = btoa(Math.random()*1000000000);
+    value = value.substr(0,5+Math.random()*5);
+    captchaValue = value;
+  }
+  function setCaptcha(){
+    let html = captchaValue.split("").map((char)=>{
+      const rotate = -20 + Math.trunc(Math.random()*30);
+      const font = Math.trunc(Math.random()*fonts.length);
+      return `<span 
+        style="
+          transform:rotate(${rotate}deg);
+          font-family:${fonts[font]}
+        "
+      >${char}</span>`;
+    }).join("");
+    document.querySelector(".preview").innerHTML = html;
+  }
+  function initCaptcha(){
+    document.querySelector(".captcha-refresh").addEventListener("click",function(){
+      generateCaptcha();
+      setCaptcha();
+    });
+    generateCaptcha();
+    setCaptcha();
+  }
+  initCaptcha();
+  
+  document.querySelector("#login-btn").addEventListener("click",function(event){
+    let inputCaptchaValue = document.querySelector("#captcha").value;
+    if(inputCaptchaValue === captchaValue){
+      alert("SUCCESS");
+    } else {
+      event.preventDefault();
+      alert("Invalid captcha");
 
+    }
+  });
+})();
 
 
 
