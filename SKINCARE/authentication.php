@@ -101,6 +101,10 @@
             color: #777;
             font-size: 12px;
         }
+        .forgot_password{
+          margin-left: 80px;
+          font-size:12px;
+        }
         .submit-btn{
             width: 85%;
             padding: 10px 30px;
@@ -146,6 +150,7 @@
         <input type="text" class="input-field" id="captcha" name="captcha" placeholder="Enter captcha text...">
         <button type="button" class="captcha-refresh"><i class="fa fa-refresh"></i></button>
         <input type="checkbox" class="check-box"><span>Remember me</span>
+        <a href="forgot.php" id="forgot" class="forgot_password">forgot password?</a>
         <input type="submit" class="submit-btn" id="login-btn" value="Log In">
        </form>
 
@@ -208,8 +213,6 @@ function validateLoginForm(event){
 
  }
 
-
-
 // validating the password
 function validateLPassword(){
   var p = document.getElementById('password').value;
@@ -219,6 +222,7 @@ function validateLPassword(){
    }
      return true;
 }
+
 
 
 
@@ -324,6 +328,7 @@ function validatePassword(){
         style="
           transform:rotate(${rotate}deg);
           font-family:${fonts[font]}
+          color: green;
         "
       >${char}</span>`;
     }).join("");
