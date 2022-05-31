@@ -19,6 +19,12 @@
             overflow-x: hidden;
             height: 100%;
         }
+        .back{
+          padding: 20px;
+        }
+        .back a{
+          color: #fff;
+        }
         /* the main form box */
         .form-box{
             width: 380px;
@@ -89,8 +95,10 @@
   </style>
 </head>
 <body>
+  <p class="back"><a href="authentication.php"> < Back</a></p>
   <!-- the main form box -->
-    <div class="form-box">
+    <div class="form-box"> 
+     
        <div class="button-box">
            <div id="btn"></div>
            <button type="button" class="toggle-btn">Change Password</button>

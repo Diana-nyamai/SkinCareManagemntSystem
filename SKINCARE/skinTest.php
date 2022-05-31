@@ -29,6 +29,13 @@
             padding: 10px 0;
             font-size: 20px;
         }
+        .back{
+            margin: 30px;
+            padding: 20px 0 0 30px;
+        }
+        .back a{
+            color: #fff;
+        }
         .questions{
             margin:20px;
             width: 100%;
@@ -57,6 +64,7 @@
     </style>
 </head>
 <body onload="populate()">
+    <p class="back"><a href="home.php"> < Back to home page</a></p>
     <h2>WHAT IS YOUR SKIN TYPE?</h2>
     <h3>Heavenly skin type tester.</h3>
 <form name="skinForm">

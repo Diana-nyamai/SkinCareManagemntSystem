@@ -19,6 +19,12 @@
             overflow-x: hidden;
             height: 100%;
         }
+        .back{
+          padding: 20px 0 0 30px;
+        }
+        .back a{
+          color: #fff;
+        }
         /* the main form box */
         .form-box{
             width: 380px;
@@ -134,6 +140,7 @@
     </style>
 </head>
 <body>
+<p class="back"><a href="index.php"> < Back</a></p>
   <!-- the main form box -->
     <div class="form-box">
        <div class="button-box">
