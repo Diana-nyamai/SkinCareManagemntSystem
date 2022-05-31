@@ -8,8 +8,11 @@ if(isset($_POST['forgot'])){
     
     $query = "SELECT * FROM tbl_users WHERE email='$email'";
     $result = mysqli_query($conn, $query);
+    $row = mysqli_fetch_assoc($result);
+
 
     if(mysqli_num_rows($result) == 1){ 
+         $_SESSION['email'] = $email;
             header('location: newPassword.php');
         }
         else{

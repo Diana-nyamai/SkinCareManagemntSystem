@@ -97,7 +97,7 @@
        </div>
         
 <!-- new password form -->
-       <form name="login" id="login" class="login" action="" method="post" onsubmit="return validateLoginForm(event)" autocomplete="off">
+       <form name="login" id="login" class="login" action="newpControl.php" method="post" onsubmit="return validateLoginForm(event)" autocomplete="off">
         <input type="password" class="input-field" id="password" name="password" placeholder="Enter password...">
         <input type="password" class="input-field" id="Cpassword" name="Cpassword" placeholder="Confirm password...">
         <input type="submit" class="submit-btn" id="change" name="change" value="Change Password">
