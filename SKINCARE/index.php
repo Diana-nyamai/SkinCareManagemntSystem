@@ -64,6 +64,7 @@ html is used to structure a webpage and its content -->
             font-size: 30px;
             font-family: 'Monoton', cursive;
         }
+        /* hover is a pseudo class which defines a special state of an element*/
         .logo a:hover{
             color:#f09053;
         }
@@ -77,23 +78,26 @@ html is used to structure a webpage and its content -->
             color: #fff;
             text-decoration: none;
             letter-spacing: 1;
+            /* allows an element to change smoothly over a given time */
             transition: all ease-out 0.5s;
         }
         header ul li a:hover{
             color: #f09053;
         }
+        /* pixels are relative to vieing device */
         header ul li a.btn{
             display: inline-block;
             width: 180px;
             height: 40px;
+            /* line height specifies the height of a line */
             line-height: 40px;
             background-color: #f09053;
             color: #fff;
             text-align: center;
             font-size: 15px;
+            /* specifies the radius on an element's corner */
             border-radius: 50px;
             transition: all ease-out 0.5s;
-            
         }
         header ul li a.btn:hover{
             color: #1e1f31;
@@ -141,23 +145,29 @@ html is used to structure a webpage and its content -->
             margin-top: -50px;
         }
         .center-image{
+            /* absolute is positioned relative to the nearest positoned ancestor */
             position:  absolute;
             top: 50%;
             left: 50%;
+            /* it centers the element at the center of its parent */
             transform: translate(-50%,-50%);
         }
         .skin-type{
             height: 100%;
+            /* allows an element to change from one style to another */
             animation: rotation 60s linear infinite;
         }
+        /* holds what styles the element will have at certain times */
         @keyframes rotation {
             100%{
+                /* transform lets you rotate, translate etc an element */
                 transform: rotate(360deg);
             }
         }
         .skin-type img{
             position: absolute;
         }
+        /* :nth-child() selector mactches every element that is the nth child of its parent */
         .skin-type img:nth-child(1){
              top: 0;
              left: 42%;
@@ -178,6 +188,7 @@ html is used to structure a webpage and its content -->
             top: 75%;
             left: 10%;
         }
+        /* used to apply different styles to different screen widths or devices */
         @media all and (max-width: 1197px){
             .content{
                 justify-content: center;
@@ -209,46 +220,42 @@ html is used to structure a webpage and its content -->
             }
         }
 
-        /* wave styling */
-        .wave{
-            /* position: absolute; */
-            bottom: 0;
-            left: 0;
-        }
-
         /* products section */
         .gallery{
-        display: flex;
-        flex-wrap: wrap;
-        width: 100%;
-        justify-content: center;
-        align-items: center;
-        gap: 1em;
-        /* margin: 50px 0; */
-            }
-            .g-content{
-                width: 20%;
-                margin: 15px;
-                box-sizing: border-box;
-                float: left;
-                text-align: center;
-                border-radius: 20px;
-                padding-top: 10px;
-                box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-                transition: .4s;
-                background: #f2f2f2;
-            }
-            .g-content:hover{
-                box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-                transform: translate(2px, 8px);
-            }
-            .g-content img{
-            width: 200;
-            height: 200px;
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            gap: 1em;
+        }
+        .g-content{
+            width: 20%;
+            margin: 15px;
+            box-sizing: border-box;
+            /* used to position content */
+            float: left;
             text-align: center;
-            margin: 0 auto;
-            display: block;
             border-radius: 20px;
+            padding-top: 10px;
+            /* adds shadow to an element */
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+            transition: .4s;
+            background: #f2f2f2;
+        }
+        .g-content:hover{
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+            /* transform lets you rotate, translate etc an element 
+            translate repositions elements in the horizntal and vertical directions*/
+            transform: translate(2px, 8px);
+        }
+        .g-content img{
+        width: 200;
+        height: 200px;
+        text-align: center;
+        margin: 0 auto;
+        display: block;
+        border-radius: 20px;
         }
         .g-content h3{
             text-align: center;
@@ -318,13 +325,21 @@ html is used to structure a webpage and its content -->
         }
     </style>
 </head>
+<!-- contains all the contents of an html doc -->
 <body>
+    <!-- defines division of or section in html.
+    class specifies class name of an element to be used in css -->
     <div class="main">
         <!-- navigation -->
+        <!-- defines the heading of an html -->
         <header>
+            <!-- a creates a hyperlink to web pages, files,  -->
             <div class="logo"><a href="#">HEAVENLY skin</a> </div>
+            <!-- sectiont that provides navigation links -->
             <nav>
+                <!-- element that represents unordered list -->
                 <ul>
+                    <!-- represents an item in a list -->
                     <li><a class="btn" href="authentication.php">LOGIN</a></li>
                     <li><a class="btn" href="authentication.php">SIGN UP</a></li>
                 </ul>
@@ -335,6 +350,8 @@ html is used to structure a webpage and its content -->
     <!-- content section -->
     <div class="content">
         <div class="text">
+            <!-- represents a paragraph
+             span inline container that marks part of a text -->
             <p>Welcome to <span> Healthy skin.</span> Healthy skin will provide food for all stresses connected with your skin. Do you have any idea about what kind of skin you have?</p>
              <a href="#products" class="btn">click to view our products</a>
         </div><!-- content text on the left -->
@@ -350,35 +367,35 @@ html is used to structure a webpage and its content -->
             <img class="center-image" src="./images/center.png" alt="center image" width="300"/>
         </div>
     </div><!-- end of content section -->
-  
-    <!-- bottom wave -->
-    <div class="wave">
-        <img src="./images/waves.svg" alt="wave">
-    </div>
     </div>
 
-    <!-- our products section -->
+    <!-- our products section 
+    id specifies unique id for an element-->
     <div class="header" id="products">
         <h1 style="text-align:center; padding: 100px 0; color: #fff;">OUR PRODUCTS</h1>
     </div>
     <div class="gallery">
-      
+    
+    <!-- open tag for php -->
       <?php 
+    //   hostname, username, password, dbname
+    // opens a new connection to mysql server
       $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
+    //   performs a query against a database. selects all the data in tnl product with limit of 10 products
       $res = mysqli_query($conn, "select * from tbl_product limit 10");
+    //   fetches an row as a numeric array and as an associative array(array with strings as an index)
       while($row = mysqli_fetch_array($res)){
           ?>
      
           <div class="g-content"> 
-              <form action="./cart_manager.php?action=add&id=<?php echo $row["id"];?>" method="post">
-              <img src="<?php echo $row["pimage"]; ?>" alt="" >
+              <!-- action specifies where to send data when form is submitted -->
+              <form action="#" method="post">
+            <!-- echo output data to the screen -->
+              <img src="<?php echo $row["pimage"]; ?>" alt="product image" >
               <h3><?php echo $row["pname"];?></h3>
               <p><?php echo $row["pdescription"]; ?></p>
               <h6>ksh.<?php echo $row["price"]; ?></h6>
               <h6>for <?php echo $row["skin_type"] ?> skin</h6>
-              <!-- <input type="submit" name="addtocart" class="addtocart" value="Add to cart"/> -->
-              <input type="hidden" name="item_name" value="<?php echo $row["pname"];?>"/>
-              <!-- <input type="hidden" name="price" value="<?php echo $row["price"]; ?>"/> -->
           </form>
        </div>
           <?php

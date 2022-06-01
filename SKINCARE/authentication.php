@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=0">
     <title>Authentication</title>
     <link rel="shortcut icon" href="./images/logo.png" type="image/x-icon">
+    <!-- href specifies the location of the linked document. 
+    - rel specifies the rship between the current doc and the linked one -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <style>
         *{
@@ -101,11 +103,11 @@
           cursor: pointer;
         }
         .check-box{
-            margin: 20px 16px 30px 0;
+          margin: 20px 16px 30px 0;
         }
         span{
-            color: #777;
-            font-size: 12px;
+          color: #777;
+          font-size: 12px;
         }
         .forgot_password{
           margin-left: 80px;
@@ -114,6 +116,7 @@
         .submit-btn{
             width: 85%;
             padding: 10px 30px;
+            /* specifies the mouse pointer to be displayed */
             cursor: pointer;
             display: block;
             margin: auto;
@@ -137,7 +140,7 @@
         #signup{
             left: 450px;
         }
-    </style>
+  </style>
 </head>
 <body>
 <p class="back"><a href="index.php"> < Back</a></p>
@@ -145,12 +148,16 @@
     <div class="form-box">
        <div class="button-box">
            <div id="btn"></div>
+           <!-- onclick executes a javascript when clicked -->
            <button type="button" class="toggle-btn" onclick="Login()">log in</button>
            <button type="button" class="toggle-btn" onclick="Signup()">sign up</button>
        </div>
         
 <!-- login form -->
+<!-- onsubmit executes when a form is submited -->
        <form name="login" id="login" class="login" action="login.php" method="post" onsubmit="return validateLoginForm(event)">
+       <!-- specifies an input field where user can enter data 
+      placeholder describes expected input-->
         <input type="text" class="input-field" id="Lfname" name="fname" placeholder="First Name...">
         <input type="password" class="input-field" id="Lpassword" name="lpassword" placeholder="Password...">
         <p class="preview"></p>
@@ -201,7 +208,9 @@
 
     // form validation of log in
 function validateLoginForm(event){
+  // method prevents default behaviour of an event
   event.preventDefault();
+  // html object model document,form name,element name, value
    fname = document.login.Lfname.value;
 
    if(fname == ""){
@@ -245,6 +254,8 @@ function validateSignupForm(event){
 
    if(fname == ""){
      alert('please enter first name');
+    //  html dom used when you want to edit or view an html element
+    // focus gives focus to an html element
      document.getElementById('fname').focus();
      return false;
    }
@@ -319,15 +330,23 @@ function validatePassword(){
      return true;
 }
 
+// self executing function
+// block of code designed to perform a particular task
 (function(){
   const fonts = ["cursive","sans-serif","serif","monospace"];
+  // let allows you to declare variables that are limited to scope of the block statement
   let captchaValue = "";
   function generateCaptcha(){
+    // btoa encodes a string in base 64.uses A-Z,a-z, 0-9, +, / characters to encode the string
+    // math.random method returns a random number from 0 to 999999999
     let value = btoa(Math.random()*1000000000);
+    // extracts a substring from value
     value = value.substr(0,5+Math.random()*5);
     captchaValue = value;
   }
   function setCaptcha(){
+    // split splits a string to an array of substring
+
     let html = captchaValue.split("").map((char)=>{
       const rotate = -20 + Math.trunc(Math.random()*30);
       const font = Math.trunc(Math.random()*fonts.length);
@@ -338,9 +357,12 @@ function validatePassword(){
           color: green;
         "
       >${char}</span>`;
+      // join returns an array as a string
     }).join("");
+    // displaying on the browser
     document.querySelector(".preview").innerHTML = html;
   }
+  // refreshing the captcha
   function initCaptcha(){
     document.querySelector(".captcha-refresh").addEventListener("click",function(){
       generateCaptcha();
@@ -362,10 +384,6 @@ function validatePassword(){
     }
   });
 })();
-
-
-
-
 
     </script>
 </body>

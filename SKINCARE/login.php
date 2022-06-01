@@ -9,11 +9,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $password = $_POST['lpassword'];
 
     // protecting login from sql injection
+    // the function escapes special characters in a string for use in sql query
     $fname = mysqli_real_escape_string($conn, $fname);
     $password = mysqli_real_escape_string($conn, $password);
    
     $s = "select * from tbl_users where first_name ='".$fname."'";
+    //   performs a query against a database.
     $result = mysqli_query($conn, $s);
+    //   fetches an row as a numeric array and as an associative array(array with strings as an index)
     $row = mysqli_fetch_array($result);
     $hashed_pass = $row['password'];
     $id = $row['user_id'];
