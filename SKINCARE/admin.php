@@ -212,8 +212,8 @@
         .blue,
         .yellow,
         .black{
-           width: 30px;
-           height:30px;
+           width: 15px;
+           height:15px;
            display: block
         }
         .red{
@@ -239,7 +239,7 @@
     function Draw(){
         var n = [$t18n,$t19n,$t20n,$t21n,$t22n]
         var colors = ['red','purple','blue','yellow','black'];
-        var years = [2018,2019,2020,2021,2022]
+        // var years = [2018,2019,2020,2021,2022]
         var graphValues = n;
 
         var canvas = document.getElementById('myCanvas');
@@ -347,10 +347,11 @@
                         <!-- canvas is an element used to draw graphics in html -->
                         <canvas id="myCanvas" height="100" width="300"></canvas>
                        <span class="red"></span> <p> 2018 (<?php echo $t18n ?>) appointments</p>
+                       <!-- inline container used to mark a part of a text -->
                         <p> <span class="purple"></span>2019 (<?php echo $t19n ?>) appointments</p>
                         <p> <span class="blue"></span>2020 (<?php echo $t20n ?>) appointments</p>
                         <p><span class="yellow"></span>2021 (<?php echo $t21n ?>) appointments</p>
-                        <p><span class="black"></span>2021 (<?php echo $t22n ?>) appointments</p>
+                        <p><span class="black"></span>2022 (<?php echo $t22n ?>) appointments</p>
 
                   </div>
               </div>
