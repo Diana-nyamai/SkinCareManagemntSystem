@@ -1,9 +1,9 @@
-<!-- this page will display the making appoint availability on the doctors side-->
+<!-- this page will display the number of users and a report on users in admin -->
 <?php
    session_start();
   $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
-  $data = mysqli_query($conn, 'SELECT * FROM tbl_appointment');
-  $number = mysqli_num_rows($data);
+  $data = mysqli_query($conn, 'SELECT * FROM tbl_product');
+  $number = mysqli_num_rows($data)
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +11,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=0">
-    <title>dermatologist panel</title>
+    <title>Admin panel</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
     <link rel="shortcut icon" href="./images/logo.png" type="image/x-icon">
@@ -161,7 +161,6 @@
        color: #000;
        border-radius: 10px;
        text-decoration: none;
-       cursor: pointer;
    }
    .form-container input{
        margin-top: 10px;
@@ -224,15 +223,31 @@
                 <li><a href=""><i class="fa fa-clinic medical"></i>
                 <div class="title">HEAVENLY SKIN</div>
                 </a></li>
-                <li><a href="./derm_page.php"><i class="fa fa-stethoscope"></i>
+                <li><a href="./admin.php"><i class="fa fa-dashboard"></i>
+                    <div class="title">dashboard</div>
+                </a></li>
+                <li><a href="./appointments.php"><i class="fa fa-stethoscope"></i>
                         <div class="title">appointments</div>
                 </a></li>
-                <li><a href="./dermmake_appoint.php"><i class="fa fa-dashboard"></i>
-                    <div class="title">Make appointments</div>
-                </a></li>
-                <li><a href="./dermViewA.php"><i class="fa fa-dashboard"></i>
-                    <div class="title">View availability</div>
-                </a></li>
+                <li><a href="./users.php"><i class="fa fa-user"></i>
+                    <div class="title">users</div>
+             </a></li>
+             <li><a href="./customers.php"><i class="fa fa-user"></i>
+                    <div class="title">customers</div>
+             </a></li>
+             <li><a href="./orders.php"><i class="fa fa-money"></i>
+                <div class="title">orders</div>
+             </a></li>
+             <li><a href="./productadmin.php"><i class="fa fa-shopping-basket"></i>
+                <div class="title">Add Products</div>
+             </a></li>
+             <!-- this page will display the number of users and a report on users -->
+             <li><a href="./productRadmin.php"><i class="fa fa-shopping-basket"></i>
+                <div class="title">Product Report</div>
+             </a></li>
+             <li><a href="./stmanagement.php"><i class="fa fa-tint"></i>
+                <div class="title">skin management</div>
+        </a></li>
         <li><a href="./logout.php"><i class="fa fa-sign-out"></i>
             <div class="title">logout</div>
     </a></li>
@@ -251,9 +266,10 @@
                 
                 <div class="card">
                     <div class="card-content">
-                        <div class="card-name">Make appointments availability</div>
+                        <div class="number"><?php echo $number; ?></div>
+                        <div class="card-name">Products</div>
                        </div> 
-                       <div class="icon-box"><i class="fa fa-tint"></i></div>
+                       <div class="icon-box"><i class="fa fa-shopping-basket"></i></div>
                 </div>
             </div><!-- end of cards -->
 
@@ -262,62 +278,114 @@
           <div class="tables">
               <div class="last-appointments">
                   <div class="heading">
-                      <h2>Make appointment availability</h2>
-                      <?php $id = $_SESSION['userid']?>
+                      <h2>Add products</h2>
                 </div>
                 <div class="form-container">
-                <form name="product" action="dermappoint.php" method="post" onsubmit="return validateForm(event)">
-                <input type="hidden" id="id" name="id" value="<?php echo $id; ?>"/>
-                <input type="text" id="davailable" name="davailable" placeholder="date available..">
-                <input type="text" id="tavailable" name="tavailable" placeholder="time available..">
-                <input class="btn" type="submit" name="submit" value="post availabilty">
+                <form name="product" action="" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+                <input type="text" id="sname" name="sname" placeholder="shop name..">
+                <input type="text" id="sowner" name="sowner" placeholder="shop owner..">
+                <input type="text" id="sphone" name="sphone" placeholder="shop phone number..">
+                <input type="text" placeholder="shop email.." name="semail" id="semail">
+                <input type="text" name="pname" id="pname" placeholder=" product name..">
+                <input type="text" id="skintype" name="skintype" placeholder="for skin type..">
+                <textarea type="textbox" id="pdescription" name="pdescription" placeholder="product description.."></textarea>
+                <input type="text" id="pprice" name="pprice" placeholder="product price..">
+                <input type="file" id="pimage" name="pimage">
+                <input class="btn" type="submit" name="submit" value="upload">
                </form>
 
-               
+               <?php
+       $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
+    //    generates random integer between 1111 and 9999
+      $v1 = rand(1111, 9999);
+      $v2 = rand(1111, 9999);
+      
+    //   concatination
+      $v3 = $v1.$v2;
+    //   calculates md5 hash of v3
+      $v3 = md5($v3);
+      if(isset($_POST["submit"])){
+        //   ouput the name of the image
+        $fnm = $_FILES["pimage"]["name"];
+        $dst = "./product_image/".$v3.$fnm;
+        // appear in database. product destination path, name of image, hashed random number
+        $dst1 = "product_image/".$v3.$fnm;
+        // moves uploaded files to a new destination
+        // output the temporary name of the image
+        move_uploaded_file($_FILES["pimage"]["tmp_name"],$dst);
+        echo $fnm;
+       }
+       ?>
                  </div>   
                 </table>
               </div>
              
           </div>
-
-          
         </div>
     </div>
 
           <!-- javascript section -->
 <script>
   // validating the main form
- function validateForm(event){
-    date  = document.product.davailable.value;
-    time  = document.product.tavailable.value;
-     
-    if(date.indexOf('-') == -1){
-        event.preventDefault();
-         alert('date should be in the form yyyy-mm-dd.  example 2022-05-12');
-         document.getElementById('date').focus();
-         return false;
-       }
-       comps = date.split('-');
-       if(comps[0].length< 4 || comps[1].length < 1 || comps[2].length<1){
-        event.preventDefault();
-         alert('date should be in the form yyyy-mm-dd.  example 2022-05-12');
-         document.getElementById('date').focus();
-         return false;
-       }
-       if(isNaN(comps[0]) || isNaN(comps[1]) || isNaN(comps[2])){
-        event.preventDefault();
-         alert('date must be a number and in the format yyyy-mm-dd.  example 2022-05-12');
-         document.getElementById('date').focus();
-         return false;
-       }
-   if(time == ""){
-    event.preventDefault();
-     alert('please enter the appointment time')
-     document.getElementById('time').focus();
+ function validateForm(){
+   sname = document.product.sname.value;
+   sowner = document.product.sowner.value;
+   sphone = document.product.sphone.value;
+   semail = document.product.semail.value;
+   pname = document.product.pname.value;
+   ptype = document.product.ptype.value;
+   pbrand = document.product.pbrand.value;
+   pdescription = document.product.pdescription.value;
+   pprice = document.product.pprice.value;
+
+
+   if(sname == ""){
+     alert('please enter shop name');
+     document.getElementById('fname').focus();
      return false;
    }
+   if(sowner == ""){
+     alert('please enter shop owner')
+     document.getElementById('sowner').focus();
+     return false;
+   }
+   if(sphone == "" ){
+     alert('')
+     document.getElementById('sphone').focus();
+     return false;
+   }
+   if(pname == ""){
+     alert('please enter product name')
+     document.getElementById('pname').focus();
+     return false;
+   }
+   if(ptype == ""){
+     alert('please enter product type')
+     document.getElementById('ptype').focus();
+     return false;
+   }
+   if(pbrand == ""){
+     alert('please enter brand')
+     document.getElementById('pbrand').focus();
+     return false;
+   }
+   if(pdescription == ""){
+     alert('please enter shop description')
+     document.getElementById('pdescription').focus();
+     return false;
+   }
+   if(pprice == ""){
+     alert('please enter price')
+     document.getElementById('pprice').focus();
+     return false;
+   }
+   
+   if(semail.length == 0 || semail.indexOf('@') == -1 || semail.indexOf('.') == -1){
+    alert('enter a valid email.should contain @ and .');
+    document.getElementById('semail').focus();
+    return false;
+  }
  }
- 
 
 </script>
 </body>

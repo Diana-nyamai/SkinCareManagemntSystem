@@ -284,7 +284,7 @@
                       <h2>update order</h2>
                 </div>
                 <div class="form-container">
-                <form name="product" action="#" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+                <form name="product" action="#" method="post" onsubmit="return validateForm()">
                 <input value="<?php echo $updatedata['statuses']; ?>" type="text" id="sname" name="status" placeholder="status..">
                 <input class="btn" type="submit" name="update" value="update products">
                </form>

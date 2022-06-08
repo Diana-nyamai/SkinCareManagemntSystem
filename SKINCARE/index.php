@@ -2,19 +2,20 @@
 <!DOCTYPE html>
 <!-- attribute lang shows the language that will be used in the web application
 html is used to structure a webpage and its content -->
-<html lang="en">
 <!-- head is the container for metadata -->
+<html lang="en">
 <head>
     <!-- meta tag defines metadata(information about other data) about an html doc.used by browsers
   charset specifies the character encoding of the doc  -->
     <meta charset="UTF-8">
     <!--  http-equiv used by servers to gather info about that page.
-     content specifies the value associated with http-equiv -->
+     content specifies the value associated with http-equiv-->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <!-- name specifies the name for the metadata 
+    -viewport is users visible area of the webpage
     - this tag gives the browser instructions on how to control the page dimensions
     - width=device-width follows the screen width depending on the device
-    - initial-scale sets the intial zoom level. user-scalable makes sure you can zoom in and out in mobile view
+    - initial-scale controls the intial zoom level. user-scalable disables zoom in and out in mobile view
     -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=0">
     <!-- link specifies relationship between current doc and external resource -->
@@ -381,17 +382,20 @@ html is used to structure a webpage and its content -->
     //   hostname, username, password, dbname
     // opens a new connection to mysql server
       $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
-    //   performs a query against a database. selects all the data in tnl product with limit of 10 products
+    //   performs a query against a database. selects all the data in tbl product with limit of 10 products
       $res = mysqli_query($conn, "select * from tbl_product limit 10");
     //   fetches an row as a numeric array and as an associative array(array with strings as an index)
       while($row = mysqli_fetch_array($res)){
           ?>
      
           <div class="g-content"> 
+              <!-- form is element container for diff input elements -->
               <!-- action specifies where to send data when form is submitted -->
               <form action="#" method="post">
             <!-- echo output data to the screen -->
-              <img src="<?php echo $row["pimage"]; ?>" alt="product image" >
+            <!-- alt is an provide alternate info incase the user cant see the image -->
+              <img src="<?php echo $row["pimage"]; ?>" alt="product image">
+              <!-- third level of heading -->
               <h3><?php echo $row["pname"];?></h3>
               <p><?php echo $row["pdescription"]; ?></p>
               <h6>ksh.<?php echo $row["price"]; ?></h6>
@@ -402,7 +406,7 @@ html is used to structure a webpage and its content -->
       }
       ?>
       </div>
-
+<!-- defines a division or section in hmtl -->
       <div class="v-products">
           <p>Would you like to see more products?</p>
           <a href="authentication.php" class="btn">Sign up</a>

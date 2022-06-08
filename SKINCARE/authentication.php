@@ -1,4 +1,5 @@
 <!-- page that contains the login and signup page -->
+<!-- <!DOCTYPE html> is a declaration that informs a browser the type of document to expect which is html5 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,6 +32,7 @@
         .form-box{
             width: 380px;
             height: 700px;
+            /* element is positioned relative to its normal position */
             position: relative;
             margin: 5% auto;
             background: #fff;
@@ -42,9 +44,10 @@
             margin: 35px auto;
             position: relative;
             box-shadow: 0 0 20px 9px #f0b753;
+            /* specifies the radius on an element's corner */
             border-radius: 30px;
         }
-        /* styles the buttons to be toggles */
+        /* styles the buttons to be toggled */
         .toggle-btn{
             padding: 10px 30px;
             cursor: pointer;
@@ -57,15 +60,19 @@
         #btn{
             width: 110px;
             height: 100%;
+            /* creates an image consisting of progressive transition between two or more colors */
             background: linear-gradient(to right, #1e1f31, #f09053);
+            /* positioned relative to the nearest ancestor */
             position: absolute;
             border-radius: 30px;
             transition: .5s;
         }
         .login{
+            /* border: 5px solid blue; */
             top: 180px;
             position: absolute;
             width: 280px;
+            /* allows an element to change smoothly over a given time */
             transition: .5s;
         }
         .signup{
@@ -155,15 +162,20 @@
         
 <!-- login form -->
 <!-- onsubmit executes when a form is submited -->
+<!-- action specifies where the form data will be sent wen form submit -->
+<!-- method specifies the http method used to send data wen fom submit -->
+<!-- element that contains the input elements eg text fields, radio button etc -->
        <form name="login" id="login" class="login" action="login.php" method="post" onsubmit="return validateLoginForm(event)">
        <!-- specifies an input field where user can enter data 
-      placeholder describes expected input-->
+      placeholder describes expected input
+    name and id is used to reference elements-->
         <input type="text" class="input-field" id="Lfname" name="fname" placeholder="First Name...">
         <input type="password" class="input-field" id="Lpassword" name="lpassword" placeholder="Password...">
         <p class="preview"></p>
         <input type="text" class="input-field" id="captcha" name="captcha" placeholder="Enter captcha text...">
         <button type="button" class="captcha-refresh"><i class="fa fa-refresh"></i></button>
         <input type="checkbox" class="check-box"><span>Remember me</span>
+        <!-- creates hyperlink to web pages, files etc -->
         <a href="forgot.php" id="forgot" class="forgot_password">forgot password?</a>
         <input type="submit" class="submit-btn" id="login-btn" value="Log In">
        </form>
@@ -174,14 +186,18 @@
         <input type="text" class="input-field" id="lname" name="lname" placeholder="Last Name...">
         <input type="text" class="input-field" id="phone" name="phone" placeholder="Phone Number...">
         <input type="text" class="input-field" id="email" name="email" placeholder="Email...">
+        <!-- radio selects one of the many given choices -->
         <input type="radio" class="input-field" id="m" name="gender" value="male" > <span class="radio1">Male</span>
         <input type="radio" class="input-field" id="f" name="gender" value="female"> <span class="radio2">Female</span>
+        <!-- creates a drop down list -->
         <select class="input-field" name="user" id="user">
+          <!-- available option in the dropdown -->
             <option value="" selected="selected"> select your role</option>
             <option value="customer"> customer</option>
             <option value="dermatologist"> dermatologist</option>
             <option value="admin"> admin</option>
         </select>
+        <!-- chars are masked -->
         <input type="password" class="input-field" id="password" name="password" placeholder="Password...">
         <input type="checkbox" class="check-box"><span>I agree with the terms & conditions</span>
         <input type="submit" value="signup" class="submit-btn">
@@ -191,18 +207,26 @@
 
     <script>
     // login and signup toggle
+    // method used to return an element with specified id property
+
         var l = document.getElementById('login');
         var s = document.getElementById('signup');
         var b = document.getElementById('btn');
 
         function Signup(){
+          // will be pushed to the left
             l.style.left = "-400px";
+            // will be pushed to left
             s.style.left = "50px";
+            // 110px from left will push to right
             b.style.left = "110px";
         }
         function Login(){
+          // will be pushed to right
             l.style.left = "50px";
+            // will be pushed to the right
             s.style.left = "450px";
+            // 0px from left will be pushed to left
             b.style.left = "0px";
         }
 
@@ -215,6 +239,7 @@ function validateLoginForm(event){
 
    if(fname == ""){
      alert('please enter first name');
+    //  sets focus on the specified element
      document.getElementById('Lfname').focus();
      return false;
    }
@@ -222,11 +247,8 @@ function validateLoginForm(event){
    if(!lpassword){
      return;
    }
+  //  The submit event fires when the user clicks a submit button
    event.target.submit();
-   
-
-  
-
  }
 
 // validating the password
@@ -264,16 +286,19 @@ function validateSignupForm(event){
      document.getElementById('lname').focus();
      return false;
    }
-   if(phone.length == 0 || isNaN(phone)){
+  //  isNAN returns true if a value is a number
+   if(phone.length < 10 || isNaN(phone) || phone.length > 10){
     alert('Enter a valid number');
     document.getElementById('phone').focus();
     return false;
   }
+  // index of is a method
   if(email.length == 0 || email.indexOf('@') == -1 || email.indexOf('.') == -1){
     alert('enter a valid email.should contain @ and .');
     document.getElementById('email').focus();
     return false;
   }
+   // method prevents default behaviour of an event
      event.preventDefault();
      var gender = validateGender();
      var role = validateRole();
@@ -307,9 +332,6 @@ function validateRole(){
         return false;
       }
       return true;
-      // else{
-      //   return true;
-      // }
 }
 
 // validating the password
@@ -341,13 +363,14 @@ function validatePassword(){
     // math.random method returns a random number from 0 to 999999999
     let value = btoa(Math.random()*1000000000);
     // extracts a substring from value
-    value = value.substr(0,5+Math.random()*5);
+    value = value.substr(0,5);
     captchaValue = value;
   }
   function setCaptcha(){
     // split splits a string to an array of substring
-
+    // map creates a new array from calling a function for every array element
     let html = captchaValue.split("").map((char)=>{
+      // trunc returns integer part of a number
       const rotate = -20 + Math.trunc(Math.random()*30);
       const font = Math.trunc(Math.random()*fonts.length);
       return `<span 
@@ -360,10 +383,12 @@ function validatePassword(){
       // join returns an array as a string
     }).join("");
     // displaying on the browser
+    // method returns the first element that matches css selector
     document.querySelector(".preview").innerHTML = html;
   }
   // refreshing the captcha
   function initCaptcha(){
+     // method returns the first element that matches css selector
     document.querySelector(".captcha-refresh").addEventListener("click",function(){
       generateCaptcha();
       setCaptcha();
@@ -371,12 +396,14 @@ function validatePassword(){
     generateCaptcha();
     setCaptcha();
   }
+// calling init captcha
   initCaptcha();
-  
+   // method returns the first element that matches css selector
+   // addeventlistener method attaches an event handler to a document
   document.querySelector("#login-btn").addEventListener("click",function(event){
     let inputCaptchaValue = document.querySelector("#captcha").value;
     if(inputCaptchaValue === captchaValue){
-      alert("SUCCESS");
+      alert("Correct Captcha");
     } else {
       event.preventDefault();
       alert("Invalid captcha");

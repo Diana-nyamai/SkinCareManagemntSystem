@@ -1,8 +1,10 @@
 <!-- this page will display the homepage where all the products will be available skin test is available   -->
+<!-- opening tag for php -->
 <?php
   session_start();
   $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
   if(!isset($_SESSION["username"])){
+    //   sends raw http header to browser
       header("location: authentication.php");
   }
 ?>
@@ -10,6 +12,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- specifies the character encoding of the document  -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=0">
@@ -17,7 +20,7 @@
     <title>Home | page</title>
     <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
+    <style>
       *{
           margin: 0;
           padding: 0;
@@ -50,6 +53,7 @@
         font-size: 25px;
         letter-spacing: 2px;
         font-family: 'Monoton', cursive;
+        /* transparency */
         opacity: .8;
       }
       header ul {
@@ -58,6 +62,7 @@
       }
       header ul li{
           position: relative;
+          /* specifies list type marker */
           list-style-type: none;
           padding: 10px;
       }
@@ -82,6 +87,7 @@
         }
         header ul li:hover .dropdown-menu {
             display: block;
+            /* positioned relative to the parent */
             position: absolute;
             left: 0;
             top: 100%;
@@ -101,6 +107,7 @@
            /* position: relative; */
            width: 100%;
            height: 100vh;
+           /* sets background image for an element. url to image */
            background-image:url('./images/skincare.jpg');
            background-size: cover;
            border-bottom: 5px solid #f09053;
@@ -109,6 +116,7 @@
           position: absolute;
           height: 100%;
           width: 100%;
+          /* css function specifies the coor */
           background: rgba(0,0,0,0.5);
       }
       .banner-content{
@@ -159,12 +167,14 @@
         text-align: center;
         border-radius: 20px;
         padding-top: 10px;
-        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+         /* v-offset h-offset, blur, color */
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25);
         transition: .4s;
         background: #f2f2f2;
     }
     .g-content:hover{
-        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+         /* v-offset h,offset, blur, color */
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
         transform: translate(2px, 8px);
     }
     .g-content img{
@@ -255,7 +265,7 @@
             <div class="text">
                 <div class="text-inner">
                     <h1>WELCOME <span class="username"><?php
-                        echo $_SESSION['username']; ?></span></h1>
+                        echo $_SESSION['username'];?></span></h1>
             <P><a href="./skinTest.php">Take skin test</a></P>
                 </div>
             </div>
@@ -273,16 +283,16 @@
    </div>
  
    <!-- products section -->
-   <div class="gallery">
-      
+   <div class="gallery">   
    <?php 
    $res = mysqli_query($conn, "select * from tbl_product order by id");
+//    fetches data from a result to an array. either associative or numeric array
    while($row = mysqli_fetch_array($res)){
        ?>
   
        <div class="g-content"> 
-           <form action="./cart_manager.php?action=add&id=<?php echo $row["id"];?>" method="post">
-           <img src="<?php echo $row["pimage"]; ?>" alt="" >
+           <form action="./cart_manager.php" method="post">
+           <img src="<?php echo $row["pimage"]; ?>" alt="product" >
            <h3><?php echo $row["pname"];?></h3>
            <p><?php echo $row["pdescription"]; ?></p>
            <h6>ksh.<?php echo number_format($row["price"],2); ?></h6>
@@ -303,6 +313,7 @@
 
    <!-- javascript section -->
     <script>
+        // addeventlistener method attaches an event handler to a document
         window.addEventListener("scroll", function(){
             var header = document.querySelector("header");
             header.classList.toggle("sticky", window.scrollY > 0);

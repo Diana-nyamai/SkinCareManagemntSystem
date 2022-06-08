@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=0">
     <title>Skin test questions</title>
     <link rel="shortcut icon" href="./images/logo.png" type="image/x-icon">
     <style>
@@ -63,6 +63,7 @@
         }
     </style>
 </head>
+<!-- onload excecutes the script when the pages loads -->
 <body onload="populate()">
     <p class="back"><a href="home.php"> < Back to home page</a></p>
     <h2>WHAT IS YOUR SKIN TYPE?</h2>
@@ -71,6 +72,7 @@
     <div class="questions">
     <div class="question1">
         <h4>1. Texture of your skin</h4> <br/>
+        <!-- onclick works when the user clicks on the radio button and the script runs -->
         <input type="radio" name="q1" onclick="saver(1, 0)"/> Does not Shine <br/>
         <input type="radio" name="q1" onclick="saver(1, 1)"/> Is dry and sometimes slight flaking may appear <br/>
         <input type="radio" name="q1" onclick="saver(1, 2)"/> Shines on the nose <br/>
@@ -149,8 +151,10 @@
     </div>
 </div>
 </form>
+
 <script>
-    //this sets up an array for all of the answers that are given 
+    //this sets up undefined array for all of the answers that are given
+    // Array constructor creates array objects of length 10
  var Quest = new Array(10);
 
  // this function gives each of the answers 0 points so if someone doesn't answer a question the whole thing will continue to work 
@@ -159,7 +163,11 @@
          Quest[i] = 0;
      }
  }
-
+ function saver(q, points){
+    //  this function puts the points that each answer is worth into the array
+    q= q-1;
+    Quest[q]= points;
+}
  // this function adds the number of points each answer is worth together 
  function total(){
   myScore=0;
@@ -178,22 +186,21 @@
  myContents[5] = "<h3> Your skin type is: Sensitive .Find more information about SENSITIVE skin in this link <a href='./sensitive.php'> click here!</a></h3>";
 
 function analyser(myScore){
-    if (myScore > 30) {myContentsPtr = 5;}
-    else{ if(myScore > 24) {myContentsPtr = 4;}
-    else{ if(myScore > 18) {myContentsPtr = 3;}
-    else{ if(myScore > 12) {myContentsPtr = 2;}
-    else{ if(myScore > 6)  {myContentsPtr = 1;}
-    else {myContentsPtr = 0;}
-}}}}
-    myDisplay(myContents[myContentsPtr])
+    // this function uses the total calculated score to figure out the skin type
+    if (myScore > 30) {myContentsPt = 5;}
+    // else{ if(myScore > 24) {myContentsPt = 4;}
+    else{ if(myScore > 18) {myContentsPt = 3;}
+    else{ if(myScore > 12) {myContentsPt = 2;}
+    else{ if(myScore > 6)  {myContentsPt = 1;}
+    else {myContentsPt = 0;}
+}}}
+    myDisplay(myContents[myContentsPt])
 }
 
 function myDisplay(myContents){
+    // this function will open a new window and show the skin type
+    // innerhtml get the content of an element with id result then changes it to the mycontents
    document.getElementById("result").innerHTML = (myContents);
-}
-function saver(q, points){
-    q= q-1;
-    Quest[q]= points;
 }
 </script>
 

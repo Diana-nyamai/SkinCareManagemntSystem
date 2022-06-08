@@ -207,6 +207,8 @@
   <?php
          $total=0;
          if(isset($_SESSION['cart'])){
+            //  key => value enables you output both the key and value
+            // foreach loops through a block of code for each element in array
              foreach($_SESSION['cart'] as $key => $value){
                  $total = $total + $value['price'] * $value["quantity"] ;
                 ?>
@@ -217,6 +219,7 @@
                    <td><?php echo $value["item_name"];?></td>
                    <td><?php echo $value["price"];?></td>
                    <td><?php echo $value["quantity"];?></td>
+                   <!-- number format with two decimal points -->
                    <td><?php echo number_format($value["quantity"] * $value["price"], 2); ?></td>
                    <td><form action='cart_manager.php' method='post'>
                    <button class='remove' name='remove'>Remove</button>

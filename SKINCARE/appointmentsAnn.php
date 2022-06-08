@@ -1,4 +1,4 @@
-<!-- this is the appointent page that contains the report on the appointments made..on dermatologist page -->
+<!-- this is the appointent page that contains the report on the annual appointments made..on dermatologist page -->
 <?php
    session_start();
   $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
@@ -332,7 +332,7 @@
                     <?php 
                     for($i = 2018 ; $i <= date('Y'); $i++){
                         echo "<option>$i</option>";
-                    //given that variable i which has the year 2000 
+                    //given that variable i which has the year 2018
                     //if i variable is less and equal to the current Year
                     //echo the number with option output
                     //++ is an increment operator and the loop will end at the current year

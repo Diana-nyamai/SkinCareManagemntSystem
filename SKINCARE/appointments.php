@@ -331,10 +331,10 @@
                     <?php 
                     for($i = 1 ; $i <= 31; $i++){
                         echo "<option>$i</option>";
-                    //given that variable i which has the year 2000 
-                    //if i variable is less and equal to the current Year
+                    //given that variable i which has the day 1
+                    //if i variable is less and equal to the current day
                     //echo the number with option output
-                    //++ is an increment operator and the loop will end at the current year
+                    //++ is an increment operator and the loop will end at the current day
                         }
                     ?> 
             </select>
@@ -358,7 +358,7 @@
                     <?php 
                     for($i = 2018 ; $i <= date('Y'); $i++){
                         echo "<option>$i</option>";
-                    //given that variable i which has the year 2000
+                    //given that variable i which has the year 2018
                     //if i variable is less and equal to the current Year
                     //echo the number with option output
                     //++ is an increment operator and the loop will end at the current year
@@ -427,8 +427,10 @@
                $email = $row['email'];
                $dname = $row['doctorname'];
                $appointdate = $row['appointment_date'];
+                //    parses english textual datetime to unix timestamp.tracks time in seconds since jan 1970
                $appointdate = strtotime($appointdate);
-               $appdate = date("d/m/y", $appointdate);
+                // formats   display the day in format specified in the string
+               $appdate = date("d/m/Y", $appointdate);
                $appointime = $row['appointment_time'];
                $cstatus = $row['statuses'];
                ?>

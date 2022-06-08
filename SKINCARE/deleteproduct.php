@@ -1,5 +1,8 @@
+<!-- php opening tag -->
 <?php
+// function that starts a session
    session_start();
+  //  obtain data from form submitted with method get
   $id = $_GET['id'];
   $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
   $data = mysqli_query($conn, "DELETE FROM tbl_product WHERE id='$id'");

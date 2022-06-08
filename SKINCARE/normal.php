@@ -54,7 +54,7 @@
             display: flex;
         }
         header ul li{
-            padding: 10px;
+           padding: 10px;
            list-style-type: none;
            position: relative;
         }
@@ -100,6 +100,7 @@
         /* skin type management */
         .sm-container{
             display:grid;
+            /* repeat the columns and there will be no overflow. minimum width will be and given 1fraction of space */
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             color: #fff;
             font-size: 20px;
@@ -110,6 +111,7 @@
             display: block;
         }
         .sm-description p{
+            /* places elemt on left or right side */
             float: left;
             padding:0 20px;
         }
@@ -121,7 +123,7 @@
         }
 
     /* products sections */
-            .gallery{
+        .gallery{
             display: flex;
             flex-wrap: wrap;
             width: 100%;
@@ -138,12 +140,13 @@
             text-align: center;
             border-radius: 20px;
             padding-top: 10px;
-            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+            /* v-offset h,offset, blur, color */
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25);
             transition: .4s;
             background: #f2f2f2;
         }
         .g-content:hover{
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
             transform: translate(2px, 8px);
         }
         .g-content img{
@@ -176,6 +179,7 @@
             width: 100%;
             padding: 15px;
             border: 0;
+            /* line outside borders */
             outline: none;
             cursor: pointer;
             margin-top: 5px;
@@ -290,6 +294,7 @@
 
   <!-- javascript section -->
     <script>
+         // addeventlistener method attaches an event handler to a document
         window.addEventListener("scroll", function(){
             var header = document.querySelector("header");
             header.classList.toggle("sticky", window.scrollY > 0);

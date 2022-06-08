@@ -341,7 +341,7 @@
                         <td><?php echo $tavailable;?></td>
                         <td>
                             <?php echo "
-                        <a title='delete' href='./deleteappoint.php?id=$id'><input type='submit' class='btn' value='delete' /></a> 
+                        <a title='delete' href='./deleteappoint.php?id=$id'><input type='submit' class='btn' value='delete'/></a> 
                         ";?>
                         </td>
                     </tr>

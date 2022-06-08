@@ -204,42 +204,7 @@
    .last-appointments table tbody td:last-child{
        white-space: nowrap;
    }
-   @media all and (max-width: 1090px){
-      .sidebar{
-          width: 60px;
-      }
-      .main{
-          width: calc(100% - 80px);
-          left: 60px;
-      }
-      .top-bar{
-          width: calc(100% - 60px);
-      }
-   }
-   @media all and (max-width: 860px){
-        .cards{
-            grid-template-columns: 2 1fr;
-        }
-        .tables{
-            grid-template-columns: 1fr;
-        }
-   }
-   @media all and (max-width: 530px){
-       .cards{
-           grid-template-columns: 1fr;
-       }
-   }
-   @media all and (max-width: 420px){
-       .last-appointments{
-           font-size: 70%;
-           padding: 10px;
-           min-height: 200px;
-       }
-       .cards,
-       .tables{
-           padding: 10px;
-       }
-   }
+  
     </style>
 </head>
 <body>

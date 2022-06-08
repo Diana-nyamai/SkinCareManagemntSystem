@@ -1,6 +1,7 @@
 <?php
 session_start(); 
 //  database connection
+// new keyword creates an object from a class
 $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
@@ -18,7 +19,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $email = $_SESSION['email'];
         $updatePassword = "UPDATE tbl_users SET password='$postPassword' WHERE email='$email'";
         $password_pass = mysqli_query($conn, $updatePassword) or die('query failed');
+
+        // removes all the global variables in the current session
         session_unset();
+        // destroys all the sessions of the website
         session_destroy();
         header('location: authentication.php');
     }

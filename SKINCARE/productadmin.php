@@ -296,16 +296,22 @@
 
                <?php
        $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
+    //    generates random integer between 1111 and 9999
       $v1 = rand(1111, 9999);
       $v2 = rand(1111, 9999);
-
+      
+    //   concatination
       $v3 = $v1.$v2;
+    //   calculates md5 hash of v3
       $v3 = md5($v3);
-
       if(isset($_POST["submit"])){
+          //   ouput the name of the image
         $fnm = $_FILES["pimage"]["name"];
         $dst = "./product_image/".$v3.$fnm;
+         // appear in database. product destination path, name of image, hashed random number
         $dst1 = "product_image/".$v3.$fnm;
+        // moves uploaded files to a new destination
+         // the uploaded file in the temporary directory on the web server.
         move_uploaded_file($_FILES["pimage"]["tmp_name"],$dst);
      
 
@@ -345,8 +351,8 @@
      document.getElementById('sowner').focus();
      return false;
    }
-   if(sphone == ""){
-     alert('please enter shop phone number')
+   if(sphone == "" || sphone < 11){
+     alert('shop phone number should be greater or equal to 10 eg. 0712345678')
      document.getElementById('sphone').focus();
      return false;
    }

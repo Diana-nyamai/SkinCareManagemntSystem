@@ -318,7 +318,7 @@
                     <?php 
                     for($i = 2018 ; $i <= date('Y'); $i++){
                         echo "<option>$i</option>";
-                    //given that variable i which has the year 2000 
+                    //given that variable i which has the year 2018
                     //if i variable is less and equal to the current Year
                     //echo the number with option output
                     //++ is an increment operator and the loop will end at the current year

@@ -78,12 +78,14 @@
    .top-bar{
        position: fixed;
        height: 60px;
+       /* function that performs calculations */
        width: calc(100% - 300px);
        background: #fff;
        display: grid;
        justify-content: flex-end;
        padding: 0 20px;
        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+       /* specifies the stack order of an element */
        z-index: 1;
    }
    .user{
@@ -140,7 +142,6 @@
    }
    .img-box-small img{
        position: relative;
-      
        border-radius: 50%;
    }
    .last-appointments{
@@ -204,42 +205,6 @@
    }
    .last-appointments table tbody td:last-child{
        white-space: nowrap;
-   }
-   @media all and (max-width: 1090px){
-      .sidebar{
-          width: 60px;
-      }
-      .main{
-          width: calc(100% - 80px);
-          left: 60px;
-      }
-      .top-bar{
-          width: calc(100% - 60px);
-      }
-   }
-   @media all and (max-width: 860px){
-        .cards{
-            grid-template-columns: 2 1fr;
-        }
-        .tables{
-            grid-template-columns: 1fr;
-        }
-   }
-   @media all and (max-width: 530px){
-       .cards{
-           grid-template-columns: 1fr;
-       }
-   }
-   @media all and (max-width: 420px){
-       .last-appointments{
-           font-size: 70%;
-           padding: 10px;
-           min-height: 200px;
-       }
-       .cards,
-       .tables{
-           padding: 10px;
-       }
    }
     </style>
 </head>
@@ -307,10 +272,7 @@
                       <h2>orders</h2>
                       <a class="btn" href="orderAnnual.php">Annual report</a>
                       <a class="btn" href="orders_search.php">search products</a>
-                      <!-- <form method="post" action="#">
-                         <input type="text" placeholder="search..." name="search_input"/>
-                         <input type="submit" value="Search" name="search"/>
-                      </form> -->
+                      <!-- method that prints the contents of the current window -->
                       <button onclick="window.print();" class="btn">Print</button>
                 </div>
 
@@ -321,10 +283,10 @@
                     <?php 
                     for($i = 1 ; $i <= 31; $i++){
                         echo "<option>$i</option>";
-                    //given that variable i which has the year 2000 
-                    //if i variable is less and equal to the current Year
+                    //given that variable i which has value 1
+                    //if i variable is less and equal to 31
                     //echo the number with option output
-                    //++ is an increment operator and the loop will end at the current year
+                    //++ is an increment operator and the loop will end at 31
                         }
                     ?> 
             </select>
@@ -348,7 +310,7 @@
                     <?php 
                     for($i = 2018 ; $i <= date('Y'); $i++){
                         echo "<option>$i</option>";
-                    //given that variable i which has the year 2000
+                    //given that variable i which has the year 2018
                     //if i variable is less and equal to the current Year
                     //echo the number with option output
                     //++ is an increment operator and the loop will end at the current year
@@ -414,11 +376,13 @@
     function getData($sql){
            $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
            $data = mysqli_query($conn, $sql) ;
-        if(mysqli_num_rows($data) > 0){
+           if(mysqli_num_rows($data) > 0){
            while($row = mysqli_fetch_array($data)){
                $id = $row['order_id'];
                $orderdate = $row['Order_date'];
+            //    parses english textual datetime to unix timestamp.tracks time in seconds since jan 1970
                $orderdate = strtotime($orderdate);
+            //    display the date in format we want
                $Ordate = date("d/m/y", $orderdate);
                $email = $row['email'];
                $product_name = $row['product_name'];

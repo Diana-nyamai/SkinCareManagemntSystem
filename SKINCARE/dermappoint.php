@@ -12,7 +12,7 @@ if(mysqli_connect_error()){
 else{
     $stmt = $conn->prepare('insert into tbl_doctoravailable(userid, davailable,tavailable)
     values(?,?,?)');
-    $stmt->bind_param('sss', $did,$davailable,$tavailable );
+    $stmt->bind_param('iss', $did,$davailable,$tavailable );
     $stmt->execute();
     echo '<script>alert("availability posted")
     window.location.href = "dermmake_appoint.php";

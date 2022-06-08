@@ -398,8 +398,8 @@
                        getData($query);
                    }
                 ?>
-                    <?php 
-    function getData($sql){
+    <?php 
+        function getData($sql){
            $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
            $data = mysqli_query($conn, $sql) ;
         if(mysqli_num_rows($data) > 0){

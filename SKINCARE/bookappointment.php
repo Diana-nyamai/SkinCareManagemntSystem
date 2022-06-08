@@ -102,20 +102,21 @@
             margin: 30px;
         }
         .form-container input{
-       margin-top: 10px;
-       width: 100%;
-       padding: 10px 10px;
-       outline: none;
-
+            margin-top: 10px;
+            width: 100%;
+            padding: 10px 10px;
+            outline: none;
        }
       .btn{
-       padding: 5px 10px;
-       background-image: linear-gradient(45deg,#1e1f31, #f09053);
-       color: #fff;
-       border-radius: 10px;
-       text-decoration: none;
-   }
-   #customers {
+            padding: 5px 10px;
+            /* render smoothly the color transition */
+            background-image: linear-gradient(45deg,#1e1f31, #f09053);
+            color: #fff;
+            /* makes the corners on an element round */
+            border-radius: 10px;
+            text-decoration: none;
+       }
+     #customers {
             border-collapse: collapse;
             width: 100%;
         }
@@ -182,13 +183,13 @@
     <h2>Book appointment</h2>
     
     <table id="customers">
-  <tr>
-    <th>Doctor Name</th>
-    <th>Date Availabe</th>
-    <th>Time Available</th>
-    <th>Book appointment</th>
-  </tr>
-  <?php $id = $_SESSION['userid']?>
+        <tr>
+            <th>Doctor Name</th>
+            <th>Date Availabe</th>
+            <th>Time Available</th>
+            <th>Book appointment</th>
+        </tr>
+        <?php $id = $_SESSION['userid']?>
              <?php
           $sm = mysqli_query($conn, "SELECT tbl_users.first_name, tbl_doctoravailable.davailable, tbl_doctoravailable.tavailable FROM tbl_doctoravailable INNER JOIN tbl_users ON tbl_doctoravailable.userid = tbl_users.user_id");
           while($row = mysqli_fetch_array($sm)){
@@ -207,14 +208,11 @@
                 <input type="hidden" name="time" value="<?php echo $row["tavailable"];?>"/>
                  </form>
                  </tr>
-
                  <?php
-             }
-      ?>
-   
- 
-</table>
-</form>  
+                    }
+                    ?>
+                </form>  
+    </table>
               </div>
 
 </body>

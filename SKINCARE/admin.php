@@ -2,7 +2,9 @@
 <?php
    session_start();
   $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
+//   for the cards
   $data = mysqli_query($conn, 'SELECT * FROM tbl_appointment');
+//   returns number of rows
   $number = mysqli_num_rows($data);
   $users = mysqli_query($conn, 'SELECT * FROM tbl_users');
   $usernum = mysqli_num_rows($users);
@@ -208,7 +210,8 @@
         .red,
         .purple,
         .blue,
-        .yellow{
+        .yellow,
+        .black{
            width: 30px;
            height:30px;
            display: block
@@ -225,47 +228,16 @@
         .yellow{
             background-color: yellow;
         }
-        @media all and (max-width: 1090px){
-            .sidebar{
-                width: 60px;
-            }
-            .main{
-                width: calc(100% - 80px);
-                left: 60px;
-            }
-            .top-bar{
-                width: calc(100% - 60px);
-            }
+        .black{
+            background-color: black;
         }
-        @media all and (max-width: 860px){
-                .cards{
-                    grid-template-columns: 2 1fr;
-                }
-                .tables{
-                    grid-template-columns: 1fr;
-                }
-        }
-        @media all and (max-width: 530px){
-            .cards{
-                grid-template-columns: 1fr;
-            }
-        }
-        @media all and (max-width: 420px){
-            .last-appointments,
-            .doctor-visiting{
-                font-size: 70%;
-                padding: 10px;
-                min-height: 200px;
-            }
-            .cards,
-            .tables{
-                padding: 10px;
-            }
-        }
-    </style>
+       
+    </style> 
+    <?php 
+    echo "
      <script>
     function Draw(){
-        var n = [5,5,10,55]
+        var n = [$t18n,$t19n,$t20n,$t21n,$t22n]
         var colors = ['red','purple','blue','yellow','black'];
         var years = [2018,2019,2020,2021,2022]
         var graphValues = n;
@@ -273,21 +245,26 @@
         var canvas = document.getElementById('myCanvas');
         // get context method returns a drawing context on canvas
         var ctx = canvas.getContext('2d');
-
+        
+        // starts from position to on x-axis
         var x = 50;
+        // var y = 90;
         var width = 40;
 
         
         for(var i=0; i<graphValues.length; i++){
+            // property sets color for the graph
             ctx.fillStyle = colors[i];
             var h = graphValues[i];
-            ctx.fillRect(x,canvas.height-h ,width,h);
+            // method draws a filled rectangle x,y,width, height (canvas.height-h) takes the height of the canvas minus the height of the graph
+            ctx.fillRect(x,canvas.height - h,width,h);
             x += width+15;
         }
        
     }
-    </script>
+    </script> ";?>
 </head>
+<!-- onload executes script once the page loads -->
 <body onload="Draw()">
     <div class="container">
         <div class="sidebar">
@@ -368,11 +345,13 @@
 
                   <div>
                         <!-- canvas is an element used to draw graphics in html -->
-                        <canvas id="myCanvas" height="300" width="500"></canvas>
-                       <span class="red"></span> <p> 2018 <?php echo $t18n ?></p>
-                        <p> <span class="purple"></span>2019 <?php echo $t19n ?></p>
-                        <p> <span class="blue"></span>2020 <?php echo $t21n ?></p>
-                        <p><span class="yellow"></span>2021 <?php echo $t22n ?></p>
+                        <canvas id="myCanvas" height="100" width="300"></canvas>
+                       <span class="red"></span> <p> 2018 (<?php echo $t18n ?>) appointments</p>
+                        <p> <span class="purple"></span>2019 (<?php echo $t19n ?>) appointments</p>
+                        <p> <span class="blue"></span>2020 (<?php echo $t20n ?>) appointments</p>
+                        <p><span class="yellow"></span>2021 (<?php echo $t21n ?>) appointments</p>
+                        <p><span class="black"></span>2021 (<?php echo $t22n ?>) appointments</p>
+
                   </div>
               </div>
               

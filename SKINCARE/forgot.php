@@ -1,5 +1,6 @@
 <!-- forgot pasword page-->
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
+<-- html is used to structure a webpage and its content -->
 <html lang="en">
 <head>
     <meta charset="UTF-8">
