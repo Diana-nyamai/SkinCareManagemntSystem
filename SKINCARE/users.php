@@ -330,7 +330,7 @@
                  
                 <form action="#" method="post">
                 <div class="options">
-                <select name="filterChoice">
+                <select name="month">
                     <option selected="selected">select month</option>
                     <option value ='01'> JANUARY </option>
                     <option value ='02'> FEBRUARY </option>
@@ -363,7 +363,7 @@
                 <option value="female">female</option>
             </select>
 
-                 <input type="submit" value="filter" name="choice" class="bton">
+                 <input type="submit" value="filter" name="filterbtn" class="bton">
                  <input type="submit" value="reset" name="reset" class="bton"> 
                 </div>
             </form>
@@ -381,25 +381,25 @@
                         <td>Actions</td>
                     </thead>
                     <?php
-                   if(!isset($_POST['choice'])){
+                   if(!isset($_POST['filterbtn'])){
                        $query = "SELECT * FROM tbl_users";
-                       getData($query);
+                       Data($query);
                    }
-                   elseif(isset($_POST['choice'])){
-                       $month = $_POST['filterChoice'];
+                   elseif(isset($_POST['filterbtn'])){
+                       $month = $_POST['month'];
                        $year = $_POST['year'];
                        $gender = $_POST['gender'];
 
                        $sql = "SELECT * FROM tbl_users WHERE YEAR(signup_date)='$year' AND MONTH(signup_date)='$month' AND gender='$gender'";
-                       getData($sql);
+                       Data($sql);
                    }
                    elseif(isset($_POST['reset'])){
                        $query = "SELECT * FROM tbl_users";
-                       getData($query);
+                       Data($query);
                    }
                 ?>
     <?php 
-        function getData($sql){
+        function Data($sql){
            $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
            $data = mysqli_query($conn, $sql) ;
         if(mysqli_num_rows($data) > 0){

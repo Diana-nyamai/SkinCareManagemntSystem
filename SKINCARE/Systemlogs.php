@@ -1,4 +1,3 @@
-<!-- this is the appointent page that contains the report on the appointments made..on admin page -->
 <?php
    session_start();
   $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
@@ -207,95 +206,11 @@
             width: 100%;
             border-collapse: collapse;
         }
-        .canvas{
-            /* border: 1px solid black; */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 40px;
-        }
-        .labels p:first-child{
-            display: flex;
-            padding-top: 20px;
-        }
-        .labels p{
-            display: flex;
-            padding: 10px;
-        }
-        
-        .red,
-        .purple,
-        .blue,
-        .yellow,
-        .black{
-           width: 15px;
-           height:15px;
-           display: block;
-           border-radius: 50px;
-           margin-right: 10px;
-        }
-        .red{
-            background-color: red;
-        }
-        .purple{
-            background-color: purple;
-        }
-        .blue{
-            background-color: blue;
-        }
-        .yellow{
-            background-color: yellow;
-        }
-        .black{
-            background-color: black;
-        }
        
     </style> 
-    <?php 
-    echo "
-     <script>
-    function BarGraph(){
-        var Gnumber = [$t18n,$t19n,$t20n,$t21n,$t22n]
-        var colors = ['red','purple','blue','yellow','black'];
-        var num = [$t18n,$t19n,$t20n,$t21n,$t22n]
-        var graphValues = Gnumber;
 
-        var canvas = document.getElementById('Canvas');
-        // get context method returns a drawing context on canvas
-        var ctx = canvas.getContext('2d');
-        
-        ctx.moveTo(30,200);
-        ctx.lineTo(30,10);
-        ctx.stroke();
-
-        ctx.moveTo(30,200);
-        ctx.lineTo(250,10);
-        ctx.stroke();
-
-        // starts from position to on x-axis
-        var x = 50;
-        // var y = 90;
-        var width = 40;
-
-        for(var i=0; i<graphValues.length; i++){
-            // property sets color for the graph
-            ctx.fillStyle = colors[i];
-            ctx.fillText(num[0], 65, canvas.height-20);
-            ctx.fillText(num[1], 120,canvas.height-20);
-            ctx.fillText(num[2], 175,canvas.height-20);
-            ctx.fillText(num[3], 230,canvas.height-20);
-            ctx.fillText(num[4], 280,canvas.height-40);
-            var h = graphValues[i];
-            // method draws a filled rectangle x,y,width, height (canvas.height-h) takes the height of the canvas minus the height of the graph
-            ctx.fillRect(x,canvas.height - h,width,h);
-            x += width+15;
-        }
-       
-    }
-    </script> ";?>
 </head>
-<!-- onload executes script once the page loads -->
-<body onload="BarGraph()">
+<body>
     <div class="container">
         <div class="sidebar">
             <ul>
@@ -368,27 +283,21 @@
             <!-- tables -->
           <div class="tables">
               <div class="last-appointments">
+              <div><p><a href="./admin.php"> < Back</a></p></div>
                   <div class="heading">
-
-                      <h2>Yearly Appointment Bar Graph</h2>
-                      <a class="btn" href="Systemlogs.php">View System logs</a>
+                      <h2>System Deletion logs</h2>
                       <button onclick="window.print();" class="btn">Print</button>
                   </div>
                   
-                  <div class="canvas">
-                      <p>Number of Appointments</p>
-                        <!-- canvas is an element used to draw graphics in html -->
-                        <canvas id="Canvas" height="200" width="400"></canvas>
-                        <div class="labels">
-                        <p><span class="red"></span> 2018 Appointments</p>
-                          <!-- inline container used to mark a part of a text -->
-                        <p> <span class="purple"></span>2019 Appointments</p>
-                        <p> <span class="blue"></span>2020 Appointments</p>
-                        <p><span class="yellow"></span>2021 Appointments</p>
-                        <p><span class="black"></span>2022 Appointments</p>
-                    </div>
-              </div><!-- canvas div container -->
-              <p style="text-align: center; padding-top: 20px;">YEARS</p>
+                        <?php
+        $MyfileName = "deletelog.txt";
+
+        if(file_exists($MyfileName)){
+            ?>
+            <p><?php  echo file_get_contents($MyfileName);?></p> </br>
+           <?php
+            }
+            ?>
               </div>
           </div>
         </div>

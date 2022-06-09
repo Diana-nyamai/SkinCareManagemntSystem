@@ -290,7 +290,7 @@
                         }
                     ?> 
             </select>
-                <select name="filterChoice">
+                <select name="month">
                     <option selected="selected">select month</option>
                     <option value ='01'> JANUARY </option>
                     <option value ='02'> FEBRUARY </option>
@@ -331,7 +331,7 @@
                 <option value="urembo">urembo</option>
             </select>
 
-                 <input type="submit" value="filter" name="choice" class="bton">
+                 <input type="submit" value="filter" name="filterbtn" class="bton">
                  <input type="submit" value="reset" name="reset" class="bton"> 
                 </div>
             </form>
@@ -351,29 +351,29 @@
                     
 
                     <?php
-                   if(!isset($_POST['choice'])){
+                   if(!isset($_POST['filterbtn'])){
                        $query = "SELECT tbl_orders.order_id, tbl_orders.Order_date, tbl_users.email,tbl_orders.product_name,tbl_orders.quantity,tbl_orders.tamount,tbl_orders.payment,tbl_orders.shop_name,tbl_orders.product_id,tbl_orders.statuses FROM tbl_orders INNER JOIN tbl_users ON tbl_orders.user_id = tbl_users.user_id";
-                       getData($query);
+                       Data($query);
                    }
-                   elseif(isset($_POST['choice'])){
-                    $month = $_POST['filterChoice'];
+                   elseif(isset($_POST['filterbtn'])){
+                    $month = $_POST['month'];
                        $day = $_POST['day'];
                        $year = $_POST['year'];
                        $status = $_POST['status'];
                        $shop = $_POST['shop'];
 
                        $sql = "SELECT tbl_orders.order_id, tbl_orders.Order_date, tbl_users.email,tbl_orders.product_name,tbl_orders.quantity,tbl_orders.tamount,tbl_orders.payment,tbl_orders.shop_name,tbl_orders.product_id,tbl_orders.statuses FROM tbl_orders INNER JOIN tbl_users ON tbl_orders.user_id = tbl_users.user_id WHERE DAY(Order_date)='$day' AND YEAR(Order_date)='$year' AND MONTH(Order_date)='$month' AND statuses='$status' AND shop_name = '$shop'";
-                       getData($sql);
+                       Data($sql);
                    }
                    elseif(isset($_POST['reset'])){
                        $query = "SELECT tbl_orders.order_id, tbl_orders.Order_date, tbl_users.email,tbl_orders.product_name,tbl_orders.quantity,tbl_orders.tamount,tbl_orders.payment,tbl_orders.shop_name,tbl_orders.product_id,tbl_orders.statuses FROM tbl_orders INNER JOIN tbl_users ON tbl_orders.user_id = tbl_users.user_id";
-                       getData($query);
+                       Data($query);
                    
                    }
                 ?>
 
 <?php 
-    function getData($sql){
+    function Data($sql){
            $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
            $data = mysqli_query($conn, $sql) ;
            if(mysqli_num_rows($data) > 0){

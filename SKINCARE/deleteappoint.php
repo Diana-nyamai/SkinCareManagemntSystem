@@ -9,6 +9,8 @@
   
   // checks whether the condition is true and executes the statement
   if($data){
+    $log = "The dermatologist deleted an availability";
+    deleteLog($log);
     echo "
     <script>
     confirm('are you sure you want to delete appointment availability?');
@@ -17,5 +19,23 @@
   }
   else{
       echo "failed to delete";
+  }
+?>
+
+<?php
+  function deleteLog($log){
+      if(!file_exists('deletelog.txt')){
+          file_put_contents('deletelog.txt', '');
+      }
+
+      $ipaddress = $_SERVER['REMOTE_ADDR'];
+      date_default_timezone_set('Africa/Nairobi');
+      $time = date('d/m/Y h:iA', time());
+
+      $fileContent = file_get_contents('deletelog.txt');
+    //   appending the contents
+      $fileContent .= "$ipaddress\t$time\t$log\n";
+
+      file_put_contents('deletelog.txt', $fileContent);
   }
 ?>

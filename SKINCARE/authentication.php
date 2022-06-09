@@ -277,8 +277,9 @@ function validateSignupForm(event){
    if(fname == ""){
      alert('please enter first name');
     //  html dom used when you want to edit or view an html element
-    // focus gives focus to an html element
+    // focus method gives focus to an html element
      document.getElementById('fname').focus();
+    //  stops the browsers default behaviour of browser
      return false;
    }
    if(lname == ""){
@@ -405,6 +406,7 @@ function validatePassword(){
     if(inputCaptchaValue === captchaValue){
       alert("Correct Captcha");
     } else {
+      // prevents default behavior 
       event.preventDefault();
       alert("Invalid captcha");
 

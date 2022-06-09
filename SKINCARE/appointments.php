@@ -338,7 +338,7 @@
                         }
                     ?> 
             </select>
-                <select name="filterChoice">
+                <select name="month">
                     <option selected="selected">select month</option>
                     <option value ='01'> JANUARY </option>
                     <option value ='02'> FEBRUARY </option>
@@ -376,7 +376,7 @@
                 <option value="joseph">joseph</option>
             </select>
 
-                 <input type="submit" value="filter" name="choice" class="bton">
+                 <input type="submit" value="filter" name="filterbtn" class="bton">
                  <input type="submit" value="reset" name="reset" class="bton"> 
                 </div>
             </form>
@@ -394,28 +394,27 @@
                         <td>Actions</td>
                     </thead>
                     <?php
-                   if(!isset($_POST['choice'])){
+                   if(!isset($_POST['filterbtn'])){
                        $query = "SELECT tbl_appointment.appointment_id, tbl_users.first_name, tbl_users.last_name,tbl_users.phone_number,tbl_users.email,tbl_appointment.doctorname,tbl_appointment.appointment_date,tbl_appointment.appointment_time,tbl_appointment.statuses FROM tbl_appointment INNER JOIN tbl_users ON tbl_appointment.userid = tbl_users.user_id";
-                       getData($query);
+                       Data($query);
                    }
-                   elseif(isset($_POST['choice'])){
+                   elseif(isset($_POST['filterbtn'])){
                     $day = $_POST['day'];
-                    $month = $_POST['filterChoice'];
+                    $month = $_POST['month'];
                     $year = $_POST['year'];
                     $status = $_POST['status'];
                     $doctor = $_POST['doctor'];
 
-
                     $sql = "SELECT tbl_appointment.appointment_id, tbl_users.first_name, tbl_users.last_name,tbl_users.phone_number,tbl_users.email,tbl_appointment.doctorname,tbl_appointment.appointment_date,tbl_appointment.appointment_time,tbl_appointment.statuses FROM tbl_appointment INNER JOIN tbl_users ON tbl_appointment.userid = tbl_users.user_id WHERE DAY(appointment_date)='$day' AND YEAR(appointment_date)='$year' AND MONTH(appointment_date)='$month' AND statuses='$status' and doctorname='$doctor'";
-                    getData($sql);
+                    Data($sql);
                    }
                    elseif(isset($_POST['reset'])){
                     $query = "SELECT tbl_appointment.appointment_id, tbl_users.first_name, tbl_users.last_name,tbl_users.phone_number,tbl_users.email,tbl_appointment.doctorname,tbl_appointment.appointment_date,tbl_appointment.appointment_time,tbl_appointment.statuses FROM tbl_appointment INNER JOIN tbl_users ON tbl_appointment.userid = tbl_users.user_id";
-                    getData($query);
+                    Data($query);
                 }
                 ?>
                     <?php 
-    function getData($sql){
+    function Data($sql){
            $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
            $data = mysqli_query($conn, $sql) ;
         if(mysqli_num_rows($data) > 0){

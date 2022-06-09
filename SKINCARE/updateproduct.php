@@ -1,4 +1,4 @@
-<!-- this page will display the number of users and a report on users in admin -->
+
 <?php
    session_start();
   $id = $_GET['id'];
@@ -330,69 +330,6 @@
         </div>
     </div>
 
-          <!-- javascript section -->
-<script>
-  // validating the main form
- function validateForm(){
-   sname = document.product.sname.value;
-   sowner = document.product.sowner.value;
-   sphone = document.product.sphone.value;
-   semail = document.product.semail.value;
-   pname = document.product.pname.value;
-   ptype = document.product.ptype.value;
-   pbrand = document.product.pbrand.value;
-   pdescription = document.product.pdescription.value;
-   pprice = document.product.pprice.value;
 
-
-   if(sname == ""){
-     alert('please enter shop name');
-     document.getElementById('fname').focus();
-     return false;
-   }
-   if(sowner == ""){
-     alert('please enter shop owner')
-     document.getElementById('sowner').focus();
-     return false;
-   }
-   if(sphone == ""){
-     alert('please enter shop phone number')
-     document.getElementById('sphone').focus();
-     return false;
-   }
-   if(semail == ""){
-     alert('please enter shop email')
-     document.getElementById('semail').focus();
-     return false;
-   }
-   if(pname == ""){
-     alert('please enter product name')
-     document.getElementById('pname').focus();
-     return false;
-   }
-   if(ptype == ""){
-     alert('please enter product type')
-     document.getElementById('ptype').focus();
-     return false;
-   }
-   if(pbrand == ""){
-     alert('please enter brand')
-     document.getElementById('pbrand').focus();
-     return false;
-   }
-   if(pdescription == ""){
-     alert('please enter shop description')
-     document.getElementById('pdescription').focus();
-     return false;
-   }
-   if(pprice == ""){
-     alert('please enter price')
-     document.getElementById('pprice').focus();
-     return false;
-   }
-   
- }
-
-</script>
 </body>
 </html>
