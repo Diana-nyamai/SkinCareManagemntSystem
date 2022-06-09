@@ -24,18 +24,26 @@
 
 <?php
   function deleteLog($log){
+    // checks whether a file exists
       if(!file_exists('deletelog.txt')){
+        // function used to write a string to a file.checks for the file and if it doesnt exist it creates one
           file_put_contents('deletelog.txt', '');
       }
-
+      //  server holds info about headers, paths and scrpt location
+      // ip address from which the user is viewing the current page
       $ipaddress = $_SERVER['REMOTE_ADDR'];
+      // sets default timezone used by all date/time function
       date_default_timezone_set('Africa/Nairobi');
-      $time = date('d/m/Y h:iA', time());
-
+      // date formats the local date and time and returns the formatted date strings
+      // h-12hr format of an hour, i-minutes with 2 zeros, A - uppercase am or pm
+      $time = date('d/m/Y h:i A');
+ 
+      // reads a file into a string. del is the path
       $fileContent = file_get_contents('deletelog.txt');
-    //   appending the contents
+    //   appending the contents to the file
       $fileContent .= "$ipaddress\t$time\t$log\n";
 
+      // function used to write a string to a file
       file_put_contents('deletelog.txt', $fileContent);
   }
 ?>
