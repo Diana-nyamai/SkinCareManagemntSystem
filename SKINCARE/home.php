@@ -87,7 +87,7 @@
         }
         header ul li:hover .dropdown-menu {
             display: block;
-            /* positioned relative to the parent */
+            /* positioned relative to the nearest parent/ancestor */
             position: absolute;
             left: 0;
             top: 100%;
@@ -165,6 +165,7 @@
         box-sizing: border-box;
         float: left;
         text-align: center;
+        /* specifies the radius on an element's corner */
         border-radius: 20px;
         padding-top: 10px;
          /* v-offset h-offset, blur, color */
@@ -173,12 +174,12 @@
         background: #f2f2f2;
     }
     .g-content:hover{
-         /* v-offset h,offset, blur, color */
+         /* attaches a shadow v-offset(LR) h-offset (TB), blur, color */
         box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
         transform: translate(2px, 8px);
     }
     .g-content img{
-      width: 200;
+      width: 200px;
       height: 200px;
       text-align: center;
       margin: 0 auto;
@@ -214,6 +215,7 @@
       border-bottom-left-radius: 20px;
       background: #f09053;
   }
+  /* specifies styling for specific device width */
   @media all and (max-width: 1350px){
       .g-content{
           width: 45%;
@@ -230,6 +232,7 @@
 <header>
         <h1><a href="./home.php" class="logo">HEAVENLY skin</a></h1>
         <ul>
+            <!-- creates a hyperlink that links one page to another -->
             <li><a href="./home.php">HOME</a></li>
             <li><a href="#">SKIN TYPES <i class="fa fa-caret-down"></i></a>
                <div class="dropdown-menu">

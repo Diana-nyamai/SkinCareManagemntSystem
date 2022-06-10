@@ -293,7 +293,7 @@ function validateSignupForm(event){
     document.getElementById('phone').focus();
     return false;
   }
-  // index of is a method
+  // index of is a method that returns the positon of the 1st occurrence of a value in a string
   if(email.length == 0 || email.indexOf('@') == -1 || email.indexOf('.') == -1){
     alert('enter a valid email.should contain @ and .');
     document.getElementById('email').focus();

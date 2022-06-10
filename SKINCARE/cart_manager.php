@@ -23,7 +23,7 @@ session_start();
           }
         //   this condition makes sure a product is added to cart
           else{
-            // returns no. of elements in a cart
+            // returns no. of elements in an array a cart
           $count = count($_SESSION['cart']);
           // enters the data in an associative array
           // session with index zero

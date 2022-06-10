@@ -165,7 +165,7 @@
  }
  function saver(q, points){
     //  this function puts the points that each answer is worth into the array
-    q= q-1;
+    q = q-1;
     Quest[q]= points;
 }
  // this function adds the number of points each answer is worth together 
@@ -202,7 +202,6 @@ function myDisplay(myContents){
     // innerhtml get the content of an element with id result then changes it to the mycontents
    document.getElementById("result").innerHTML = (myContents);
 }
-</script>
-
+</script>  
 </body>
 </html>

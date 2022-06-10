@@ -264,8 +264,11 @@
         // get context method returns a drawing context on canvas
         var ctx = canvas.getContext('2d');
         
+        // moves the path to a specified point in the canvas, without creating a line
         ctx.moveTo(30,200);
+        // method adds a new point and creates a line TO that point FROM the last specified point in the canvas
         ctx.lineTo(30,10);
+        // method draws the path on the canvas
         ctx.stroke();
 
         ctx.moveTo(30,200);
@@ -280,6 +283,7 @@
         for(var i=0; i<graphValues.length; i++){
             // property sets color for the graph
             ctx.fillStyle = colors[i];
+            // method draws filled text on canvas
             ctx.fillText(num[0], 65, canvas.height-20);
             ctx.fillText(num[1], 120,canvas.height-20);
             ctx.fillText(num[2], 175,canvas.height-20);
