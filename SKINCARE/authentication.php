@@ -360,10 +360,10 @@ function validatePassword(){
   // let allows you to declare variables that are limited to scope of the block statement
   let captchaValue = "";
   function generateCaptcha(){
-    // btoa encodes a string in base 64.uses A-Z,a-z, 0-9, +, / characters to encode the string
+    // btoa method encodes a string in base 64.uses A-Z,a-z, 0-9, +, / characters to encode the string
     // math.random method returns a random number from 0 to 999999999
     let value = btoa(Math.random()*1000000000);
-    // extracts a substring from value
+    // substr method extracts a substring from value between the specified vlue
     value = value.substr(0,5);
     captchaValue = value;
   }
@@ -385,6 +385,7 @@ function validatePassword(){
     }).join("");
     // displaying on the browser
     // method returns the first element that matches css selector
+    // inner html get the content of the class
     document.querySelector(".preview").innerHTML = html;
   }
   // refreshing the captcha

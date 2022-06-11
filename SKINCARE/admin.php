@@ -272,7 +272,7 @@
         ctx.stroke();
 
         ctx.moveTo(30,200);
-        ctx.lineTo(250,10);
+        ctx.lineTo(300,200);
         ctx.stroke();
 
         // starts from position to on x-axis

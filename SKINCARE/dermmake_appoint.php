@@ -297,6 +297,7 @@
          document.getElementById('date').focus();
          return false;
        }
+    //    is a method that splits a string into an array of substrings
        comps = date.split('-');
        if(comps[0].length< 4 || comps[1].length < 1 || comps[2].length<1){
         event.preventDefault();
