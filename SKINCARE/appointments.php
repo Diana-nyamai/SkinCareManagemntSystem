@@ -404,7 +404,8 @@
                     $year = $_POST['year'];
                     $status = $_POST['status'];
                     $doctor = $_POST['doctor'];
-
+// joins used to join 2 or more tables based on a related column between them
+// inner join selects records that have matching values in both tables
                     $sql = "SELECT tbl_appointment.appointment_id, tbl_users.first_name, tbl_users.last_name,tbl_users.phone_number,tbl_users.email,tbl_appointment.doctorname,tbl_appointment.appointment_date,tbl_appointment.appointment_time,tbl_appointment.statuses FROM tbl_appointment INNER JOIN tbl_users ON tbl_appointment.userid = tbl_users.user_id WHERE DAY(appointment_date)='$day' AND YEAR(appointment_date)='$year' AND MONTH(appointment_date)='$month' AND statuses='$status' and doctorname='$doctor'";
                     Data($sql);
                    }
