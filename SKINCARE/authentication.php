@@ -337,7 +337,7 @@ function validateRole(){
 
 // validating the password
 function validatePassword(){
-   var p = document.getElementById('password').value;
+   var p = document.getElementById('password').value.focus();
    if(p == ""){
      alert('user must have password!');
      return false;
