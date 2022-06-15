@@ -177,44 +177,79 @@
        outline: none;
    }
    
-
-   @media all and (max-width: 1090px){
-      .sidebar{
-          width: 60px;
-      }
-      .main{
-          width: calc(100% - 80px);
-          left: 60px;
-      }
-      .top-bar{
-          width: calc(100% - 60px);
-      }
-   }
-   @media all and (max-width: 860px){
-        .cards{
-            grid-template-columns: 2 1fr;
-        }
-        .tables{
-            grid-template-columns: 1fr;
-        }
-   }
-   @media all and (max-width: 530px){
-       .cards{
-           grid-template-columns: 1fr;
-       }
-   }
-   @media all and (max-width: 420px){
-       .last-appointments{
-           font-size: 70%;
-           padding: 10px;
-           min-height: 200px;
-       }
-       .cards,
-       .tables{
-           padding: 10px;
-       }
-   }
     </style>
+    <script>
+  // validating the main form
+ function validateForm(event){
+    event.preventDefault();
+   sname = document.product.sname.value;
+   sowner = document.product.sowner.value;
+   sphone = document.product.sphone.value;
+   semail = document.product.semail.value;
+   pname = document.product.pname.value;
+   ptype = document.product.ptype.value;
+   pbrand = document.product.pbrand.value;
+   pdescription = document.product.pdescription.value;
+   pprice = document.product.pprice.value;
+
+
+   if(sname == ""){
+     alert('please enter shop name');
+     document.getElementById('sname').focus();
+     return false;
+   }
+   if(sowner == ""){
+    event.preventDefault();
+     alert('please enter shop owner')
+     document.getElementById('sowner').focus();
+     return false;
+   }
+   if(sphone == "" || sphone < 11){
+    event.preventDefault();
+     alert('shop phone number should be greater or equal to 10 eg. 0712345678')
+     document.getElementById('sphone').focus();
+     return false;
+   }
+   if(semail.length == 0 || semail.indexOf('@') == -1 || semail.indexOf('.') == -1){
+    event.preventDefault();
+    alert('enter a valid email.should contain @ and .');
+    document.getElementById('semail').focus();
+    return false;
+  }
+   if(pname == ""){
+    event.preventDefault();
+     alert('please enter product name')
+     document.getElementById('pname').focus();
+     return false;
+   }
+   if(ptype == ""){
+    event.preventDefault();
+     alert('please enter product type')
+     document.getElementById('ptype').focus();
+     return false;
+   }
+   if(pbrand == ""){
+    event.preventDefault();
+     alert('please enter brand')
+     document.getElementById('pbrand').focus();
+     return false;
+   }
+   if(pdescription == ""){
+    event.preventDefault();
+     alert('please enter shop description')
+     document.getElementById('pdescription').focus();
+     return false;
+   }
+   if(pprice == ""){
+    event.preventDefault();
+     alert('please enter price')
+     document.getElementById('pprice').focus();
+     return false;
+   }
+   
+ }
+ </script>
+
 </head>
 <body>
     <div class="container">
@@ -274,7 +309,6 @@
             </div><!-- end of cards -->
 
             <!-- tables -->
-
           <div class="tables">
               <div class="last-appointments">
                   <div class="heading">
@@ -293,7 +327,32 @@
                 <input type="file" id="pimage" name="pimage" placeholder="product price..">
                 <input class="btn" type="submit" name="submit" value="upload">
                </form>
+               
+               <?php
+                    $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
+                    //    generates random integer between 1111 and 9999
+                    $v1 = rand(1111, 9999);
+                    $v2 = rand(1111, 9999);
+                    
+                    //   concatination
+                    $v3 = $v1.$v2;
+                    //   calculates md5 hash of v3
+                    $v3 = md5($v3);
+                    if($_SERVER["REQUEST_METHOD"] == "POST"){
+                    if(isset($_POST["submit"])){
+                        //   ouput the name of the image
+                        $fnm = $_FILES["pimage"]["name"];
+                        $dst = "./product_image/".$v3.$fnm;
+                        // appear in database. product destination path, name of image, hashed random number
+                        $dst1 = "product_image/".$v3.$fnm;
+                        // moves uploaded files to a new destination
+                        // the uploaded file in the temporary directory on the web server.
+                        move_uploaded_file($_FILES["pimage"]["tmp_name"],$dst);
+                    
 
+                    mysqli_query($conn, "INSERT INTO tbl_product (sname,sowner,phone_no,email,pname,skin_type,pdescription,price,pimage) VALUES ('". $_POST['sname'] ."','". $_POST['sowner'] ."','". $_POST['sphone'] ."', '". $_POST['semail'] ."', '". $_POST['pname'] ."', '". $_POST['skintype'] ."', '". $_POST['pdescription'] ."', '". $_POST['pprice'] ."','". $dst1 ."')");
+                    }}
+                   ?>
                  </div>   
                 </table>
               </div>
@@ -302,93 +361,5 @@
         </div>
     </div>
 
-          <!-- javascript section -->
-<script>
-  // validating the main form
- function validateForm(event){
-   sname = document.product.sname.value;
-   sowner = document.product.sowner.value;
-   sphone = document.product.sphone.value;
-   semail = document.product.semail.value;
-   pname = document.product.pname.value;
-   ptype = document.product.ptype.value;
-   pbrand = document.product.pbrand.value;
-   pdescription = document.product.pdescription.value;
-   pprice = document.product.pprice.value;
-
-
-   if(sname == ""){
-     alert('please enter shop name');
-     document.getElementById('fname').focus();
-     return false;
-   }
-   if(sowner == ""){
-     alert('please enter shop owner')
-     document.getElementById('sowner').focus();
-     return false;
-   }
-   if(sphone == "" || sphone < 11){
-     alert('shop phone number should be greater or equal to 10 eg. 0712345678')
-     document.getElementById('sphone').focus();
-     return false;
-   }
-   if(pname == ""){
-     alert('please enter product name')
-     document.getElementById('pname').focus();
-     return false;
-   }
-   if(ptype == ""){
-     alert('please enter product type')
-     document.getElementById('ptype').focus();
-     return false;
-   }
-   if(pbrand == ""){
-     alert('please enter brand')
-     document.getElementById('pbrand').focus();
-     return false;
-   }
-   if(pdescription == ""){
-     alert('please enter shop description')
-     document.getElementById('pdescription').focus();
-     return false;
-   }
-   if(pprice == ""){
-     alert('please enter price')
-     document.getElementById('pprice').focus();
-     return false;
-   }
-   
-   if(semail.length == 0 || semail.indexOf('@') == -1 || semail.indexOf('.') == -1){
-    alert('enter a valid email.should contain @ and .');
-    document.getElementById('semail').focus();
-    return false;
-  }
- }
- </script>
-
- <?php
-       $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
-    //    generates random integer between 1111 and 9999
-      $v1 = rand(1111, 9999);
-      $v2 = rand(1111, 9999);
-      
-    //   concatination
-      $v3 = $v1.$v2;
-    //   calculates md5 hash of v3
-      $v3 = md5($v3);
-      if(isset($_POST["submit"])){
-          //   ouput the name of the image
-        $fnm = $_FILES["pimage"]["name"];
-        $dst = "./product_image/".$v3.$fnm;
-         // appear in database. product destination path, name of image, hashed random number
-        $dst1 = "product_image/".$v3.$fnm;
-        // moves uploaded files to a new destination
-         // the uploaded file in the temporary directory on the web server.
-        move_uploaded_file($_FILES["pimage"]["tmp_name"],$dst);
-     
-
-      mysqli_query($conn, "INSERT INTO tbl_product (sname,sowner,phone_no,email,pname,skin_type,pdescription,price,pimage) VALUES ('".$_POST[sname]."','".$_POST[sowner]."','".$_POST[sphone]."', '".$_POST[semail]."', '".$_POST[pname]."', '".$_POST[skintype]."', '".$_POST[pdescription]."', '".$_POST[pprice]."','".$dst1."')");
-       }
-    ?>
 </body>
 </html>
