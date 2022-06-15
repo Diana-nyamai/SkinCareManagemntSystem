@@ -281,7 +281,7 @@
                       <h2>Add products</h2>
                 </div>
                 <div class="form-container">
-                <form name="product" action="" method="post" enctype="multipart/form-data" onsubmit="return validateForm()">
+                <form name="product" action="#" method="post" enctype="multipart/form-data" onsubmit="return validateForm(event)">
                 <input type="text" id="sname" name="sname" placeholder="shop name..">
                 <input type="text" id="sowner" name="sowner" placeholder="shop owner..">
                 <input type="text" id="sphone" name="sphone" placeholder="shop phone number..">
@@ -294,30 +294,6 @@
                 <input class="btn" type="submit" name="submit" value="upload">
                </form>
 
-               <?php
-       $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
-    //    generates random integer between 1111 and 9999
-      $v1 = rand(1111, 9999);
-      $v2 = rand(1111, 9999);
-      
-    //   concatination
-      $v3 = $v1.$v2;
-    //   calculates md5 hash of v3
-      $v3 = md5($v3);
-      if(isset($_POST["submit"])){
-          //   ouput the name of the image
-        $fnm = $_FILES["pimage"]["name"];
-        $dst = "./product_image/".$v3.$fnm;
-         // appear in database. product destination path, name of image, hashed random number
-        $dst1 = "product_image/".$v3.$fnm;
-        // moves uploaded files to a new destination
-         // the uploaded file in the temporary directory on the web server.
-        move_uploaded_file($_FILES["pimage"]["tmp_name"],$dst);
-     
-
-      mysqli_query($conn, "INSERT INTO tbl_product (sname,sowner,phone_no,email,pname,skin_type,pdescription,price,pimage) VALUES ('$_POST[sname]','$_POST[sowner]','$_POST[sphone]', '$_POST[semail]', '$_POST[pname]', '$_POST[skintype]', '$_POST[pdescription]', '$_POST[pprice]','$dst1')");
-       }
-       ?>
                  </div>   
                 </table>
               </div>
@@ -329,7 +305,7 @@
           <!-- javascript section -->
 <script>
   // validating the main form
- function validateForm(){
+ function validateForm(event){
    sname = document.product.sname.value;
    sowner = document.product.sowner.value;
    sphone = document.product.sphone.value;
@@ -388,7 +364,31 @@
     return false;
   }
  }
+ </script>
 
-</script>
+ <?php
+       $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
+    //    generates random integer between 1111 and 9999
+      $v1 = rand(1111, 9999);
+      $v2 = rand(1111, 9999);
+      
+    //   concatination
+      $v3 = $v1.$v2;
+    //   calculates md5 hash of v3
+      $v3 = md5($v3);
+      if(isset($_POST["submit"])){
+          //   ouput the name of the image
+        $fnm = $_FILES["pimage"]["name"];
+        $dst = "./product_image/".$v3.$fnm;
+         // appear in database. product destination path, name of image, hashed random number
+        $dst1 = "product_image/".$v3.$fnm;
+        // moves uploaded files to a new destination
+         // the uploaded file in the temporary directory on the web server.
+        move_uploaded_file($_FILES["pimage"]["tmp_name"],$dst);
+     
+
+      mysqli_query($conn, "INSERT INTO tbl_product (sname,sowner,phone_no,email,pname,skin_type,pdescription,price,pimage) VALUES ('".$_POST[sname]."','".$_POST[sowner]."','".$_POST[sphone]."', '".$_POST[semail]."', '".$_POST[pname]."', '".$_POST[skintype]."', '".$_POST[pdescription]."', '".$_POST[pprice]."','".$dst1."')");
+       }
+    ?>
 </body>
 </html>

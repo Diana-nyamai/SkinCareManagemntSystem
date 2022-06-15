@@ -294,7 +294,7 @@
 
         if(file_exists($MyfileName)){
             ?>
-            <p><?php  echo file_get_contents($MyfileName);?></p> </br>
+            <?php echo file_get_contents($MyfileName); ?> </br>
            <?php
             }
             ?>
