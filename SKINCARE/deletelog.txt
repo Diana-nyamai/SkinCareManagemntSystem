@@ -4,3 +4,6 @@
 ::1	09/06/2022 02:44PM	The dermatologist deleted an availability 
 ::1	09/06/2022 04:22PM	The admin deleted a product 
 ::1	09/06/2022 04:26PM	The admin deleted an order
+::1	15/06/2022 06:25 PM	The dermatologist deleted an availability
+::1	15/06/2022 06:26 PM	The dermatologist deleted an availability
+::1	15/06/2022 06:26 PM	The dermatologist deleted an availability
