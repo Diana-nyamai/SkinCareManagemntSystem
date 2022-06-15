@@ -176,80 +176,79 @@
        padding: 10px 10px;
        outline: none;
    }
-   
     </style>
     <script>
-  // validating the main form
- function validateForm(event){
-    event.preventDefault();
-   sname = document.product.sname.value;
-   sowner = document.product.sowner.value;
-   sphone = document.product.sphone.value;
-   semail = document.product.semail.value;
-   pname = document.product.pname.value;
-   ptype = document.product.ptype.value;
-   pbrand = document.product.pbrand.value;
-   pdescription = document.product.pdescription.value;
-   pprice = document.product.pprice.value;
+            // validating the main form
+        function validateForm(event){
+            sname = document.product.sname.value;
+            sowner = document.product.sowner.value;
+            sphone = document.product.sphone.value;
+            semail = document.product.semail.value;
+            pname = document.product.pname.value;
+            ptype = document.product.ptype.value;
+            pbrand = document.product.pbrand.value;
+            pdescription = document.product.pdescription.value;
+            pprice = document.product.pprice.value;
 
+            event.preventDefault();
+            event.stopPropagation();
 
-   if(sname == ""){
-     alert('please enter shop name');
-     document.getElementById('sname').focus();
-     return false;
-   }
-   if(sowner == ""){
-    event.preventDefault();
-     alert('please enter shop owner')
-     document.getElementById('sowner').focus();
-     return false;
-   }
-   if(sphone == "" || sphone < 11){
-    event.preventDefault();
-     alert('shop phone number should be greater or equal to 10 eg. 0712345678')
-     document.getElementById('sphone').focus();
-     return false;
-   }
-   if(semail.length == 0 || semail.indexOf('@') == -1 || semail.indexOf('.') == -1){
-    event.preventDefault();
-    alert('enter a valid email.should contain @ and .');
-    document.getElementById('semail').focus();
-    return false;
-  }
-   if(pname == ""){
-    event.preventDefault();
-     alert('please enter product name')
-     document.getElementById('pname').focus();
-     return false;
-   }
-   if(ptype == ""){
-    event.preventDefault();
-     alert('please enter product type')
-     document.getElementById('ptype').focus();
-     return false;
-   }
-   if(pbrand == ""){
-    event.preventDefault();
-     alert('please enter brand')
-     document.getElementById('pbrand').focus();
-     return false;
-   }
-   if(pdescription == ""){
-    event.preventDefault();
-     alert('please enter shop description')
-     document.getElementById('pdescription').focus();
-     return false;
-   }
-   if(pprice == ""){
-    event.preventDefault();
-     alert('please enter price')
-     document.getElementById('pprice').focus();
-     return false;
-   }
-   
- }
+            if(sname == ""){
+                alert('please enter shop name');
+                document.getElementById('sname').focus();
+                return false;
+            }
+            if(sowner == ""){
+                event.preventDefault();
+                alert('please enter shop owner')
+                document.getElementById('sowner').focus();
+                return false;
+            }
+            if(sphone == "" || sphone < 11){
+                event.preventDefault();
+                alert('shop phone number should be greater or equal to 10 eg. 0712345678')
+                document.getElementById('sphone').focus();
+                return false;
+            }
+            if(semail.length == 0 || semail.indexOf('@') == -1 || semail.indexOf('.') == -1){
+                event.preventDefault();
+                alert('enter a valid email.should contain @ and .');
+                document.getElementById('semail').focus();
+                return false;
+            }
+            if(pname == ""){
+                event.preventDefault();
+                alert('please enter product name')
+                document.getElementById('pname').focus();
+                return false;
+            }
+            if(ptype == ""){
+                event.preventDefault();
+                alert('please enter product type')
+                document.getElementById('ptype').focus();
+                return false;
+            }
+            if(pbrand == ""){
+                event.preventDefault();
+                alert('please enter brand')
+                document.getElementById('pbrand').focus();
+                return false;
+            }
+            if(pdescription == ""){
+                event.preventDefault();
+                alert('please enter shop description')
+                document.getElementById('pdescription').focus();
+                return false;
+            }
+            if(pprice == ""){
+                event.preventDefault();
+                alert('please enter price')
+                document.getElementById('pprice').focus();
+                return false;
+            }
+            
+            }
  </script>
-
 </head>
 <body>
     <div class="container">

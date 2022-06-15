@@ -15,3 +15,5 @@
 ::1	15/06/2022 10:12PM	The admin deleted a product 
 ::1	15/06/2022 10:12PM	The admin deleted a product 
 ::1	15/06/2022 10:12PM	The admin deleted a product 
+::1	15/06/2022 10:24PM	The admin deleted a product 
+::1	15/06/2022 10:24PM	The admin deleted a product 
