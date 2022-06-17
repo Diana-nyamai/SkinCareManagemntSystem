@@ -172,7 +172,7 @@
    .form-container textarea{
        margin-top: 10px;
        width: 100%;
-       /* height: 300px; */
+       height: 300px;
        padding: 10px 10px;
        outline: none;
    }
