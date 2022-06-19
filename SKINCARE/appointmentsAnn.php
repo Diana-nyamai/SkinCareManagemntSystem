@@ -359,8 +359,6 @@
                         <td>doctor name</td>
                         <td>date</td>
                         <td>time</td>
-                        <td>status</td>
-                        <td>Actions</td>
                     </thead>
                    
                     <?php
@@ -388,7 +386,6 @@
            $data = mysqli_query($conn, $sql) ;
         if(mysqli_num_rows($data) > 0){
            while($row = mysqli_fetch_array($data)){
-               $id = $row['appointment_id'];
                $firstName = $row['first_name'];
                $lastName = $row['last_name'];
                $phoneNumber = $row['phone_number'];
@@ -410,12 +407,6 @@
                         <td><?php echo $appdate;?></td>
                         <td><?php echo $appointime;?></td>
                         <td><?php echo $cstatus;?></td>
-                        <td>
-                            <?php echo "
-                        <a title='edit/update' href='./updatedermappoint.php?id=$id'>
-                        <i class='fa fa-edit'> Edit</i></a>
-                        ";?>
-                        </td>
                     </tr>
           <?php     
            }
