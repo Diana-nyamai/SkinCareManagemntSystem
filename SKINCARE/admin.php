@@ -12,7 +12,7 @@
   $dermnum = mysqli_num_rows($derm);
 
 //   num
-    $t18 = mysqli_query($conn, 'SELECT appointment_date FROM tbl_appointment WHERE YEAR(appointment_date) ="2018"');
+    $t18 = mysqli_query($conn, 'SELECT appointment_date FROM tbl_appointment WHERE YEAR(appointment_date) = "2018"');
     $t18n = mysqli_num_rows($t18);
     $t19 = mysqli_query($conn, 'SELECT appointment_date FROM tbl_appointment  WHERE YEAR(appointment_date) ="2019"');
     $t19n = mysqli_num_rows($t19);

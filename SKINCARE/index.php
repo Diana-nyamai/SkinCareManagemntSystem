@@ -49,6 +49,7 @@ html is used to structure a webpage and its content -->
             /* element is positioned relative to its normal position */
             position: relative;
             height: 100%;
+            /* specidies what to happen when theres an overflow in an element*/
             overflow: hidden;
         }
         header{
