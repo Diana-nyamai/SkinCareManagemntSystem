@@ -183,7 +183,7 @@
  myContents[2] = "<h3> Your skin type is: combination .Find more information about COMBINATION skin in this link <a href='./combination.php'> click here!</a></h3>";
  myContents[3] = "<h3> Your skin type is: OILY .Find more information about OILY skin in this link <a href='./oily.php'> click here!</a></h3>";
  myContents[4] = "<h3> Your skin type is: Oily .Find more information about OILY skin in this link <a href='./oily.php'> click here!</a></h3>";
- myContents[5] = "<h3> Your skin type is: Sensitive .Find more information about SENSITIVE skin in this link <a href='./sensitive.php'> click here!</a></h3>";
+ myContents[5] = "<h3> Your skin type is: Sensitive .We would recommend you to seek proffesional help with our available dermatologists by booking an appointment <a href='./bookappointment.php'> book appointment </a>.Find more information about SENSITIVE skin in this link <a href='./sensitive.php'> click here!</a></h3>";
 
 function analyser(myScore){
     // this function uses the total calculated score to figure out the skin type

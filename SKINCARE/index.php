@@ -73,7 +73,7 @@ html is used to structure a webpage and its content -->
         header ul li{
             /* specifies the listing of the markers */
             list-style-type: none;
-            /* displays list items horizontally */
+            /* displays list items horizontally  */
             display: inline-block;
             text-align: center;
             margin: 0 15px;
@@ -145,6 +145,7 @@ html is used to structure a webpage and its content -->
             position: relative;
             width: 500px;
             height: 500px;
+            /* function creates an an image consisting of a progressive transition between two or more colors radiating form origin */
             background: radial-gradient(520px, #f09053, transparent 50%);
             margin-top: -50px;
         }
@@ -243,12 +244,13 @@ html is used to structure a webpage and its content -->
             border-radius: 20px;
             padding-top: 10px;
             /* adds shadow to an element */
-            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+             /* v-offset h-offset, blur, color */
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25);
             transition: .4s;
             background: #f2f2f2;
         }
         .g-content:hover{
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16);
             /* transform lets you rotate, translate etc an element 
             translate repositions elements in the horizntal and vertical directions*/
             transform: translate(2px, 8px);
@@ -339,7 +341,7 @@ html is used to structure a webpage and its content -->
         <header>
             <!-- a creates a hyperlink to web pages, files,  -->
             <div class="logo"><a href="#">HEAVENLY skin</a> </div>
-            <!-- sectiont that provides navigation links -->
+            <!-- section that provides navigation links -->
             <nav>
                 <!-- element that represents unordered list -->
                 <ul>
@@ -362,6 +364,7 @@ html is used to structure a webpage and its content -->
 
         <div class="img">
             <div class="skin-type">
+                <!-- specifies path to image -->
                 <img src="./images/normal.png" alt="normal skin" width="60" title="normal skin" />
                 <img src="./images/dry.png" alt="dry skin" width="60" title="dry skin"/>
                 <img src="./images/combination.png" alt="combination skin" width="60" title="combination skin"/>
@@ -376,6 +379,7 @@ html is used to structure a webpage and its content -->
     <!-- our products section 
     id specifies unique id for an element-->
     <div class="header" id="products">
+        <!-- html headings-->
         <h1 style="text-align:center; padding: 100px 0; color: #fff;">OUR PRODUCTS</h1>
     </div>
     <div class="gallery">
