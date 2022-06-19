@@ -71,7 +71,9 @@ html is used to structure a webpage and its content -->
             color:#f09053;
         }
         header ul li{
+            /* specifies the listing of the markers */
             list-style-type: none;
+            /* displays list items horizontally */
             display: inline-block;
             text-align: center;
             margin: 0 15px;
@@ -86,7 +88,7 @@ html is used to structure a webpage and its content -->
         header ul li a:hover{
             color: #f09053;
         }
-        /* pixels are relative to vieing device */
+        /* pixels are relative to viewing device */
         header ul li a.btn{
             display: inline-block;
             width: 180px;

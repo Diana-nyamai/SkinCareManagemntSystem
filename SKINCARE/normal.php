@@ -265,7 +265,7 @@
         <!-- PRODUCTS SECTION -->
         <div class="gallery">
       <?php 
-      $res = mysqli_query($conn, "select * from tbl_product where skin_type='dry'");
+      $res = mysqli_query($conn, "select * from tbl_product where skin_type='normal'");
       while($row = mysqli_fetch_array($res)){
           ?>
      
