@@ -253,7 +253,7 @@ function validateLoginForm(event){
 
 // validating the password
 function validateLPassword(){
-  var p = document.getElementById('password').value;
+  var p = document.getElementById('Lpassword').value;
    if(p == ""){
      alert('user must have password!');
      return false;
@@ -337,7 +337,7 @@ function validateRole(){
 
 // validating the password
 function validatePassword(){
-   var p = document.getElementById('password').value.focus();
+   var p = document.getElementById('password').value;
    if(p == ""){
      alert('user must have password!');
      return false;
