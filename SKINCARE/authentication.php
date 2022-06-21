@@ -341,7 +341,7 @@ function validatePassword(){
    if(p == ""){
      alert('user must have password!');
      return false;
-   }+
+   }
    if(p.length < 8){
      alert('The password length must be atleast 8 characters');
      return false;
