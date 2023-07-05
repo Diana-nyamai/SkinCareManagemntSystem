@@ -257,7 +257,7 @@ require './config.php';
                </form>
                
                <?php
-                    $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
+             $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
                     //    generates random integer between 1111 and 9999
                     $v1 = rand(1111, 9999);
                     $v2 = rand(1111, 9999);
