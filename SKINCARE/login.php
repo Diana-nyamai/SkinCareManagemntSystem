@@ -2,7 +2,7 @@
 <?php
 session_start(); 
 //  database connection
-$conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
+$conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 
 // server super global var holds info about headers, paths n script locations
 // used to check form submission. alt is to use isset. returns request method used to access that page

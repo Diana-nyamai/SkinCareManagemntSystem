@@ -19,7 +19,7 @@ session_start();
  $lname = htmlspecialchars($lname);
 
 //  database connection
-$conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
+$conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 // function produces a description about the error incase the connection failure
 if(mysqli_connect_error()){
     // die prints the message and exits the current php script
