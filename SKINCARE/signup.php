@@ -1,5 +1,6 @@
 <!-- php open tag -->
 <?php
+require './config.php';
 // function that starts a session
 session_start();
 // php super global variable that collects form data submitted from form with method post

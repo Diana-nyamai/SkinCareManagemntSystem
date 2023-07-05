@@ -1,7 +1,8 @@
 <!-- this page will display the number of users and a report on users -->
 <?php
+require './config.php';
    session_start();
-   $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
+   $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
    $users = mysqli_query($conn, 'SELECT * FROM tbl_users');
    $usernum = mysqli_num_rows($users);
 ?>

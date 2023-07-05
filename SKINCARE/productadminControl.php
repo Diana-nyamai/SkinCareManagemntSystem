@@ -1,5 +1,6 @@
 <!-- this is the php to support bookappointment page on homepage -->
 <?php
+require './config.php';
   $sname = $_POST['sname'];
   $sowner = $_POST['sowner'];
   $sphone =$_POST['sphone'];
@@ -26,7 +27,7 @@
   move_uploaded_file($_FILES["pimage"]["tmp_name"],$dst);
  
 //   database connection
-$conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
+$conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 if(mysqli_connect_error()){
     die('connection failed(' .mysqli_connect_error(). ')' . mysqli_Connect_error());
 }

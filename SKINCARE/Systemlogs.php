@@ -1,6 +1,7 @@
 <?php
+require './config.php';
    session_start();
-  $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
+   $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 //   for the cards
   $data = mysqli_query($conn, 'SELECT * FROM tbl_appointment');
 //   returns number of rows

@@ -1,8 +1,9 @@
 <!-- this page will display the homepage where all the products will be available skin test is available   -->
 <!-- opening tag for php -->
 <?php
+require './config.php';
   session_start();
-  $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
+  $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
   if(!isset($_SESSION["username"])){
     //   sends raw http header to browser
       header("location: authentication.php");

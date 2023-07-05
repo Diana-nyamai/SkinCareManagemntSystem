@@ -1,8 +1,9 @@
 <?php
+require './config.php';
 session_start(); 
 //  database connection
   // new keyword creates an object from class
-$conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
+  $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 
 // isset checks whether a variable is set
 if(isset($_POST['forgot'])){

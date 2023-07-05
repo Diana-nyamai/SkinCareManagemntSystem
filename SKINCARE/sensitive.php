@@ -1,7 +1,8 @@
 <!-- dry skin page -->
 <?php
+require './config.php';
   session_start();
-  $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
+  $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 ?>
 <!DOCTYPE html>
 <html lang="en">

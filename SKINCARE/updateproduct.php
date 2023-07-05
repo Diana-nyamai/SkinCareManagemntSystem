@@ -1,8 +1,9 @@
 
 <?php
+require './config.php';
    session_start();
   $id = $_GET['id'];
-  $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
+  $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
   $data = mysqli_query($conn, "SELECT * FROM tbl_product WHERE id='$id'");
   $number = mysqli_num_rows($data);
   $updatedata = mysqli_fetch_assoc($data);

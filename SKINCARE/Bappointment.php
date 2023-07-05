@@ -1,12 +1,13 @@
 <!-- this is the php to support bookappointment page on homepage -->
 <?php
+require './config.php';
   $id = $_POST['id'];
   $name = $_POST['name'];
   $date = $_POST['date'];
   $time = $_POST['time'];
  
 //   database connection
-$conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
+$conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 if(mysqli_connect_error()){
     die('connection failed(' .mysqli_connect_error(). ')' . mysqli_Connect_error());
 }

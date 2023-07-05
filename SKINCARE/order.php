@@ -1,4 +1,5 @@
 <?php
+require './config.php';
 $user_id = $_POST['id'];
 $item = $_POST['item'];
 $quantity = $_POST['qty'];
@@ -8,7 +9,8 @@ $shop_name = $_POST['shop_name'];
 $product_id = $_POST['product_id'];
 
 // connecting to the database
-$conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
+$conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
+
 if(mysqli_connect_error()){
     die('connection failed: (' .mysqli_connect_error(). ')' .mysqli_connect_error());
 }

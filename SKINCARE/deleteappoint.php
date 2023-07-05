@@ -1,10 +1,11 @@
 <?php
+require './config.php';
 // function that starts a session 
   session_start();
   // get variable obtains data that was sent through form with method get
   $id = $_GET['id'];
   // new keyword creates an object from class
-  $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
+  $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
   // performs a query against a database
   $data = mysqli_query($conn, "DELETE FROM tbl_doctoravailable WHERE id='$id'");
   

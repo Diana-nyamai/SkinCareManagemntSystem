@@ -1,7 +1,8 @@
 <!-- this page will display the number of users and a report on users in admin -->
 <?php
+require './config.php';
    session_start();
-  $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
+   $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
   $data = mysqli_query($conn, 'SELECT * FROM tbl_product');
   $number = mysqli_num_rows($data)
 ?>

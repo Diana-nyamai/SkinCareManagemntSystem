@@ -1,5 +1,7 @@
 <!-- handles the login page -->
 <?php
+require './config.php';
+
 session_start(); 
 //  database connection
 $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
