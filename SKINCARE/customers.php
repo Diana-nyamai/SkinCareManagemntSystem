@@ -343,7 +343,7 @@ require './config.php';
                 ?>
                     <?php 
     function Data($sql){
-           $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
+           $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
            $data = mysqli_query($conn, $sql) ;
         if(mysqli_num_rows($data) > 0){
            while($row = mysqli_fetch_array($data)){

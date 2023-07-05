@@ -388,7 +388,7 @@ html is used to structure a webpage and its content -->
       <?php 
     //   hostname, username, password, dbname
     // opens a new connection to mysql server
-      $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
+    $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
     //   performs a query against a database. selects all the data in tbl product with limit of 10 products
       $res = mysqli_query($conn, "select * from tbl_product limit 10");
     //   fetches an row as a numeric array and as an associative array(array with strings as an index)

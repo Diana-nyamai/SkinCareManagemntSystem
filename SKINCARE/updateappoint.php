@@ -291,7 +291,7 @@ require './config.php';
                </form>
 
                <?php
-       $conn = new mysqli('localhost', 'ndinda', 'dnyamai.dn', 'skincare');
+        $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
 
       if(isset($_POST["update"])){
         $status = $_POST['status'];

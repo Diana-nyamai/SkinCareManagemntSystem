@@ -17,7 +17,7 @@
 <?php
 require './config.php';
 $conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
-$productq = mysqli_query($connection, 'SELECT * FROM tbl_product');
+$productq = mysqli_query($conn, 'SELECT * FROM tbl_product');
 $count = mysqli_num_rows($productq);
 echo  $count, ' records found <br/>';
 
