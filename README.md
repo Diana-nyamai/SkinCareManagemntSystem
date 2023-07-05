@@ -38,7 +38,7 @@ This repository contains the source code and documentation for the Skin Care Man
 To set up the Skin Care Management System locally, follow these steps:
 
 1. Clone the repository:
-`git clone https://github.com/your-username/SkinCareManagemntSystem.git`
+`git clone https://github.com/Diana-nyamai/SkinCareManagemntSystem.git`
 
 2. Set up a web server:
 
