@@ -1,6 +1,10 @@
 # Skin Care Management System
 
-This repository contains the source code and documentation for the Skin Care Management System, which is a web-based application developed as a final year project. The system allows users to sign up, access skincare products for purchase, and book appointments with dermatologists for professional advice and examination. It also provides administrative features for managing products, orders, and user information.
+This repository contains the source code and documentation for the Skin Care Management System, which is a web-based application developed as a final-year project. The system allows users to sign up, access skincare products for purchase, and book appointments with dermatologists for professional advice and examination. It also provides administrative features for managing products, orders, and user information.
+
+## Live Demo
+
+Checkout the live version of the Executive Matchmaking website [Here]([https://executivematchmaking.netlify.app/](https://skincaremanagement-e6c70e0c65a7.herokuapp.com/))
 
 ## Technologies Used
 - PHP
