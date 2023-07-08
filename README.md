@@ -4,7 +4,7 @@ This repository contains the source code and documentation for the Skin Care Man
 
 ## Live Demo
 
-Checkout the live version of the Executive Matchmaking website [Here]([https://executivematchmaking.netlify.app/](https://skincaremanagement-e6c70e0c65a7.herokuapp.com/))
+Checkout the live version of the Executive Matchmaking website [Here](https://skincaremanagement-e6c70e0c65a7.herokuapp.com/)
 
 ## Technologies Used
 - PHP
